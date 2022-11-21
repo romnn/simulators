@@ -1,0 +1,212 @@
+package dram;
+
+import generic.EventQueue;
+import generic.GlobalClock;
+import generic.RequestType;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import memorysystem.Cache;
+import memorysystem.AddressCarryingEvent;
+import config.MainMemoryConfig;
+import config.SystemConfig;
+import config.XMLParser;
+import misc.Error;
+
+public class Test {
+
+	FileReader traceInput;
+	BufferedReader bufRead; 
+	String readLine = null;
+	public static long numClockCycles = 75200; 			//number of clock cycles to run
+	long lastTime = 0;
+	long lastLineNumber = 0;
+	
+	EventQueue eventQ;
+	MainMemoryConfig mainMemoryConfig;
+	MainMemoryDRAMControllerTest mainMemoryDRAMControllerTest;
+	Cache dummyParentCache = null;
+	AddressCarryingEvent pendingEvent;
+	
+	public static DebugPrinter debugPrinter;
+	public static DebugPrinter outputLog;
+	public static DebugPrinter timingLog;
+	
+	public Test() throws FileNotFoundException
+	{
+		
+		this.mainMemoryConfig = SystemConfig.mainMemoryConfig;
+		mainMemoryDRAMControllerTest = new MainMemoryDRAMControllerTest(mainMemoryConfig, this);
+		eventQ = new EventQueue();
+		
+		traceInput = new FileReader("/home/hk/Harveen/Work/DRAMSim/repo/Tejas-dram-sim/Tejas-dram/src/simulator/dram/k6_aoe_02_short.trc.uniq");
+		bufRead = new BufferedReader(traceInput);
+		
+		GlobalClock.setCurrentTime(0);
+		GlobalClock.setStepSize(1);
+	}
+	
+	public static void main(String[] args) throws IOException{
+		// TODO Auto-generated method stub
+		//Rank r1 = new Rank();
+		
+		//System.out.println("Hi!Creating a Test");
+		
+		XMLParser.parse("/home/hk/Harveen/Work/DRAMSim/repo/Tejas-dram-sim/Tejas-dram/src/simulator/config/config.xml");
+		
+		//open debug file
+		debugPrinter = new DebugPrinter("event_log");
+		
+		//outputLog = new DebugPrinter("output_log_BUS");
+		//outputLog = new DebugPrinter("output_log_BANKSTATE");
+		outputLog = new DebugPrinter("output_log_CMDQ");
+		
+		timingLog = new DebugPrinter("timing_log");
+		
+		
+		Test test = new Test();
+		
+		for(int i = 0; i < Test.numClockCycles; i++)
+		{
+			if(GlobalClock.getCurrentTime() == test.lastTime)
+				{
+				//System.out.println("Gonna add new events!! At time " + GlobalClock.getCurrentTime());
+				//if(!test.parseAndAddEvents())						//whenever going to run out of events, add new (upto 1024 clk cycles ahead)
+				//break;
+				
+				test.parseAndAddEvents();
+				
+				}
+		
+			test.mainMemoryDRAMControllerTest.oneCycleOperation();	//reverse the order because that is so in C code
+			
+			test.eventQ.processEvents();						//process then one cycle as in the real Main
+				
+			
+			
+			//need to add code for refresh events
+			
+			//print debug for each cycle
+			if(test.mainMemoryConfig.DEBUG_CMDQ && GlobalClock.getCurrentTime() >= 70758)
+//			test.mainMemoryDRAMControllerTest.commandQueue.printTest();
+			if(test.mainMemoryConfig.DEBUG_BANKSTATE)
+			test.mainMemoryDRAMControllerTest.printBankStateTest();
+			
+			
+			GlobalClock.incrementClock();
+			//System.out.println("Running for time " + GlobalClock.getCurrentTime());
+			//System.out.println("Last time was: " + test.lastTime);
+		}	
+			//Note: Technically this code is not correct as it issues multiple requests for addresses that would be covered in a single burst
+			//and hence it is meaningless to service those addresses again and again. Ideally it should go to a cache
+			//But this is how DRAMSim2 does it, so for verification purposes, let us stick to this
+		//System.out.println("Simulation Complete!!");
+		debugPrinter.close();
+		outputLog.close();
+		timingLog.close();
+	}
+
+public boolean parseAndAddEvents() throws IOException
+	{
+		String currentLine;
+		long currentLineNumber = this.lastLineNumber;
+		long addEventsUptoTime = GlobalClock.getCurrentTime() + 1024;
+		
+		long currentLineTime = 0;
+		long address;
+		
+		//System.out.println("Adding events upto time " + addEventsUptoTime);
+		
+		//then start processing further lines
+		while(true)
+		{
+			if((currentLine = bufRead.readLine()) != null)
+			{
+			
+				//Format : Address Command ClockCycle
+				
+				String[] parsedStrings = currentLine.split(" ");
+				currentLineTime = Long.parseLong(parsedStrings[2]);
+				
+				RequestType reqType = null;
+				if(parsedStrings[1].equals("P_MEM_WR") || parsedStrings[1].equals("BOFF"))
+				{
+					reqType = RequestType.Cache_Write;
+				}
+				else if (parsedStrings[1].equals("P_FETCH") ||
+						 parsedStrings[1].equals("P_MEM_RD") ||
+						 parsedStrings[1].equals("P_LOCK_RD") ||
+						 parsedStrings[1].equals("P_LOCK_WR")
+						)
+				{
+					reqType = RequestType.Cache_Read;
+				}
+				else
+					Error.showErrorAndExit("== Unkown Command : " + parsedStrings[1]);
+						
+				address = Long.parseLong(parsedStrings[0].substring(2),16);
+				
+				
+				//throw away lower size bits to account for burst size
+				address >>>= 6;
+				address <<= 6;
+				
+			
+				if(currentLineTime < addEventsUptoTime) 
+				{
+					
+				//check if any pending events from before
+				if(pendingEvent != null)
+				{
+					//System.out.println("Added pending event");
+					pendingEvent.print();
+					this.eventQ.addEvent(pendingEvent);
+					pendingEvent = null;
+					
+				}
+				//create and add event to queue
+				AddressCarryingEvent e = new AddressCarryingEvent(this.eventQ, currentLineTime, dummyParentCache, this.mainMemoryDRAMControllerTest, reqType, address);
+				this.eventQ.addEvent(e);	
+					
+				//System.out.println(address + " " + parsedStrings[1] + " " + parsedStrings[2]);	
+				
+				this.lastTime = currentLineTime;
+				this.lastLineNumber = currentLineNumber;
+				currentLineNumber++;
+				
+				//System.out.println("Setting last time to " + this.lastTime);
+				
+				}
+				else
+				{
+					//System.out.println("Pending event to add");
+					//System.out.println(address + " " + parsedStrings[1] + " " + parsedStrings[2]);
+					pendingEvent = new AddressCarryingEvent(this.eventQ, currentLineTime, dummyParentCache, this.mainMemoryDRAMControllerTest, reqType, address);
+					
+					this.lastTime = currentLineTime;			//run next when it's time to add the pending event!
+					
+					break;
+				}
+			}
+			else 
+			{
+				//System.out.println("Reached end of file!");
+				return false;
+			}
+		}
+		
+		return true;
+		//while(currentLineTime < addEventsUptoTime );
+			
+	}
+	
+	public EventQueue getEventQueue()
+	{
+		return this.eventQ;
+	}
+
+
+}

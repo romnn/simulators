@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="Tejas">
+	<!-- change these as required -->
+	    <property name="jar-dir" value="jars"/>    <!-- directory where the jars are generated -->
+	    <property name="jar-name" value="GPUTejas"/>  <!-- name of the jar -->
+	    <property name="main-class" value="main.Main"/> <!-- path to the main class -->
+	<!-- ________________________ -->
+
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../eclipse"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="CUDATejas.classpath">
+        <pathelement location="bin"/>
+    	<pathelement location="jsr166y.jar"/>
+        <pathelement location="../../eclipse/visualvm-launcher/plugins/org.eclipse.visualvm.launcher.common_1.0.1.jar"/>
+        <pathelement location="../../eclipse/visualvm-launcher/plugins/org.eclipse.visualvm.launcher.java_1.0.1.jar"/>
+        <pathelement location="../../eclipse/visualvm-launcher/plugins/org.eclipse.visualvm.launcher.pde_1.0.1.jar"/>
+    </path>
+
+	
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src/simulator">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
+            <src path="src/simulator"/>
+            <classpath refid="CUDATejas.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+ <target name="make-jar" depends="build">
+        <mkdir dir="${jar-dir}"/>
+        <jar destfile="${jar-dir}/${jar-name}.jar" basedir="bin">
+			<zipgroupfileset dir="." includes="jsr166y.jar" />
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"/>
+            </manifest>
+        </jar>
+    </target>
+</project>
