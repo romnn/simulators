@@ -1,6 +1,12 @@
 
 #### Docker
 
+#### Running tools
+
+```bash
+cargo run --bin gpgpusim-parse
+```
+
 #### Current state
 
 - multi2sim: compiling for CUDA 10 ubuntu 18
