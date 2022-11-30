@@ -1,0 +1,1353 @@
+
+
+
+
+
+
+
+
+.version 6.4
+.target sm_35
+.address_size 64
+
+
+
+
+
+
+
+.visible .entry _Z20needle_cuda_shared_1PiS_S_iiii(
+.param .u64 _Z20needle_cuda_shared_1PiS_S_iiii_param_0,
+.param .u64 _Z20needle_cuda_shared_1PiS_S_iiii_param_1,
+.param .u64 _Z20needle_cuda_shared_1PiS_S_iiii_param_2,
+.param .u32 _Z20needle_cuda_shared_1PiS_S_iiii_param_3,
+.param .u32 _Z20needle_cuda_shared_1PiS_S_iiii_param_4,
+.param .u32 _Z20needle_cuda_shared_1PiS_S_iiii_param_5,
+.param .u32 _Z20needle_cuda_shared_1PiS_S_iiii_param_6
+)
+{
+.reg .pred %p<33>;
+.reg .b32 %r<361>;
+.reg .b64 %rd<49>;
+
+	.shared .align 4 .b8 _ZZ20needle_cuda_shared_1PiS_S_iiiiE4temp[1156];
+
+	.shared .align 4 .b8 _ZZ20needle_cuda_shared_1PiS_S_iiiiE3ref[1024];
+
+ld.param.u64 %rd2, [_Z20needle_cuda_shared_1PiS_S_iiii_param_0];
+ld.param.u64 %rd3, [_Z20needle_cuda_shared_1PiS_S_iiii_param_1];
+ld.param.u32 %r9, [_Z20needle_cuda_shared_1PiS_S_iiii_param_3];
+ld.param.u32 %r10, [_Z20needle_cuda_shared_1PiS_S_iiii_param_4];
+ld.param.u32 %r11, [_Z20needle_cuda_shared_1PiS_S_iiii_param_5];
+cvta.to.global.u64 %rd1, %rd3;
+add.s32 %r12, %r11, -1;
+mov.u32 %r13, %ctaid.x;
+sub.s32 %r14, %r12, %r13;
+shl.b32 %r15, %r9, 4;
+shl.b32 %r16, %r13, 4;
+mad.lo.s32 %r1, %r15, %r14, %r16;
+mov.u32 %r2, %tid.x;
+add.s32 %r3, %r1, %r2;
+add.s32 %r17, %r9, %r3;
+add.s32 %r4, %r17, 1;
+setp.ne.s32	%p16, %r2, 0;
+@%p16 bra BB0_2;
+
+mul.wide.s32 %rd4, %r1, 4;
+add.s64 %rd5, %rd1, %rd4;
+ld.global.u32 %r18, [%rd5];
+st.shared.u32 [_ZZ20needle_cuda_shared_1PiS_S_iiiiE4temp], %r18;
+
+BB0_2:
+cvta.to.global.u64 %rd6, %rd2;
+mul.wide.s32 %rd7, %r4, 4;
+add.s64 %rd8, %rd6, %rd7;
+ld.global.u32 %r19, [%rd8];
+shl.b32 %r20, %r2, 2;
+mov.u32 %r21, _ZZ20needle_cuda_shared_1PiS_S_iiiiE3ref;
+add.s32 %r22, %r21, %r20;
+st.shared.u32 [%r22], %r19;
+shl.b32 %r23, %r9, 2;
+cvt.s64.s32	%rd9, %r23;
+add.s64 %rd10, %rd8, %rd9;
+ld.global.u32 %r24, [%rd10];
+st.shared.u32 [%r22+64], %r24;
+add.s64 %rd11, %rd10, %rd9;
+ld.global.u32 %r25, [%rd11];
+st.shared.u32 [%r22+128], %r25;
+add.s64 %rd12, %rd11, %rd9;
+ld.global.u32 %r26, [%rd12];
+st.shared.u32 [%r22+192], %r26;
+add.s64 %rd13, %rd12, %rd9;
+ld.global.u32 %r27, [%rd13];
+st.shared.u32 [%r22+256], %r27;
+add.s64 %rd14, %rd13, %rd9;
+ld.global.u32 %r28, [%rd14];
+st.shared.u32 [%r22+320], %r28;
+add.s64 %rd15, %rd14, %rd9;
+ld.global.u32 %r29, [%rd15];
+st.shared.u32 [%r22+384], %r29;
+add.s64 %rd16, %rd15, %rd9;
+ld.global.u32 %r30, [%rd16];
+st.shared.u32 [%r22+448], %r30;
+add.s64 %rd17, %rd16, %rd9;
+ld.global.u32 %r31, [%rd17];
+st.shared.u32 [%r22+512], %r31;
+add.s64 %rd18, %rd17, %rd9;
+ld.global.u32 %r32, [%rd18];
+st.shared.u32 [%r22+576], %r32;
+add.s64 %rd19, %rd18, %rd9;
+ld.global.u32 %r33, [%rd19];
+st.shared.u32 [%r22+640], %r33;
+add.s64 %rd20, %rd19, %rd9;
+ld.global.u32 %r34, [%rd20];
+st.shared.u32 [%r22+704], %r34;
+add.s64 %rd21, %rd20, %rd9;
+ld.global.u32 %r35, [%rd21];
+st.shared.u32 [%r22+768], %r35;
+add.s64 %rd22, %rd21, %rd9;
+ld.global.u32 %r36, [%rd22];
+st.shared.u32 [%r22+832], %r36;
+add.s64 %rd23, %rd22, %rd9;
+ld.global.u32 %r37, [%rd23];
+st.shared.u32 [%r22+896], %r37;
+add.s64 %rd24, %rd23, %rd9;
+ld.global.u32 %r38, [%rd24];
+st.shared.u32 [%r22+960], %r38;
+bar.sync 0;
+ld.param.u32 %r350, [_Z20needle_cuda_shared_1PiS_S_iiii_param_3];
+mad.lo.s32 %r39, %r2, %r350, %r350;
+add.s32 %r40, %r39, %r1;
+mul.wide.s32 %rd25, %r40, 4;
+add.s64 %rd26, %rd1, %rd25;
+ld.global.u32 %r41, [%rd26];
+mov.u32 %r42, _ZZ20needle_cuda_shared_1PiS_S_iiiiE4temp;
+mad.lo.s32 %r43, %r2, 68, %r42;
+st.shared.u32 [%r43+68], %r41;
+bar.sync 0;
+shl.b32 %r353, %r2, 2;
+add.s32 %r352, %r1, %r2;
+add.s32 %r351, %r352, 1;
+mul.wide.s32 %rd27, %r351, 4;
+add.s64 %rd28, %rd1, %rd27;
+ld.global.u32 %r44, [%rd28];
+add.s32 %r6, %r42, %r353;
+st.shared.u32 [%r6+4], %r44;
+bar.sync 0;
+mov.u32 %r355, _ZZ20needle_cuda_shared_1PiS_S_iiiiE3ref;
+shl.b32 %r354, %r2, 2;
+neg.s32 %r47, %r2;
+mad.lo.s32 %r49, %r47, 68, %r42;
+add.s32 %r7, %r49, %r354;
+shl.b32 %r51, %r2, 6;
+sub.s32 %r53, %r355, %r51;
+add.s32 %r8, %r53, %r354;
+setp.gt.s32	%p17, %r2, 0;
+@%p17 bra BB0_4;
+
+ld.shared.u32 %r54, [%r7];
+ld.shared.u32 %r55, [%r8];
+add.s32 %r56, %r55, %r54;
+ld.shared.u32 %r57, [%r7+68];
+sub.s32 %r58, %r57, %r10;
+ld.shared.u32 %r59, [%r7+4];
+sub.s32 %r60, %r59, %r10;
+max.s32 %r61, %r56, %r58;
+max.s32 %r62, %r61, %r60;
+st.shared.u32 [%r7+72], %r62;
+
+BB0_4:
+bar.sync 0;
+setp.gt.s32	%p18, %r2, 1;
+@%p18 bra BB0_6;
+
+ld.shared.u32 %r63, [%r8+64];
+ld.shared.u32 %r64, [%r7+68];
+add.s32 %r65, %r63, %r64;
+ld.shared.u32 %r66, [%r7+136];
+sub.s32 %r67, %r66, %r10;
+ld.shared.u32 %r68, [%r7+72];
+sub.s32 %r69, %r68, %r10;
+max.s32 %r70, %r65, %r67;
+max.s32 %r71, %r70, %r69;
+st.shared.u32 [%r7+140], %r71;
+
+BB0_6:
+bar.sync 0;
+setp.gt.s32	%p19, %r2, 2;
+@%p19 bra BB0_8;
+
+ld.shared.u32 %r72, [%r8+128];
+ld.shared.u32 %r73, [%r7+136];
+add.s32 %r74, %r72, %r73;
+ld.shared.u32 %r75, [%r7+204];
+sub.s32 %r76, %r75, %r10;
+ld.shared.u32 %r77, [%r7+140];
+sub.s32 %r78, %r77, %r10;
+max.s32 %r79, %r74, %r76;
+max.s32 %r80, %r79, %r78;
+st.shared.u32 [%r7+208], %r80;
+
+BB0_8:
+bar.sync 0;
+setp.gt.s32	%p20, %r2, 3;
+@%p20 bra BB0_10;
+
+ld.shared.u32 %r81, [%r8+192];
+ld.shared.u32 %r82, [%r7+204];
+add.s32 %r83, %r81, %r82;
+ld.shared.u32 %r84, [%r7+272];
+sub.s32 %r85, %r84, %r10;
+ld.shared.u32 %r86, [%r7+208];
+sub.s32 %r87, %r86, %r10;
+max.s32 %r88, %r83, %r85;
+max.s32 %r89, %r88, %r87;
+st.shared.u32 [%r7+276], %r89;
+
+BB0_10:
+bar.sync 0;
+setp.gt.s32	%p21, %r2, 4;
+@%p21 bra BB0_12;
+
+ld.shared.u32 %r90, [%r8+256];
+ld.shared.u32 %r91, [%r7+272];
+add.s32 %r92, %r90, %r91;
+ld.shared.u32 %r93, [%r7+340];
+sub.s32 %r94, %r93, %r10;
+ld.shared.u32 %r95, [%r7+276];
+sub.s32 %r96, %r95, %r10;
+max.s32 %r97, %r92, %r94;
+max.s32 %r98, %r97, %r96;
+st.shared.u32 [%r7+344], %r98;
+
+BB0_12:
+bar.sync 0;
+setp.gt.s32	%p22, %r2, 5;
+@%p22 bra BB0_14;
+
+ld.shared.u32 %r99, [%r8+320];
+ld.shared.u32 %r100, [%r7+340];
+add.s32 %r101, %r99, %r100;
+ld.shared.u32 %r102, [%r7+408];
+sub.s32 %r103, %r102, %r10;
+ld.shared.u32 %r104, [%r7+344];
+sub.s32 %r105, %r104, %r10;
+max.s32 %r106, %r101, %r103;
+max.s32 %r107, %r106, %r105;
+st.shared.u32 [%r7+412], %r107;
+
+BB0_14:
+bar.sync 0;
+setp.gt.s32	%p23, %r2, 6;
+@%p23 bra BB0_16;
+
+ld.shared.u32 %r108, [%r8+384];
+ld.shared.u32 %r109, [%r7+408];
+add.s32 %r110, %r108, %r109;
+ld.shared.u32 %r111, [%r7+476];
+sub.s32 %r112, %r111, %r10;
+ld.shared.u32 %r113, [%r7+412];
+sub.s32 %r114, %r113, %r10;
+max.s32 %r115, %r110, %r112;
+max.s32 %r116, %r115, %r114;
+st.shared.u32 [%r7+480], %r116;
+
+BB0_16:
+bar.sync 0;
+setp.gt.s32	%p24, %r2, 7;
+@%p24 bra BB0_18;
+
+ld.shared.u32 %r117, [%r8+448];
+ld.shared.u32 %r118, [%r7+476];
+add.s32 %r119, %r117, %r118;
+ld.shared.u32 %r120, [%r7+544];
+sub.s32 %r121, %r120, %r10;
+ld.shared.u32 %r122, [%r7+480];
+sub.s32 %r123, %r122, %r10;
+max.s32 %r124, %r119, %r121;
+max.s32 %r125, %r124, %r123;
+st.shared.u32 [%r7+548], %r125;
+
+BB0_18:
+bar.sync 0;
+setp.gt.s32	%p25, %r2, 8;
+@%p25 bra BB0_20;
+
+ld.shared.u32 %r126, [%r8+512];
+ld.shared.u32 %r127, [%r7+544];
+add.s32 %r128, %r126, %r127;
+ld.shared.u32 %r129, [%r7+612];
+sub.s32 %r130, %r129, %r10;
+ld.shared.u32 %r131, [%r7+548];
+sub.s32 %r132, %r131, %r10;
+max.s32 %r133, %r128, %r130;
+max.s32 %r134, %r133, %r132;
+st.shared.u32 [%r7+616], %r134;
+
+BB0_20:
+bar.sync 0;
+setp.gt.s32	%p26, %r2, 9;
+@%p26 bra BB0_22;
+
+ld.shared.u32 %r135, [%r8+576];
+ld.shared.u32 %r136, [%r7+612];
+add.s32 %r137, %r135, %r136;
+ld.shared.u32 %r138, [%r7+680];
+sub.s32 %r139, %r138, %r10;
+ld.shared.u32 %r140, [%r7+616];
+sub.s32 %r141, %r140, %r10;
+max.s32 %r142, %r137, %r139;
+max.s32 %r143, %r142, %r141;
+st.shared.u32 [%r7+684], %r143;
+
+BB0_22:
+bar.sync 0;
+setp.gt.s32	%p27, %r2, 10;
+@%p27 bra BB0_24;
+
+ld.shared.u32 %r144, [%r8+640];
+ld.shared.u32 %r145, [%r7+680];
+add.s32 %r146, %r144, %r145;
+ld.shared.u32 %r147, [%r7+748];
+sub.s32 %r148, %r147, %r10;
+ld.shared.u32 %r149, [%r7+684];
+sub.s32 %r150, %r149, %r10;
+max.s32 %r151, %r146, %r148;
+max.s32 %r152, %r151, %r150;
+st.shared.u32 [%r7+752], %r152;
+
+BB0_24:
+bar.sync 0;
+setp.gt.s32	%p28, %r2, 11;
+@%p28 bra BB0_26;
+
+ld.shared.u32 %r153, [%r8+704];
+ld.shared.u32 %r154, [%r7+748];
+add.s32 %r155, %r153, %r154;
+ld.shared.u32 %r156, [%r7+816];
+sub.s32 %r157, %r156, %r10;
+ld.shared.u32 %r158, [%r7+752];
+sub.s32 %r159, %r158, %r10;
+max.s32 %r160, %r155, %r157;
+max.s32 %r161, %r160, %r159;
+st.shared.u32 [%r7+820], %r161;
+
+BB0_26:
+bar.sync 0;
+setp.gt.s32	%p29, %r2, 12;
+@%p29 bra BB0_28;
+
+ld.shared.u32 %r162, [%r8+768];
+ld.shared.u32 %r163, [%r7+816];
+add.s32 %r164, %r162, %r163;
+ld.shared.u32 %r165, [%r7+884];
+sub.s32 %r166, %r165, %r10;
+ld.shared.u32 %r167, [%r7+820];
+sub.s32 %r168, %r167, %r10;
+max.s32 %r169, %r164, %r166;
+max.s32 %r170, %r169, %r168;
+st.shared.u32 [%r7+888], %r170;
+
+BB0_28:
+bar.sync 0;
+setp.gt.s32	%p30, %r2, 13;
+@%p30 bra BB0_30;
+
+ld.shared.u32 %r171, [%r8+832];
+ld.shared.u32 %r172, [%r7+884];
+add.s32 %r173, %r171, %r172;
+ld.shared.u32 %r174, [%r7+952];
+sub.s32 %r175, %r174, %r10;
+ld.shared.u32 %r176, [%r7+888];
+sub.s32 %r177, %r176, %r10;
+max.s32 %r178, %r173, %r175;
+max.s32 %r179, %r178, %r177;
+st.shared.u32 [%r7+956], %r179;
+
+BB0_30:
+bar.sync 0;
+setp.gt.s32	%p31, %r2, 14;
+@%p31 bra BB0_32;
+
+ld.shared.u32 %r180, [%r8+896];
+ld.shared.u32 %r181, [%r7+952];
+add.s32 %r182, %r180, %r181;
+ld.shared.u32 %r183, [%r7+1020];
+sub.s32 %r184, %r183, %r10;
+ld.shared.u32 %r185, [%r7+956];
+sub.s32 %r186, %r185, %r10;
+max.s32 %r187, %r182, %r184;
+max.s32 %r188, %r187, %r186;
+st.shared.u32 [%r7+1024], %r188;
+
+BB0_32:
+bar.sync 0;
+setp.gt.s32	%p32, %r2, 15;
+@%p32 bra BB0_34;
+
+ld.shared.u32 %r189, [%r8+960];
+ld.shared.u32 %r190, [%r7+1020];
+add.s32 %r191, %r189, %r190;
+ld.shared.u32 %r192, [%r7+1088];
+sub.s32 %r193, %r192, %r10;
+ld.shared.u32 %r194, [%r7+1024];
+sub.s32 %r195, %r194, %r10;
+max.s32 %r196, %r191, %r193;
+max.s32 %r197, %r196, %r195;
+st.shared.u32 [%r7+1092], %r197;
+
+BB0_34:
+bar.sync 0;
+@%p31 bra BB0_36;
+
+ld.shared.u32 %r198, [%r8+964];
+ld.shared.u32 %r199, [%r7+1024];
+add.s32 %r200, %r198, %r199;
+ld.shared.u32 %r201, [%r7+1092];
+sub.s32 %r202, %r201, %r10;
+ld.shared.u32 %r203, [%r7+1028];
+sub.s32 %r204, %r203, %r10;
+max.s32 %r205, %r200, %r202;
+max.s32 %r206, %r205, %r204;
+st.shared.u32 [%r7+1096], %r206;
+
+BB0_36:
+bar.sync 0;
+@%p30 bra BB0_38;
+
+ld.shared.u32 %r207, [%r8+968];
+ld.shared.u32 %r208, [%r7+1028];
+add.s32 %r209, %r207, %r208;
+ld.shared.u32 %r210, [%r7+1096];
+sub.s32 %r211, %r210, %r10;
+ld.shared.u32 %r212, [%r7+1032];
+sub.s32 %r213, %r212, %r10;
+max.s32 %r214, %r209, %r211;
+max.s32 %r215, %r214, %r213;
+st.shared.u32 [%r7+1100], %r215;
+
+BB0_38:
+bar.sync 0;
+@%p29 bra BB0_40;
+
+ld.shared.u32 %r216, [%r8+972];
+ld.shared.u32 %r217, [%r7+1032];
+add.s32 %r218, %r216, %r217;
+ld.shared.u32 %r219, [%r7+1100];
+sub.s32 %r220, %r219, %r10;
+ld.shared.u32 %r221, [%r7+1036];
+sub.s32 %r222, %r221, %r10;
+max.s32 %r223, %r218, %r220;
+max.s32 %r224, %r223, %r222;
+st.shared.u32 [%r7+1104], %r224;
+
+BB0_40:
+bar.sync 0;
+@%p28 bra BB0_42;
+
+ld.shared.u32 %r225, [%r8+976];
+ld.shared.u32 %r226, [%r7+1036];
+add.s32 %r227, %r225, %r226;
+ld.shared.u32 %r228, [%r7+1104];
+sub.s32 %r229, %r228, %r10;
+ld.shared.u32 %r230, [%r7+1040];
+sub.s32 %r231, %r230, %r10;
+max.s32 %r232, %r227, %r229;
+max.s32 %r233, %r232, %r231;
+st.shared.u32 [%r7+1108], %r233;
+
+BB0_42:
+bar.sync 0;
+@%p27 bra BB0_44;
+
+ld.shared.u32 %r234, [%r8+980];
+ld.shared.u32 %r235, [%r7+1040];
+add.s32 %r236, %r234, %r235;
+ld.shared.u32 %r237, [%r7+1108];
+sub.s32 %r238, %r237, %r10;
+ld.shared.u32 %r239, [%r7+1044];
+sub.s32 %r240, %r239, %r10;
+max.s32 %r241, %r236, %r238;
+max.s32 %r242, %r241, %r240;
+st.shared.u32 [%r7+1112], %r242;
+
+BB0_44:
+bar.sync 0;
+@%p26 bra BB0_46;
+
+ld.shared.u32 %r243, [%r8+984];
+ld.shared.u32 %r244, [%r7+1044];
+add.s32 %r245, %r243, %r244;
+ld.shared.u32 %r246, [%r7+1112];
+sub.s32 %r247, %r246, %r10;
+ld.shared.u32 %r248, [%r7+1048];
+sub.s32 %r249, %r248, %r10;
+max.s32 %r250, %r245, %r247;
+max.s32 %r251, %r250, %r249;
+st.shared.u32 [%r7+1116], %r251;
+
+BB0_46:
+bar.sync 0;
+@%p25 bra BB0_48;
+
+ld.shared.u32 %r252, [%r8+988];
+ld.shared.u32 %r253, [%r7+1048];
+add.s32 %r254, %r252, %r253;
+ld.shared.u32 %r255, [%r7+1116];
+sub.s32 %r256, %r255, %r10;
+ld.shared.u32 %r257, [%r7+1052];
+sub.s32 %r258, %r257, %r10;
+max.s32 %r259, %r254, %r256;
+max.s32 %r260, %r259, %r258;
+st.shared.u32 [%r7+1120], %r260;
+
+BB0_48:
+bar.sync 0;
+@%p24 bra BB0_50;
+
+ld.shared.u32 %r261, [%r8+992];
+ld.shared.u32 %r262, [%r7+1052];
+add.s32 %r263, %r261, %r262;
+ld.shared.u32 %r264, [%r7+1120];
+sub.s32 %r265, %r264, %r10;
+ld.shared.u32 %r266, [%r7+1056];
+sub.s32 %r267, %r266, %r10;
+max.s32 %r268, %r263, %r265;
+max.s32 %r269, %r268, %r267;
+st.shared.u32 [%r7+1124], %r269;
+
+BB0_50:
+bar.sync 0;
+@%p23 bra BB0_52;
+
+ld.shared.u32 %r270, [%r8+996];
+ld.shared.u32 %r271, [%r7+1056];
+add.s32 %r272, %r270, %r271;
+ld.shared.u32 %r273, [%r7+1124];
+sub.s32 %r274, %r273, %r10;
+ld.shared.u32 %r275, [%r7+1060];
+sub.s32 %r276, %r275, %r10;
+max.s32 %r277, %r272, %r274;
+max.s32 %r278, %r277, %r276;
+st.shared.u32 [%r7+1128], %r278;
+
+BB0_52:
+bar.sync 0;
+@%p22 bra BB0_54;
+
+ld.shared.u32 %r279, [%r8+1000];
+ld.shared.u32 %r280, [%r7+1060];
+add.s32 %r281, %r279, %r280;
+ld.shared.u32 %r282, [%r7+1128];
+sub.s32 %r283, %r282, %r10;
+ld.shared.u32 %r284, [%r7+1064];
+sub.s32 %r285, %r284, %r10;
+max.s32 %r286, %r281, %r283;
+max.s32 %r287, %r286, %r285;
+st.shared.u32 [%r7+1132], %r287;
+
+BB0_54:
+bar.sync 0;
+@%p21 bra BB0_56;
+
+ld.shared.u32 %r288, [%r8+1004];
+ld.shared.u32 %r289, [%r7+1064];
+add.s32 %r290, %r288, %r289;
+ld.shared.u32 %r291, [%r7+1132];
+sub.s32 %r292, %r291, %r10;
+ld.shared.u32 %r293, [%r7+1068];
+sub.s32 %r294, %r293, %r10;
+max.s32 %r295, %r290, %r292;
+max.s32 %r296, %r295, %r294;
+st.shared.u32 [%r7+1136], %r296;
+
+BB0_56:
+bar.sync 0;
+@%p20 bra BB0_58;
+
+ld.shared.u32 %r297, [%r8+1008];
+ld.shared.u32 %r298, [%r7+1068];
+add.s32 %r299, %r297, %r298;
+ld.shared.u32 %r300, [%r7+1136];
+sub.s32 %r301, %r300, %r10;
+ld.shared.u32 %r302, [%r7+1072];
+sub.s32 %r303, %r302, %r10;
+max.s32 %r304, %r299, %r301;
+max.s32 %r305, %r304, %r303;
+st.shared.u32 [%r7+1140], %r305;
+
+BB0_58:
+bar.sync 0;
+@%p19 bra BB0_60;
+
+ld.shared.u32 %r306, [%r8+1012];
+ld.shared.u32 %r307, [%r7+1072];
+add.s32 %r308, %r306, %r307;
+ld.shared.u32 %r309, [%r7+1140];
+sub.s32 %r310, %r309, %r10;
+ld.shared.u32 %r311, [%r7+1076];
+sub.s32 %r312, %r311, %r10;
+max.s32 %r313, %r308, %r310;
+max.s32 %r314, %r313, %r312;
+st.shared.u32 [%r7+1144], %r314;
+
+BB0_60:
+bar.sync 0;
+@%p18 bra BB0_62;
+
+ld.shared.u32 %r315, [%r8+1016];
+ld.shared.u32 %r316, [%r7+1076];
+add.s32 %r317, %r315, %r316;
+ld.shared.u32 %r318, [%r7+1144];
+sub.s32 %r319, %r318, %r10;
+ld.shared.u32 %r320, [%r7+1080];
+sub.s32 %r321, %r320, %r10;
+max.s32 %r322, %r317, %r319;
+max.s32 %r323, %r322, %r321;
+st.shared.u32 [%r7+1148], %r323;
+
+BB0_62:
+bar.sync 0;
+@%p17 bra BB0_64;
+
+ld.shared.u32 %r324, [%r8+1020];
+ld.shared.u32 %r325, [%r7+1080];
+add.s32 %r326, %r324, %r325;
+ld.shared.u32 %r327, [%r7+1148];
+sub.s32 %r328, %r327, %r10;
+ld.shared.u32 %r329, [%r7+1084];
+sub.s32 %r330, %r329, %r10;
+max.s32 %r331, %r326, %r328;
+max.s32 %r332, %r331, %r330;
+st.shared.u32 [%r7+1152], %r332;
+
+BB0_64:
+bar.sync 0;
+ld.param.u32 %r360, [_Z20needle_cuda_shared_1PiS_S_iiii_param_3];
+shl.b32 %r359, %r360, 2;
+cvt.s64.s32	%rd48, %r359;
+add.s32 %r358, %r1, %r2;
+add.s32 %r357, %r360, %r358;
+add.s32 %r356, %r357, 1;
+mul.wide.s32 %rd47, %r356, 4;
+ld.shared.u32 %r333, [%r6+72];
+add.s64 %rd30, %rd1, %rd47;
+ld.shared.u32 %r334, [%r6+140];
+ld.shared.u32 %r335, [%r6+208];
+ld.shared.u32 %r336, [%r6+276];
+ld.shared.u32 %r337, [%r6+344];
+ld.shared.u32 %r338, [%r6+412];
+ld.shared.u32 %r339, [%r6+480];
+ld.shared.u32 %r340, [%r6+548];
+ld.shared.u32 %r341, [%r6+616];
+ld.shared.u32 %r342, [%r6+684];
+ld.shared.u32 %r343, [%r6+752];
+ld.shared.u32 %r344, [%r6+820];
+ld.shared.u32 %r345, [%r6+888];
+ld.shared.u32 %r346, [%r6+956];
+ld.shared.u32 %r347, [%r6+1024];
+ld.shared.u32 %r348, [%r6+1092];
+st.global.u32 [%rd30], %r333;
+add.s64 %rd32, %rd30, %rd48;
+st.global.u32 [%rd32], %r334;
+add.s64 %rd33, %rd32, %rd48;
+st.global.u32 [%rd33], %r335;
+add.s64 %rd34, %rd33, %rd48;
+st.global.u32 [%rd34], %r336;
+add.s64 %rd35, %rd34, %rd48;
+st.global.u32 [%rd35], %r337;
+add.s64 %rd36, %rd35, %rd48;
+st.global.u32 [%rd36], %r338;
+add.s64 %rd37, %rd36, %rd48;
+st.global.u32 [%rd37], %r339;
+add.s64 %rd38, %rd37, %rd48;
+st.global.u32 [%rd38], %r340;
+add.s64 %rd39, %rd38, %rd48;
+st.global.u32 [%rd39], %r341;
+add.s64 %rd40, %rd39, %rd48;
+st.global.u32 [%rd40], %r342;
+add.s64 %rd41, %rd40, %rd48;
+st.global.u32 [%rd41], %r343;
+add.s64 %rd42, %rd41, %rd48;
+st.global.u32 [%rd42], %r344;
+add.s64 %rd43, %rd42, %rd48;
+st.global.u32 [%rd43], %r345;
+add.s64 %rd44, %rd43, %rd48;
+st.global.u32 [%rd44], %r346;
+add.s64 %rd45, %rd44, %rd48;
+st.global.u32 [%rd45], %r347;
+add.s64 %rd46, %rd45, %rd48;
+st.global.u32 [%rd46], %r348;
+ret;
+}
+
+
+.visible .entry _Z20needle_cuda_shared_2PiS_S_iiii(
+.param .u64 _Z20needle_cuda_shared_2PiS_S_iiii_param_0,
+.param .u64 _Z20needle_cuda_shared_2PiS_S_iiii_param_1,
+.param .u64 _Z20needle_cuda_shared_2PiS_S_iiii_param_2,
+.param .u32 _Z20needle_cuda_shared_2PiS_S_iiii_param_3,
+.param .u32 _Z20needle_cuda_shared_2PiS_S_iiii_param_4,
+.param .u32 _Z20needle_cuda_shared_2PiS_S_iiii_param_5,
+.param .u32 _Z20needle_cuda_shared_2PiS_S_iiii_param_6
+)
+{
+.reg .pred %p<33>;
+.reg .b32 %r<363>;
+.reg .b64 %rd<49>;
+
+	.shared .align 4 .b8 _ZZ20needle_cuda_shared_2PiS_S_iiiiE4temp[1156];
+
+	.shared .align 4 .b8 _ZZ20needle_cuda_shared_2PiS_S_iiiiE3ref[1024];
+
+ld.param.u64 %rd2, [_Z20needle_cuda_shared_2PiS_S_iiii_param_0];
+ld.param.u64 %rd3, [_Z20needle_cuda_shared_2PiS_S_iiii_param_1];
+ld.param.u32 %r9, [_Z20needle_cuda_shared_2PiS_S_iiii_param_3];
+ld.param.u32 %r10, [_Z20needle_cuda_shared_2PiS_S_iiii_param_4];
+ld.param.u32 %r11, [_Z20needle_cuda_shared_2PiS_S_iiii_param_5];
+ld.param.u32 %r12, [_Z20needle_cuda_shared_2PiS_S_iiii_param_6];
+cvta.to.global.u64 %rd4, %rd2;
+sub.s32 %r13, %r12, %r11;
+mov.u32 %r14, %ctaid.x;
+add.s32 %r15, %r13, %r14;
+add.s32 %r16, %r12, -1;
+sub.s32 %r17, %r16, %r14;
+shl.b32 %r18, %r9, 4;
+shl.b32 %r19, %r15, 4;
+mad.lo.s32 %r1, %r18, %r17, %r19;
+mov.u32 %r2, %tid.x;
+add.s32 %r3, %r1, %r2;
+add.s32 %r20, %r9, %r3;
+add.s32 %r4, %r20, 1;
+mul.wide.s32 %rd5, %r4, 4;
+add.s64 %rd6, %rd4, %rd5;
+ld.global.u32 %r21, [%rd6];
+shl.b32 %r22, %r2, 2;
+mov.u32 %r23, _ZZ20needle_cuda_shared_2PiS_S_iiiiE3ref;
+add.s32 %r24, %r23, %r22;
+st.shared.u32 [%r24], %r21;
+shl.b32 %r25, %r9, 2;
+cvt.s64.s32	%rd7, %r25;
+add.s64 %rd8, %rd6, %rd7;
+ld.global.u32 %r26, [%rd8];
+st.shared.u32 [%r24+64], %r26;
+add.s64 %rd9, %rd8, %rd7;
+ld.global.u32 %r27, [%rd9];
+st.shared.u32 [%r24+128], %r27;
+add.s64 %rd10, %rd9, %rd7;
+ld.global.u32 %r28, [%rd10];
+st.shared.u32 [%r24+192], %r28;
+add.s64 %rd11, %rd10, %rd7;
+ld.global.u32 %r29, [%rd11];
+st.shared.u32 [%r24+256], %r29;
+add.s64 %rd12, %rd11, %rd7;
+ld.global.u32 %r30, [%rd12];
+st.shared.u32 [%r24+320], %r30;
+add.s64 %rd13, %rd12, %rd7;
+ld.global.u32 %r31, [%rd13];
+st.shared.u32 [%r24+384], %r31;
+add.s64 %rd14, %rd13, %rd7;
+ld.global.u32 %r32, [%rd14];
+st.shared.u32 [%r24+448], %r32;
+add.s64 %rd15, %rd14, %rd7;
+ld.global.u32 %r33, [%rd15];
+st.shared.u32 [%r24+512], %r33;
+add.s64 %rd16, %rd15, %rd7;
+ld.global.u32 %r34, [%rd16];
+st.shared.u32 [%r24+576], %r34;
+add.s64 %rd17, %rd16, %rd7;
+ld.global.u32 %r35, [%rd17];
+st.shared.u32 [%r24+640], %r35;
+add.s64 %rd18, %rd17, %rd7;
+ld.global.u32 %r36, [%rd18];
+st.shared.u32 [%r24+704], %r36;
+add.s64 %rd19, %rd18, %rd7;
+ld.global.u32 %r37, [%rd19];
+st.shared.u32 [%r24+768], %r37;
+add.s64 %rd20, %rd19, %rd7;
+ld.global.u32 %r38, [%rd20];
+st.shared.u32 [%r24+832], %r38;
+add.s64 %rd21, %rd20, %rd7;
+ld.global.u32 %r39, [%rd21];
+st.shared.u32 [%r24+896], %r39;
+add.s64 %rd22, %rd21, %rd7;
+ld.global.u32 %r40, [%rd22];
+st.shared.u32 [%r24+960], %r40;
+cvta.to.global.u64 %rd1, %rd3;
+bar.sync 0;
+setp.ne.s32	%p16, %r2, 0;
+@%p16 bra BB1_2;
+
+mul.wide.s32 %rd23, %r1, 4;
+add.s64 %rd24, %rd1, %rd23;
+ld.global.u32 %r41, [%rd24];
+st.shared.u32 [_ZZ20needle_cuda_shared_2PiS_S_iiiiE4temp], %r41;
+
+BB1_2:
+ld.param.u32 %r354, [_Z20needle_cuda_shared_2PiS_S_iiii_param_3];
+add.s32 %r353, %r1, %r2;
+add.s32 %r5, %r353, 1;
+mad.lo.s32 %r42, %r2, %r354, %r354;
+add.s32 %r43, %r42, %r1;
+mul.wide.s32 %rd25, %r43, 4;
+add.s64 %rd26, %rd1, %rd25;
+ld.global.u32 %r44, [%rd26];
+mov.u32 %r45, _ZZ20needle_cuda_shared_2PiS_S_iiiiE4temp;
+mad.lo.s32 %r46, %r2, 68, %r45;
+st.shared.u32 [%r46+68], %r44;
+bar.sync 0;
+shl.b32 %r355, %r2, 2;
+mul.wide.s32 %rd27, %r5, 4;
+add.s64 %rd28, %rd1, %rd27;
+ld.global.u32 %r47, [%rd28];
+add.s32 %r6, %r45, %r355;
+st.shared.u32 [%r6+4], %r47;
+bar.sync 0;
+mov.u32 %r357, _ZZ20needle_cuda_shared_2PiS_S_iiiiE3ref;
+shl.b32 %r356, %r2, 2;
+neg.s32 %r50, %r2;
+mad.lo.s32 %r52, %r50, 68, %r45;
+add.s32 %r7, %r52, %r356;
+shl.b32 %r54, %r2, 6;
+sub.s32 %r56, %r357, %r54;
+add.s32 %r8, %r56, %r356;
+setp.gt.s32	%p17, %r2, 0;
+@%p17 bra BB1_4;
+
+ld.shared.u32 %r57, [%r7];
+ld.shared.u32 %r58, [%r8];
+add.s32 %r59, %r58, %r57;
+ld.shared.u32 %r60, [%r7+68];
+sub.s32 %r61, %r60, %r10;
+ld.shared.u32 %r62, [%r7+4];
+sub.s32 %r63, %r62, %r10;
+max.s32 %r64, %r59, %r61;
+max.s32 %r65, %r64, %r63;
+st.shared.u32 [%r7+72], %r65;
+
+BB1_4:
+bar.sync 0;
+setp.gt.s32	%p18, %r2, 1;
+@%p18 bra BB1_6;
+
+ld.shared.u32 %r66, [%r8+64];
+ld.shared.u32 %r67, [%r7+68];
+add.s32 %r68, %r66, %r67;
+ld.shared.u32 %r69, [%r7+136];
+sub.s32 %r70, %r69, %r10;
+ld.shared.u32 %r71, [%r7+72];
+sub.s32 %r72, %r71, %r10;
+max.s32 %r73, %r68, %r70;
+max.s32 %r74, %r73, %r72;
+st.shared.u32 [%r7+140], %r74;
+
+BB1_6:
+bar.sync 0;
+setp.gt.s32	%p19, %r2, 2;
+@%p19 bra BB1_8;
+
+ld.shared.u32 %r75, [%r8+128];
+ld.shared.u32 %r76, [%r7+136];
+add.s32 %r77, %r75, %r76;
+ld.shared.u32 %r78, [%r7+204];
+sub.s32 %r79, %r78, %r10;
+ld.shared.u32 %r80, [%r7+140];
+sub.s32 %r81, %r80, %r10;
+max.s32 %r82, %r77, %r79;
+max.s32 %r83, %r82, %r81;
+st.shared.u32 [%r7+208], %r83;
+
+BB1_8:
+bar.sync 0;
+setp.gt.s32	%p20, %r2, 3;
+@%p20 bra BB1_10;
+
+ld.shared.u32 %r84, [%r8+192];
+ld.shared.u32 %r85, [%r7+204];
+add.s32 %r86, %r84, %r85;
+ld.shared.u32 %r87, [%r7+272];
+sub.s32 %r88, %r87, %r10;
+ld.shared.u32 %r89, [%r7+208];
+sub.s32 %r90, %r89, %r10;
+max.s32 %r91, %r86, %r88;
+max.s32 %r92, %r91, %r90;
+st.shared.u32 [%r7+276], %r92;
+
+BB1_10:
+bar.sync 0;
+setp.gt.s32	%p21, %r2, 4;
+@%p21 bra BB1_12;
+
+ld.shared.u32 %r93, [%r8+256];
+ld.shared.u32 %r94, [%r7+272];
+add.s32 %r95, %r93, %r94;
+ld.shared.u32 %r96, [%r7+340];
+sub.s32 %r97, %r96, %r10;
+ld.shared.u32 %r98, [%r7+276];
+sub.s32 %r99, %r98, %r10;
+max.s32 %r100, %r95, %r97;
+max.s32 %r101, %r100, %r99;
+st.shared.u32 [%r7+344], %r101;
+
+BB1_12:
+bar.sync 0;
+setp.gt.s32	%p22, %r2, 5;
+@%p22 bra BB1_14;
+
+ld.shared.u32 %r102, [%r8+320];
+ld.shared.u32 %r103, [%r7+340];
+add.s32 %r104, %r102, %r103;
+ld.shared.u32 %r105, [%r7+408];
+sub.s32 %r106, %r105, %r10;
+ld.shared.u32 %r107, [%r7+344];
+sub.s32 %r108, %r107, %r10;
+max.s32 %r109, %r104, %r106;
+max.s32 %r110, %r109, %r108;
+st.shared.u32 [%r7+412], %r110;
+
+BB1_14:
+bar.sync 0;
+setp.gt.s32	%p23, %r2, 6;
+@%p23 bra BB1_16;
+
+ld.shared.u32 %r111, [%r8+384];
+ld.shared.u32 %r112, [%r7+408];
+add.s32 %r113, %r111, %r112;
+ld.shared.u32 %r114, [%r7+476];
+sub.s32 %r115, %r114, %r10;
+ld.shared.u32 %r116, [%r7+412];
+sub.s32 %r117, %r116, %r10;
+max.s32 %r118, %r113, %r115;
+max.s32 %r119, %r118, %r117;
+st.shared.u32 [%r7+480], %r119;
+
+BB1_16:
+bar.sync 0;
+setp.gt.s32	%p24, %r2, 7;
+@%p24 bra BB1_18;
+
+ld.shared.u32 %r120, [%r8+448];
+ld.shared.u32 %r121, [%r7+476];
+add.s32 %r122, %r120, %r121;
+ld.shared.u32 %r123, [%r7+544];
+sub.s32 %r124, %r123, %r10;
+ld.shared.u32 %r125, [%r7+480];
+sub.s32 %r126, %r125, %r10;
+max.s32 %r127, %r122, %r124;
+max.s32 %r128, %r127, %r126;
+st.shared.u32 [%r7+548], %r128;
+
+BB1_18:
+bar.sync 0;
+setp.gt.s32	%p25, %r2, 8;
+@%p25 bra BB1_20;
+
+ld.shared.u32 %r129, [%r8+512];
+ld.shared.u32 %r130, [%r7+544];
+add.s32 %r131, %r129, %r130;
+ld.shared.u32 %r132, [%r7+612];
+sub.s32 %r133, %r132, %r10;
+ld.shared.u32 %r134, [%r7+548];
+sub.s32 %r135, %r134, %r10;
+max.s32 %r136, %r131, %r133;
+max.s32 %r137, %r136, %r135;
+st.shared.u32 [%r7+616], %r137;
+
+BB1_20:
+bar.sync 0;
+setp.gt.s32	%p26, %r2, 9;
+@%p26 bra BB1_22;
+
+ld.shared.u32 %r138, [%r8+576];
+ld.shared.u32 %r139, [%r7+612];
+add.s32 %r140, %r138, %r139;
+ld.shared.u32 %r141, [%r7+680];
+sub.s32 %r142, %r141, %r10;
+ld.shared.u32 %r143, [%r7+616];
+sub.s32 %r144, %r143, %r10;
+max.s32 %r145, %r140, %r142;
+max.s32 %r146, %r145, %r144;
+st.shared.u32 [%r7+684], %r146;
+
+BB1_22:
+bar.sync 0;
+setp.gt.s32	%p27, %r2, 10;
+@%p27 bra BB1_24;
+
+ld.shared.u32 %r147, [%r8+640];
+ld.shared.u32 %r148, [%r7+680];
+add.s32 %r149, %r147, %r148;
+ld.shared.u32 %r150, [%r7+748];
+sub.s32 %r151, %r150, %r10;
+ld.shared.u32 %r152, [%r7+684];
+sub.s32 %r153, %r152, %r10;
+max.s32 %r154, %r149, %r151;
+max.s32 %r155, %r154, %r153;
+st.shared.u32 [%r7+752], %r155;
+
+BB1_24:
+bar.sync 0;
+setp.gt.s32	%p28, %r2, 11;
+@%p28 bra BB1_26;
+
+ld.shared.u32 %r156, [%r8+704];
+ld.shared.u32 %r157, [%r7+748];
+add.s32 %r158, %r156, %r157;
+ld.shared.u32 %r159, [%r7+816];
+sub.s32 %r160, %r159, %r10;
+ld.shared.u32 %r161, [%r7+752];
+sub.s32 %r162, %r161, %r10;
+max.s32 %r163, %r158, %r160;
+max.s32 %r164, %r163, %r162;
+st.shared.u32 [%r7+820], %r164;
+
+BB1_26:
+bar.sync 0;
+setp.gt.s32	%p29, %r2, 12;
+@%p29 bra BB1_28;
+
+ld.shared.u32 %r165, [%r8+768];
+ld.shared.u32 %r166, [%r7+816];
+add.s32 %r167, %r165, %r166;
+ld.shared.u32 %r168, [%r7+884];
+sub.s32 %r169, %r168, %r10;
+ld.shared.u32 %r170, [%r7+820];
+sub.s32 %r171, %r170, %r10;
+max.s32 %r172, %r167, %r169;
+max.s32 %r173, %r172, %r171;
+st.shared.u32 [%r7+888], %r173;
+
+BB1_28:
+bar.sync 0;
+setp.gt.s32	%p30, %r2, 13;
+@%p30 bra BB1_30;
+
+ld.shared.u32 %r174, [%r8+832];
+ld.shared.u32 %r175, [%r7+884];
+add.s32 %r176, %r174, %r175;
+ld.shared.u32 %r177, [%r7+952];
+sub.s32 %r178, %r177, %r10;
+ld.shared.u32 %r179, [%r7+888];
+sub.s32 %r180, %r179, %r10;
+max.s32 %r181, %r176, %r178;
+max.s32 %r182, %r181, %r180;
+st.shared.u32 [%r7+956], %r182;
+
+BB1_30:
+bar.sync 0;
+setp.gt.s32	%p31, %r2, 14;
+@%p31 bra BB1_32;
+
+ld.shared.u32 %r183, [%r8+896];
+ld.shared.u32 %r184, [%r7+952];
+add.s32 %r185, %r183, %r184;
+ld.shared.u32 %r186, [%r7+1020];
+sub.s32 %r187, %r186, %r10;
+ld.shared.u32 %r188, [%r7+956];
+sub.s32 %r189, %r188, %r10;
+max.s32 %r190, %r185, %r187;
+max.s32 %r191, %r190, %r189;
+st.shared.u32 [%r7+1024], %r191;
+
+BB1_32:
+bar.sync 0;
+setp.gt.s32	%p32, %r2, 15;
+@%p32 bra BB1_34;
+
+ld.shared.u32 %r192, [%r8+960];
+ld.shared.u32 %r193, [%r7+1020];
+add.s32 %r194, %r192, %r193;
+ld.shared.u32 %r195, [%r7+1088];
+sub.s32 %r196, %r195, %r10;
+ld.shared.u32 %r197, [%r7+1024];
+sub.s32 %r198, %r197, %r10;
+max.s32 %r199, %r194, %r196;
+max.s32 %r200, %r199, %r198;
+st.shared.u32 [%r7+1092], %r200;
+
+BB1_34:
+bar.sync 0;
+@%p31 bra BB1_36;
+
+ld.shared.u32 %r201, [%r8+964];
+ld.shared.u32 %r202, [%r7+1024];
+add.s32 %r203, %r201, %r202;
+ld.shared.u32 %r204, [%r7+1092];
+sub.s32 %r205, %r204, %r10;
+ld.shared.u32 %r206, [%r7+1028];
+sub.s32 %r207, %r206, %r10;
+max.s32 %r208, %r203, %r205;
+max.s32 %r209, %r208, %r207;
+st.shared.u32 [%r7+1096], %r209;
+
+BB1_36:
+bar.sync 0;
+@%p30 bra BB1_38;
+
+ld.shared.u32 %r210, [%r8+968];
+ld.shared.u32 %r211, [%r7+1028];
+add.s32 %r212, %r210, %r211;
+ld.shared.u32 %r213, [%r7+1096];
+sub.s32 %r214, %r213, %r10;
+ld.shared.u32 %r215, [%r7+1032];
+sub.s32 %r216, %r215, %r10;
+max.s32 %r217, %r212, %r214;
+max.s32 %r218, %r217, %r216;
+st.shared.u32 [%r7+1100], %r218;
+
+BB1_38:
+bar.sync 0;
+@%p29 bra BB1_40;
+
+ld.shared.u32 %r219, [%r8+972];
+ld.shared.u32 %r220, [%r7+1032];
+add.s32 %r221, %r219, %r220;
+ld.shared.u32 %r222, [%r7+1100];
+sub.s32 %r223, %r222, %r10;
+ld.shared.u32 %r224, [%r7+1036];
+sub.s32 %r225, %r224, %r10;
+max.s32 %r226, %r221, %r223;
+max.s32 %r227, %r226, %r225;
+st.shared.u32 [%r7+1104], %r227;
+
+BB1_40:
+bar.sync 0;
+@%p28 bra BB1_42;
+
+ld.shared.u32 %r228, [%r8+976];
+ld.shared.u32 %r229, [%r7+1036];
+add.s32 %r230, %r228, %r229;
+ld.shared.u32 %r231, [%r7+1104];
+sub.s32 %r232, %r231, %r10;
+ld.shared.u32 %r233, [%r7+1040];
+sub.s32 %r234, %r233, %r10;
+max.s32 %r235, %r230, %r232;
+max.s32 %r236, %r235, %r234;
+st.shared.u32 [%r7+1108], %r236;
+
+BB1_42:
+bar.sync 0;
+@%p27 bra BB1_44;
+
+ld.shared.u32 %r237, [%r8+980];
+ld.shared.u32 %r238, [%r7+1040];
+add.s32 %r239, %r237, %r238;
+ld.shared.u32 %r240, [%r7+1108];
+sub.s32 %r241, %r240, %r10;
+ld.shared.u32 %r242, [%r7+1044];
+sub.s32 %r243, %r242, %r10;
+max.s32 %r244, %r239, %r241;
+max.s32 %r245, %r244, %r243;
+st.shared.u32 [%r7+1112], %r245;
+
+BB1_44:
+bar.sync 0;
+@%p26 bra BB1_46;
+
+ld.shared.u32 %r246, [%r8+984];
+ld.shared.u32 %r247, [%r7+1044];
+add.s32 %r248, %r246, %r247;
+ld.shared.u32 %r249, [%r7+1112];
+sub.s32 %r250, %r249, %r10;
+ld.shared.u32 %r251, [%r7+1048];
+sub.s32 %r252, %r251, %r10;
+max.s32 %r253, %r248, %r250;
+max.s32 %r254, %r253, %r252;
+st.shared.u32 [%r7+1116], %r254;
+
+BB1_46:
+bar.sync 0;
+@%p25 bra BB1_48;
+
+ld.shared.u32 %r255, [%r8+988];
+ld.shared.u32 %r256, [%r7+1048];
+add.s32 %r257, %r255, %r256;
+ld.shared.u32 %r258, [%r7+1116];
+sub.s32 %r259, %r258, %r10;
+ld.shared.u32 %r260, [%r7+1052];
+sub.s32 %r261, %r260, %r10;
+max.s32 %r262, %r257, %r259;
+max.s32 %r263, %r262, %r261;
+st.shared.u32 [%r7+1120], %r263;
+
+BB1_48:
+bar.sync 0;
+@%p24 bra BB1_50;
+
+ld.shared.u32 %r264, [%r8+992];
+ld.shared.u32 %r265, [%r7+1052];
+add.s32 %r266, %r264, %r265;
+ld.shared.u32 %r267, [%r7+1120];
+sub.s32 %r268, %r267, %r10;
+ld.shared.u32 %r269, [%r7+1056];
+sub.s32 %r270, %r269, %r10;
+max.s32 %r271, %r266, %r268;
+max.s32 %r272, %r271, %r270;
+st.shared.u32 [%r7+1124], %r272;
+
+BB1_50:
+bar.sync 0;
+@%p23 bra BB1_52;
+
+ld.shared.u32 %r273, [%r8+996];
+ld.shared.u32 %r274, [%r7+1056];
+add.s32 %r275, %r273, %r274;
+ld.shared.u32 %r276, [%r7+1124];
+sub.s32 %r277, %r276, %r10;
+ld.shared.u32 %r278, [%r7+1060];
+sub.s32 %r279, %r278, %r10;
+max.s32 %r280, %r275, %r277;
+max.s32 %r281, %r280, %r279;
+st.shared.u32 [%r7+1128], %r281;
+
+BB1_52:
+bar.sync 0;
+@%p22 bra BB1_54;
+
+ld.shared.u32 %r282, [%r8+1000];
+ld.shared.u32 %r283, [%r7+1060];
+add.s32 %r284, %r282, %r283;
+ld.shared.u32 %r285, [%r7+1128];
+sub.s32 %r286, %r285, %r10;
+ld.shared.u32 %r287, [%r7+1064];
+sub.s32 %r288, %r287, %r10;
+max.s32 %r289, %r284, %r286;
+max.s32 %r290, %r289, %r288;
+st.shared.u32 [%r7+1132], %r290;
+
+BB1_54:
+bar.sync 0;
+@%p21 bra BB1_56;
+
+ld.shared.u32 %r291, [%r8+1004];
+ld.shared.u32 %r292, [%r7+1064];
+add.s32 %r293, %r291, %r292;
+ld.shared.u32 %r294, [%r7+1132];
+sub.s32 %r295, %r294, %r10;
+ld.shared.u32 %r296, [%r7+1068];
+sub.s32 %r297, %r296, %r10;
+max.s32 %r298, %r293, %r295;
+max.s32 %r299, %r298, %r297;
+st.shared.u32 [%r7+1136], %r299;
+
+BB1_56:
+bar.sync 0;
+@%p20 bra BB1_58;
+
+ld.shared.u32 %r300, [%r8+1008];
+ld.shared.u32 %r301, [%r7+1068];
+add.s32 %r302, %r300, %r301;
+ld.shared.u32 %r303, [%r7+1136];
+sub.s32 %r304, %r303, %r10;
+ld.shared.u32 %r305, [%r7+1072];
+sub.s32 %r306, %r305, %r10;
+max.s32 %r307, %r302, %r304;
+max.s32 %r308, %r307, %r306;
+st.shared.u32 [%r7+1140], %r308;
+
+BB1_58:
+bar.sync 0;
+@%p19 bra BB1_60;
+
+ld.shared.u32 %r309, [%r8+1012];
+ld.shared.u32 %r310, [%r7+1072];
+add.s32 %r311, %r309, %r310;
+ld.shared.u32 %r312, [%r7+1140];
+sub.s32 %r313, %r312, %r10;
+ld.shared.u32 %r314, [%r7+1076];
+sub.s32 %r315, %r314, %r10;
+max.s32 %r316, %r311, %r313;
+max.s32 %r317, %r316, %r315;
+st.shared.u32 [%r7+1144], %r317;
+
+BB1_60:
+bar.sync 0;
+@%p18 bra BB1_62;
+
+ld.shared.u32 %r318, [%r8+1016];
+ld.shared.u32 %r319, [%r7+1076];
+add.s32 %r320, %r318, %r319;
+ld.shared.u32 %r321, [%r7+1144];
+sub.s32 %r322, %r321, %r10;
+ld.shared.u32 %r323, [%r7+1080];
+sub.s32 %r324, %r323, %r10;
+max.s32 %r325, %r320, %r322;
+max.s32 %r326, %r325, %r324;
+st.shared.u32 [%r7+1148], %r326;
+
+BB1_62:
+bar.sync 0;
+@%p17 bra BB1_64;
+
+ld.shared.u32 %r327, [%r8+1020];
+ld.shared.u32 %r328, [%r7+1080];
+add.s32 %r329, %r327, %r328;
+ld.shared.u32 %r330, [%r7+1148];
+sub.s32 %r331, %r330, %r10;
+ld.shared.u32 %r332, [%r7+1084];
+sub.s32 %r333, %r332, %r10;
+max.s32 %r334, %r329, %r331;
+max.s32 %r335, %r334, %r333;
+st.shared.u32 [%r7+1152], %r335;
+
+BB1_64:
+bar.sync 0;
+ld.param.u32 %r362, [_Z20needle_cuda_shared_2PiS_S_iiii_param_3];
+shl.b32 %r361, %r362, 2;
+cvt.s64.s32	%rd48, %r361;
+add.s32 %r360, %r1, %r2;
+add.s32 %r359, %r362, %r360;
+add.s32 %r358, %r359, 1;
+mul.wide.s32 %rd47, %r358, 4;
+ld.shared.u32 %r336, [%r6+72];
+add.s64 %rd30, %rd1, %rd47;
+ld.shared.u32 %r337, [%r6+140];
+ld.shared.u32 %r338, [%r6+208];
+ld.shared.u32 %r339, [%r6+276];
+ld.shared.u32 %r340, [%r6+344];
+ld.shared.u32 %r341, [%r6+412];
+ld.shared.u32 %r342, [%r6+480];
+ld.shared.u32 %r343, [%r6+548];
+ld.shared.u32 %r344, [%r6+616];
+ld.shared.u32 %r345, [%r6+684];
+ld.shared.u32 %r346, [%r6+752];
+ld.shared.u32 %r347, [%r6+820];
+ld.shared.u32 %r348, [%r6+888];
+ld.shared.u32 %r349, [%r6+956];
+ld.shared.u32 %r350, [%r6+1024];
+ld.shared.u32 %r351, [%r6+1092];
+st.global.u32 [%rd30], %r336;
+add.s64 %rd32, %rd30, %rd48;
+st.global.u32 [%rd32], %r337;
+add.s64 %rd33, %rd32, %rd48;
+st.global.u32 [%rd33], %r338;
+add.s64 %rd34, %rd33, %rd48;
+st.global.u32 [%rd34], %r339;
+add.s64 %rd35, %rd34, %rd48;
+st.global.u32 [%rd35], %r340;
+add.s64 %rd36, %rd35, %rd48;
+st.global.u32 [%rd36], %r341;
+add.s64 %rd37, %rd36, %rd48;
+st.global.u32 [%rd37], %r342;
+add.s64 %rd38, %rd37, %rd48;
+st.global.u32 [%rd38], %r343;
+add.s64 %rd39, %rd38, %rd48;
+st.global.u32 [%rd39], %r344;
+add.s64 %rd40, %rd39, %rd48;
+st.global.u32 [%rd40], %r345;
+add.s64 %rd41, %rd40, %rd48;
+st.global.u32 [%rd41], %r346;
+add.s64 %rd42, %rd41, %rd48;
+st.global.u32 [%rd42], %r347;
+add.s64 %rd43, %rd42, %rd48;
+st.global.u32 [%rd43], %r348;
+add.s64 %rd44, %rd43, %rd48;
+st.global.u32 [%rd44], %r349;
+add.s64 %rd45, %rd44, %rd48;
+st.global.u32 [%rd45], %r350;
+add.s64 %rd46, %rd45, %rd48;
+st.global.u32 [%rd46], %r351;
+ret;
+}
+
+

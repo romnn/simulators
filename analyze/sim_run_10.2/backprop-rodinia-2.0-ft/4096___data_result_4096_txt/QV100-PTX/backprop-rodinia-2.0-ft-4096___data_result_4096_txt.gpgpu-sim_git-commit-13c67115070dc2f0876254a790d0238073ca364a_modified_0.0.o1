@@ -1,0 +1,19 @@
+Skipping setup_environment - already set
+doing: export -n PTX_SIM_USE_PTX_FILE
+doing: export LD_LIBRARY_PATH=/work/util/job_launching/../../sim_run_10.2/gpgpu-sim-builds/gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0:/work/gpu-simulator/gpgpu-sim/lib/gcc-7.5.0/cuda-10020/release:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+doing: cd /work/util/job_launching/../../sim_run_10.2/backprop-rodinia-2.0-ft/4096___data_result_4096_txt/QV100-PTX
+doing: export OPENCL_CURRENT_TEST_PATH=/work/util/job_launching/../../sim_run_10.2/backprop-rodinia-2.0-ft/4096___data_result_4096_txt/QV100-PTX
+doing: export OPENCL_REMOTE_GPU_HOST=REPLACE_REMOTE_HOST
+doing 
+doing: export PATH=/work/gpu-simulator/gpgpu-sim/bin:/usr/local/cuda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+doing export CUDA_LAUNCH_BLOCKING=1
+doing:  /apps/src/..//bin/10.2/release/backprop-rodinia-2.0-ft 4096 ./data/result-4096.txt
+Random number generator seed: 7
+Input layer size : 4096
+Starting training kernel
+Performing GPU computation
+checksum = 0x42b0e8add8ca
+Result stored in result.txt
+
+PASSED
+Training done

@@ -1,0 +1,20 @@
+Skipping setup_environment - already set
+doing: export -n PTX_SIM_USE_PTX_FILE
+doing: export LD_LIBRARY_PATH=/work/util/job_launching/../../sim_run_10.2/gpgpu-sim-builds/gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0:/work/gpu-simulator/gpgpu-sim/lib/gcc-7.5.0/cuda-10020/release:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+doing: cd /work/util/job_launching/../../sim_run_10.2/hotspot-rodinia-2.0-ft/30_6_40___data_result_30_6_40_txt/QV100-PTX
+doing: export OPENCL_CURRENT_TEST_PATH=/work/util/job_launching/../../sim_run_10.2/hotspot-rodinia-2.0-ft/30_6_40___data_result_30_6_40_txt/QV100-PTX
+doing: export OPENCL_REMOTE_GPU_HOST=REPLACE_REMOTE_HOST
+doing 
+doing: export PATH=/work/gpu-simulator/gpgpu-sim/bin:/usr/local/cuda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+doing export CUDA_LAUNCH_BLOCKING=1
+doing:  /apps/src/..//bin/10.2/release/hotspot-rodinia-2.0-ft 30 6 40 ./data/result_30_6_40.txt
+pyramidHeight: 6
+gridSize: [30, 30]
+border:[6, 6]
+blockGrid:[8, 8]
+targetBlock:[4, 4]
+timer: 4078200
+total_error=0.000000667
+avg_error=0.000000001
+
+PASSED

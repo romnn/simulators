@@ -1,0 +1,53 @@
+#! /bin/bash
+#SBATCH -J pathfinder-rodinia-2.0-ft-1000_20_5___data_result_1000_20_5_txt.gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0
+#SBATCH --threads-per-core=1
+#SBATCH --cpus-per-task=1
+#SBATCH --nodes=1
+#SBATCH --mem-per-cpu=4G
+#SBACTH --time=200:00:00,
+#SBATCH -p batch
+#SBATCH --mail-type=END,FAIL
+#SBATCH --export=ALL
+#SBATCH --output=/tmp/pathfinder-rodinia-2.0-ft-1000_20_5___data_result_1000_20_5_txt.gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0.o%j
+#SBATCH --error=/tmp/pathfinder-rodinia-2.0-ft-1000_20_5___data_result_1000_20_5_txt.gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0.e%j
+
+copy_output() {
+    mv /tmp/pathfinder-rodinia-2.0-ft-1000_20_5___data_result_1000_20_5_txt.gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0.e18 ./pathfinder-rodinia-2.0-ft-1000_20_5___data_result_1000_20_5_txt.gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0.e18
+    mv /tmp/pathfinder-rodinia-2.0-ft-1000_20_5___data_result_1000_20_5_txt.gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0.o18 ./pathfinder-rodinia-2.0-ft-1000_20_5___data_result_1000_20_5_txt.gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0.o18
+}
+
+trap copy_output ERR
+
+set -e
+
+if [ "$GPGPUSIM_SETUP_ENVIRONMENT_WAS_RUN" != "1" ]; then
+    export GPGPUSIM_ROOT=/work/gpu-simulator/gpgpu-sim
+    source $GPGPUSIM_ROOT/setup_environment
+else
+    echo "Skipping setup_environment - already set"
+fi
+
+echo "doing: export -n PTX_SIM_USE_PTX_FILE"
+export -n PTX_SIM_USE_PTX_FILE
+echo "doing: export LD_LIBRARY_PATH=/work/util/job_launching/../../sim_run_10.1/gpgpu-sim-builds/gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH=/work/util/job_launching/../../sim_run_10.1/gpgpu-sim-builds/gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0:$LD_LIBRARY_PATH
+echo "doing: cd /work/util/job_launching/../../sim_run_10.1/pathfinder-rodinia-2.0-ft/1000_20_5___data_result_1000_20_5_txt/QV100-PTX"
+cd /work/util/job_launching/../../sim_run_10.1/pathfinder-rodinia-2.0-ft/1000_20_5___data_result_1000_20_5_txt/QV100-PTX
+echo "doing: export OPENCL_CURRENT_TEST_PATH=/work/util/job_launching/../../sim_run_10.1/pathfinder-rodinia-2.0-ft/1000_20_5___data_result_1000_20_5_txt/QV100-PTX"
+export OPENCL_CURRENT_TEST_PATH=/work/util/job_launching/../../sim_run_10.1/pathfinder-rodinia-2.0-ft/1000_20_5___data_result_1000_20_5_txt/QV100-PTX
+echo "doing: export OPENCL_REMOTE_GPU_HOST=REPLACE_REMOTE_HOST"
+export OPENCL_REMOTE_GPU_HOST=REPLACE_REMOTE_HOST
+echo "doing "
+
+echo "doing: export PATH=/work/gpu-simulator/gpgpu-sim/bin:/usr/local/cuda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/nvidia/nsight-compute/2022.3.0"
+export PATH=/work/gpu-simulator/gpgpu-sim/bin:/usr/local/cuda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/nvidia/nsight-compute/2022.3.0
+
+# Uncomment to force blocking torque launches
+# this needs to be commented for concurrent kernel ptx mode
+echo "doing export CUDA_LAUNCH_BLOCKING=1"
+export CUDA_LAUNCH_BLOCKING=1
+
+
+echo "doing:  /apps/src/..//bin/10.1/release/pathfinder-rodinia-2.0-ft 1000 20 5 ./data/result_1000_20_5.txt"
+ /apps/src/..//bin/10.1/release/pathfinder-rodinia-2.0-ft 1000 20 5 ./data/result_1000_20_5.txt
+copy_output

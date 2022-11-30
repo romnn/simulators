@@ -1,0 +1,15 @@
+Skipping setup_environment - already set
+doing: export -n PTX_SIM_USE_PTX_FILE
+doing: export LD_LIBRARY_PATH=/work/util/job_launching/../../sim_run_10.2/gpgpu-sim-builds/gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0:/work/gpu-simulator/gpgpu-sim/lib/gcc-7.5.0/cuda-10020/release:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+doing: cd /work/util/job_launching/../../sim_run_10.2/lud-rodinia-2.0-ft/_v__b__i___data_64_dat/QV100-PTX
+doing: export OPENCL_CURRENT_TEST_PATH=/work/util/job_launching/../../sim_run_10.2/lud-rodinia-2.0-ft/_v__b__i___data_64_dat/QV100-PTX
+doing: export OPENCL_REMOTE_GPU_HOST=REPLACE_REMOTE_HOST
+doing 
+doing: export PATH=/work/gpu-simulator/gpgpu-sim/bin:/usr/local/cuda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+doing export CUDA_LAUNCH_BLOCKING=1
+doing:  /apps/src/..//bin/10.2/release/lud-rodinia-2.0-ft -v -b -i ./data/64.dat
+Reading matrix from file ./data/64.dat
+Time consumed(ms): 0.839000
+>>>Verify<<<<
+
+PASSED

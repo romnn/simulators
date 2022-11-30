@@ -1,0 +1,53 @@
+#! /bin/bash
+#SBATCH -J heartwall-rodinia-2.0-ft-__data_test_avi_1___data_result_1_txt.gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0
+#SBATCH --threads-per-core=1
+#SBATCH --cpus-per-task=1
+#SBATCH --nodes=1
+#SBATCH --mem-per-cpu=4G
+#SBACTH --time=200:00:00,
+#SBATCH -p batch
+#SBATCH --mail-type=END,FAIL
+#SBATCH --export=ALL
+#SBATCH --output=/tmp/heartwall-rodinia-2.0-ft-__data_test_avi_1___data_result_1_txt.gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0.o%j
+#SBATCH --error=/tmp/heartwall-rodinia-2.0-ft-__data_test_avi_1___data_result_1_txt.gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0.e%j
+
+copy_output() {
+    mv /tmp/heartwall-rodinia-2.0-ft-__data_test_avi_1___data_result_1_txt.gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0.e4 ./heartwall-rodinia-2.0-ft-__data_test_avi_1___data_result_1_txt.gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0.e4
+    mv /tmp/heartwall-rodinia-2.0-ft-__data_test_avi_1___data_result_1_txt.gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0.o4 ./heartwall-rodinia-2.0-ft-__data_test_avi_1___data_result_1_txt.gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0.o4
+}
+
+trap copy_output ERR
+
+set -e
+
+if [ "$GPGPUSIM_SETUP_ENVIRONMENT_WAS_RUN" != "1" ]; then
+    export GPGPUSIM_ROOT=/work/gpu-simulator/gpgpu-sim
+    source $GPGPUSIM_ROOT/setup_environment
+else
+    echo "Skipping setup_environment - already set"
+fi
+
+echo "doing: export -n PTX_SIM_USE_PTX_FILE"
+export -n PTX_SIM_USE_PTX_FILE
+echo "doing: export LD_LIBRARY_PATH=/work/util/job_launching/../../sim_run_10.2/gpgpu-sim-builds/gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH=/work/util/job_launching/../../sim_run_10.2/gpgpu-sim-builds/gpgpu-sim_git-commit-13c67115070dc2f0876254a790d0238073ca364a_modified_0.0:$LD_LIBRARY_PATH
+echo "doing: cd /work/util/job_launching/../../sim_run_10.2/heartwall-rodinia-2.0-ft/__data_test_avi_1___data_result_1_txt/QV100-PTX"
+cd /work/util/job_launching/../../sim_run_10.2/heartwall-rodinia-2.0-ft/__data_test_avi_1___data_result_1_txt/QV100-PTX
+echo "doing: export OPENCL_CURRENT_TEST_PATH=/work/util/job_launching/../../sim_run_10.2/heartwall-rodinia-2.0-ft/__data_test_avi_1___data_result_1_txt/QV100-PTX"
+export OPENCL_CURRENT_TEST_PATH=/work/util/job_launching/../../sim_run_10.2/heartwall-rodinia-2.0-ft/__data_test_avi_1___data_result_1_txt/QV100-PTX
+echo "doing: export OPENCL_REMOTE_GPU_HOST=REPLACE_REMOTE_HOST"
+export OPENCL_REMOTE_GPU_HOST=REPLACE_REMOTE_HOST
+echo "doing "
+
+echo "doing: export PATH=/work/gpu-simulator/gpgpu-sim/bin:/usr/local/cuda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH=/work/gpu-simulator/gpgpu-sim/bin:/usr/local/cuda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Uncomment to force blocking torque launches
+# this needs to be commented for concurrent kernel ptx mode
+echo "doing export CUDA_LAUNCH_BLOCKING=1"
+export CUDA_LAUNCH_BLOCKING=1
+
+
+echo "doing:  /apps/src/..//bin/10.2/release/heartwall-rodinia-2.0-ft ./data/test.avi 1 ./data/result-1.txt"
+ /apps/src/..//bin/10.2/release/heartwall-rodinia-2.0-ft ./data/test.avi 1 ./data/result-1.txt
+copy_output
