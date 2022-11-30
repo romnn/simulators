@@ -3,6 +3,7 @@
 use anyhow::Result;
 use clap::Parser;
 use lazy_static::lazy_static;
+use reader::BufReadLine;
 use regex::Regex;
 use std::path::{Path, PathBuf};
 use std::{
@@ -20,28 +21,91 @@ struct Options {
     port: u16,
 }
 
+mod reader {
+    use std::{
+        fs,
+        io::{self, BufRead},
+        path::Path,
+    };
+
+    pub trait BufReadLine {
+        fn read_line<'buf>(
+            &mut self,
+            buffer: &'buf mut String,
+        ) -> Option<io::Result<&'buf mut String>>;
+    }
+
+    // pub struct BufReader {
+    //     inner: io::BufReader<fs::File>,
+    // }
+
+    // impl std::ops::Deref for BufReader {
+    //     type Target = io::BufReader<fs::File>;
+
+    //     fn deref(&self) -> &Self::Target {
+    //         &self.inner
+    //     }
+    // }
+
+    // impl BufReader {
+    //     pub fn new(file: fs::File) -> Self {
+    //         let inner = io::BufReader::new(file);
+
+    //         Self { inner }
+    //     }
+
+    //     pub fn open(path: impl AsRef<Path>) -> io::Result<Self> {
+    //         let file = fs::File::open(path)?;
+    //         Ok(Self::new(file))
+    //     }
+    // }
+
+    // impl BufReadLine for BufReader {
+    // impl<T> BufReadLine for io::BufReader<T>
+    impl<R> BufReadLine for R
+    // io::BufReader<T>
+    where
+        R: io::BufRead,
+        // T: io::Read,
+    {
+        fn read_line<'buf>(
+            &mut self,
+            buffer: &'buf mut String,
+        ) -> Option<io::Result<&'buf mut String>> {
+            buffer.clear();
+
+            // self.reader
+            //// self.read_line(buffer)
+            io::BufRead::read_line(self, buffer)
+                .map(|u| if u == 0 { None } else { Some(buffer) })
+                .transpose()
+        }
+    }
+    // impl<'a, R> BufReadLine for R where &'a R: BufReadLine {}
+}
+
 // Do a quick 100-line pass to get the GPGPU-Sim Version number
 // fn get_version(path: impl AsRef<Path>) {
 // fn get_version(f: &mut fs::File) {
 // fn get_version(f: &mut io::Read) {
-fn get_version(mut f: impl io::BufRead + io::Seek) -> Option<String> {
+fn get_version(mut f: impl reader::BufReadLine + io::Seek) -> Option<String> {
     // seek to the beginning of the file
     f.seek(io::SeekFrom::Start(0));
 
     static MAX_LINES: usize = 100;
     let mut buffer = String::new();
-    let mut line = 0;
-    while let Ok(read) = f.read_line(&mut buffer)
+    let mut lines = 0;
+    while let Some(Ok(line)) = f.read_line(&mut buffer)
     // .map(|u| if u == 0 { None } else { Some(buffer) })
     // .transpose()
     {
-        if read == 0 {
+        // if read == 0 {
+        //     break;
+        // }
+        if lines >= MAX_LINES {
             break;
         }
-        if line >= MAX_LINES {
-            break;
-        }
-        line += 1;
+        lines += 1;
         // println!("{}", count);
         // println!("{}", buffer);
 
@@ -52,7 +116,7 @@ fn get_version(mut f: impl io::BufRead + io::Seek) -> Option<String> {
                 Regex::new(r".*Accel-Sim.*\[build\s+(.*)\].*").unwrap();
         }
         if let Some(build) = GPGPUSIM_BUILD_REGEX
-            .captures(&buffer)
+            .captures(&line)
             .and_then(|c| c.get(1))
             .map(|m| m.as_str().to_string())
         {
@@ -61,7 +125,7 @@ fn get_version(mut f: impl io::BufRead + io::Seek) -> Option<String> {
         }
 
         if let Some(build) = ACCELSIM_BUILD_REGEX
-            .captures(&buffer)
+            .captures(&line)
             .and_then(|c| c.get(1))
             .map(|m| m.as_str().to_string())
         {
@@ -72,7 +136,7 @@ fn get_version(mut f: impl io::BufRead + io::Seek) -> Option<String> {
         // .ok_or_else(|| Error::InvalidHex(hex.clone()))?;
         // gpgpu_build_match = re.match(".*GPGPU-Sim.*\[build\s+(.*)\].*", line)
         // println!("{}", line?.trim());
-        buffer.clear();
+        // buffer.clear();
     }
     None
 
@@ -102,18 +166,74 @@ fn get_version(mut f: impl io::BufRead + io::Seek) -> Option<String> {
 
 /// Performs a quick 10000-line reverse pass,
 /// to make sure the simualtion thread finished.
-fn check_finished(mut f: impl io::BufRead + io::Seek) -> Option<String> {
+fn check_finished(mut f: impl reader::BufReadLine + io::Seek) -> bool {
+    use reader::BufReadLine;
     // seek to the beginning of the file
-    f.seek(io::SeekFrom::End(0));
+    // 250MB
+    // size of file in bytes
+    // assume its fine to seek before start (0)
+    // let seek_back_bytes = f.metadata().unwrap().len().min(-250 * 1024 * 1024);
+    let seek_back_bytes = -250 * 1024 * 1024;
+    f.seek(io::SeekFrom::End(seek_back_bytes));
+    // todo: write our own version of this
+    // https://github.com/mjc-gh/rev_lines/blob/master/src/lib.rs
+    // let rev_reader = rev_lines::RevLines::new(f);
 
     static MAX_LINES: usize = 10_000;
     let mut buffer = String::new();
-    let mut line = 0;
-    while let Ok(read) = f.read_line(&mut buffer) {
-        if read == 0 {
+    let mut lines = 0;
+
+    /*
+    SIM_EXIT_STRING = "GPGPU-Sim: \*\*\* exit detected \*\*\*"
+    exit_success = False
+    MAX_LINES = 10000
+    BYTES_TO_READ = int(250 * 1024 * 1024)
+    count = 0
+    f = open(outfile)
+    fsize = int(os.stat(outfile).st_size)
+    if fsize > BYTES_TO_READ:
+        f.seek(0, os.SEEK_END)
+        f.seek(f.tell() - BYTES_TO_READ, os.SEEK_SET)
+    lines = f.readlines()
+    for line in reversed(lines):
+        count += 1
+        if count >= MAX_LINES:
+            break
+        exit_match = re.match(SIM_EXIT_STRING, line)
+        if exit_match:
+            exit_success = True
+            break
+    del lines
+    f.close()
+    */
+
+    // for line in rev_reader {
+    //     println!("{}", line);
+    //     if lines >= MAX_LINES {
+    //         break;
+    //     }
+    //     lines += 1;
+    // }
+    while let Some(Ok(line)) = f.read_line(&mut buffer) {
+        if lines >= MAX_LINES {
             break;
         }
-        buffer.clear();
+        // println!("{}", line);
+        lazy_static! {
+            pub static ref GPGPUSIM_EXIT_REGEX: Regex =
+                Regex::new(r"GPGPU-Sim: \*\*\* exit detected \*\*\*").unwrap();
+        }
+        if GPGPUSIM_EXIT_REGEX.captures(&line).is_some() {
+            // if let Some(exit) = GPGPUSIM_EXIT_REGEX
+            //     .captures(&line)
+            //     .and_then(|c| c.get(1))
+            //     .map(|m| m.as_str().to_string())
+            // {
+            println!("found exit in line {}", lines);
+            return true;
+        }
+
+        lines += 1;
     }
     false
 }
@@ -127,7 +247,9 @@ fn main() -> Result<()> {
     }
     let mut file = fs::File::open(&options.input)?;
     let mut reader = io::BufReader::new(file);
+    // let mut reader = reader::BufReader::new(file);
     let version = get_version(&mut reader);
+    let finished = check_finished(&mut reader);
     // get_version(&mut reader);
     println!("done");
     Ok(())
