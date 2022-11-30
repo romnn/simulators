@@ -1,0 +1,13 @@
+==245== NVPROF is profiling process 245, command: /apps/src/..//bin/10.1/release/srad_v2-rodinia-2.0-ft ./data/matrix128x128.txt 0 127 0 127 .5 2 ./data/result_matrix128x128_1_150_1_100_.5_2.txt
+==245== Profiling application: /apps/src/..//bin/10.1/release/srad_v2-rodinia-2.0-ft ./data/matrix128x128.txt 0 127 0 127 .5 2 ./data/result_matrix128x128_1_150_1_100_.5_2.txt
+==245== Profiling result:
+"Start","Duration","Grid X","Grid Y","Grid Z","Block X","Block Y","Block Z","Registers Per Thread","Static SMem","Dynamic SMem","Size","Throughput","SrcMemType","DstMemType","Device","Context","Stream","Name","Correlation_ID"
+us,us,,,,,,,,KB,B,KB,GB/s,,,,,,,
+357336.479000,8.288000,,,,,,,,,,64.000000,7.364280,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",112
+357354.271000,7.776000,8,8,1,16,16,1,19,6.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z11srad_cuda_1PfS_S_S_S_S_iif",113
+357364.255000,4.480000,8,8,1,16,16,1,22,5.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z11srad_cuda_2PfS_S_S_S_S_iiff",114
+357371.935000,10.400000,,,,,,,,,,64.000000,5.868765,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",115
+357442.143000,8.320000,,,,,,,,,,64.000000,7.335956,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",122
+357452.223000,6.048000,8,8,1,16,16,1,19,6.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z11srad_cuda_1PfS_S_S_S_S_iif",123
+357460.415000,4.032000,8,8,1,16,16,1,22,5.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z11srad_cuda_2PfS_S_S_S_S_iiff",124
+357467.520000,10.400000,,,,,,,,,,64.000000,5.868765,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",125

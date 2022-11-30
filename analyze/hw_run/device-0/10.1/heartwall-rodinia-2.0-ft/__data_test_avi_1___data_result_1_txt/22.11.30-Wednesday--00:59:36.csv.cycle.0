@@ -1,0 +1,22 @@
+==115== NVPROF is profiling process 115, command: /apps/src/..//bin/10.1/release/heartwall-rodinia-2.0-ft ./data/test.avi 1 ./data/result-1.txt
+==115== Profiling application: /apps/src/..//bin/10.1/release/heartwall-rodinia-2.0-ft ./data/test.avi 1 ./data/result-1.txt
+==115== Profiling result:
+"Start","Duration","Grid X","Grid Y","Grid Z","Block X","Block Y","Block Z","Registers Per Thread","Static SMem","Dynamic SMem","Size","Throughput","SrcMemType","DstMemType","Device","Context","Stream","Name","Correlation_ID"
+us,us,,,,,,,,KB,B,MB,GB/s,,,,,,,
+293388.279000,0.864000,,,,,,,,,,0.000076,0.086234,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",108
+293396.088000,0.640000,,,,,,,,,,0.000076,0.116415,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",110
+293417.368000,0.864000,,,,,,,,,,0.007935,8.968291,"Device",,"NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memset]",112
+293428.920000,0.864000,,,,,,,,,,0.007935,8.968291,"Device",,"NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memset]",114
+293435.960000,0.640000,,,,,,,,,,0.000118,0.180444,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",116
+293444.152000,0.640000,,,,,,,,,,0.000118,0.180444,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",118
+293454.840000,0.960000,,,,,,,,,,0.012299,12.510767,"Device",,"NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memset]",120
+293465.240000,0.960000,,,,,,,,,,0.012299,12.510767,"Device",,"NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memset]",122
+296659.533000,0.896000,,,,,,,,,,0.000496,0.540500,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",737
+296669.453000,1.344000,,,,,,,,,,0.007782,5.654458,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",738
+299432.640000,318.626000,,,,,,,,,,1.861816,5.706314,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",739
+299759.874000,1.056000,,,,,,,,,,0.000015,0.014111,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",740
+299786.466000,11.072000,51,1,1,512,1,1,42,11.593750,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z6kernelv",741
+299809.346000,1.824000,,,,,,,,,,0.007935,4.248138,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",742
+299821.922000,1.824000,,,,,,,,,,0.007935,4.248138,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",743
+299832.578000,2.273000,,,,,,,,,,0.012299,5.283914,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",744
+299843.811000,2.304000,,,,,,,,,,0.012299,5.212819,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",745

@@ -1,0 +1,17 @@
+==141== NVPROF is profiling process 141, command: /apps/src/..//bin/10.1/release/lud-rodinia-2.0-ft -v -b -i ./data/64.dat
+==141== Profiling application: /apps/src/..//bin/10.1/release/lud-rodinia-2.0-ft -v -b -i ./data/64.dat
+==141== Profiling result:
+"Start","Duration","Grid X","Grid Y","Grid Z","Block X","Block Y","Block Z","Registers Per Thread","Static SMem","Dynamic SMem","Size","Throughput","SrcMemType","DstMemType","Device","Context","Stream","Name","Correlation_ID"
+us,us,,,,,,,,KB,B,KB,GB/s,,,,,,,
+289547.414000,2.048000,,,,,,,,,,16.000000,7.450581,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",107
+289574.230000,16.513000,1,1,1,16,1,1,32,1.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z12lud_diagonalPfii",108
+289592.919000,7.936000,3,1,1,32,1,1,164,3.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z13lud_perimeterPfii",109
+289602.551000,3.104000,3,3,1,16,16,1,23,2.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z12lud_internalPfii",110
+289607.415000,14.464000,1,1,1,16,1,1,32,1.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z12lud_diagonalPfii",111
+289623.639000,5.472000,2,1,1,32,1,1,164,3.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z13lud_perimeterPfii",112
+289631.287000,1.984000,2,2,1,16,16,1,23,2.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z12lud_internalPfii",113
+289634.967000,14.528000,1,1,1,16,1,1,32,1.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z12lud_diagonalPfii",114
+289651.255000,5.440000,1,1,1,32,1,1,164,3.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z13lud_perimeterPfii",115
+289658.711000,2.016000,1,1,1,16,16,1,23,2.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z12lud_internalPfii",116
+289662.615000,14.593000,1,1,1,16,1,1,32,1.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z12lud_diagonalPfii",117
+289680.088000,2.944000,,,,,,,,,,16.000000,5.183013,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",118

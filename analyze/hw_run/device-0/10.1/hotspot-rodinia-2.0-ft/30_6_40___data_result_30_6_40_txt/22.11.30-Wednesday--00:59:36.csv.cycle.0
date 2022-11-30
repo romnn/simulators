@@ -1,0 +1,15 @@
+==89== NVPROF is profiling process 89, command: /apps/src/..//bin/10.1/release/hotspot-rodinia-2.0-ft 30 6 40 ./data/result_30_6_40.txt
+==89== Profiling application: /apps/src/..//bin/10.1/release/hotspot-rodinia-2.0-ft 30 6 40 ./data/result_30_6_40.txt
+==89== Profiling result:
+"Start","Duration","Grid X","Grid Y","Grid Z","Block X","Block Y","Block Z","Registers Per Thread","Static SMem","Dynamic SMem","Size","Throughput","SrcMemType","DstMemType","Device","Context","Stream","Name","Correlation_ID"
+us,us,,,,,,,,KB,B,KB,GB/s,,,,,,,
+301983.960000,1.056000,,,,,,,,,,3.515625,3.174963,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",107
+301993.400000,0.960000,,,,,,,,,,3.515625,3.492460,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",109
+302021.496000,13.120000,8,8,1,16,16,1,30,3.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z14calculate_tempiPfS_iiiiffffff",110
+302037.016000,11.232000,8,8,1,16,16,1,30,3.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z14calculate_tempiPfS_iiiiffffff",111
+302050.232000,11.040000,8,8,1,16,16,1,30,3.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z14calculate_tempiPfS_iiiiffffff",112
+302062.968000,10.880000,8,8,1,16,16,1,30,3.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z14calculate_tempiPfS_iiiiffffff",113
+302075.641000,11.040000,8,8,1,16,16,1,30,3.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z14calculate_tempiPfS_iiiiffffff",114
+302088.409000,11.008000,8,8,1,16,16,1,30,3.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z14calculate_tempiPfS_iiiiffffff",115
+302101.209000,6.560000,8,8,1,16,16,1,30,3.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z14calculate_tempiPfS_iiiiffffff",116
+302110.425000,1.120000,,,,,,,,,,3.515625,2.993537,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",117

@@ -1,0 +1,12 @@
+==219== NVPROF is profiling process 219, command: /apps/src/..//bin/10.1/release/pathfinder-rodinia-2.0-ft 1000 20 5 ./data/result_1000_20_5.txt
+==219== Profiling application: /apps/src/..//bin/10.1/release/pathfinder-rodinia-2.0-ft 1000 20 5 ./data/result_1000_20_5.txt
+==219== Profiling result:
+"Start","Duration","Grid X","Grid Y","Grid Z","Block X","Block Y","Block Z","Registers Per Thread","Static SMem","Dynamic SMem","Size","Throughput","SrcMemType","DstMemType","Device","Context","Stream","Name","Correlation_ID"
+us,us,,,,,,,,KB,B,KB,GB/s,,,,,,,
+295600.155000,1.056000,,,,,,,,,,3.906250,3.527737,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",109
+295622.683000,13.632000,,,,,,,,,,74.218750,5.192233,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",111
+295643.579000,5.024000,5,1,1,256,1,1,18,2.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z14dynproc_kerneliPiS_S_iiii",112
+295651.419000,3.392000,5,1,1,256,1,1,18,2.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z14dynproc_kerneliPiS_S_iiii",113
+295656.571000,3.264000,5,1,1,256,1,1,18,2.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z14dynproc_kerneliPiS_S_iiii",114
+295661.883000,2.976000,5,1,1,256,1,1,18,2.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z14dynproc_kerneliPiS_S_iiii",115
+295666.267000,1.120000,,,,,,,,,,3.906250,3.326152,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",116
