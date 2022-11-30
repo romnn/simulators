@@ -83,7 +83,7 @@ sudo systemctl restart docker
 In the root dir, run:
 ```bash
 docker build . --build-arg mode=hw -t romnn/native -f docker/native/default.dockerfile
-docker run --gpus all -it romnn/native
+sudo docker run --cap-add SYS_ADMIN --privileged --gpus all -it romnn/native
 
 source /apps/src/setup_environment
 /work/util/hw_stats/run_hw.py -D 0 -B rodinia_2.0-ft -R 1
