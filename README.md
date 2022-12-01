@@ -7,6 +7,24 @@
 cargo run --bin gpgpusim-parse
 ```
 
+#### TODO (today)
+
+- write script to parse GPGPUsim statistics
+  - ignore all the app data config stuff for now
+  - we could have nested hash maps or just set a prefix and pass a reference
+- write script to profile native app with nsight etc.
+- make one simple correlation for ./vectoradd
+  - between gpgpusim simulation and native execution
+
+- find out what scheduling systems are used by DAS5 and DAS6
+  - since i cannot remember
+
+- update the proposal
+- try to get simulation metrics from GPUtejas
+  - need to trace an application first
+  - the java part should be "easy"
+  - but can it output structured statistics? lets hope so...
+
 #### Current state
 
 - multi2sim: compiling for CUDA 10 ubuntu 18
@@ -88,11 +106,29 @@ sudo systemctl restart docker
 
 In the root dir, run:
 ```bash
-docker build . --build-arg mode=hw -t romnn/native -f docker/native/default.dockerfile
+docker build . -t romnn/native -f docker/native/native.dockerfile
 sudo docker run --cap-add SYS_ADMIN --privileged --gpus all -it romnn/native
 
 source /apps/src/setup_environment
+
+# first try
 /work/util/hw_stats/run_hw.py -D 0 -B rodinia_2.0-ft -R 1
+
+# device 0, benchmark ridinia, 1 repetition, using the new nsight_profiler, 
+# collecting all available metrics
+/work/util/hw_stats/run_hw.py -D 0 -B rodinia_2.0-ft -R 1 --nsight_profiler --collect="cycles,other_stats"
+
+# ==> issue:
+Note: nv-nsight-cu-cli wrapper is deprecated in favor of ncu and will be removed in a future version.
+PARSEC Benchmark Suite
+read 1024 points
+==PROF== Connected to process 827 (/apps/bin/10.1/release/streamcluster-rodinia-2.0-ft)
+==ERROR== Profiling is not supported on device 0. To find out supported GPUs refer --list-chips option.
+
+# best solution:
+/work/util/hw_stats/run_hw.py -D 0 -B rodinia_2.0-ft -R 1 --collect="cycles,other_stats"
+
+# look at all the files
 tree /work/hw_run/device-0/
 ```
 

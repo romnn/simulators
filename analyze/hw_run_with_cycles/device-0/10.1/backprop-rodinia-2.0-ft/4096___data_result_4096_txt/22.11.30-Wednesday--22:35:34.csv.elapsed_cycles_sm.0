@@ -1,0 +1,6 @@
+==863== NVPROF is profiling process 863, command: /apps/src/..//bin/10.1/release/backprop-rodinia-2.0-ft 4096 ./data/result-4096.txt
+==863== Profiling application: /apps/src/..//bin/10.1/release/backprop-rodinia-2.0-ft 4096 ./data/result-4096.txt
+==863== Profiling result:
+"Device","Context","Stream","Kernel","Correlation_ID","elapsed_cycles_sm"
+"NVIDIA GeForce GTX 1080 (0)","1","7","_Z22bpnn_layerforward_CUDAPfS_S_S_ii",112,288860
+"NVIDIA GeForce GTX 1080 (0)","1","7","_Z24bpnn_adjust_weights_cudaPfiS_iS_S_",121,454460

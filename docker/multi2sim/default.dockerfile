@@ -1,4 +1,6 @@
-FROM nvidia/cuda:10.2-devel-ubuntu18.04
+# FROM nvidia/cuda:10.2-devel-ubuntu18.04
+# m2s requires 32bit, which CUDA only supports up to version 8
+FROM nvidia/cuda:8.0-devel-ubuntu14.04
 
 # install basic packages
 RUN apt-get update && apt-get -y upgrade
@@ -13,11 +15,17 @@ RUN apt-get install -y zlib1g-dev lib32gcc1 gcc-multilib libgtk-3-dev
 
 RUN git clone https://github.com/Multi2Sim/multi2sim.git /app
 WORKDIR /app
-RUN libtoolize && \
- aclocal && \
- autoconf && \
- automake --add-missing && \
- ./configure && make -j
+RUN cd /app && \
+  libtoolize && \
+  aclocal && \
+  autoconf && \
+  automake --add-missing && \
+  ./configure && make -j && make install
+
+# add sample app
+COPY ./samples /samples
+WORKDIR /samples/vectoradd
+RUN make clean && make -j
 
 # https://github.com/Multi2Sim/multi2sim/issues/8
 # RUN wget http://www.multi2sim.org/downloads/multi2sim-5.0.tar.gz && \

@@ -4,6 +4,10 @@ version = "0.1.0"
 edition = "2021"
 
 [[bin]]
+name = "hw-parse"
+path = "tools/hw-parse/main.rs"
+
+[[bin]]
 name = "gpgpusim-parse"
 path = "tools/gpgpusim-parse/main.rs"
 
@@ -13,5 +17,8 @@ clap = { version = "4.0", features = ["derive"] }
 anyhow = "1"
 lazy_static = "1"
 rev_lines = "0"
+indicatif = "0"
+rev_buf_reader = "0.3.0"
+csv = "1"
 
 [dev-dependencies]

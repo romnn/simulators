@@ -1,0 +1,15 @@
+==851== NVPROF is profiling process 851, command: /apps/src/..//bin/10.1/release/backprop-rodinia-2.0-ft 4096 ./data/result-4096.txt
+==851== Profiling application: /apps/src/..//bin/10.1/release/backprop-rodinia-2.0-ft 4096 ./data/result-4096.txt
+==851== Profiling result:
+"Start","Duration","Grid X","Grid Y","Grid Z","Block X","Block Y","Block Z","Registers Per Thread","Static SMem","Dynamic SMem","Size","Throughput","SrcMemType","DstMemType","Device","Context","Stream","Name","Correlation_ID"
+us,us,,,,,,,,KB,B,KB,GB/s,,,,,,,
+349320.035000,2.048000,,,,,,,,,,16.003906,7.452400,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",110
+349366.755000,46.656000,,,,,,,,,,272.066406,5.561187,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",111
+349439.075000,7.136000,1,256,1,16,16,1,20,1.062500,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z22bpnn_layerforward_CUDAPfS_S_S_ii",112
+349461.763000,2.976000,,,,,,,,,,16.000000,5.127281,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",115
+349535.139000,0.832000,,,,,,,,,,0.066406,0.076118,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",118
+349577.091000,50.624000,,,,,,,,,,272.066406,5.125291,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",119
+349660.835000,49.408000,,,,,,,,,,272.066406,5.251432,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",120
+349735.459000,11.584000,1,256,1,16,16,1,20,0.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z24bpnn_adjust_weights_cudaPfiS_iS_S_",121
+349750.275000,2.976000,,,,,,,,,,16.003906,5.128533,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",122
+349767.587000,42.336000,,,,,,,,,,272.066406,6.128655,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",123

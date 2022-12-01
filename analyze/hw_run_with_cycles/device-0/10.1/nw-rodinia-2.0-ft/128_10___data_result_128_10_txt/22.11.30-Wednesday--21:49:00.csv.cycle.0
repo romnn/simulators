@@ -1,0 +1,23 @@
+==472== NVPROF is profiling process 472, command: /apps/src/..//bin/10.1/release/nw-rodinia-2.0-ft 128 10 ./data/result_128_10.txt
+==472== Profiling application: /apps/src/..//bin/10.1/release/nw-rodinia-2.0-ft 128 10 ./data/result_128_10.txt
+==472== Profiling result:
+"Start","Duration","Grid X","Grid Y","Grid Z","Block X","Block Y","Block Z","Registers Per Thread","Static SMem","Dynamic SMem","Size","Throughput","SrcMemType","DstMemType","Device","Context","Stream","Name","Correlation_ID"
+us,us,,,,,,,,KB,B,KB,GB/s,,,,,,,
+286596.601000,12.384000,,,,,,,,,,65.003906,5.005859,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",109
+286623.289000,12.384000,,,,,,,,,,65.003906,5.005859,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",110
+286666.905000,8.320000,1,1,1,16,1,1,32,2.128906,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z20needle_cuda_shared_1PiS_S_iiii",111
+286677.369000,7.968000,2,1,1,16,1,1,32,2.128906,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z20needle_cuda_shared_1PiS_S_iiii",112
+286687.097000,7.968000,3,1,1,16,1,1,32,2.128906,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z20needle_cuda_shared_1PiS_S_iiii",113
+286696.825000,7.968000,4,1,1,16,1,1,32,2.128906,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z20needle_cuda_shared_1PiS_S_iiii",114
+286706.617000,7.232000,5,1,1,16,1,1,32,2.128906,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z20needle_cuda_shared_1PiS_S_iiii",115
+286716.153000,7.232000,6,1,1,16,1,1,32,2.128906,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z20needle_cuda_shared_1PiS_S_iiii",116
+286725.177000,7.456000,7,1,1,16,1,1,32,2.128906,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z20needle_cuda_shared_1PiS_S_iiii",117
+286734.329000,7.232000,8,1,1,16,1,1,32,2.128906,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z20needle_cuda_shared_1PiS_S_iiii",118
+286743.513000,7.104000,7,1,1,16,1,1,32,2.128906,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z20needle_cuda_shared_2PiS_S_iiii",119
+286752.345000,6.816000,6,1,1,16,1,1,32,2.128906,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z20needle_cuda_shared_2PiS_S_iiii",120
+286760.953000,6.624000,5,1,1,16,1,1,32,2.128906,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z20needle_cuda_shared_2PiS_S_iiii",121
+286769.273000,6.592000,4,1,1,16,1,1,32,2.128906,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z20needle_cuda_shared_2PiS_S_iiii",122
+286777.849000,6.624000,3,1,1,16,1,1,32,2.128906,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z20needle_cuda_shared_2PiS_S_iiii",123
+286786.361000,6.624000,2,1,1,16,1,1,32,2.128906,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z20needle_cuda_shared_2PiS_S_iiii",124
+286794.746000,6.656000,1,1,1,16,1,1,32,2.128906,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z20needle_cuda_shared_2PiS_S_iiii",125
+286801.370000,10.656000,,,,,,,,,,65.003906,5.817620,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",126

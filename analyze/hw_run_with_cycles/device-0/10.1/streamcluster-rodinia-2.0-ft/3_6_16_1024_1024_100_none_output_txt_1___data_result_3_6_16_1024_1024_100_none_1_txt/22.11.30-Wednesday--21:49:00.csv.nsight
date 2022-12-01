@@ -1,0 +1,23 @@
+PARSEC Benchmark Suite
+==PROF== Connected to process 782 (/apps/bin/10.1/release/streamcluster-rodinia-2.0-ft)
+==ERROR== Profiling is not supported on device 0. To find out supported GPUs refer --list-chips option.
+time = 0.258525
+time pgain = 0.000000
+time pgain_dist = 0.000000
+time pgain_init = 0.000000
+time pselect = 0.000017
+time pspeedy = 0.000106
+time pshuffle = 0.000022
+time localSearch = 0.256509
+
+====GPU Timing info====
+time serial = 0.003649
+time CPU to GPU memory copy = 0.007778
+time GPU to CPU memory copy back = 0.005067
+time GPU malloc = 0.075955
+time GPU free = 0.001385
+time kernel = 0.039106
+
+PASSED
+==PROF== Disconnected from process 782
+==WARNING== No kernels were profiled.
