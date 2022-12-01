@@ -66,6 +66,7 @@ docker save nvidia/cuda:11.8.0-devel-ubuntu20.04 | gzip > ./images/cuda/nvidia_c
 docker build --load --progress plain . -t accelsim -f docker/accelsim/default.dockerfile
 ```
 
+
 #### GPU in docker container
 
 https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker
@@ -100,6 +101,13 @@ sudo vim /etc/docker/daemon.json
 # }
 sudo systemctl restart docker
 
+```
+
+### TEJAS benchmarks 
+
+```bash
+./trace.sh <BENCHMARK ARGS>
+./run.sh ./sim_run_stats_8
 ```
 
 #### Native benchmarks

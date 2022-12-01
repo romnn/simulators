@@ -26,6 +26,7 @@ RUN cd /app/gputejas && \
   ant clean && \
   ant && \
   ant make-jar
+ENV TEJAS_ROOT /app/gputejas
 
 # add sample app
 COPY ./samples /samples
