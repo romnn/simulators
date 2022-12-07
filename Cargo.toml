@@ -15,19 +15,27 @@ path = "tools/gpgpusim-parse/main.rs"
 name = "tejas-parse"
 path = "tools/tejas-parse/main.rs"
 
+[[bin]]
+name = "m2s-parse"
+path = "tools/m2s-parse/main.rs"
+
+
 [dependencies]
-regex = "1"
-clap = { version = "4.0", features = ["derive"] }
 anyhow = "1"
 lazy_static = "1"
-# rev_lines = "0"
+chrono = "0.4"
+
+# tools
+clap = { version = "4.0", features = ["derive"] }
+
+# parsing
+regex = "1"
 indicatif = "0"
 rev_buf_reader = "0.3.0"
 csv = "1"
-# frunk = "0.4"
-chrono = "0.4"
+rust-ini = "0"
 
-# testcontainer stuff
+# containers
 testcontainers-rs = "0"
 tokio = { version = "1", features = [ "macros" ] }
 async-trait = "0.1"

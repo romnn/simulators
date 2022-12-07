@@ -3,10 +3,21 @@
 #!*.*
 #!Makefile
 vectoradd/profiletmp
-vectoradd/_*
-vectoradd/*.o
-vectoradd_tejas/_*
-vectoradd_tejas/*.o
+# vectoradd/_*
+# vectoradd/*.o
+# vectoradd_tejas/_*
+# vectoradd_tejas/*.o
+
+*.o
+*.a
+*.orig
+*.swp
+*.gch
+*.out
+*.ptx
+*.ptxas
+_cuobjdump_list_ptx_*
+_app_cuda_version_*
 
 #*.a
 #*.so

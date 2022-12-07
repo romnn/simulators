@@ -12,6 +12,7 @@ cargo run --bin gpgpusim-parse
 #### Kepler traces
 ```
 m2s --kpl-report ./test-report.txt --kpl-sim detailed ./vectorAdd_m2s
+m2s --kpl-help |& tee kpl-help.txt
 ```
 
 libm2s-cuda.so 
