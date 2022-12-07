@@ -1,12 +1,19 @@
-SUB_DIRS        = $(wildcard */.)
-SUB_DIRS_ALL    = $(SUB_DIRS:%=all-%)
-SUB_DIRS_CLEAN  = $(SUB_DIRS:%=clean-%)
+# SUB_DIRS = $(wildcard */.)
+# SUB_DIRS_ACCELSIM = $(SUB_DIRS:%=accelsim-%)
+# SUB_DIRS_CLEAN = $(SUB_DIRS:%=clean-%)
 
-all: $(SUB_DIRS_ALL)
-clean: $(SUB_DIRS_CLEAN)
+# accelsim: $(SUB_DIRS_ACCELSIM)
+# clean: $(SUB_DIRS_CLEAN)
 
-$(SUB_DIRS_ALL):
-	$(MAKE) $(MAKE_FLAGS) -C $(@:all-%=%)
+# $(SUB_DIRS_ACCELSIM):
+# 	$(MAKE) $(MAKE_FLAGS) -C $(@:accelsim-%=%)
 
-$(SUB_DIRS_CLEAN):
-	$(MAKE) $(MAKE_FLAGS) -C $(@:clean-%=%) clean
+# $(SUB_DIRS_CLEAN):
+#	$(MAKE) $(MAKE_FLAGS) -C $(@:clean-%=%) clean
+
+accelsim:
+	$(MAKE) $(MAKE_FLAGS) -C matrixMul accelsim
+
+clean:
+	$(MAKE) $(MAKE_FLAGS) -C matrixMul clean
+

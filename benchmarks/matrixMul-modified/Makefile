@@ -1,3 +1,18 @@
+# Add source files here
+# EXECUTABLE	:= sdk-matrixMul-modified
+# CUDA source files (compiled with cudacc)
+# CUFILES		:= cuda_mult.cu 
+
+# C/C++ source files (compiled with gcc / c++)
+# CCFILES		:= \
+
+# Do not link with CUTIL
+# OMIT_CUTIL_LIB := 1
+
+################################################################################
+# Rules and targets
+# include common/common.mk
+
 # Location of the CUDA Toolkit
 CUDA_PATH ?= /usr/local/cuda
 
@@ -5,11 +20,8 @@ HOST_COMPILER ?= g++
 NVCC          := $(CUDA_PATH)/bin/nvcc -ccbin $(HOST_COMPILER)
 
 NVCCFLAGS   := 
-# -m${TARGET_SIZE}
 CCFLAGS     :=
 LDFLAGS     :=
-
-# NVCCFLAGS += -g -G
 
 ALL_CCFLAGS :=
 ALL_CCFLAGS += $(NVCCFLAGS)

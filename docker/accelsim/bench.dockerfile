@@ -4,12 +4,14 @@ FROM romnn/accelsim-base
 COPY ./benchmarks /benchmarks
 WORKDIR /benchmarks
 
-# todo: compile the benchmarks
-# # hack: always skip the cache for the last command
-# ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
-# RUN source /work/gpu-simulator/gpgpu-sim/setup_environment && \
-#   export LD_RUN_PATH=/work/gpu-simulator/gpgpu-sim/lib/gcc-7.5.0/cuda-10010/release/ && \
-#   cd ./vectoradd && make clean && make -j
+# compile the benchmarks
+ENV SIM_ROOT /simulator/gpu-simulator/gpgpu-sim
+RUN source $SIM_ROOT/setup_environment && \
+  export LD_RUN_PATH=$SIM_ROOT/lib/gcc-$CC_VERSION/cuda-$CUDA_VERSION_NUMBER/release/ && \
+  cd /benchmarks/matrixMul && make clean && make -j ALL_LDFLAGS="--cudart shared" && \
+  cd /benchmarks/matrixMul-modified && make clean && make -j ALL_LDFLAGS="--cudart shared"
 
+# cd ./vectoradd && make clean && make -j
+# export LD_RUN_PATH=/simulator/gpu-simulator/gpgpu-sim/lib/gcc-7.5.0/cuda-10010/release/ && \
 # RUN ldd /samples/vectoradd/vectoradd
 

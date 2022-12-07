@@ -182,8 +182,10 @@ int MatrixMultiply(int argc, char **argv,
 
   // copy host memory to device
   checkCudaErrors(
+      /* cudaMemcpyAsync(d_A, h_A, mem_size_A, cudaMemcpyHostToDevice)); */
       cudaMemcpyAsync(d_A, h_A, mem_size_A, cudaMemcpyHostToDevice, stream));
   checkCudaErrors(
+      /* cudaMemcpyAsync(d_B, h_B, mem_size_B, cudaMemcpyHostToDevice)); */
       cudaMemcpyAsync(d_B, h_B, mem_size_B, cudaMemcpyHostToDevice, stream));
 
   // Setup execution parameters
@@ -192,31 +194,39 @@ int MatrixMultiply(int argc, char **argv,
 
   // Create and start timer
   printf("Computing result using CUDA Kernel...\n");
+  assert(grid.x > 0);
+  assert(grid.y > 0);
+  assert(grid.z > 0);
 
   // Performs warmup operation using matrixMul CUDA kernel
-  if (block_size == 16) {
-    MatrixMulCUDA<16>
-        <<<grid, threads, 0, stream>>>(d_C, d_A, d_B, dimsA.x, dimsB.x);
-  } else {
-    MatrixMulCUDA<32>
-        <<<grid, threads, 0, stream>>>(d_C, d_A, d_B, dimsA.x, dimsB.x);
-  }
+  /* if (block_size == 16) { */
+  /*   MatrixMulCUDA<16> */
+  /*       <<<grid, threads, 0, stream>>>(d_C, d_A, d_B, dimsA.x, dimsB.x); */
+  /* } else { */
+  /*   MatrixMulCUDA<32> */
+  /*       <<<grid, threads, 0, stream>>>(d_C, d_A, d_B, dimsA.x, dimsB.x); */
+  /* } */
 
-  printf("done\n");
+  /* printf("done\n"); */
   checkCudaErrors(cudaStreamSynchronize(stream));
 
   // Record the start event
   checkCudaErrors(cudaEventRecord(start, stream));
 
   // Execute the kernel
-  int nIter = 300;
+  int nIter = 1;
 
   for (int j = 0; j < nIter; j++) {
+    /* printf("kernel called\n"); */
+    /* printf("grid: (%d, %d, %d)\n", grid.x, grid.y, grid.z); */
+    /* printf("threads: (%d, %d, %d)\n", threads.x, threads.y, threads.z); */
     if (block_size == 16) {
       MatrixMulCUDA<16>
+          /* <<<grid, threads, 0>>>(d_C, d_A, d_B, dimsA.x, dimsB.x); */
           <<<grid, threads, 0, stream>>>(d_C, d_A, d_B, dimsA.x, dimsB.x);
     } else {
       MatrixMulCUDA<32>
+          /* <<<grid, threads, 0>>>(d_C, d_A, d_B, dimsA.x, dimsB.x); */
           <<<grid, threads, 0, stream>>>(d_C, d_A, d_B, dimsA.x, dimsB.x);
     }
   }
@@ -225,7 +235,9 @@ int MatrixMultiply(int argc, char **argv,
   checkCudaErrors(cudaEventRecord(stop, stream));
 
   // Wait for the stop event to complete
-  checkCudaErrors(cudaEventSynchronize(stop));
+  /* checkCudaErrors(cudaEventSynchronize(stop)); */
+  checkCudaErrors(cudaStreamSynchronize(stream));
+  checkCudaErrors(cudaDeviceSynchronize());
 
   float msecTotal = 0.0f;
   checkCudaErrors(cudaEventElapsedTime(&msecTotal, start, stop));
@@ -244,8 +256,11 @@ int MatrixMultiply(int argc, char **argv,
 
   // Copy result from device to host
   checkCudaErrors(
+      /* cudaMemcpyAsync(h_C, d_C, mem_size_C, cudaMemcpyDeviceToHost)); */
       cudaMemcpyAsync(h_C, d_C, mem_size_C, cudaMemcpyDeviceToHost, stream));
+
   checkCudaErrors(cudaStreamSynchronize(stream));
+  checkCudaErrors(cudaDeviceSynchronize());
 
   printf("Checking computed result for correctness: ");
   bool correct = true;
@@ -345,9 +360,9 @@ int main(int argc, char **argv) {
   printf("MatrixA(%d,%d), MatrixB(%d,%d)\n", dimsA.x, dimsA.y,
          dimsB.x, dimsB.y);
 
-  checkCudaErrors(cudaProfilerStart());
+  // checkCudaErrors(cudaProfilerStart());
   int matrix_result = MatrixMultiply(argc, argv, block_size, dimsA, dimsB);
-  checkCudaErrors(cudaProfilerStop());
+  // checkCudaErrors(cudaProfilerStop());
 
   exit(matrix_result);
 }
