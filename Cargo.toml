@@ -11,14 +11,25 @@ path = "tools/hw-parse/main.rs"
 name = "gpgpusim-parse"
 path = "tools/gpgpusim-parse/main.rs"
 
+[[bin]]
+name = "tejas-parse"
+path = "tools/tejas-parse/main.rs"
+
 [dependencies]
 regex = "1"
 clap = { version = "4.0", features = ["derive"] }
 anyhow = "1"
 lazy_static = "1"
-rev_lines = "0"
+# rev_lines = "0"
 indicatif = "0"
 rev_buf_reader = "0.3.0"
 csv = "1"
+# frunk = "0.4"
+chrono = "0.4"
+
+# testcontainer stuff
+testcontainers-rs = "0"
+tokio = { version = "1", features = [ "macros" ] }
+async-trait = "0.1"
 
 [dev-dependencies]

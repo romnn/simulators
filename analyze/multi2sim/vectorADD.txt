@@ -1,0 +1,307 @@
+;
+; GPU Configuration
+; 
+
+[ Config.Device]
+Frequency = 732
+NumSM = 14
+
+[ Config.SM ]
+NumWarpPools = 4
+NumRegisters = 65536
+MaxBlocksPerWarpPool = 4
+MaxWarpsPerWarpPool = 16
+
+[ Config.FrontEnd ]
+FetchLatency = 2
+FetchBufferSize = 10
+DispatchLatency = 2
+DispatchWidth = 5
+MaxInstDispatchedPerType = 2
+
+[ Config.SPU ]
+NumSPULanes = 32
+Width = 1
+DispatchBufferSize = 2
+ReadLatency = 1
+ReadBufferSize = 1
+ExecutionLatency = 1
+ExecutionBufferSize = 1
+WriteLatency = 1
+WriteBufferSize = 1
+
+[ Config.DPU ]
+NumSPULanes = 32
+Width = 1
+DispatchBufferSize = 2
+ReadLatency = 15
+ReadBufferSize = 15
+ExecutionLatency = 15
+ExecutionBufferSize = 15
+WriteLatency = 12
+WriteBufferSize = 12
+
+[ Config.SFU ]
+NumSPULanes = 32
+Width = 1
+DispatchBufferSize = 2
+ReadLatency = 1
+ReadBufferSize = 1
+ExecutionLatency = 1
+ExecutionBufferSize = 1
+WriteLatency = 1
+WriteBufferSize = 1
+
+[ Config.IMU ]
+NumSPULanes = 32
+Width = 1
+DispatchBufferSize = 2
+ReadLatency = 1
+ReadBufferSize = 1
+ExecutionLatency = 1
+ExecutionBufferSize = 1
+WriteLatency = 1
+WriteBufferSize = 1
+
+[ Config.BRU ]
+NumSPULanes = 32
+Width = 1
+DispatchBufferSize = 2
+ReadLatency = 5
+ReadBufferSize = 5
+ExecutionLatency = 5
+ExecutionBufferSize = 5
+WriteLatency = 5
+WriteBufferSize = 5
+
+[ Config.LSU ]
+Width = 1
+DispatchBufferSize = 2
+ReadLatency = 1
+ReadBufferSize = 1
+WriteLatency = 1
+WriteBufferSize = 1
+
+
+;
+; Simulation Statistics
+;
+
+[ Device ]
+
+GridCount = 0
+Instructions = 0
+Cycles = 1222
+instructionsPerCycle = 0
+
+
+[ SM 0 ]
+
+BlockCount = 8
+SPU Instructions = 0
+DPU Instructions = 0
+SFU Instructions = 592
+IMU Instructions = 0
+BRU Instructions = 0
+LDS Instructions = 256
+Cycles = 1222
+InstructionsPerCycle = 0
+RegistersReads = 0
+RegistersWrites = 0
+
+
+[ SM 1 ]
+
+BlockCount = 8
+SPU Instructions = 0
+DPU Instructions = 0
+SFU Instructions = 592
+IMU Instructions = 0
+BRU Instructions = 0
+LDS Instructions = 256
+Cycles = 1222
+InstructionsPerCycle = 0
+RegistersReads = 0
+RegistersWrites = 0
+
+
+[ SM 2 ]
+
+BlockCount = 8
+SPU Instructions = 0
+DPU Instructions = 0
+SFU Instructions = 592
+IMU Instructions = 0
+BRU Instructions = 0
+LDS Instructions = 256
+Cycles = 1222
+InstructionsPerCycle = 0
+RegistersReads = 0
+RegistersWrites = 0
+
+
+[ SM 3 ]
+
+BlockCount = 8
+SPU Instructions = 0
+DPU Instructions = 0
+SFU Instructions = 592
+IMU Instructions = 0
+BRU Instructions = 0
+LDS Instructions = 256
+Cycles = 1222
+InstructionsPerCycle = 0
+RegistersReads = 0
+RegistersWrites = 0
+
+
+[ SM 4 ]
+
+BlockCount = 8
+SPU Instructions = 0
+DPU Instructions = 0
+SFU Instructions = 592
+IMU Instructions = 0
+BRU Instructions = 0
+LDS Instructions = 256
+Cycles = 1222
+InstructionsPerCycle = 0
+RegistersReads = 0
+RegistersWrites = 0
+
+
+[ SM 5 ]
+
+BlockCount = 8
+SPU Instructions = 0
+DPU Instructions = 0
+SFU Instructions = 592
+IMU Instructions = 0
+BRU Instructions = 0
+LDS Instructions = 256
+Cycles = 1222
+InstructionsPerCycle = 0
+RegistersReads = 0
+RegistersWrites = 0
+
+
+[ SM 6 ]
+
+BlockCount = 8
+SPU Instructions = 0
+DPU Instructions = 0
+SFU Instructions = 592
+IMU Instructions = 0
+BRU Instructions = 0
+LDS Instructions = 256
+Cycles = 1222
+InstructionsPerCycle = 0
+RegistersReads = 0
+RegistersWrites = 0
+
+
+[ SM 7 ]
+
+BlockCount = 8
+SPU Instructions = 0
+DPU Instructions = 0
+SFU Instructions = 592
+IMU Instructions = 0
+BRU Instructions = 0
+LDS Instructions = 256
+Cycles = 1222
+InstructionsPerCycle = 0
+RegistersReads = 0
+RegistersWrites = 0
+
+
+[ SM 8 ]
+
+BlockCount = 8
+SPU Instructions = 0
+DPU Instructions = 0
+SFU Instructions = 592
+IMU Instructions = 0
+BRU Instructions = 0
+LDS Instructions = 256
+Cycles = 1222
+InstructionsPerCycle = 0
+RegistersReads = 0
+RegistersWrites = 0
+
+
+[ SM 9 ]
+
+BlockCount = 8
+SPU Instructions = 0
+DPU Instructions = 0
+SFU Instructions = 592
+IMU Instructions = 0
+BRU Instructions = 0
+LDS Instructions = 256
+Cycles = 1222
+InstructionsPerCycle = 0
+RegistersReads = 0
+RegistersWrites = 0
+
+
+[ SM 10 ]
+
+BlockCount = 8
+SPU Instructions = 0
+DPU Instructions = 0
+SFU Instructions = 592
+IMU Instructions = 0
+BRU Instructions = 0
+LDS Instructions = 256
+Cycles = 1222
+InstructionsPerCycle = 0
+RegistersReads = 0
+RegistersWrites = 0
+
+
+[ SM 11 ]
+
+BlockCount = 8
+SPU Instructions = 0
+DPU Instructions = 0
+SFU Instructions = 592
+IMU Instructions = 0
+BRU Instructions = 0
+LDS Instructions = 256
+Cycles = 1222
+InstructionsPerCycle = 0
+RegistersReads = 0
+RegistersWrites = 0
+
+
+[ SM 12 ]
+
+BlockCount = 8
+SPU Instructions = 0
+DPU Instructions = 0
+SFU Instructions = 592
+IMU Instructions = 0
+BRU Instructions = 0
+LDS Instructions = 256
+Cycles = 1222
+InstructionsPerCycle = 0
+RegistersReads = 0
+RegistersWrites = 0
+
+
+[ SM 13 ]
+
+BlockCount = 8
+SPU Instructions = 0
+DPU Instructions = 0
+SFU Instructions = 592
+IMU Instructions = 0
+BRU Instructions = 0
+LDS Instructions = 256
+Cycles = 1222
+InstructionsPerCycle = 0
+RegistersReads = 0
+RegistersWrites = 0
+
+

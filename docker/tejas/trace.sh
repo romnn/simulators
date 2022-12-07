@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 
-# set -e
-# set -euxo pipefail
-# set -exo pipefail
 set -exo pipefail
-
-# CONFIG_PATH="${CONFIG_PATH:-config.xml}"
-# echo "config: $CONFIG_PATH"
 
 ARGS="$@"
 

@@ -1,21 +1,11 @@
-#![allow(warnings)]
+// #![allow(warnings)]
 
 use anyhow::Result;
 use clap::Parser;
-use gpgpusims::read::BufReadLine;
-use indicatif::{HumanBytes, HumanDuration};
 use lazy_static::lazy_static;
-// use reader::BufReadLine;
 use regex::Regex;
-use std::{
-    collections::{HashMap, HashSet},
-    fs,
-    io::{self, Seek},
-    path::{Path, PathBuf},
-    time::{Duration, Instant},
-};
+use std::{fs, path::PathBuf, time::Instant};
 
-// -R -K -k -B rodinia_2.0-ft -C QV100-PTX
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Options {
@@ -26,18 +16,14 @@ struct Options {
     output: PathBuf,
 }
 
-fn parse_hw_csv_2(options: &Options) -> Result<()> {
+fn parse_hw_csv_2(_options: &Options) -> Result<()> {
     Ok(())
 }
 
 fn parse_hw_csv(options: &Options) -> Result<()> {
-    let mut input_file = fs::OpenOptions::new().read(true).open(&options.input)?;
-    options
-        .output
-        .parent()
-        .map(fs::create_dir_all)
-        .transpose()?;
-    let mut output_file = fs::OpenOptions::new()
+    let input_file = fs::OpenOptions::new().read(true).open(&options.input)?;
+    gpgpusims::fs::create_dir(&options.output)?;
+    let output_file = fs::OpenOptions::new()
         .write(true)
         .create(true)
         .truncate(true)
@@ -80,18 +66,13 @@ fn parse_hw_csv(options: &Options) -> Result<()> {
         if limit <= 0 {
             break;
         }
-        // The iterator yields Result<StringRecord, Error>, so we check the
-        // error here.
-        // let record = result?;
-        // println!("{:#?}", row.u());
         let mut row = row.unwrap();
         row.trim();
-        csv_writer.write_record(&row);
+        csv_writer.write_record(&row)?;
         // println!(
         //     "{:#?}",
         //     row.iter()
         //         .map(str::to_string)
-        //         // .cloned()
         //         .collect::<Vec<String>>()
         // );
         limit -= 1;
@@ -108,7 +89,7 @@ fn main() -> Result<()> {
         anyhow::bail!("{} is not a file", options.input.display());
     }
 
-    let result = if options
+    if options
         .input
         .file_name()
         .and_then(|name| name.to_str())

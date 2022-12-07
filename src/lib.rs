@@ -1,16 +1,11 @@
+pub mod fs;
 pub mod read;
-
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+pub mod gpgpusim;
 
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+    fn it_works() {}
 }

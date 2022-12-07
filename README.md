@@ -9,21 +9,66 @@ cargo run --bin gpgpusim-parse
 
 #### TODO (today)
 
-- write script to parse GPGPUsim statistics
-  - ignore all the app data config stuff for now
-  - we could have nested hash maps or just set a prefix and pass a reference
+#### Kepler traces
+```
+m2s --kpl-report ./test-report.txt --kpl-sim detailed ./vectorAdd_m2s
+```
+
+libm2s-cuda.so 
+unsupported GNU version! gcc 4.7 and up are not supported!
+`file /app/lib/.libs/libm2s-cuda.so.1.0.0` shows that indeed libm2s-cuda is 32bit
+
+// there are some instructions for Multi2Sim kepler!!!!
+https://github.com/Multi2Sim/m2s-bench-cudasdk-6.5
+
+```
+0xf7f38cb8 in cuda_stream_create () from /usr/local/lib/libm2s-cuda.so.1
+(gdb) bt
+#0  0xf7f38cb8 in cuda_stream_create () from /usr/local/lib/libm2s-cuda.so.1
+#1  0xf7f37c8c in cuda_device_create () from /usr/local/lib/libm2s-cuda.so.1
+#2  0xf7f2a7a4 in cuInit () from /usr/local/lib/libm2s-cuda.so.1
+#3  0xf7f2f9cc in __cudaRegisterFatBinary () from /usr/local/lib/libm2s-cuda.so.1
+#4  0x08049141 in __sti____cudaRegisterAll_44_tmpxft_000001bc_00000000_6_vectorAdd_cpp1_ii_a98933e8() ()
+#5  0x08049202 in __libc_csu_init ()
+#6  0xf7d8fa6a in __libc_start_main () from /lib32/libc.so.6
+#7  0x080488a1 in _start ()
+```
+
+- concrete goal now:
+  - refactor the rust tools into a library
+  - module for each simulator
+  - automate running a gpgpusim benchmark inside a docker container
+  - get and parse the logs 
+
+- move tool logic to lib and expose the functions as a python package?
+- write a test harness for gpgpusim in rust that uses temp dirs
+  - the configs should be structs
+  - benchmarks should use builder pattern
+
+- correlations work best for a full benchmark?
+- make a correlation plot using the parsed stats and python
+
 - write script to profile native app with nsight etc.
 - make one simple correlation for ./vectoradd
   - between gpgpusim simulation and native execution
 
+#### Done
+- do not allow warnings and fix them
+- gpgpu sim parser: use tuples as keys and write them to csv
 - find out what scheduling systems are used by DAS5 and DAS6
   - since i cannot remember
+  - => they use slurm and there even is slurm-rs which we should use
 
 - update the proposal
 - try to get simulation metrics from GPUtejas
   - need to trace an application first
   - the java part should be "easy"
   - but can it output structured statistics? lets hope so...
+
+
+- write script to parse GPGPUsim statistics
+  - ignore all the app data config stuff for now
+  - we could have nested hash maps or just set a prefix and pass a reference
 
 #### Current state
 
@@ -33,6 +78,17 @@ cargo run --bin gpgpusim-parse
 - native: compiling and all benchmarks and exposing GPU
 - tejas: should not be too difficult when we can use our ocelot base image?
 
+
+#### Multi2Sim issues
+
+GCC version:
+```bash
+g++ --version
+g++ (Ubuntu 4.8.4-2ubuntu1~14.04.3) 4.8.4
+Copyright (C) 2013 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+```
 
 #### Git submodule diff
 
@@ -106,7 +162,7 @@ sudo systemctl restart docker
 ### TEJAS benchmarks 
 
 ```bash
-./trace.sh <BENCHMARK ARGS>
+./trace.sh <BENCHMARK ARGS> <THREADS>
 ./run.sh ./sim_run_stats_8
 ```
 

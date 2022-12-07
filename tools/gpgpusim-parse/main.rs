@@ -1,17 +1,17 @@
-#![allow(warnings)]
+// #![allow(warnings)]
 
 use anyhow::Result;
 use clap::Parser;
-use indicatif::{HumanBytes, HumanDuration};
-use lazy_static::lazy_static;
 use gpgpusims::read::BufReadLine;
+use indicatif::HumanBytes;
+use lazy_static::lazy_static;
 use regex::Regex;
 use std::{
     collections::{HashMap, HashSet},
     fs,
     io::{self, Seek},
-    path::{Path, PathBuf},
-    time::{Duration, Instant},
+    path::PathBuf,
+    time::Instant,
 };
 
 macro_rules! stat {
@@ -33,6 +33,9 @@ enum StatKind {
 struct Options {
     #[arg(short = 'i', long = "input")]
     input: PathBuf,
+
+    #[arg(short = 'o', long = "output")]
+    output: PathBuf,
 
     #[arg(short = 'k', long = "per-kernel")]
     per_kernel: bool,
@@ -59,7 +62,7 @@ struct Options {
 /// Does a quick 100-line pass to get the GPGPU-Sim Version number.
 ///
 /// Assumes the reader is seeked to the beginning of the file.
-fn get_version(mut f: impl reader::BufReadLine + io::Seek) -> Option<String> {
+fn get_version(mut f: impl BufReadLine + io::Seek) -> Option<String> {
     static MAX_LINES: usize = 100;
     let mut buffer = String::new();
     let mut lines = 0;
@@ -100,7 +103,7 @@ fn get_version(mut f: impl reader::BufReadLine + io::Seek) -> Option<String> {
 ///
 /// Assumes the reader is seeked to the end of the file and
 /// reading lines in reverse.
-fn check_finished(mut f: impl reader::BufReadLine + io::Seek) -> bool {
+fn check_finished(mut f: impl BufReadLine + io::Seek) -> bool {
     static MAX_LINES: usize = 10_000;
     let mut buffer = String::new();
     let mut lines = 0;
@@ -131,15 +134,19 @@ fn main() -> Result<()> {
         anyhow::bail!("{} is not a file", options.input.display());
     }
     let mut bytes_parsed = 0;
-    let mut files_parsed = 0;
 
     let finished = {
-        let mut file = fs::OpenOptions::new().read(true).open(&options.input)?;
+        let file = fs::OpenOptions::new().read(true).open(&options.input)?;
         let mut reader = rev_buf_reader::RevBufReader::new(file);
         check_finished(&mut reader)
     };
+    let version = {
+        let file = fs::OpenOptions::new().read(true).open(&options.input)?;
+        let mut reader = io::BufReader::new(file);
+        get_version(&mut reader)
+    };
 
-    // let version = get_version(&mut reader);
+    println!("GPGPU-sim version: {:?}", &version);
 
     let aggregate_stats = vec![
         stat!(
@@ -279,19 +286,28 @@ fn main() -> Result<()> {
         }
     }
 
-    // let mut all_named_kernels: HashMap<String, usize> = HashMap::new();
-    let mut all_named_kernels: HashSet<String> = HashSet::new();
-    let prefix = ""; // this would be app_args + config
-    files_parsed += 1;
+    let mut all_named_kernels: HashSet<(String, u16)> = HashSet::new();
 
-    let mut stat_map: HashMap<String, f64> = HashMap::new();
     let mut stat_found: HashSet<String> = HashSet::new();
 
-    let mut file = fs::OpenOptions::new().read(true).open(&options.input)?;
+    let file = fs::OpenOptions::new().read(true).open(&options.input)?;
+
+    gpgpusims::fs::create_dir(&options.output)?;
+    let output_file = fs::OpenOptions::new()
+        .write(true)
+        .create(true)
+        .truncate(true)
+        .open(&options.output)?;
+
+    let mut csv_writer = csv::WriterBuilder::new()
+        .flexible(false)
+        .from_writer(output_file);
+
+    let mut stat_map: HashMap<(String, u16, String), f64> = HashMap::new();
 
     if options.per_kernel {
         let mut current_kernel = "".to_string();
-        let mut last_kernel = "".to_string();
+        let mut last_kernel = ("".to_string(), 0);
         let mut raw_last: HashMap<String, f64> = HashMap::new();
         let mut running_kcount = HashMap::new();
 
@@ -314,7 +330,12 @@ fn main() -> Result<()> {
                 );
                 // remove
                 for stat_name in stats.keys() {
-                    stat_map.remove(&format!("{}-{}", current_kernel, stat_name));
+                    // stat_map.remove(&format!("{}-{}", current_kernel, stat_name));
+                    stat_map.remove(&(
+                        current_kernel.to_string(),
+                        running_kcount[&current_kernel],
+                        stat_name.to_string(),
+                    ));
                 }
             }
 
@@ -327,7 +348,8 @@ fn main() -> Result<()> {
                 .and_then(|c| c.get(1))
                 .map(|m| m.as_str().trim().to_string())
             {
-                last_kernel = current_kernel;
+                let last_kernel_kcount = running_kcount.get(&current_kernel).copied().unwrap_or(0);
+                last_kernel = (current_kernel, last_kernel_kcount);
                 current_kernel = kernel_name;
 
                 if options.kernel_instance {
@@ -336,7 +358,7 @@ fn main() -> Result<()> {
                     } else {
                         running_kcount.get_mut(&current_kernel).map(|c| *c += 1);
                     }
-                    current_kernel += &format!("--{}", running_kcount[&current_kernel]);
+                    // current_kernel += &format!("--{}", running_kcount[&current_kernel]);
                 }
 
                 // println!(
@@ -344,10 +366,18 @@ fn main() -> Result<()> {
                 //     current_kernel, last_kernel
                 // );
 
-                all_named_kernels.insert(current_kernel.clone());
+                all_named_kernels.insert((
+                    current_kernel.clone(),
+                    running_kcount.get(&current_kernel).copied().unwrap_or(0),
+                ));
 
-                let mut k_count = stat_map
-                    .entry(format!("{}-k-count", &current_kernel))
+                let k_count = stat_map
+                    .entry((
+                        current_kernel.to_string(),
+                        running_kcount.get(&current_kernel).copied().unwrap_or(0),
+                        "k-count".to_string(),
+                    ))
+                    // .entry(format!("{}-k-count", &current_kernel))
                     .or_insert(0.0);
                 *k_count += 1.0;
                 continue;
@@ -360,7 +390,12 @@ fn main() -> Result<()> {
                     .and_then(|m| m.as_str().trim().parse::<f64>().ok())
                 {
                     stat_found.insert(stat_name.clone());
-                    let key = format!("{}-{}", current_kernel, stat_name);
+                    // let key = format!("{}-{}", current_kernel, stat_name);
+                    let key = (
+                        current_kernel.to_string(),
+                        running_kcount.get(&current_kernel).copied().unwrap_or(0),
+                        stat_name.to_string(),
+                    );
                     if stat_kind != &StatKind::Aggregate {
                         stat_map.insert(key.clone(), value);
                     } else if stat_map.contains_key(&key) {
@@ -372,7 +407,15 @@ fn main() -> Result<()> {
                             .map(|v| *v += value - stat_last_kernel);
                     } else {
                         // println!("does not contain key {}", key);
-                        let last_kernel_key = format!("{}-{}", last_kernel, stat_name);
+                        // let last_kernel_key = format!("{}-{}", last_kernel, stat_name);
+                        // let last_kernel_name, last_kernel_kcount) = last_kernel;
+                        let last_kernel_key = (
+                            last_kernel.0.clone(),
+                            last_kernel.1.clone(),
+                            // last_kernel.to_string(),
+                            // running_kcount.get(&last_kernel).copied().unwrap_or(0),
+                            stat_name.to_string(),
+                        );
                         let stat_last_kernel = if stat_map.contains_key(&last_kernel_key) {
                             raw_last[stat_name]
                         } else {
@@ -388,8 +431,9 @@ fn main() -> Result<()> {
         bytes_parsed += reader.stream_position().unwrap_or(0);
     } else {
         // not per kernel
+        // let mut stat_map: HashMap<(String, String), f64> = HashMap::new();
         // if all_named_kernels.is_empty() {
-        all_named_kernels.insert("final_kernel".to_string());
+        all_named_kernels.insert(("final_kernel".to_string(), 0));
         // }
 
         let mut reader = rev_buf_reader::RevBufReader::new(file);
@@ -400,7 +444,7 @@ fn main() -> Result<()> {
         let mut buffer = String::new();
         while let Some(Ok(line)) = reader.read_line(&mut buffer) {
             // println!("line: {:?}", &line);
-            for (stat_name, (stat_kind, stat_regex)) in &stats {
+            for (stat_name, (_stat_kind, stat_regex)) in &stats {
                 if stat_found.contains(stat_name) {
                     // println!("stat {} already found", &stat_name);
                     continue;
@@ -411,7 +455,12 @@ fn main() -> Result<()> {
                     .and_then(|m| m.as_str().trim().parse::<f64>().ok())
                 {
                     stat_found.insert(stat_name.clone());
-                    stat_map.insert(format!("final_kernel-{}", stat_name), value);
+                    // stat_map.insert(format!("final_kernel-{}", stat_name), value);
+                    // stat_map.insert(("final_kernel".to_string(), stat_name), value);
+                    stat_map.insert(
+                        ("final_kernel".to_string(), 0, stat_name.to_string()),
+                        value,
+                    );
                 }
 
                 if stat_found.len() == stats.len() {
@@ -423,53 +472,18 @@ fn main() -> Result<()> {
         let file_len = reader.seek(io::SeekFrom::End(0)).unwrap_or(0);
         bytes_parsed += file_len - current;
     }
-
     println!("stats: {:#?}", &stat_map);
+    csv_writer.write_record(&["kernel", "kernel_id", "stat", "value"])?;
+    for ((kernel, kcount, stat), value) in &stat_map {
+        csv_writer.write_record(&[kernel, &kcount.to_string(), stat, &value.to_string()])?;
+    }
 
-    let files_parsed = 1;
     let duration = start.elapsed();
     println!(
-        "done in {:?}: {} files and {} parsed ({}/s)",
+        "done in {:?}: {} parsed ({}/s)",
         duration,
-        files_parsed,
         HumanBytes(bytes_parsed),
         HumanBytes((bytes_parsed as f64 / (duration.as_secs() as f64)).floor() as u64),
     );
     Ok(())
 }
-
-/*
-collect_aggregate:
-    - 'gpu_tot_sim_insn\s*=\s*(.*)'
-    - 'gpgpu_simulation_time\s*=.*\(([0-9]+) sec\).*'
-    - 'gpu_tot_sim_cycle\s*=\s*(.*)'
-    - '\s+L2_cache_stats_breakdown\[GLOBAL_ACC_R\]\[HIT\]\s*=\s*(.*)'
-    - '\s+L2_cache_stats_breakdown\[GLOBAL_ACC_R\]\[TOTAL_ACCESS\]\s*=\s*(.*)'
-    - '\s+L2_cache_stats_breakdown\[GLOBAL_ACC_W\]\[HIT\]\s*=\s*(.*)'
-    - '\s+L2_cache_stats_breakdown\[GLOBAL_ACC_W\]\[TOTAL_ACCESS\]\s*=\s*(.*)'
-    - '\s+Total_core_cache_stats_breakdown\[GLOBAL_ACC_R\]\[TOTAL_ACCESS\]\s*=\s*(.*)'
-    - '\s+Total_core_cache_stats_breakdown\[GLOBAL_ACC_R\]\[HIT\]\s*=\s*(.*)'
-    - '\s+Total_core_cache_stats_breakdown\[GLOBAL_ACC_W\]\[HIT\]\s*=\s*(.*)'
-    - '\s+Total_core_cache_stats_breakdown\[GLOBAL_ACC_W\]\[TOTAL_ACCESS\]\s*=\s*(.*)'
-    - '\s+Total_core_cache_stats_breakdown\[GLOBAL_ACC_R\]\[MSHR_HIT\]\s*=\s*(.*)'
-    - 'gpgpu_n_tot_w_icount\s*=\s*(.*)'
-    - 'total dram reads\s*=\s*(.*)'
-    - 'total dram writes\s*=\s*(.*)'
-    - 'kernel_launch_uid\s*=\s*(.*)'
-
-
-# These stats are reset each kernel and should not be diff'd
-# They cannot be used is only collecting the final_kernel stats
-collect_abs:
-    - 'gpu_ipc\s*=\s*(.*)'
-    - 'gpu_occupancy\s*=\s*(.*)%'
-    - 'L2_BW\s*=\s*(.*)+GB\/Sec'
-
-# These stats are rates that aggregate - but cannot be diff'd
-# Only valid as a snapshot and most useful for the final kernel launch
-collect_rates:
-    - 'gpgpu_simulation_rate\s+=\s+(.*)\s+\(inst\/sec\)'
-    - 'gpgpu_simulation_rate\s+=\s+(.*)\s+\(cycle\/sec\)'
-    - 'gpgpu_silicon_slowdown\s*=\s*(.*)x'
-    - 'gpu_tot_ipc\s*=\s*(.*)'
-*/
