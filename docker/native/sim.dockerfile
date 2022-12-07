@@ -1,4 +1,4 @@
-FROM romnn/native-base
+FROM romnn/accelsim-base
 
 # build accelsim
 ENV CUDA_INSTALL_PATH=/usr/local/cuda

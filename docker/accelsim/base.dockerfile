@@ -15,8 +15,8 @@ RUN apt-get install -y \
 RUN pip3 install pyyaml plotly psutil
 
 # clone accelsim
-RUN git clone https://github.com/accel-sim/accel-sim-framework.git /work
-WORKDIR /work
+RUN git clone https://github.com/accel-sim/accel-sim-framework.git /simulator
+WORKDIR /simulator
 RUN git checkout release
 RUN ls -lia .
 
@@ -27,22 +27,26 @@ RUN cd ./gpu-simulator && source ./setup_environment.sh && make -j
 RUN ls -lia .
 
 # Get the pre-run trace files
-RUN rm -rf ./hw_run/rodinia_2.0-ft
-RUN wget https://engineering.purdue.edu/tgrogers/accel-sim/traces/tesla-v100/latest/rodinia_2.0-ft.tgz
-RUN mkdir -p ./hw_run
-RUN tar -xzvf rodinia_2.0-ft.tgz -C ./hw_run
-RUN rm rodinia_2.0-ft.tgz
+# RUN rm -rf ./hw_run/rodinia_2.0-ft
+# RUN wget https://engineering.purdue.edu/tgrogers/accel-sim/traces/tesla-v100/latest/rodinia_2.0-ft.tgz
+# RUN mkdir -p ./hw_run
+# RUN tar -xzvf rodinia_2.0-ft.tgz -C ./hw_run
+# RUN rm rodinia_2.0-ft.tgz
 
-COPY ./samples /samples
-WORKDIR /samples
+# COPY ./samples /samples
+# WORKDIR /samples
 
-# hack: always skip the cache for the last command
-ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
-RUN source /work/gpu-simulator/gpgpu-sim/setup_environment && \
-  export LD_RUN_PATH=/work/gpu-simulator/gpgpu-sim/lib/gcc-7.5.0/cuda-10010/release/ && \
-  cd ./vectoradd && make clean && make -j
+# # hack: always skip the cache for the last command
+# ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
+# RUN source /work/gpu-simulator/gpgpu-sim/setup_environment && \
+#   export LD_RUN_PATH=/work/gpu-simulator/gpgpu-sim/lib/gcc-7.5.0/cuda-10010/release/ && \
+#   cd ./vectoradd && make clean && make -j
 
-RUN ldd /samples/vectoradd/vectoradd
+# RUN ldd /samples/vectoradd/vectoradd
+
+
+# ###### END
+
 
 # LD_PRELOAD=/work/gpu-simulator/gpgpu-sim/lib/gcc-7.5.0/cuda-10020/release/libcudart.so ./vectoradd
 

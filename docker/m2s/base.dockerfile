@@ -15,9 +15,9 @@ RUN apt-get install -y \
 # install multi2sim
 # this needs gcc >= 4.8 to support C++11
 # RUN wget http://www.multi2sim.org/files/multi2sim-4.1.tar.gz && \
-RUN git clone https://github.com/Multi2Sim/multi2sim.git /app
-WORKDIR /app
-RUN cd /app && \
+RUN git clone https://github.com/Multi2Sim/multi2sim.git /simulator
+WORKDIR /simulator
+RUN cd /simulator && \
   git checkout multi2sim-kepler && \
   libtoolize && \
   aclocal && \
@@ -60,11 +60,3 @@ ENV PATH /usr/local/cuda/bin:$PATH
 # install packages for 32 bit compilation
 # RUN apt-get install -y lib32gcc1 gcc-multilib lib32g++ g++-multilib 
 # gcc-4.7
-
-COPY ./samples /samples
-WORKDIR /samples/vectoradd
-# nvcc -m32 -O3 vectoradd.cu -o vectoradd
-
-# try if the cuda sdk works at least
-WORKDIR /sdk
-RUN git clone https://github.com/Multi2Sim/m2s-bench-cudasdk-6.5.git /sdk

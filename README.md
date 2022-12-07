@@ -1,6 +1,26 @@
 
 #### Docker
 
+#### Building the containers
+
+###### AccelSim
+```bash
+docker build . -t romnn/accelsim-base -f docker/accelsim/base.dockerfile
+docker build . -t romnn/accelsim-bench -f docker/accelsim/bench.dockerfile
+```
+###### Tejas
+```bash
+docker build . -t romnn/ocelot -f docker/ocelot/original.dockerfile
+docker build . -t romnn/tejas-base -f docker/tejas/base.dockerfile
+docker build . -t romnn/tejas-bench -f docker/tejas/bench.dockerfile
+```
+###### Multi2Sim
+```bash
+docker build . -t romnn/m2s-base -f docker/m2s/base.dockerfile
+docker build . -t romnn/m2s-bench -f docker/m2s/bench.dockerfile
+```
+
+
 #### Running tools
 
 ```bash
