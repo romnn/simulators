@@ -1,0 +1,351 @@
+
+; Multi2Sim 5.0 - A Simulation Framework for CPU-GPU Heterogeneous Computing
+; Please use command 'm2s --help' for a list of command-line options.
+; Simulation alpha-numeric ID: vM24u
+
+The Kepler GPU configuration file is a plain text INI file defining
+
+the parameters of the Kepler model for a detailed (architectural)
+
+configuration. This file is passed to Multi2Sim with the
+
+'--kpl-config <file>' option, and should always be used together
+
+with option '--kpl-sim detailed'.
+
+
+
+The following is a list of the sections allowed in the GPU configuration
+
+file, along with the list of variables for each section.
+
+
+
+Section '[ Device ]': parameters for the GPU.
+
+
+
+  Frequency = <value> (Default = 745)
+
+      Frequency for the Kepler GPU in MHz.
+
+  NumSMs = <num> (Default = 15)
+
+      Number of streaming multiprocessor in the GPU.
+
+
+
+Section '[ SM ]': parameters for the Streaming multiprocessors.
+
+
+
+  NumWarpPools = <num> (Default = 4)
+
+      Number of warp pools per SM.
+
+  MaxBlocksPerWarpPool = <num> (Default = 4)
+
+      The maximum number of blocks that can be scheduled to a
+
+      warp pool at a time.
+
+  MaxWarpsPerWarpPool = <num> (Default = 16)
+
+      The maximum number of warps that can be scheduled to a
+
+      warp pool at a time.
+
+  NumRegisters = <num> (Default = 65536)
+
+      Number of registers per SM. These are
+
+      divided evenly between all warp pools.
+
+
+
+Section '[ FrontEnd ]': parameters for fetch and dispatch.
+
+
+
+  FetchLatency = <cycles> (Default = 5)
+
+      Latency of instruction memory in number of cycles.
+
+  FetchWidth = <num> (Default = 8)
+
+      Maximum number of instructions fetched per cycle.
+
+  FetchBufferSize = <num> (Default = 10)
+
+      Size of the buffer holding fetched instructions.
+
+  DispatchLatency = <cycles> (Default = 1)
+
+      Latency of the decode stage in number of cycles.
+
+  DispatchWidth = <num> (Default = 5)
+
+      Number of instructions that can be issued per cycle.
+
+  MaxInstIssuedPerType = <num> (Default = 1)
+
+      Maximum number of instructions that can be issued of each type
+
+      (SIMD, scalar, etc.) in a single cycle.
+
+
+
+Section '[ SPU ]': parameters for the Single Precision Units.
+
+
+
+  NumSPULanes = <num> (Default = 32)
+
+      Number of lanes per SPU. This must divide the warp
+
+      size (32) evenly.
+
+  Width = <num> (Default = 1)
+
+      Maximum number of instructions processed per cycle.
+
+  DispatchBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding dispatched instructions.
+
+  ReadLatency = <cycles> (Default = 1)
+
+      Latency of register file access in number of cycles for reads.
+
+  ReadBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding register read instructions.
+
+  ExecutionLatency = <cycles> (Default = 1)
+
+      Latency of execution in number of cycles.
+
+  ExecutionBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding executing instructions.
+
+  WriteLatency = <cycles> (Default = 1)
+
+      Latency of register file writes in number of cycles.
+
+  WriteBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding register write instructions.
+
+
+
+Section '[ DPU ]': parameters for the Double Precision Units.
+
+
+
+  NumSPULanes = <num> (Default = 32)
+
+      Number of lanes per DPU. This must divide the warp
+
+      size (32) evenly.
+
+  Width = <num> (Default = 1)
+
+      Maximum number of instructions processed per cycle.
+
+  DispatchBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding dispatched instructions.
+
+  ReadLatency = <cycles> (Default = 1)
+
+      Latency of register file access in number of cycles for reads.
+
+  ReadBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding register read instructions.
+
+  ExecutionLatency = <cycles> (Default = 1)
+
+      Latency of execution in number of cycles.
+
+  ExecutionBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding executing instructions.
+
+  WriteLatency = <cycles> (Default = 1)
+
+      Latency of register file writes in number of cycles.
+
+  WriteBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding register write instructions.
+
+
+
+Section '[ SFU ]': parameters for the Special Function Units.
+
+
+
+  NumSPULanes = <num> (Default = 32)
+
+      Number of lanes per SFU. This must divide the warp
+
+      size (32) evenly.
+
+  Width = <num> (Default = 1)
+
+      Maximum number of instructions processed per cycle.
+
+  DispatchBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding dispatched instructions.
+
+  ReadLatency = <cycles> (Default = 1)
+
+      Latency of register file access in number of cycles for reads.
+
+  ReadBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding register read instructions.
+
+  ExecutionLatency = <cycles> (Default = 1)
+
+      Latency of execution in number of cycles.
+
+  ExecutionBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding executing instructions.
+
+  WriteLatency = <cycles> (Default = 1)
+
+      Latency of register file writes in number of cycles.
+
+  WriteBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding register write instructions.
+
+
+
+Section '[ IMU ]': parameters for the Integer Math Units.
+
+
+
+  NumSPULanes = <num> (Default = 32)
+
+      Number of lanes per IMU. This must divide the warp
+
+      size (32) evenly.
+
+  Width = <num> (Default = 1)
+
+      Maximum number of instructions processed per cycle.
+
+  DispatchBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding dispatched instructions.
+
+  ReadLatency = <cycles> (Default = 1)
+
+      Latency of register file access in number of cycles for reads.
+
+  ReadBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding register read instructions.
+
+  ExecutionLatency = <cycles> (Default = 1)
+
+      Latency of execution in number of cycles.
+
+  ExecutionBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding executing instructions.
+
+  WriteLatency = <cycles> (Default = 1)
+
+      Latency of register file writes in number of cycles.
+
+  WriteBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding register write instructions.
+
+
+
+Section '[ BRU ]': parameters for the Branch Units.
+
+
+
+  NumSPULanes = <num> (Default = 32)
+
+      Number of lanes per BRU. This must divide the warp
+
+      size (32) evenly.
+
+  Width = <num> (Default = 1)
+
+      Maximum number of instructions processed per cycle.
+
+  DispatchBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding dispatched instructions.
+
+  ReadLatency = <cycles> (Default = 1)
+
+      Latency of register file access in number of cycles for reads.
+
+  ReadBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding register read instructions.
+
+  ExecutionLatency = <cycles> (Default = 1)
+
+      Latency of execution in number of cycles.
+
+  ExecutionBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding executing instructions.
+
+  WriteLatency = <cycles> (Default = 1)
+
+      Latency of register file writes in number of cycles.
+
+  WriteBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding register write instructions.
+
+
+
+Section '[ LSU ]': parameters for the Single Precision Units.
+
+
+
+  Width = <num> (Default = 1)
+
+      Maximum number of instructions processed per cycle.
+
+  DispatchBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding dispatched instructions.
+
+  ReadLatency = <cycles> (Default = 1)
+
+      Latency of register file access in number of cycles for reads.
+
+  ReadBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding register read instructions.
+
+ MaxInFlightMemAcccesses = <num> (Defalut = 32)
+
+                Size of in flight memory accesses.
+
+  WriteLatency = <cycles> (Default = 1)
+
+      Latency of register file writes in number of cycles.
+
+  WriteBufferSize = <num> (Default = 1)
+
+      Size of the buffer holding register write instructions.
+
+
+
