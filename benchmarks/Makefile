@@ -1,3 +1,7 @@
+native:
+	$(MAKE) $(MAKE_FLAGS) -C matrixMul native
+	$(MAKE) $(MAKE_FLAGS) -C matrixMul-modified native
+
 accelsim:
 	$(MAKE) $(MAKE_FLAGS) -C matrixMul accelsim
 	$(MAKE) $(MAKE_FLAGS) -C matrixMul-modified accelsim

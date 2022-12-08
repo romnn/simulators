@@ -1,5 +1,4 @@
 import os
-import stat
 import re
 from pathlib import Path
 from gpusims.bench import BenchmarkConfig
@@ -24,7 +23,6 @@ class TejasBenchmarkConfig(BenchmarkConfig):
         threads = 8
         tejas_root = Path(os.environ["TEJAS_ROOT"])
 
-        # default_config_file = tejas_root / "src/simulator/config/config.xml"
         default_config_file = self.path / "tejas_config.xml"
         new_config = build_config(default_config_file, threads)
 
@@ -38,7 +36,8 @@ class TejasBenchmarkConfig(BenchmarkConfig):
         print(trace_dir)
 
         tracegen = self.path / "tracegen"
-        tracegen.chmod(tracegen.stat().st_mode | stat.S_IEXEC)
+        utils.chmod_x(tracegen)
+        # tracegen.chmod(tracegen.stat().st_mode | stat.S_IEXEC)
 
         cmd = [str(tracegen.absolute()), inp.args, str(threads)]
         cmd = " ".join(cmd)

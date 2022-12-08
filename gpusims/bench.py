@@ -5,7 +5,6 @@ from pathlib import Path
 from pprint import pprint  # noqa: F401
 import gpusims.utils as utils
 
-
 class BenchmarkConfig(abc.ABC):
     def __init__(self, run_dir, benchmark, config, path=None):
         self.benchmark = benchmark
@@ -40,7 +39,7 @@ class BenchmarkConfig(abc.ABC):
 
     def setup(self):
         """setup the benchmark in given run dir"""
-        print(self.path)
+        print("setup {} in {}".format(self.benchmark.name, self.path))
         utils.ensure_empty(self.path)
 
         # copy files to run dir
@@ -51,15 +50,17 @@ class BenchmarkConfig(abc.ABC):
         # pprint(benchmark_files)
 
         # copy config to run dir
-        config_files = {
-            f: f.relative_to(self.config.path)
-            for f in list(self.config.path.rglob("*"))
-        }
-        # pprint(config_files)
+        config_files = {}
+        if self.config.path is not None:
+            config_files = {
+                f: f.relative_to(self.config.path)
+                for f in list(self.config.path.rglob("*"))
+            }
+            # pprint(config_files)
 
         for src, rel in utils.merge_dicts(config_files, benchmark_files).items():
             dest = self.path / rel
-            # print("cp {} to {}".format(src, dest))
+            print("cp {} to {}".format(src, dest))
             shutil.copyfile(str(src.absolute()), str(dest.absolute()))
 
 
@@ -105,7 +106,11 @@ class Input:
 def parse_benchmarks(path):
     benchmarks = {}
     with open(str(path.absolute()), "r") as f:
-        benchmarks_yaml = yaml.load(f)
+        try:
+            benchmarks_yaml = yaml.load(f)
+        except TypeError:
+            benchmarks_yaml = yaml.load(f, Loader=yaml.FullLoader)
+
         # pprint(benchmarks_yaml)
         for name, config in benchmarks_yaml.items():
             bench_path = path.parent / config["path"]

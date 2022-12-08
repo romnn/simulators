@@ -3,7 +3,8 @@ import yaml
 
 class Config:
     def __init__(self, name, path):
-        assert path.is_dir()
+        if path is not None:
+            assert path.is_dir()
         self.name = name
         self.path = path
 
@@ -14,7 +15,11 @@ class Config:
 def parse_configs(path):
     configs = {}
     with open(str(path.absolute()), "r") as f:
-        configs_yaml = yaml.load(f)
+        try:
+            configs_yaml = yaml.load(f)
+        except TypeError:
+            configs_yaml = yaml.load(f, Loader=yaml.FullLoader)
+
         # pprint(configs_yaml)
         for name, config in configs_yaml.items():
             configs[name.lower()] = Config(

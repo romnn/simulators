@@ -1,3 +1,5 @@
+import sys
+import stat
 import shutil
 import os
 import shlex
@@ -5,21 +7,43 @@ import subprocess as sp
 from pathlib import Path
 
 
-def run_cmd(cmd, cwd=None, timeout_sec=None):
-    cmd = shlex.split(cmd)
+class ExecError(Exception):
+    def __init__(self, cmd, status, stdout, stderr):
+        self.cmd = cmd
+        self.status = status
+        self.stdout = stdout
+        self.stderr = stderr
+        super().__init__(
+            "command completed with non-zero exit code ({})".format(status)
+        )
+
+
+def run_cmd(cmd, cwd=None, shell=False, timeout_sec=None, env=None):
+    if not shell:
+        cmd = shlex.split(cmd)
     print("running", cmd)
 
     if isinstance(cwd, Path):
         cwd = str(cwd.absolute())
-    proc = sp.Popen(cmd, stdout=sp.PIPE, stderr=sp.PIPE, cwd=cwd)
-    ret = proc.wait(timeout=timeout_sec)
-    stdout, stderr = proc.communicate()
-    print(stdout.decode("utf-8"))
-    print(stderr.decode("utf-8"))
-    if ret != 0:
-        raise ValueError("{} failed".format(cmd))
 
-    pass
+    # the subprocess may take a long time, hence flush all buffers before
+    sys.stdout.flush()
+    proc = sp.Popen(cmd, stdout=sp.PIPE, stderr=sp.PIPE, cwd=cwd, env=env, shell=shell)
+    try:
+        stdout, stderr = proc.communicate(timeout=timeout_sec)
+    except sp.TimeoutExpired as timeout:
+        raise timeout
+
+    stdout = stdout.decode("utf-8")
+    stderr = stderr.decode("utf-8")
+    if proc.returncode != 0:
+        print("stdout:")
+        print(stdout)
+        print("stderr:")
+        print(stderr)
+        raise ExecError(cmd=cmd, status=proc.returncode, stdout=stdout, stderr=stderr)
+
+    return proc.returncode, stdout, stderr
 
 
 def ensure_empty(d):
@@ -29,6 +53,10 @@ def ensure_empty(d):
         pass
     # also creates parents
     os.makedirs(str(d.absolute()), exist_ok=True)
+
+
+def chmod_x(executable):
+    executable.chmod(executable.stat().st_mode | stat.S_IEXEC)
 
 
 def merge_dicts(*dicts):

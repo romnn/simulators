@@ -2,8 +2,9 @@ import itertools
 from pprint import pprint
 from pathlib import Path
 from invoke import task
+import gpusims.cuda as cuda
 from gpusims.bench import parse_benchmarks
-from gpusims.config import parse_configs
+from gpusims.config import Config, parse_configs
 from gpusims.tejas import TejasBenchmarkConfig
 from gpusims.accelsim import AccelSimBenchmarkConfig
 from gpusims.multi2sim import Multi2SimBenchmarkConfig
@@ -42,7 +43,7 @@ def run(c, run_dir, benchmark, config, simulator, force=False, _dir=None):
 
     print("running benchmarks ...")
     assert benchmark_dir.is_dir()
-    assert simulator.lower() in [ACCELSIM, TEJAS, MULTI2SIM]
+    assert simulator.lower() in [NATIVE, ACCELSIM, TEJAS, MULTI2SIM]
 
     configs = parse_configs(benchmark_dir / "configs" / "configs.yml")
     benchmarks = parse_benchmarks(benchmark_dir / "benchmarks.yml")
@@ -52,14 +53,24 @@ def run(c, run_dir, benchmark, config, simulator, force=False, _dir=None):
     sim_run_dir = Path(run_dir) / simulator.lower()
 
     if len(config) < 1:
-        config = list(configs.keys())
+        if simulator == "native":
+            # find current hardware
+            devices = cuda.get_devices()
+            config = [devices[0].name]
+        else:
+            # run all configs
+            config = list(configs.keys())
 
     if len(benchmark) < 1:
         benchmark = list(benchmarks.keys())
 
     pending = []
     for c, b in list(itertools.product(config, benchmark)):
-        conf = configs.get(c.lower())
+        if simulator == "native":
+            conf = Config(name=c.lower(), path=None)
+        else:
+            conf = configs.get(c.lower())
+
         if conf is None:
             have = ",".join(configs.keys())
             raise KeyError("no such config: {} (have: {})".format(c, have))
@@ -74,7 +85,7 @@ def run(c, run_dir, benchmark, config, simulator, force=False, _dir=None):
             print("skipping {} {} ...".format(c, b))
             continue
 
-        print("running {} {} ...".format(c, b))
+        print("adding {} {} ...".format(c, b))
         bench_cls = SIMULATORS[simulator.lower()]
         bench_config = bench_cls(
             run_dir=sim_run_dir,
@@ -86,5 +97,5 @@ def run(c, run_dir, benchmark, config, simulator, force=False, _dir=None):
 
     for b in pending:
         pprint(b)
-        bench_config.setup()
+        b.setup()
         b.run(force=force)

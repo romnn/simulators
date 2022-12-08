@@ -10,8 +10,6 @@ Configuration.Simulation.ThreadsPerCTA = gpgpu_shader_core_pipeline [0]
 gpgpu_clock_domains[0]
 System.TPC.SM.Frequency
 1447
-
-
 ```
 
 #### TODO
@@ -23,13 +21,21 @@ System.TPC.SM.Frequency
 #### Building the containers
 
 ```bash
-docker run -v "$PWD/tasks.py:/tasks.py" -v "$PWD/gpusims:/gpusims" -v "$PWD/run:/run" romnn/tejas-bench inv run -c SM6_GTX1080 -s tejas --run-dir /run
+docker run -v "$PWD/tasks.py:/tasks.py" -v "$PWD/gpusims:/gpusims" -v "$PWD/run:/benchrun" romnn/tejas-bench inv run -c SM6_GTX1080 -s tejas --run-dir /benchrun
+
+# we manually set the config name for correlation purposes
+# however, for -s native the config files will not be copied to the run dir
+docker run --cap-add SYS_ADMIN --privileged --gpus all -v "$PWD/tasks.py:/tasks.py" -v "$PWD/gpusims:/gpusims" -v "$PWD/run:/benchrun" romnn/tejas-bench inv run -c SM6_GTX1080 -s native --run-dir /benchrun
 ```
 
+###### Native
+```bash
+docker build -t romnn/native-base -f docker/native/base.dockerfile docker/native/
+docker build . -t romnn/native-bench -f docker/native/bench.dockerfile
+```
 ###### AccelSim
 ```bash
 docker build -t romnn/accelsim-base -f docker/accelsim/base.dockerfile docker/accelsim/
-# docker build . -t romnn/accelsim-base -f docker/accelsim/base.dockerfile
 docker build . -t romnn/accelsim-bench -f docker/accelsim/bench.dockerfile
 ```
 ###### Tejas

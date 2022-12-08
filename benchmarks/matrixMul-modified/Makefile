@@ -26,6 +26,10 @@ TEJAS_LIBRARIES += "-L$(TEJAS_ROOT)/../"
 TEJAS_LIBRARIES += "-L$(CUDA_PATH)/lib64"
 TEJAS_LIBRARIES += "-L/usr/lib/x86_64-linux-gnu/"
 
+native: matrixMul.cu
+	$(NVCC) $(INCLUDES) $(ALL_CCFLAGS) --std=c++11 $(GENCODE_FLAGS) -o matrixMul.o -c matrixMul.cu
+	$(NVCC) $(ALL_LDFLAGS) $(GENCODE_FLAGS) -o matrixMul matrixMul.o $(LIBRARIES)
+
 accelsim: matrixMul.cu
 	$(NVCC) $(INCLUDES) $(ALL_CCFLAGS) --std=c++11 $(GENCODE_FLAGS) -o matrixMul.o -c matrixMul.cu
 	$(NVCC) $(ALL_LDFLAGS) --cudart shared $(GENCODE_FLAGS) -o matrixMul matrixMul.o $(LIBRARIES)
