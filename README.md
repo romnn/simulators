@@ -26,6 +26,10 @@ docker run -v "$PWD/tasks.py:/tasks.py" -v "$PWD/gpusims:/gpusims" -v "$PWD/run:
 # we manually set the config name for correlation purposes
 # however, for -s native the config files will not be copied to the run dir
 docker run --cap-add SYS_ADMIN --privileged --gpus all -v "$PWD/tasks.py:/tasks.py" -v "$PWD/gpusims:/gpusims" -v "$PWD/run:/benchrun" romnn/tejas-bench inv run -c SM6_GTX1080 -s native --run-dir /benchrun
+
+# fix permissions
+sudo chown -R $(id -u):$(id -g) ./run/
+sudo chmod -R 744 ./run/
 ```
 
 ###### Native
@@ -47,13 +51,8 @@ docker build . -t romnn/tejas-bench -f docker/tejas/bench.dockerfile
 ```
 ###### Multi2Sim
 ```bash
-docker build . -t romnn/m2s-base -f docker/m2s/base.dockerfile
+docker build -t romnn/m2s-base -f docker/m2s/base.dockerfile docker/m2s/
 docker build . -t romnn/m2s-bench -f docker/m2s/bench.dockerfile
-```
-###### Multi2Sim
-```bash
-docker build . -t romnn/native-base -f docker/native/base.dockerfile
-docker build . -t romnn/native-bench -f docker/native/bench.dockerfile
 ```
 
 #### Benchmarks

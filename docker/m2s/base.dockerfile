@@ -16,6 +16,7 @@ RUN apt-get install -y \
 # this needs gcc >= 4.8 to support C++11
 # RUN wget http://www.multi2sim.org/files/multi2sim-4.1.tar.gz && \
 RUN git clone https://github.com/Multi2Sim/multi2sim.git /simulator
+ENV M2S_ROOT /simulator
 WORKDIR /simulator
 RUN cd /simulator && \
   git checkout multi2sim-kepler && \
@@ -41,7 +42,7 @@ RUN cd /simulator && \
 # COPY ./docker/assets/cuda_8.0.61_375.26_linux.run /install_cuda.run
 # COPY ./docker/assets/cuda_7.0.28_linux.run /install_cuda.run
 # COPY ./docker/assets/cuda_5.0.35_linux_64_ubuntu11.10-1.run /install_cuda.run
-COPY ./docker/assets/cuda_6.0.37_linux_64.run /install_cuda.run
+COPY ./cuda_6.0.37_linux_64.run /install_cuda.run
 # RUN chmod +x /install_cuda.run
 RUN chmod +x /install_cuda.run && \
   /install_cuda.run --silent --toolkit --override && \

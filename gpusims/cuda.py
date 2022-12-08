@@ -1,6 +1,5 @@
 import re
 import subprocess as sp
-import sys
 import ctypes
 
 # check: https://gist.github.com/f0k/63a664160d016a491b2cbea15913d549
@@ -67,7 +66,7 @@ class CUDAError(OSError):
         cuda.cuGetErrorString(code, ctypes.byref(error_str))
         super().__init__(
             "{} failed with error code {}: {}".format(
-                [cmd, *args], code, error_str.value.decode()
+                [cmd] + args, code, error_str.value.decode()
             )
         )
 

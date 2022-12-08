@@ -2,7 +2,7 @@ import os
 from gpusims.bench import BenchmarkConfig
 from pathlib import Path
 import gpusims.utils as utils
-from pprint import pprint
+from pprint import pprint  # noqa: F401
 
 
 class AccelSimBenchmarkConfig(BenchmarkConfig):
@@ -43,50 +43,3 @@ class AccelSimBenchmarkConfig(BenchmarkConfig):
             f.write(stdout)
 
         tmp_run_file.unlink()
-
-        return
-        cmd = [
-            # ".",
-            # str(setup_env.absolute()),
-            # "&&",
-            str(executable.absolute()),
-            inp.args,
-        ]
-        # cmd = "bash -c '{}'".format(" ".join(cmd))
-        cmd = " ".join(cmd)
-        try:
-            # run source only
-            source_cmd = "bash -c '. {} > /dev/null; env'".format(
-                str(setup_env.absolute())
-            )
-            print(source_cmd)
-            _, stdout, stderr = utils.run_cmd(
-                source_cmd,
-                shell=True,
-                # cwd=str(setup_env.parent.absolute()),
-            )
-            env = dict((line.split("=", 1) for line in stdout.splitlines()))
-            pprint(env)
-            # print(stderr)
-            # return
-
-            _, stdout, stderr = utils.run_cmd(
-                cmd,
-                cwd=self.path,
-                timeout_sec=1 * 60,
-                env=env,
-                shell=True,
-            )
-            print("stdout:")
-            print(stdout)
-
-            print("stderr:")
-            print(stderr)
-
-            # todo: write stdout here
-            # with open(str(log_file.absolute()), "r") as f:
-            #     print("log file:")
-            #     print(f.read())
-
-        except utils.ExecError as e:
-            raise e

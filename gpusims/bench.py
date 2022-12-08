@@ -5,6 +5,7 @@ from pathlib import Path
 from pprint import pprint  # noqa: F401
 import gpusims.utils as utils
 
+
 class BenchmarkConfig(abc.ABC):
     def __init__(self, run_dir, benchmark, config, path=None):
         self.benchmark = benchmark

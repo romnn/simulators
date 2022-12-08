@@ -1,5 +1,5 @@
 import os
-from pprint import pprint
+from pprint import pprint  # noqa: F401
 from gpusims.bench import BenchmarkConfig
 import gpusims.utils as utils
 

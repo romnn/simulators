@@ -13,11 +13,13 @@ from invoke import task, Collection
 from pathlib import Path
 
 from gpusims.run import run
+
 # import gpusims.tejas as tejas
 # import gpusims.gpgpusim as gpgpusim
 # import gpusims.accelsim as accel
 
 ROOT_DIR = Path(__file__).parent
+RUN_DIR = ROOT_DIR / "run"
 SRC_DIR = ROOT_DIR / "gpusims"
 PYTHON_FILES = [str(f) for f in SRC_DIR.rglob("*.py")]
 
@@ -30,6 +32,7 @@ ns.add_task(run, "run")
 # gputejas.add_task(tejas.build, "build")
 # gputejas.add_task(tejas.traces, "traces")
 # ns.add_collection(gputejas)
+
 
 @task(help={"check": "Checks formatting without applying changes"})
 def fmt(c, check=False):
@@ -44,6 +47,16 @@ def fmt(c, check=False):
 
 
 ns.add_task(fmt, "format")
+
+
+@task
+def chown(c):
+    """Fix permission for the benchmark run dir"""
+    c.run("sudo chown -R $(id -u):$(id -g) {}".format(str(RUN_DIR.absolute())))
+    c.run("sudo chmod -R 744 {}".format(str(RUN_DIR.absolute())))
+
+
+ns.add_task(chown, "chown")
 
 
 @task
