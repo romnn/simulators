@@ -19,7 +19,7 @@ class ExecError(Exception):
 
 
 def run_cmd(cmd, cwd=None, shell=False, timeout_sec=None, env=None):
-    if not shell:
+    if not shell and not isinstance(cmd, list):
         cmd = shlex.split(cmd)
     print("running", cmd)
 

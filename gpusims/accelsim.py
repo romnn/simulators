@@ -42,4 +42,19 @@ class AccelSimBenchmarkConfig(BenchmarkConfig):
         with open(str(log_file.absolute()), "w") as f:
             f.write(stdout)
 
+        # parse the log file
+        stat_file = results_dir / "stats.csv"
+        utils.run_cmd(
+            [
+                "gpgpusim-parse",
+                "--input",
+                str(log_file.absolute()),
+                "--output",
+                str(stat_file.absolute()),
+            ],
+            cwd=self.path,
+            timeout_sec=1 * 60,
+            # shell=True,
+        )
+
         tmp_run_file.unlink()

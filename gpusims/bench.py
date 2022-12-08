@@ -61,7 +61,7 @@ class BenchmarkConfig(abc.ABC):
 
         for src, rel in utils.merge_dicts(config_files, benchmark_files).items():
             dest = self.path / rel
-            print("cp {} to {}".format(src, dest))
+            # print("cp {} to {}".format(src, dest))
             shutil.copyfile(str(src.absolute()), str(dest.absolute()))
 
 

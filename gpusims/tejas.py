@@ -73,14 +73,28 @@ class TejasBenchmarkConfig(BenchmarkConfig):
         tejas_simulator = tejas_root / "../gputejas/jars/GPUTejas.jar"
         assert tejas_simulator.is_file()
 
-        stat_file = results_dir / "stats.txt"
+        log_file = results_dir / "stats.txt"
         cmd = [
             "java -jar",
             str(tejas_simulator.absolute()),
             str(new_config_file.absolute()),
-            str(stat_file.absolute()),
+            str(log_file.absolute()),
             str(trace_dir.parent.absolute()),
             str(kernels),
         ]
         cmd = " ".join(cmd)
         utils.run_cmd(cmd, cwd=self.path, timeout_sec=5 * 60)
+
+        # parse the stats file
+        stat_file = log_file.with_suffix(".csv")
+        utils.run_cmd(
+            [
+                "tejas-parse",
+                "--input",
+                str(log_file.absolute()),
+                "--output",
+                str(stat_file.absolute()),
+            ],
+            cwd=self.path,
+            timeout_sec=1 * 60,
+        )

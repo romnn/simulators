@@ -44,3 +44,17 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
 
         with open(str(log_file.absolute()), "w") as f:
             f.write(stderr)
+
+        # parse the stats file
+        csv_file = stats_file.with_suffix(".csv")
+        utils.run_cmd(
+            [
+                "m2s-parse",
+                "--input",
+                str(stats_file.absolute()),
+                "--output",
+                str(csv_file.absolute()),
+            ],
+            cwd=self.path,
+            timeout_sec=1 * 60,
+        )
