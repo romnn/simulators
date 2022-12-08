@@ -1,6 +1,12 @@
 
 #### Docker
 
+#### TODO
+- add native targets to the makefiles
+- add python script that reads benchmark.yml and creates the run dirs with all the config and code
+- use pylint and mypy and so on to at least somehow be sure the python code works
+- add native dockerfiles
+
 #### Building the containers
 
 ###### AccelSim
@@ -20,6 +26,11 @@ docker build . -t romnn/tejas-bench -f docker/tejas/bench.dockerfile
 ```bash
 docker build . -t romnn/m2s-base -f docker/m2s/base.dockerfile
 docker build . -t romnn/m2s-bench -f docker/m2s/bench.dockerfile
+```
+###### Multi2Sim
+```bash
+docker build . -t romnn/native-base -f docker/native/base.dockerfile
+docker build . -t romnn/native-bench -f docker/native/bench.dockerfile
 ```
 
 #### Benchmarks
