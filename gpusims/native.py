@@ -1,7 +1,35 @@
+import re
 import os
+import csv
 from pprint import pprint  # noqa: F401
 from gpusims.bench import BenchmarkConfig
 import gpusims.utils as utils
+
+
+def convert_hw_csv(csv_file, output_csv_file):
+    with open(str(csv_file.absolute()), "rU") as f:
+        reader = csv.reader(f)
+
+        # find the start of the csv dump
+        prof_pat = re.compile(r"^==\d*==\s*Profiling result:\s*$")
+        prof_abort = re.compile(r"^==PROF== Disconnected\s*$")
+        for row in reader:
+            line = ", ".join(row)
+            # print(line)
+            if prof_pat.match(line) is not None:
+                # print("found start")
+                break
+            if prof_abort.match(line) is not None:
+                # print("found abort")
+                break
+
+        os.makedirs(output_csv_file.parent, exist_ok=True)
+        with open(str(output_csv_file.absolute()), "w") as out:
+            output_writer = csv.writer(out)
+
+            # write the valid csv rows to new file
+            for row in reader:
+                output_writer.writerow(row)
 
 
 class NativeBenchmarkConfig(BenchmarkConfig):
@@ -44,6 +72,7 @@ class NativeBenchmarkConfig(BenchmarkConfig):
             with open(str(log_file.absolute()), "r") as f:
                 print("log file:")
                 print(f.read())
+            convert_hw_csv(log_file, log_file.with_suffix(".csv"))
 
         except utils.ExecError as e:
             with open(str(log_file.absolute()), "r") as f:
@@ -81,6 +110,7 @@ class NativeBenchmarkConfig(BenchmarkConfig):
             with open(str(cycles_log_file.absolute()), "r") as f:
                 print("log file:")
                 print(f.read())
+            convert_hw_csv(cycles_log_file, cycles_log_file.with_suffix(".csv"))
 
         except utils.ExecError as e:
             with open(str(cycles_log_file.absolute()), "r") as f:
