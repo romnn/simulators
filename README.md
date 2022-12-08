@@ -1,6 +1,19 @@
 
 #### Docker
 
+#### Configuration mapping
+
+##### GPUTejas <=> GPGPUsim
+```bash
+Configuration.Simulation.GPUType
+Configuration.Simulation.ThreadsPerCTA = gpgpu_shader_core_pipeline [0]
+gpgpu_clock_domains[0]
+System.TPC.SM.Frequency
+1447
+
+
+```
+
 #### TODO
 - add native targets to the makefiles
 - add python script that reads benchmark.yml and creates the run dirs with all the config and code
@@ -8,6 +21,10 @@
 - add native dockerfiles
 
 #### Building the containers
+
+```bash
+docker run -v "$PWD/tasks.py:/tasks.py" -v "$PWD/gpusims:/gpusims" -v "$PWD/run:/run" romnn/tejas-bench inv run -c SM6_GTX1080 -s tejas --run-dir /run
+```
 
 ###### AccelSim
 ```bash

@@ -40,26 +40,41 @@ def run(c, run_dir, benchmark, config, simulator, force=False, _dir=None):
     if _dir is not None:
         benchmark_dir = Path(_dir)
 
+    print("running benchmarks ...")
     assert benchmark_dir.is_dir()
     assert simulator.lower() in [ACCELSIM, TEJAS, MULTI2SIM]
 
     configs = parse_configs(benchmark_dir / "configs" / "configs.yml")
     benchmarks = parse_benchmarks(benchmark_dir / "benchmarks.yml")
+    assert len(configs) > 0
+    assert len(benchmarks) > 0
 
     sim_run_dir = Path(run_dir) / simulator.lower()
 
+    if len(config) < 1:
+        config = list(configs.keys())
+
+    if len(benchmark) < 1:
+        benchmark = list(benchmarks.keys())
+
     pending = []
-    for c, b in itertools.product(config, benchmark):
+    for c, b in list(itertools.product(config, benchmark)):
         conf = configs.get(c.lower())
         if conf is None:
             have = ",".join(configs.keys())
-            raise KeyError(f"no such config: {b} (have: {have})")
+            raise KeyError("no such config: {} (have: {})".format(c, have))
 
         bench = benchmarks.get(b.lower())
         if bench is None:
             have = ",".join(benchmarks.keys())
-            raise KeyError(f"no such benchmark: {b} (have: {have})")
+            raise KeyError("no such benchmark: {} (have: {})".format(b, have))
 
+        # check if the benchmark is enabled
+        if not bench.enabled(simulator):
+            print("skipping {} {} ...".format(c, b))
+            continue
+
+        print("running {} {} ...".format(c, b))
         bench_cls = SIMULATORS[simulator.lower()]
         bench_config = bench_cls(
             run_dir=sim_run_dir,

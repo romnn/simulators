@@ -3,6 +3,8 @@ matrixMul:
   executable: matrixMul
   # exec_dir: "$GPUAPPS_ROOT/bin/$CUDA_VERSION/release/"
   # data_dirs: "$GPUAPPS_ROOT/data_dirs/cuda/rodinia/2.0-ft/"
+  tejas:
+    enabled: false
   inputs:
     - args: -wA=32 -hA=32 -wB=32 -hB=32
 

@@ -49,7 +49,7 @@ ns.add_task(fmt, "format")
 @task
 def lint(c):
     """Lint code"""
-    c.run(f"pipenv run flake8 {SRC_DIR}")
+    c.run("pipenv run flake8 {}".format(SRC_DIR))
 
 
 ns.add_task(lint, "lint")

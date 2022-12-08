@@ -8,13 +8,13 @@ class Config:
         self.path = path
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.path})"
+        return "{}({})".format(self.__class__.__name__, self.path)
 
 
 def parse_configs(path):
     configs = {}
-    with open(path, "r") as f:
-        configs_yaml = yaml.load(f, Loader=yaml.FullLoader)
+    with open(str(path.absolute()), "r") as f:
+        configs_yaml = yaml.load(f)
         # pprint(configs_yaml)
         for name, config in configs_yaml.items():
             configs[name.lower()] = Config(

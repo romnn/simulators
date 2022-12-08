@@ -1,5 +1,8 @@
 FROM romnn/accelsim-base
 
+# python for running the scripts
+RUN apt-get install -y python3-pip && pip3 install pyyaml invoke pathlib
+
 # add the benchmarks
 COPY ./benchmarks /benchmarks
 WORKDIR /benchmarks
