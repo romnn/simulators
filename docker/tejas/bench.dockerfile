@@ -1,19 +1,25 @@
 FROM romnn/tejas-base
 
-# add benchmarks
+# add the benchmarks
 COPY ./benchmarks /benchmarks 
 WORKDIR /benchmarks
-WORKDIR /benchmarks/matrixMul
-WORKDIR /benchmarks/matrixMul-modified
+
+# compile the benchmarks
+RUN cd /benchmarks && \
+  make clean && \
+  make -j tejas
+
+# WORKDIR /benchmarks/matrixMul
+# WORKDIR /benchmarks/matrixMul-modified
 
 # COPY ./docker/tejas/inject-main.py /benchmarks/
 
 # generate a trace
 # WORKDIR /trace
 # ENV CONFIG_PATH=/simulator/gputejas/src/simulator/config/config.xml
-RUN mkdir ./run && \
-  cp $TEJAS_ROOT/src/simulator/config/config.xml ./ && \
-  ls -lia ./
+# RUN mkdir ./run && \
+#   cp $TEJAS_ROOT/src/simulator/config/config.xml ./ && \
+#   ls -lia ./
 
 # cp /simulator/Tracegen.cpp ./ && \
 # cp /simulator/configure.ocelot ./ && \

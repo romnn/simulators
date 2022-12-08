@@ -1,19 +1,3 @@
-# Add source files here
-# EXECUTABLE	:= sdk-matrixMul-modified
-# CUDA source files (compiled with cudacc)
-# CUFILES		:= cuda_mult.cu 
-
-# C/C++ source files (compiled with gcc / c++)
-# CCFILES		:= \
-
-# Do not link with CUTIL
-# OMIT_CUTIL_LIB := 1
-
-################################################################################
-# Rules and targets
-# include common/common.mk
-
-# Location of the CUDA Toolkit
 CUDA_PATH ?= /usr/local/cuda
 
 HOST_COMPILER ?= g++
@@ -34,54 +18,30 @@ ALL_LDFLAGS += $(ALL_CCFLAGS)
 ALL_LDFLAGS += $(addprefix -Xlinker ,$(LDFLAGS))
 ALL_LDFLAGS += $(addprefix -Xlinker ,$(EXTRA_LDFLAGS))
 
-# Common includes and paths for CUDA
 INCLUDES  := -I../Common
 LIBRARIES :=
 
-################################################################################
+TEJAS_LIBRARIES := "-L$(TEJAS_ROOT)/../so_files_64bit"
+TEJAS_LIBRARIES += "-L$(TEJAS_ROOT)/../"
+TEJAS_LIBRARIES += "-L$(CUDA_PATH)/lib64"
+TEJAS_LIBRARIES += "-L/usr/lib/x86_64-linux-gnu/"
 
-# Gencode arguments
-# SMS ?= 35 37 50 52 60 61 70 75 80 86 90
+accelsim: matrixMul.cu
+	$(NVCC) $(INCLUDES) $(ALL_CCFLAGS) --std=c++11 $(GENCODE_FLAGS) -o matrixMul.o -c matrixMul.cu
+	$(NVCC) $(ALL_LDFLAGS) --cudart shared $(GENCODE_FLAGS) -o matrixMul matrixMul.o $(LIBRARIES)
 
-# ifeq ($(GENCODE_FLAGS),)
-# Generate SASS code for each SM architecture listed in $(SMS)
-# $(foreach sm,$(SMS),$(eval GENCODE_FLAGS += -gencode arch=compute_$(sm),code=sm_$(sm)))
+tejas: matrixMul.cu
+	python3 ../inject-main.py matrixMul.cu matrixMulTejas.cu
+	$(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -arch=sm_20 -o matrixMul.o -c matrixMulTejas.cu
+	g++-4.8 -std=c++0x $(TEJAS_ROOT)/../Tracegen.cpp -c -I$(TEJAS_ROOT)/../
+	g++-4.4 -o tracegen matrixMul.o Tracegen.o $(TEJAS_LIBRARIES) -locelot -ltinfo -Wl,-rpath-link=$(TEJAS_ROOT)/../so_files_64bit
 
-# Generate PTX code from the highest SM architecture in $(SMS) to guarantee forward-compatibility
-# HIGHEST_SM := $(lastword $(sort $(SMS)))
-# ifneq ($(HIGHEST_SM),)
-# GENCODE_FLAGS += -gencode arch=compute_$(HIGHEST_SM),code=compute_$(HIGHEST_SM)
-# endif
-# endif
-
-# ALL_CCFLAGS += --threads 0 --std=c++11
-ALL_CCFLAGS += --std=c++11
-
-################################################################################
-# $(EXEC) $(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -o $@ -c $<
-# $(EXEC) mkdir -p ../../../bin/$(TARGET_ARCH)/$(TARGET_OS)/$(BUILD_TYPE)
-# $(EXEC) cp $@ ../../../bin/$(TARGET_ARCH)/$(TARGET_OS)/$(BUILD_TYPE)
-
-# $(EXEC) $(NVCC) $(ALL_LDFLAGS) $(GENCODE_FLAGS) -o $@ $+ $(LIBRARIES)
-# rm -rf ../../../bin/$(TARGET_ARCH)/$(TARGET_OS)/$(BUILD_TYPE)/matrixMul
-# lib/gcc-$CC_VERSION/cuda-$CUDA_VERSION_NUMBER/release/
-
-all: build
-
-build: matrixMul
-
-matrixMul.o: matrixMul.cu
-	$(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -o $@ -c $<
-
-matrixMul: matrixMul.o
-	$(NVCC) $(ALL_LDFLAGS) $(GENCODE_FLAGS) -o $@ $+ $(LIBRARIES)
-	
-run: build
-	./matrixMul
-
-testrun: build
+# $(NVCC) $(ALL_LDFLAGS) --cudart shared $(GENCODE_FLAGS) -o matrixMul matrixMul.o $(LIBRARIES)
+# $TEJAS_ROOT
 
 clean:
-	rm -f matrixMul matrixMul.o
+	rm -f matrixMul matrixMul.o matrixMulTejas.cu
 
 clobber: clean
+
+
