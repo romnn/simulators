@@ -4,6 +4,7 @@ use anyhow::Result;
 use clap::Parser;
 use lazy_static::lazy_static;
 use regex::{Regex, RegexBuilder};
+use serde::{Serialize, Serializer};
 use std::time::{Duration, Instant};
 use std::{fs, io, path::PathBuf};
 
@@ -17,15 +18,41 @@ struct Options {
     output: PathBuf,
 }
 
-#[derive(Debug, Default)]
+#[derive(Serialize, Debug, Default)]
 struct Stats {
     emulator_type: Option<String>,
+    #[serde(serialize_with = "serialize_datetime")]
     created: Option<chrono::DateTime<chrono::FixedOffset>>,
+    #[serde(rename = "sim_time_secs")]
+    #[serde(serialize_with = "serialize_duration")]
     sim_time: Option<Duration>,
     total_inst_count: Option<u64>,
     total_cycle_count: Option<u64>,
     kips: Option<f64>,
     total_ipc: Option<f64>,
+}
+
+fn serialize_duration<S>(opt: &Option<Duration>, serializer: S) -> Result<S::Ok, S::Error>
+where
+    S: Serializer,
+{
+    match *opt {
+        Some(ref dur) => serializer.serialize_some(&dur.as_secs_f64()),
+        None => serializer.serialize_none(),
+    }
+}
+
+fn serialize_datetime<S>(
+    opt: &Option<chrono::DateTime<chrono::FixedOffset>>,
+    serializer: S,
+) -> Result<S::Ok, S::Error>
+where
+    S: Serializer,
+{
+    match *opt {
+        Some(ref dt) => serializer.serialize_some(&dt.timestamp()),
+        None => serializer.serialize_none(),
+    }
 }
 
 fn main() -> Result<()> {
@@ -47,6 +74,7 @@ fn main() -> Result<()> {
         .open(&options.output)?;
 
     let mut csv_writer = csv::WriterBuilder::new()
+        .has_headers(true)
         .flexible(false)
         .from_writer(output_file);
 
@@ -63,6 +91,21 @@ fn main() -> Result<()> {
      * TOTAL INSTRUCTIONS PER CYCLE = 0.2900861514722901
      * *************************************************************************
      */
+
+    /*
+    ****************************************************************************
+    Cache details
+    Total Instruction Cache Access 0
+    Total Instruction Cache Misses 5
+
+    Total Constant Cache Access 0
+    Total Constant Cache Misses 128
+
+    Total Shared Cache Access 0
+    Total Shared Cache Misses 0
+
+    ****************************************************************************
+    */
     macro_rules! multiline_regex {
         ($pattern:literal) => {
             RegexBuilder::new($pattern)
@@ -114,6 +157,18 @@ fn main() -> Result<()> {
     };
     println!("stats: {:#?}", &stats);
 
+    // let csv_stats: HashMap<String, String> = [
+    //     ("sim_time", String::serialize(stats.sim_time)),
+    //      // .serialize(.to_string()),
+    //     // ("sim_time", stats.sim_time.to_string()),
+    //     // ("KIPS", stats.kips.map(.to_string()),
+    // ]
+    // .iter()
+    // .collect();
+
+    // csv_writer.write_record(csv_stats.keys())?;
+    csv_writer.serialize(&stats)?;
+
     let duration = start.elapsed();
     println!("done after {:?}", duration,);
     Ok(())
@@ -127,7 +182,7 @@ where
     match reg
         .captures(s.as_ref())
         .and_then(|c| c.get(1))
-        .map(|m| m.as_str().trim()) // .to_string())
+        .map(|m| m.as_str().trim())
         .map(|m| m.parse::<T>())
     {
         Some(Err(err)) => {
