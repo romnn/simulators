@@ -10,38 +10,40 @@ class BenchmarkConfig(abc.ABC):
     def __init__(self, run_dir, benchmark, config, path=None):
         self.benchmark = benchmark
         self.config = config
-        benchmark_name = benchmark.name.lower().replace(" ", "_")
-        config_name = config.name.lower().replace(" ", "_")
+        benchmark_name = utils.slugify(benchmark.name.lower())
+        config_name = utils.slugify(config.name.lower())
         self.path = path or Path(run_dir) / benchmark_name / config_name
 
     def __repr__(self):
         return "{}({}, {})".format(self.__class__.__name__, self.benchmark, self.config)
 
+    @staticmethod
     @abc.abstractmethod
-    def run_input(self, inp, force=False):
+    def run_input(path, inp, repetitions=1, force=False):
         pass
 
-    def run(self, force=False):
+    def input_path(self, inp):
+        return self.path / inp.sanitized_name()
+
+    def run(self, repetitions=1, force=False):
         for inp in self.benchmark.inputs:
             print("running input:", inp)
             print(inp.executable)
+            print(self.benchmark.extra)
             # assert self.inp.executable.is_file()
-            self.run_input(inp, force=force)
-            # do not create run scripts
-            # do that on the fly here
-            # input_name = inp.name()
-            # run_file = self.path / input_name
-            # # run_file = run_file.with_suffix(".sh")
-            # # run_file = run_file.with_extension(".sh")
-            # # result_file = self.path / "_".join(inp).replace(" ", "_")
-            # # input_dir
-            # # path = path.with_extension
-            # print("run file:", run_file)
 
-    def setup(self):
+            path = self.input_path(inp)
+            self.setup(path)
+            try:
+                repetitions = int(self.benchmark.extra["repetitions"])
+            except (KeyError, ValueError):
+                pass
+            self.run_input(path=path, inp=inp, repetitions=repetitions, force=force)
+
+    def setup(self, path):
         """setup the benchmark in given run dir"""
-        print("setup {} in {}".format(self.benchmark.name, self.path))
-        utils.ensure_empty(self.path)
+        print("setup {} in {}".format(self.benchmark.name, path))
+        utils.ensure_empty(path)
 
         # copy files to run dir
         benchmark_files = {
@@ -60,7 +62,7 @@ class BenchmarkConfig(abc.ABC):
             # pprint(config_files)
 
         for src, rel in utils.merge_dicts(config_files, benchmark_files).items():
-            dest = self.path / rel
+            dest = path / rel
             # print("cp {} to {}".format(src, dest))
             shutil.copyfile(str(src.absolute()), str(dest.absolute()))
 
@@ -94,14 +96,12 @@ class Input:
             else:
                 self.args = str(args)
 
-    def name(self):
-        input_name = self.args
-        input_name = input_name.replace(" ", "_")
-        input_name = input_name.replace(".", "_")
-        return input_name
+    def sanitized_name(self):
+        sanitized = utils.slugify(self.args)
+        return "input-" + sanitized
 
     def __repr__(self):
-        return "{}({})".format(self.__class__.__name__, self.executable + self.args)
+        return "{}({} {})".format(self.__class__.__name__, self.executable, self.args)
 
 
 def parse_benchmarks(path):

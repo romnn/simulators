@@ -4,7 +4,8 @@ import gpusims.utils as utils
 
 
 class Multi2SimBenchmarkConfig(BenchmarkConfig):
-    def run_input(self, inp, force=False):
+    @staticmethod
+    def run_input(path, inp, force=False, **kwargs):
         print("multi2sim run:", inp)
 
         # sim_root = Path(os.environ["SIM_ROOT"])
@@ -12,11 +13,11 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
         # assert setup_env.is_file()
         # utils.chmod_x(setup_env)
 
-        executable = self.path / inp.executable
+        executable = path / inp.executable
         assert executable.is_file()
         utils.chmod_x(executable)
 
-        results_dir = self.path / "results"
+        results_dir = path / "results"
         os.makedirs(str(results_dir.absolute()), exist_ok=True)
         log_file = results_dir / "log.txt"
         stats_file = results_dir / "stats.txt"
@@ -33,7 +34,7 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
         cmd = " ".join(cmd)
         _, stdout, stderr = utils.run_cmd(
             cmd,
-            cwd=self.path,
+            cwd=path,
             timeout_sec=5 * 60,
         )
         print("stdout:")
@@ -55,6 +56,6 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
                 "--output",
                 str(csv_file.absolute()),
             ],
-            cwd=self.path,
+            cwd=path,
             timeout_sec=1 * 60,
         )

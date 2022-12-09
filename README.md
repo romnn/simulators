@@ -14,20 +14,34 @@ System.TPC.SM.Frequency
 -gpgpu_n_clusters 28 = NUM SM'S
 ```
 
+#### Benchmarks
+
+##### BabelStream
+```
+cd BabelStream
+cmake -Bbuild -H. -DCMAKE_CUDA_COMPILER=/usr/local/cuda/bin/nvcc -DCUDA_ARCH=sm60 -DMODEL=cuda
+cmake --build build
+./build/cuda-stream
+```
+
 #### TODO
+- go though all the comments and try to remember the difficulties and things that did not work
+  - copy unused stuff from the dockerfiles into NOTES.md
+- add more benchmarks for all simulators
+- add larger inputs for all simulators once we have more benchmarks and do not care about runtime anymore
+
 - make bar plots between simulators for matrixMul-modified
 - make correlation plots between simulators for matrixMul-modified (and two inputs?)
 - make correlation plots between simulators for multiple benchmarks (once we have them)
 
-- use individual folders for each input
-- repeat the native benchmarks a few times
 - match configs and document the mappings between simulators
-- go though all the comments and try to remember the difficulties and things that did not work
-- add more benchmarks for all simulators
 - add trace driven accelsim
 - add macsim (using ocelot base image)
 
 #### Done
+- use individual folders for each input
+- fix the results permissions after each benchmark run
+- repeat the native benchmarks a few times
 - integrate the rust parsers into python runners
 - add native targets to the makefiles
 - add python script that reads benchmark.yml and creates the run dirs with all the config and code
@@ -43,6 +57,19 @@ cargo build --release --all-targets --target x86_64-unknown-linux-musl
 
 ```
 #### Building the containers
+
+##### Simple API
+```
+# building
+inv build -s native
+inv build -s native --base
+
+# benchmarking
+# single simulator
+inv bench -s native -c SM6_GTX1080
+# all simulators
+inv bench -c SM6_GTX1080
+```
 
 ```bash
 docker run -v "$PWD/tasks.py:/tasks.py" -v "$PWD/gpusims:/gpusims" -v "$PWD/run:/benchrun" romnn/tejas-bench inv run -c SM6_GTX1080 -s tejas --run-dir /benchrun
@@ -68,9 +95,9 @@ docker build . -t romnn/accelsim-bench -f docker/accelsim/bench.dockerfile
 ```
 ###### Tejas
 ```bash
-docker build . -t romnn/ocelot -f docker/ocelot/original.dockerfile
+> docker build . -t romnn/ocelot -f docker/ocelot/original.dockerfile
+docker build -t romnn/ocelot -f docker/ocelot/original.dockerfile docker/ocelot/
 docker build -t romnn/tejas-base -f docker/tejas/base.dockerfile docker/tejas/
-# docker build . -t romnn/tejas-base -f docker/tejas/base.dockerfile
 docker build . -t romnn/tejas-bench -f docker/tejas/bench.dockerfile
 ```
 ###### Multi2Sim

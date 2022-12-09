@@ -34,7 +34,7 @@ RUN apt-get install -y \
 # dpkg -i libcuda1-352_352.63-0ubuntu0.14.04.1_amd64.deb && \
 
 RUN mkdir /tmp/cuda_toolkit
-COPY ./docker/ocelot/cudatoolkit_4.2.9_linux_64_ubuntu11.04.run /tmp/cuda_toolkit/cudatoolkit_4.2.9_linux_64_ubuntu11.04.run
+COPY ./cudatoolkit_4.2.9_linux_64_ubuntu11.04.run /tmp/cuda_toolkit/cudatoolkit_4.2.9_linux_64_ubuntu11.04.run
 
 RUN cd /tmp/cuda_toolkit && \
   chmod +x cudatoolkit_4.2.9_linux_64_ubuntu11.04.run && \

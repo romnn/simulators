@@ -16,40 +16,41 @@ def build_config(config_file, threads):
 
 
 class TejasBenchmarkConfig(BenchmarkConfig):
-    def run_input(self, inp, force=False):
+    @staticmethod
+    def run_input(path, inp, force=False, **kwargs):
         print("tejas run:", inp, inp.args)
 
         threads = multiprocessing.cpu_count()
         threads = 8
         tejas_root = Path(os.environ["TEJAS_ROOT"])
 
-        default_config_file = self.path / "tejas_config.xml"
+        default_config_file = path / "tejas_config.xml"
         new_config = build_config(default_config_file, threads)
 
-        new_config_file = self.path / "config.xml"
+        new_config_file = path / "config.xml"
         print("building config {} for {} threads".format(str(new_config_file), threads))
         new_config.write(str(new_config_file.absolute()))
 
-        results_dir = self.path / "results"
+        results_dir = path / "results"
         trace_dir = results_dir / str(threads)
         utils.ensure_empty(trace_dir)
         print(trace_dir)
 
-        tracegen = self.path / "tracegen"
+        tracegen = path / "tracegen"
         utils.chmod_x(tracegen)
         # tracegen.chmod(tracegen.stat().st_mode | stat.S_IEXEC)
 
         cmd = [str(tracegen.absolute()), inp.args, str(threads)]
         cmd = " ".join(cmd)
-        utils.run_cmd(cmd, cwd=self.path, timeout_sec=5 * 60)
+        utils.run_cmd(cmd, cwd=path, timeout_sec=5 * 60)
 
         # check number of kernels
         kernels = 0
-        with open(str((self.path / "0.txt").absolute()), "r") as f:
+        with open(str((path / "0.txt").absolute()), "r") as f:
             kernels = len([line for line in f.readlines() if "KERNEL START" in line])
         print("kernels={}".format(kernels))
 
-        for txt_file in list(self.path.glob("*.txt")):
+        for txt_file in list(path.glob("*.txt")):
             if re.match(r"\d+", txt_file.name):
                 txt_file.rename(trace_dir / txt_file.name)
 
@@ -65,7 +66,7 @@ class TejasBenchmarkConfig(BenchmarkConfig):
             str(kernels),
         ]
         cmd = " ".join(cmd)
-        utils.run_cmd(cmd, cwd=self.path, timeout_sec=5 * 60)
+        utils.run_cmd(cmd, cwd=path, timeout_sec=5 * 60)
 
         kernels = len(list(trace_dir.glob("hashfile_*")))
         print("kernels:", kernels)
@@ -83,7 +84,7 @@ class TejasBenchmarkConfig(BenchmarkConfig):
             str(kernels),
         ]
         cmd = " ".join(cmd)
-        utils.run_cmd(cmd, cwd=self.path, timeout_sec=5 * 60)
+        utils.run_cmd(cmd, cwd=path, timeout_sec=5 * 60)
 
         # parse the stats file
         stat_file = log_file.with_suffix(".csv")
@@ -95,6 +96,6 @@ class TejasBenchmarkConfig(BenchmarkConfig):
                 "--output",
                 str(stat_file.absolute()),
             ],
-            cwd=self.path,
+            cwd=path,
             timeout_sec=1 * 60,
         )

@@ -17,3 +17,16 @@ matrixMul-modified:
   # data_dirs: "$GPUAPPS_ROOT/data_dirs/cuda/rodinia/2.0-ft/"
   inputs:
     - args: 32
+
+BabelStream:
+  path: ./BabelStream
+  executable: CUDAStream
+  repetitions: 1
+  # m2s:
+  #   enabled: false
+  # tejas:
+  #   enabled: false
+  inputs:
+    - args: --arraysize 1024 --numtimes 2
+    # - args: --arraysize 1024000 --numtimes 10
+

@@ -33,87 +33,90 @@ def convert_hw_csv(csv_file, output_csv_file):
 
 
 class NativeBenchmarkConfig(BenchmarkConfig):
-    def run_input(self, inp, force=False):
-        # print(self.benchmark.name, self.path)
+    @staticmethod
+    def run_input(path, inp, repetitions=1, force=False):
         print("native run:", inp)
         # export CUDA_VISIBLE_DEVICES="0"
 
-        results_dir = self.path / "results"
+        results_dir = path / "results"
         os.makedirs(str(results_dir.absolute()), exist_ok=True)
 
-        log_file = results_dir / "result.txt"
-
-        executable = self.path / inp.executable
+        executable = path / inp.executable
         assert executable.is_file()
         utils.chmod_x(executable)
 
-        cmd = [
-            "nvprof",
-            "--unified-memory-profiling",
-            "off",
-            "--concurrent-kernels",
-            "off",
-            "--print-gpu-trace",
-            "-u",
-            "us",
-            "--demangling",
-            "off",
-            "--csv",
-            "--log-file",
-            str(log_file.absolute()),
-            str(executable.absolute()),
-            inp.args,
-        ]
-        cmd = " ".join(cmd)
-        try:
-            _, stdout, _ = utils.run_cmd(cmd, cwd=self.path, timeout_sec=5 * 60)
-            print("stdout:")
-            print(stdout)
-            with open(str(log_file.absolute()), "r") as f:
-                print("log file:")
-                print(f.read())
-            convert_hw_csv(log_file, log_file.with_suffix(".csv"))
+        for r in range(repetitions):
+            log_file = results_dir / "result.{}.txt".format(r)
 
-        except utils.ExecError as e:
-            with open(str(log_file.absolute()), "r") as f:
-                print("log file:")
-                print(f.read())
-            raise e
+            cmd = [
+                "nvprof",
+                "--unified-memory-profiling",
+                "off",
+                "--concurrent-kernels",
+                "off",
+                "--print-gpu-trace",
+                "-u",
+                "us",
+                "--demangling",
+                "off",
+                "--csv",
+                "--log-file",
+                str(log_file.absolute()),
+                str(executable.absolute()),
+                inp.args,
+            ]
+            cmd = " ".join(cmd)
+            try:
+                _, stdout, _ = utils.run_cmd(cmd, cwd=path, timeout_sec=5 * 60)
+                print("stdout:")
+                print(stdout)
+                with open(str(log_file.absolute()), "r") as f:
+                    print("log file:")
+                    print(f.read())
+                convert_hw_csv(log_file, log_file.with_suffix(".csv"))
 
-        cycles_log_file = results_dir / "result.cycles.txt"
-        cycles_cmd = [
-            "nvprof",
-            "--unified-memory-profiling",
-            "off",
-            "--concurrent-kernels",
-            "off",
-            "--print-gpu-trace",
-            "--events",
-            "elapsed_cycles_sm",
-            "-u",
-            "us",
-            "--metrics",
-            "all",
-            "--demangling",
-            "off",
-            "--csv",
-            "--log-file",
-            str(cycles_log_file.absolute()),
-            str(executable.absolute()),
-            inp.args,
-        ]
-        cycles_cmd = " ".join(cycles_cmd)
-        try:
-            _, stdout, _ = utils.run_cmd(cycles_cmd, cwd=self.path, timeout_sec=5 * 60)
-            print("stdout:")
-            print(stdout)
-            with open(str(cycles_log_file.absolute()), "r") as f:
-                print("log file:")
-                print(f.read())
-            convert_hw_csv(cycles_log_file, cycles_log_file.with_suffix(".csv"))
+            except utils.ExecError as e:
+                with open(str(log_file.absolute()), "r") as f:
+                    print("log file:")
+                    print(f.read())
+                raise e
 
-        except utils.ExecError as e:
-            with open(str(cycles_log_file.absolute()), "r") as f:
-                print("log file:")
-                print(f.read())
-            raise e
+            cycles_log_file = results_dir / "result.{}.cycles.txt".format(r)
+            cycles_cmd = [
+                "nvprof",
+                "--unified-memory-profiling",
+                "off",
+                "--concurrent-kernels",
+                "off",
+                "--print-gpu-trace",
+                "--events",
+                "elapsed_cycles_sm",
+                "-u",
+                "us",
+                "--metrics",
+                "all",
+                "--demangling",
+                "off",
+                "--csv",
+                "--log-file",
+                str(cycles_log_file.absolute()),
+                str(executable.absolute()),
+                inp.args,
+            ]
+            cycles_cmd = " ".join(cycles_cmd)
+            try:
+                _, stdout, _ = utils.run_cmd(
+                    cycles_cmd, cwd=path, timeout_sec=5 * 60
+                )
+                print("stdout:")
+                print(stdout)
+                with open(str(cycles_log_file.absolute()), "r") as f:
+                    print("log file:")
+                    print(f.read())
+                convert_hw_csv(cycles_log_file, cycles_log_file.with_suffix(".csv"))
+
+            except utils.ExecError as e:
+                with open(str(cycles_log_file.absolute()), "r") as f:
+                    print("log file:")
+                    print(f.read())
+                raise e
