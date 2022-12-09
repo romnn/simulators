@@ -10,14 +10,17 @@ Configuration.Simulation.ThreadsPerCTA = gpgpu_shader_core_pipeline [0]
 gpgpu_clock_domains[0]
 System.TPC.SM.Frequency
 1447
+
+-gpgpu_n_clusters 28 = NUM SM'S
 ```
 
 #### TODO
-- integrate the rust parsers into python runners
 - make bar plots between simulators for matrixMul-modified
 - make correlation plots between simulators for matrixMul-modified (and two inputs?)
 - make correlation plots between simulators for multiple benchmarks (once we have them)
 
+- use individual folders for each input
+- repeat the native benchmarks a few times
 - match configs and document the mappings between simulators
 - go though all the comments and try to remember the difficulties and things that did not work
 - add more benchmarks for all simulators
@@ -25,6 +28,7 @@ System.TPC.SM.Frequency
 - add macsim (using ocelot base image)
 
 #### Done
+- integrate the rust parsers into python runners
 - add native targets to the makefiles
 - add python script that reads benchmark.yml and creates the run dirs with all the config and code
 - use pylint and mypy and so on to at least somehow be sure the python code works
