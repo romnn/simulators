@@ -20,10 +20,15 @@ WORKDIR /simulator
 RUN git checkout release
 RUN ls -lia .
 
-# build accelsim
+# build accelsim tracer
 SHELL ["/bin/bash", "-c"]
 ENV CUDA_INSTALL_PATH=/usr/local/cuda
-RUN cd ./gpu-simulator && source ./setup_environment.sh && make -j
+RUN /simulator/util/tracer_nvbit/install_nvbit.sh && \
+  ls -lia /simulator/util/tracer_nvbit/ && \
+  make -j -C /simulator/util/tracer_nvbit
+
+# build accelsim
+RUN cd /simulator/gpu-simulator && source ./setup_environment.sh && make -j
 RUN ls -lia .
 
 # Get the pre-run trace files
