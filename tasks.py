@@ -71,6 +71,7 @@ def build_container(c, ctx, tag, dockerfile=None):
         cmd += ["-f", str(dockerfile.absolute())]
     cmd += [str(ctx.absolute())]
     cmd = " ".join(cmd)
+    print(cmd)
     c.run(cmd)
 
 
@@ -84,6 +85,10 @@ def build_container(c, ctx, tag, dockerfile=None):
 def build(c, simulator, base=False):
     """Build all the benchmark docker containers"""
     simulator = [s.lower() for s in simulator]
+    for s in simulator:
+        if s not in gpusims.SIMULATORS:
+            have = list(gpusims.SIMULATORS.keys())
+            raise ValueError("unknown simulator: {} (have {})".format(s, have))
     should_build = [
         s for s in gpusims.SIMULATORS.keys() if len(simulator) < 1 or s in simulator
     ]
@@ -124,7 +129,8 @@ def bench(c, simulator, benchmark, config, repetitions=5, force=False):
     simulator = [s.lower() for s in simulator]
     for s in simulator:
         if s not in gpusims.SIMULATORS:
-            raise ValueError("unknown simulator: {}".format(s))
+            have = list(gpusims.SIMULATORS.keys())
+            raise ValueError("unknown simulator: {} (have {})".format(s, have))
     simulators = [s for s in gpusims.SIMULATORS if s in simulator or len(simulator) < 1]
     print(simulators)
 
@@ -138,7 +144,7 @@ def bench(c, simulator, benchmark, config, repetitions=5, force=False):
             ROOT_DIR / "run": container_run_dir,
         }
         cmd = ["docker", "run"]
-        if s == gpusims.NATIVE:
+        if s in [gpusims.ACCELSIM_SASS, gpusims.NATIVE]:
             # map in the GPU
             cmd += ["--cap-add", "SYS_ADMIN", "--privileged", "--gpus", "all"]
         for src, dest in volumes.items():

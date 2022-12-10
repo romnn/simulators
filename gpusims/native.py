@@ -34,7 +34,7 @@ def convert_hw_csv(csv_file, output_csv_file):
 
 class NativeBenchmarkConfig(BenchmarkConfig):
     @staticmethod
-    def run_input(path, inp, repetitions=1, force=False):
+    def run_input(path, inp, repetitions=1, force=False, **kwargs):
         print("native run:", inp)
         # export CUDA_VISIBLE_DEVICES="0"
 

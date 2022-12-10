@@ -25,9 +25,11 @@ cmake --build build
 ```
 
 #### TODO
+- rename the benchmarks to reflect the benchmarks versions they are from
+- add more benchmarks for all simulators
+
 - go though all the comments and try to remember the difficulties and things that did not work
   - copy unused stuff from the dockerfiles into NOTES.md
-- add more benchmarks for all simulators
 - add larger inputs for all simulators once we have more benchmarks and do not care about runtime anymore
 
 - make bar plots between simulators for matrixMul-modified

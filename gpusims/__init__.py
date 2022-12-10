@@ -1,20 +1,23 @@
 from pathlib import Path
 
 from gpusims.native import NativeBenchmarkConfig
-from gpusims.accelsim import AccelSimBenchmarkConfig
+from gpusims.accelsim import AccelSimPTXBenchmarkConfig
+from gpusims.accelsim_sass import AccelSimSASSBenchmarkConfig
 from gpusims.tejas import TejasBenchmarkConfig
 from gpusims.multi2sim import Multi2SimBenchmarkConfig
 
 ROOT_DIR = Path(__file__).parent.parent
 
 NATIVE = "native"
-ACCELSIM = "accelsim"
+ACCELSIM_PTX = "accelsim-ptx"
+ACCELSIM_SASS = "accelsim-sass"
 TEJAS = "tejas"
 MULTI2SIM = "m2s"
 
 SIMULATORS = {
     NATIVE: NativeBenchmarkConfig,
-    ACCELSIM: AccelSimBenchmarkConfig,
+    ACCELSIM_PTX: AccelSimPTXBenchmarkConfig,
+    ACCELSIM_SASS: AccelSimSASSBenchmarkConfig,
     TEJAS: TejasBenchmarkConfig,
     MULTI2SIM: Multi2SimBenchmarkConfig,
 }
@@ -32,11 +35,23 @@ CONTAINERS = {
             dockerfile=ROOT_DIR / "docker/native/base.dockerfile",
         ),
     ),
-    ACCELSIM: dict(
+    ACCELSIM_PTX: dict(
         bench=dict(
-            tag="romnn/accelsim-bench",
+            tag="romnn/accelsim-ptx-bench",
             ctx=ROOT_DIR,
-            dockerfile=ROOT_DIR / "docker/accelsim/bench.dockerfile",
+            dockerfile=ROOT_DIR / "docker/accelsim/bench.ptx.dockerfile",
+        ),
+        base=dict(
+            tag="romnn/accelsim-base",
+            ctx=ROOT_DIR / "docker/accelsim",
+            dockerfile=ROOT_DIR / "docker/accelsim/base.dockerfile",
+        ),
+    ),
+    ACCELSIM_SASS: dict(
+        bench=dict(
+            tag="romnn/accelsim-sass-bench",
+            ctx=ROOT_DIR,
+            dockerfile=ROOT_DIR / "docker/accelsim/bench.sass.dockerfile",
         ),
         base=dict(
             tag="romnn/accelsim-base",

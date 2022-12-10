@@ -1,31 +1,45 @@
-matrixMul:
-  path: ./matrixMul
-  executable: matrixMul
-  # exec_dir: "$GPUAPPS_ROOT/bin/$CUDA_VERSION/release/"
-  # data_dirs: "$GPUAPPS_ROOT/data_dirs/cuda/rodinia/2.0-ft/"
+# from: CUDA 10.1 SDK
+CUDA10-transpose:
+  path: ./CUDA10-transpose
+  executable: transpose
   m2s:
+    # cannot compile cooperative threads (CUDA 9+)
     enabled: false
   tejas:
+    # cannot compile cooperative threads (CUDA 9+)
+    enabled: false
+  inputs:
+    - args: -dimX=32 -dimY=32
+
+# from: CUDA 10.1 SDK
+CUDA10-matrixMul:
+  path: ./CUDA10-matrixMul
+  executable: matrixMul
+  m2s:
+    # cannot compile async streams
+    enabled: false
+  tejas:
+    # cannot compile async streams
     enabled: false
   inputs:
     - args: -wA=32 -hA=32 -wB=32 -hB=32
 
-matrixMul-modified:
-  path: ./matrixMul-modified
+# from: gpu-app-collection/src/cuda/custom-apps/sdk-matrixMul-modified
+# probably CUDA 4.2 SDK ?
+CUDA4_matrixMul:
+  path: ./CUDA4-matrixMul
   executable: matrixMul
-  # exec_dir: "$GPUAPPS_ROOT/bin/$CUDA_VERSION/release/"
-  # data_dirs: "$GPUAPPS_ROOT/data_dirs/cuda/rodinia/2.0-ft/"
   inputs:
     - args: 32
 
+# from: https://github.com/UoB-HPC/BabelStream
 BabelStream:
   path: ./BabelStream
   executable: CUDAStream
   repetitions: 1
-  # m2s:
-  #   enabled: false
-  # tejas:
-  #   enabled: false
+  m2s:
+    # fails with unknown instruction
+    enabled: false
   inputs:
     - args: --arraysize 1024 --numtimes 2
     # - args: --arraysize 1024000 --numtimes 10
