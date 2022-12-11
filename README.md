@@ -25,22 +25,23 @@ cmake --build build
 ```
 
 #### TODO
-- rename the benchmarks to reflect the benchmarks versions they are from
+- add macsim (using ocelot base image)
 - add more benchmarks for all simulators
 
+- match configs and document the mappings between simulators
 - go though all the comments and try to remember the difficulties and things that did not work
-  - copy unused stuff from the dockerfiles into NOTES.md
+
 - add larger inputs for all simulators once we have more benchmarks and do not care about runtime anymore
 
 - make bar plots between simulators for matrixMul-modified
 - make correlation plots between simulators for matrixMul-modified (and two inputs?)
 - make correlation plots between simulators for multiple benchmarks (once we have them)
 
-- match configs and document the mappings between simulators
-- add trace driven accelsim
-- add macsim (using ocelot base image)
 
 #### Done
+- add trace driven accelsim
+- copy unused stuff from the dockerfiles into NOTES.md
+- rename the benchmarks to reflect the benchmarks versions they are from
 - use individual folders for each input
 - fix the results permissions after each benchmark run
 - repeat the native benchmarks a few times

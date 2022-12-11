@@ -8,11 +8,6 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
     def run_input(path, inp, force=False, **kwargs):
         print("multi2sim run:", inp)
 
-        # sim_root = Path(os.environ["SIM_ROOT"])
-        # setup_env = sim_root / "setup_environment"
-        # assert setup_env.is_file()
-        # utils.chmod_x(setup_env)
-
         executable = path / inp.executable
         assert executable.is_file()
         utils.chmod_x(executable)

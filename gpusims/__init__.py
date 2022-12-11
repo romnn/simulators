@@ -5,6 +5,7 @@ from gpusims.accelsim import AccelSimPTXBenchmarkConfig
 from gpusims.accelsim_sass import AccelSimSASSBenchmarkConfig
 from gpusims.tejas import TejasBenchmarkConfig
 from gpusims.multi2sim import Multi2SimBenchmarkConfig
+from gpusims.macsim import MacSimBenchmarkConfig
 
 ROOT_DIR = Path(__file__).parent.parent
 
@@ -13,6 +14,7 @@ ACCELSIM_PTX = "accelsim-ptx"
 ACCELSIM_SASS = "accelsim-sass"
 TEJAS = "tejas"
 MULTI2SIM = "m2s"
+MACSIM = "macsim"
 
 SIMULATORS = {
     NATIVE: NativeBenchmarkConfig,
@@ -20,6 +22,7 @@ SIMULATORS = {
     ACCELSIM_SASS: AccelSimSASSBenchmarkConfig,
     TEJAS: TejasBenchmarkConfig,
     MULTI2SIM: Multi2SimBenchmarkConfig,
+    MACSIM: MacSimBenchmarkConfig,
 }
 
 CONTAINERS = {
@@ -81,6 +84,18 @@ CONTAINERS = {
             tag="romnn/m2s-base",
             ctx=ROOT_DIR / "docker/m2s",
             dockerfile=ROOT_DIR / "docker/m2s/base.dockerfile",
+        ),
+    ),
+    MACSIM: dict(
+        bench=dict(
+            tag="romnn/macsim-bench",
+            ctx=ROOT_DIR,
+            dockerfile=ROOT_DIR / "docker/macsim/bench.dockerfile",
+        ),
+        base=dict(
+            tag="romnn/macsim-base",
+            ctx=ROOT_DIR / "docker/macsim",
+            dockerfile=ROOT_DIR / "docker/macsim/base.dockerfile",
         ),
     ),
 }

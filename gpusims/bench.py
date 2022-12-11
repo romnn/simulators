@@ -1,5 +1,6 @@
 import yaml
 import abc
+import os
 import shutil
 from pathlib import Path
 from pprint import pprint  # noqa: F401
@@ -62,9 +63,11 @@ class BenchmarkConfig(abc.ABC):
             # pprint(config_files)
 
         for src, rel in utils.merge_dicts(config_files, benchmark_files).items():
-            dest = path / rel
-            # print("cp {} to {}".format(src, dest))
-            shutil.copyfile(str(src.absolute()), str(dest.absolute()))
+            if src.is_file():
+                dest = path / rel
+                # print("cp {} to {}".format(src, dest))
+                os.makedirs(str(dest.parent.absolute()), exist_ok=True)
+                shutil.copyfile(str(src.absolute()), str(dest.absolute()))
 
 
 class Benchmark:

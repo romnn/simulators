@@ -12,6 +12,20 @@ CUDA10-transpose:
     - args: -dimX=32 -dimY=32
 
 # from: CUDA 10.1 SDK
+CUDA6-transpose:
+  path: ./CUDA6-transpose
+  executable: transpose
+  # m2s:
+  #   # cannot compile cooperative threads (CUDA 9+)
+  #   enabled: false
+  # tejas:
+  #   # cannot compile cooperative threads (CUDA 9+)
+  #   enabled: false
+  inputs:
+    - args: -repeat=3 -dimX=32 -dimY=32
+
+
+# from: CUDA 10.1 SDK
 CUDA10-matrixMul:
   path: ./CUDA10-matrixMul
   executable: matrixMul

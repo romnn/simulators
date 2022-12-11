@@ -50,6 +50,7 @@ def run_cmd(cmd, cwd=None, shell=False, timeout_sec=None, env=None):
 
 def ensure_empty(d):
     try:
+        print("removing", str(d.absolute()))
         shutil.rmtree(str(d.absolute()))
     except FileNotFoundError:
         pass
