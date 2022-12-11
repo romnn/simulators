@@ -1,19 +1,6 @@
 
 #### Docker
 
-#### Configuration mapping
-
-##### GPUTejas <=> GPGPUsim
-```bash
-Configuration.Simulation.GPUType
-Configuration.Simulation.ThreadsPerCTA = gpgpu_shader_core_pipeline [0]
-gpgpu_clock_domains[0]
-System.TPC.SM.Frequency
-1447
-
--gpgpu_n_clusters 28 = NUM SM'S
-```
-
 #### TODO
 - make bar plots between simulators for matrixMul-modified
 - make correlation plots between simulators for matrixMul-modified (and two inputs?)
