@@ -11,8 +11,6 @@ COPY ./benchmarks /benchmarks
 WORKDIR /benchmarks
 
 # compile the benchmarks
-# ENV SIM_ROOT /simulator/gpu-simulator/gpgpu-sim
-# RUN source $SIM_ROOT/setup_environment && \
 RUN cd /benchmarks && \
   make clean && \
   make -j native
