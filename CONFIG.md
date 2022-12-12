@@ -8,6 +8,75 @@ https://www.techpowerup.com/gpu-specs/geforce-gtx-1080.c2839
 #### MacSim <=> GPGPUsim
 Occupancy should be computed using `gpgpu_occupancy_sm_number`.
 
+```txt
+num_sim_cores 16 = gpgpu_n_clusters (* -gpgpu_n_cores_per_cluster)
+num_sim_small_cores 16 = gpgpu_n_clusters (* -gpgpu_n_cores_per_cluster)
+max_threads_per_core 80 = gpgpu_shader_core_pipeline [0]
+
+clock_gpu 1.6 = int(gpgpu_clock_domains<Core Clock>/ 1000)
+# i guess this is the memory controller
+clock_mc  2.1 = int(gpgpu_clock_domains<DRAM Clock> / 1000)
+# what are clock_llc 1.6 and clock_noc 1.6 (last level cache? and what?)
+clock_llc  1.6 = int(gpgpu_clock_domains<L2 Clock> / 1000)
+clock_noc  1.6 = int(gpgpu_clock_domains<Interconnect Clock> / 1000)
+
+gpgpu_const_cache:l1 N:128:64:2,L:R:f:N:L,A:2:64,4
+<nsets>:<bsize>:<assoc>,<rep>:<wr>:<alloc>:<wr_alloc>,<mshr>:<N>:<merge>,<mq>
+# 4 KB Inst.
+<nsets>:<bsize>:<assoc>,<rep>:<wr>:<alloc>:<wr_alloc>,<mshr>:<N>:<merge>,<mq>
+-gpgpu_cache:il1 N:8:128:4,L:R:f:N:L,S:2:48,4
+4 KB =? 8 * 128 * 4 correct
+
+# 12 KB Const
+<nsets>:<bsize>:<assoc>,<rep>:<wr>:<alloc>:<wr_alloc>,<mshr>:<N>:<merge>,<mq>
+-gpgpu_const_cache:l1 N:128:64:2,L:R:f:N:L,S:2:64,4
+12 KB = 128*64*2 = 16KB (sort of correct)
+
+-gpgpu_cache:dl2 S:64:128:16,L:B:m:L:L,A:256:64,16:0,32
+3MB = 64*128*16 * gpgpu_n_mem * gpgpu_n_sub_partition_per_mchannel
+
+-gpgpu_tex_cache:l1 N:16:128:24,L:R:m:N:L,T:128:4,128:2
+48 KB = 16*128*24 correct
+
+# Memory
+const_cache_size 8192 = gpgpu_const_cache:l1<nsets>*<bsize>*<assoc>
+texture_cache_size 8192 = gpgpu_tex_cache:l1<nsets>*<bsize>*<assoc>
+# note: this is per SM 768KB*1000 / 512shading units = 1500
+shared_mem_size 16384 = -gpgpu_shmem_size_PrefShared or -gpgpu_shmem_sizeDefault
+shared_mem_banks 32 = gpgpu_shmem_num_banks
+shared_mem_cycles 2 = gpgpu_smem_latency
+shared_mem_ports 1 = gpgpu_mem_unit_ports
+
+# l1 cache
+l1_small_line_size 128 = gpgpu_const_cache:l1<bsize>
+l1_small_num_set 64 = gpgpu_const_cache:l1<nsets>
+l1_small_assoc 6 = gpgpu_const_cache:l1<assoc>
+
+# l2 cache
+num_llc 6
+llc_num_set 128 = gpgpu_cache:dl2<nsets>
+llc_line_size 128 = gpgpu_cache:dl2<bsize>
+llc_assoc 8 = gpgpu_cache:dl2<assoc>
+llc_num_bank 4 = gpgpu_cache:dl2<N> but how to parse that??
+llc_latency 10 
+
+# DRAM
+dram_num_mc 6
+# for NVIDIA TITAN X, bus width is 384bits (12 DRAM chips x 32 bits)
+# 12 memory paritions, 4 bytes (1 DRAM chip) per memory partition
+# the atom size of GDDR5X (the smallest read request) is 32 bytes
+dram_bus_width 8 = gpgpu_dram_buswidth * gpgpu_n_sub_partition_per_mchannel ? # default = 4 bytes (8 bytes per cycle at DDR)
+dram_column 11
+dram_activate 25 = gpgpu_dram_timing_opt<RAS>
+dram_precharge 10 = gpgpu_dram_timing_opt<RP>
+dram_num_banks 16 = gpgpu_dram_timing_opt<nbk>
+dram_num_channel 1 = gpgpu_dram_timing_opt<nbkgrp> ? not sure
+dram_rowbuffer_size 2048
+dram_scheduling_policy FRFCFS
+
+num_warp_scheduler 2 = -gpgpu_num_sched_per_core
+```
+
 #### Multi2Sim <=> GPGPUsim
 
 ```bash
