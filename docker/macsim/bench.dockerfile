@@ -32,6 +32,6 @@ SHELL ["/bin/bash", "-c"]
 # compile the benchmarks
 RUN cd /benchmarks && \
   make clean && \
-  make -j macsim
+  make macsim
 
 # warning: libGL.so.1, needed by //usr/lib/x86_64-linux-gnu/libGLEW.so.1.10

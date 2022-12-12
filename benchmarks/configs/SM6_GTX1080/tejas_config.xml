@@ -1,71 +1,49 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<!--/************************************************************************
-				GPUTejas Simulator
-*****************************************************************************
-
-   Copyright 2014 Indian Institute of Technology, Delhi
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-
-******************************************************************************
-	Contributors:  Seep Goel, Geetika Malhotra, Harinder Pal
-*****************************************************************************/-->
-
 <Configuration>
 	
-	<!--Simulation Parameters-->
+	
 	<Simulation>
-	    <MaxNumJavaThreads>8</MaxNumJavaThreads>		<!--Maximum number of Runnable Threads on simulator side-->
+	    <MaxNumJavaThreads>8</MaxNumJavaThreads>		
 	    <MaxNumBlocksPerJavaThread>5000</MaxNumBlocksPerJavaThread>
-	    <GPUType>Kepler</GPUType> 						<!--Type of Nvidia GPU: Tesla, Fermi,Kepler,Maxwell-->
+	    <GPUType>Kepler</GPUType> 						
 		<ThreadsPerCTA>2048</ThreadsPerCTA>
 	</Simulation>
 
-	<!--System Parameters-->
+	
 	<System>
-		<NoOfTPC>8</NoOfTPC>				<!--Number of texture processor clusters in the system-->
+		<NoOfTPC>28</NoOfTPC>				
 		<GlobalClock>
 		<LeakageEnergy>0.0598</LeakageEnergy>
 		<DynamicEnergy>0.0347</DynamicEnergy>
 		</GlobalClock>
 		
-		<!--Texture Processor Cluster(TPC) parameters-->
+		
 		<TPC>
-			<NoOfSM>1</NoOfSM> 				<!--Number of streaming multiprocessors in a TPC-->
+			<NoOfSM>1</NoOfSM> 				
 			
-		<!--Streaming multiprocessor(SM) Parameters-->
+		
 			<SM>
-				<Frequency>1481</Frequency>		<!--Operating frequency of the core (in MHz)-->
+				<Frequency>1481</Frequency>		
 				<NoOfWarpSchedulers>2</NoOfWarpSchedulers>
-				<NoOfSP>8</NoOfSP> 				<!--Number of streaming processors in a SM-->
-				<WarpSize>32</WarpSize>			<!--Number of threads in a warp-->
+				<NoOfSP>4</NoOfSP> 				
+				<WarpSize>32</WarpSize>			
 				
-				<TreeBarrier>false</TreeBarrier>			<!--Only for particular purposes. Otherwise keep it as false-->
+				<TreeBarrier>false</TreeBarrier>			
 				<BarrierLatency>2</BarrierLatency>
-				<BarrierUnit>Distributed</BarrierUnit>			<!--Central and distributed-->
+				<BarrierUnit>Distributed</BarrierUnit>			
 				
-		<!--Streaming processor(SP) Parameters-->
+		
 				<SP>
 					<NoOfThreadsSupported>32</NoOfThreadsSupported>
 				</SP>	
 				
 				<Cache>
-				<iCache nextLevel="L2" firstlevel = "true" type="iCache" />
-				<constantCache nextLevel="L2" firstlevel = "true" type="constantCache" />
+				<iCache nextLevel="L2" firstlevel="true" type="iCache" />
+				<constantCache nextLevel="L2" firstlevel="true" type="constantCache" />
 				<sharedCache nextLevel="L2" type="sharedCache" />
-				<!--L1Cache nextLevel="L2" type="dCache" /-->
+				
 				</Cache>
 
-				<Decode>								<!--Instruction decode-->
+				<Decode>								
 				<LeakageEnergy>0.0598</LeakageEnergy>
 				<DynamicEnergy>0.0347</DynamicEnergy>
 				</Decode>
@@ -77,7 +55,7 @@
 				
 				<RegisterFile>
 					<Bank>
-						<BankSize>40</BankSize>
+						<BankSize>32</BankSize>
 						<LeakageEnergy>0.0598</LeakageEnergy>
 						<DynamicEnergy>0.0347</DynamicEnergy>
 					</Bank>
@@ -114,8 +92,8 @@
 		</SharedCaches>
 		<MainMemory>
 			<MemControllerToUse>true</MemControllerToUse> 
-			<MainMemoryLatency>200</MainMemoryLatency>		
-			<MainMemoryFrequency>3600</MainMemoryFrequency>		
+			<MainMemoryLatency>100</MainMemoryLatency>		
+			<MainMemoryFrequency>2750</MainMemoryFrequency>		
 			<MainMemoryPortType>FCFS</MainMemoryPortType>		
 			<MainMemoryAccessPorts>10</MainMemoryAccessPorts>	
 			<MainMemoryPortOccupancy>1</MainMemoryPortOccupancy>
@@ -146,7 +124,7 @@
 		</NOC>
 		
 		<Laser>
-			<noctype>gpushare</noctype>    <!-- gpushare,gpuatac,swmr,probe-->
+			<noctype>gpushare</noctype>    
 			<interval>1000</interval>
 			<threshold>5</threshold>
 			<maxpower>16</maxpower>
@@ -157,46 +135,46 @@
 			<LeakageEnergy>0.1877</LeakageEnergy>
 			<DynamicEnergy>2.1164</DynamicEnergy>
 		</BUS>
-		<MainMemoryController>               <!-- These values are used when controller specified above is DRAM (not SIMPLE) -->
-			<rowBufferPolicy>OpenPage</rowBufferPolicy>		<!-- OpenPage or ClosePage -->
-			<schedulingPolicy>RankThenBankRoundRobin</schedulingPolicy>	<!-- RankThenBankRoundRobin or BankThenRankRoundRobin-->
-			<queuingStructure>PerRankPerBank</queuingStructure>	<!-- PerRank or PerRankPerBank -->
+		<MainMemoryController>               
+			<rowBufferPolicy>OpenPage</rowBufferPolicy>		
+			<schedulingPolicy>RankThenBankRoundRobin</schedulingPolicy>	
+			<queuingStructure>PerRankPerBank</queuingStructure>	
 			<numRankPorts>100</numRankPorts>
-			<rankPortType>FCFS</rankPortType>	<!--Type of access ports in the MainMemoryController (UL : Unlimited; FCFS : First Come First Serve; PR : Priority port)-->
+			<rankPortType>FCFS</rankPortType>	
 			<rankOccupancy>1</rankOccupancy>
 			<rankLatency>100</rankLatency>
-			<rankOperatingFrequency>3600</rankOperatingFrequency>
-			<numChans>2</numChans>      <!-- Number of physical channels = number of memory controllers -->
-			<numRanks>1</numRanks>      <!-- Number of Ranks per memory controller-->
-			<numBanks>8</numBanks>      <!-- Number of Banks per Rank -->
-			<numRows>16384</numRows>      <!-- Number of Rows per Bank -->
-			<numCols>2048</numCols>      <!-- Number of Columns per Bank -->
-			<TRANSQUEUE_DEPTH>32</TRANSQUEUE_DEPTH>      <!-- Depth of transaction queue. Note: currently this is not used -->
-			<TOTAL_ROW_ACCESSES>4</TOTAL_ROW_ACCESSES>      <!-- For Open Page policy: Number of continuous row accesses after which the row would be closed. This is to prevent starvation to other rows. -->
+			<rankOperatingFrequency>2750</rankOperatingFrequency>
+			<numChans>2</numChans>      
+			<numRanks>1</numRanks>      
+			<numBanks>16</numBanks>      
+			<numRows>16384</numRows>      
+			<numCols>2048</numCols>      
+			<TRANSQUEUE_DEPTH>32</TRANSQUEUE_DEPTH>      
+			<TOTAL_ROW_ACCESSES>4</TOTAL_ROW_ACCESSES>      
 
-			<!-- Timing parameters follow below -->
-			<!-- Currently set according to DDR3 Micron 32M 8B x4 speed grade: 125 -->
-			<!-- Timing parameters for other devices can be found in DRAMSim2 repository in GitHub. Check folder "ini" for device specific timing parameters. Or same can be obtained from Datasheets for Micron DDR parts -->
+			
+			
+			
 
-			<tCCD>4</tCCD>      <!-- Column-to-Column Delay: internal burst (prefetch) length. DDR: 1, DDR2: 2, DDR2: 4-->
-			<tBL>8</tBL>      <!-- Data burst duration i.e. number of bytes returned for each request (burst). Specified in beats not cycles. DDR3: 8 beats -->
-			<tCL>11</tCL>      <!-- Column Access Strobe latency. Cycles between column access command and start of data return by the DRAM device -->
-			<tAL>0</tAL>      <!-- Latency added to column accesses. Used for posted CAS commands. -->
-			<tRP>11</tRP>      <!-- Row Precharge. Time that it takes for the array to precharge (in cycles) -->
-			<tCMD>1</tCMD>      <!-- Command transport duration. The num of cycles a command occupies on the command bus from controller to DRAM device (Ranks) -->
-			<tRC>39</tRC>      <!-- Row Cycle. Cycles between accesses to different rows in a bank. tRC = tRAS + tRP -->
-			<tRCD>11</tRCD>      <!-- Row to Column command delay. Cycles between row access and date readt at sense amplifiers -->
-			<tRAS>28</tRAS>      <!-- Row Access Strobe. Cycles between row access command and data restoration in the DRAM array. DRAM bank cannot be precharged until at least tRAS cycles after previous bank activation -->
-			<tRFC>88</tRFC>      <!-- Refresh Cycle time. Cycles it takes to refresh the array. -->
-			<tRTRS>1</tRTRS>      <!-- Rank to Rank switching time. Cycles required to switch from 1 rank to another rank -->
-			<tRRD>5</tRRD>      <!-- Row activation to Row activation delay. Minimum cycles between two row activation commands to the same DRAM device. Limits peak current profile. -->
-			<tFAW>24</tFAW>      <!-- Four (row) bank Activation Window. A rolling time-frame in which a maximum of four-bank activation can be engaged. Limits peak current profile. -->
-			<tRTP>6</tRTP>      <!-- Rank to Precharge. Cycles between a read and a precharge command. -->
-			<tWTR>6</tWTR>      <!-- Write to Read delay time.The minimum time interval -->
-			<tWR>12</tWR>      <!-- Write Recovery Time. The minimum cycles between end of a write data burst and the start of a precharge command. Allows sense amplifiers to restore data to cells. -->
-			<tCK>1.25</tCK>      <!-- Clock cycle period in ns -->
-			<RefreshPeriod>7800</RefreshPeriod>      <!-- Time (in ns) after which a Refresh is issued -->
-			<DATA_BUS_BITS>64</DATA_BUS_BITS>      <!-- Width of DATA bus in bits. 64 bits according to JEDEC standard -->
+			<tCCD>4</tCCD>      
+			<tBL>8</tBL>      
+			<tCL>12</tCL>      
+			<tAL>0</tAL>      
+			<tRP>12</tRP>      
+			<tCMD>1</tCMD>      
+			<tRC>40</tRC>      
+			<tRCD>12</tRCD>      
+			<tRAS>28</tRAS>      
+			<tRFC>88</tRFC>      
+			<tRTRS>1</tRTRS>      
+			<tRRD>5</tRRD>      
+			<tFAW>24</tFAW>      
+			<tRTP>6</tRTP>      
+			<tWTR>6</tWTR>      
+			<tWR>12</tWR>      
+			<tCK>1.25</tCK>      
+			<RefreshPeriod>7800</RefreshPeriod>      
+			<DATA_BUS_BITS>64</DATA_BUS_BITS>      
 		</MainMemoryController>
 	</System>
 	

@@ -21,6 +21,8 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
             "m2s",
             "--kpl-report",
             str(stats_file.absolute()),
+            "--kpl-config",
+            str((path / "m2s.config.ini").absolute()),
             "--kpl-sim",
             "detailed",
             str(executable.absolute()),

@@ -1,6 +1,21 @@
 #### Benchmarks
 
-You can find the configuration options for the simulator [here](https://github.com/CoffeeBeforeArch/gpgpu-sim_distribution/blob/dev/src/gpgpu-sim/gpu-sim.cc).
+#### Configs
+
+we inject configurations for each simulator
+we try to match config to gpgpusim
+we provide a script to template configurations to match the gpgpusim config as close as possible
+we use GPGPUSim's [tested-configs](https://github.com/accel-sim/gpgpu-sim_distribution/tree/dev/configs/tested-cfgs) as our baselines.
+
+```bash
+inv configure \
+  --simulator tejas \
+  --base ./configs/SM6_GTX1080/gpgpusim.config \
+  --template ./configs/tejas_default_config.xml \
+  --out ./configs/SM6_GTX1080/tejas_config.xml
+```
+
+You can find configuration options for GPGPUSim in [gpu-sim.cc](https://github.com/CoffeeBeforeArch/gpgpu-sim_distribution/blob/dev/src/gpgpu-sim/gpu-sim.cc), or just read through `log.txt` files, as all the configuration options with a description are printed.
 
 -gpgpu_l2_rop_latency
 -gpgpu_gmem_skip_L1D

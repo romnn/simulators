@@ -66,7 +66,11 @@ class TejasBenchmarkConfig(BenchmarkConfig):
             str(kernels),
         ]
         cmd = " ".join(cmd)
-        utils.run_cmd(cmd, cwd=path, timeout_sec=5 * 60)
+        _, stdout, stderr = utils.run_cmd(cmd, cwd=path, timeout_sec=5 * 60)
+        print("stdout:")
+        print(stdout)
+        print("stderr:")
+        print(stderr)
 
         kernels = len(list(trace_dir.glob("hashfile_*")))
         print("kernels:", kernels)
@@ -84,11 +88,15 @@ class TejasBenchmarkConfig(BenchmarkConfig):
             str(kernels),
         ]
         cmd = " ".join(cmd)
-        utils.run_cmd(cmd, cwd=path, timeout_sec=5 * 60)
+        _, stdout, stderr = utils.run_cmd(cmd, cwd=path, timeout_sec=5 * 60)
+        print("stdout:")
+        print(stdout)
+        print("stderr:")
+        print(stderr)
 
         # parse the stats file
         stat_file = log_file.with_suffix(".csv")
-        utils.run_cmd(
+        _, stdout, stderr = utils.run_cmd(
             [
                 "tejas-parse",
                 "--input",
@@ -99,3 +107,7 @@ class TejasBenchmarkConfig(BenchmarkConfig):
             cwd=path,
             timeout_sec=1 * 60,
         )
+        print("stdout:")
+        print(stdout)
+        print("stderr:")
+        print(stderr)

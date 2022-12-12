@@ -1,4 +1,5 @@
 import re
+from collections import namedtuple
 import subprocess as sp
 import ctypes
 
@@ -11,38 +12,50 @@ CU_DEVICE_ATTRIBUTE_MAX_THREADS_PER_MULTIPROCESSOR = 39
 CU_DEVICE_ATTRIBUTE_CLOCK_RATE = 13
 CU_DEVICE_ATTRIBUTE_MEMORY_CLOCK_RATE = 36
 
+CUDADevice = namedtuple(
+    "CUDADevice",
+    [
+        "name",
+        "threads_per_core",
+        "cores",
+        "clockrate_mhz",
+        "mem_clockrate_mhz",
+        "major",
+        "minor",
+    ],
+)
 
-class CUDADevice:
-    def __init__(
-        self,
-        name,
-        threads_per_core,
-        cores,
-        clockrate_mhz,
-        mem_clockrate_mhz,
-        major,
-        minor,
-    ):
-        self.name = name
-        self.threads_per_core = threads_per_core
-        self.clockrate_mhz = clockrate_mhz
-        self.mem_clockrate_mhz = mem_clockrate_mhz
-        self.cores = cores
-        self.major = major
-        self.minor = minor
+# class CUDADevice:
+#     def __init__(
+#         self,
+#         name,
+#         threads_per_core,
+#         cores,
+#         clockrate_mhz,
+#         mem_clockrate_mhz,
+#         major,
+#         minor,
+#     ):
+#         self.name = name
+#         self.threads_per_core = threads_per_core
+#         self.clockrate_mhz = clockrate_mhz
+#         self.mem_clockrate_mhz = mem_clockrate_mhz
+#         self.cores = cores
+#         self.major = major
+#         self.minor = minor
 
-    def __dict__(self):
-        return dict(
-            name=self.name,
-            threads_per_core=self.threads_per_core,
-            clockrate_mhz=self.clockrate_mhz,
-            cores=self.cores,
-            major=self.major,
-            minor=self.minor,
-        )
+#     def __dict__(self):
+#         return dict(
+#             name=self.name,
+#             threads_per_core=self.threads_per_core,
+#             clockrate_mhz=self.clockrate_mhz,
+#             cores=self.cores,
+#             major=self.major,
+#             minor=self.minor,
+#         )
 
-    def __repr__(self):
-        return str(self.__dict__())
+#     def __repr__(self):
+#         return str(self.__dict__())
 
 
 def load_cuda_driver():

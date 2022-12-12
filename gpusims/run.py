@@ -6,7 +6,6 @@ from invoke import task
 import gpusims
 import gpusims.cuda as cuda
 from gpusims.bench import parse_benchmarks
-from gpusims.config import Config, parse_configs
 
 
 @task(
@@ -37,7 +36,7 @@ def run(
     if simulator not in gpusims.SIMULATORS:
         raise ValueError("unknown simulator: {}".format(simulator))
 
-    configs = parse_configs(benchmark_dir / "configs" / "configs.yml")
+    configs = gpusims.config.parse_configs(benchmark_dir / "configs" / "configs.yml")
     benchmarks = parse_benchmarks(benchmark_dir / "benchmarks.yml")
     assert len(configs) > 0
     assert len(benchmarks) > 0
@@ -59,7 +58,7 @@ def run(
     pending = []
     for c, b in list(itertools.product(config, benchmark)):
         if simulator == "native":
-            conf = Config(name=c.lower(), path=None)
+            conf = gpusims.config.Config(name=c.lower(), path=None)
         else:
             conf = configs.get(c.lower())
 

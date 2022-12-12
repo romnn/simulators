@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import gpusims.config  # noqa: F401
+
 from gpusims.native import NativeBenchmarkConfig
 from gpusims.accelsim import AccelSimPTXBenchmarkConfig
 from gpusims.accelsim_sass import AccelSimSASSBenchmarkConfig

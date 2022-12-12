@@ -23,13 +23,6 @@ PYTHON_FILES = [str(f) for f in SRC_DIR.rglob("*.py")]
 ns = Collection()
 ns.add_task(gpusims.run.run, "run")
 
-# gputejas = Collection("tejas")
-# gputejas.add_task(tejas.setup_unsafe, "setup")
-# gputejas.add_task(tejas.clean, "clean")
-# gputejas.add_task(tejas.build, "build")
-# gputejas.add_task(tejas.traces, "traces")
-# ns.add_collection(gputejas)
-
 
 @task(help={"check": "Checks formatting without applying changes"})
 def fmt(c, check=False):
@@ -164,6 +157,101 @@ def bench(c, simulator, benchmark, config, repetitions=5, force=False):
 
 ns.add_task(bench, "bench")
 
+
+@task
+def configure_all(c):
+    # read reference config
+    config_dir = ROOT_DIR / "benchmarks" / "configs"
+    configs = gpusims.config.parse_configs(config_dir / "configs.yml")
+    config_templates = {
+        gpusims.TEJAS: (
+            gpusims.config.tejas.configure_tejas,
+            config_dir / "tejas_default_config.xml",
+            "tejas_config.xml",
+        ),
+        gpusims.MULTI2SIM: (
+            gpusims.config.multi2sim.configure_multi2sim,
+            None,
+            "m2s.config.ini",
+        ),
+        # gpusims.MACSIM: (config_dir / "macsim_default_params_gtx580", "params.in"),
+    }
+
+    for config_name, config in configs.items():
+        ref_config = config.path / "gpgpusim.config"
+        print("configuring {} (reference config {})".format(config_name, ref_config))
+        with open(ref_config, "r") as f:
+            gpgpusim_config = f.read()
+
+        gpgpusim_config = gpusims.config.gpgpusim.parse_gpgpusim_config(gpgpusim_config)
+        pprint(gpgpusim_config._asdict())
+
+        for simulator, (func, template_file, out_name) in config_templates.items():
+            template = ""
+            if template_file is not None:
+                with open(template_file, "r") as f:
+                    template = f.read()
+
+            new_config = func(gpgpusim_config, template)
+            # print(new_config.decode("utf-8"))
+            out_file = config.path / out_name
+            print("generated {}".format(out_file))
+            with open(str(out_file.absolute()), "wb") as f:
+                f.write(new_config)
+
+
+ns.add_task(configure_all, "configure-all")
+
+
+@task(
+    help={
+        "simulator": "simulator to generate config for",
+        "base": "base config file path (gpgpusim config)",
+        "template": "template file path",
+        "out": "output config file path",
+    },
+)
+def configure(c, simulator, base, template=None, out=None):
+    """Configure simulator based on gpgpusim base config parameters and a template"""
+    simulator = simulator.lower()
+    if simulator not in gpusims.SIMULATORS:
+        have = list(gpusims.SIMULATORS.keys())
+        raise ValueError("unknown simulator: {} (have {})".format(simulator, have))
+
+    # read reference config
+    with open(base, "r") as f:
+        gpgpusim_config = f.read()
+
+    # read template config
+    config = ""
+    if template is not None:
+        with open(template, "r") as f:
+            config = f.read()
+
+    # print(gpgpusim_config)
+    # print(config)
+    gpgpusim_config = gpusims.config.gpgpusim.parse_gpgpusim_config(gpgpusim_config)
+    pprint(gpgpusim_config._asdict())
+
+    if simulator == gpusims.TEJAS:
+        new_config = gpusims.config.tejas.configure_tejas(gpgpusim_config, config)
+    elif simulator == gpusims.MULTI2SIM:
+        new_config = gpusims.config.multi2sim.configure_multi2sim(
+            gpgpusim_config, config
+        )
+    else:
+        raise ValueError("cannot configure {}".format(simulator))
+
+    print("new config:")
+    print(new_config.decode("utf-8"))
+    if out is not None:
+        out = Path(out)
+        os.makedirs(out.parent, exist_ok=True)
+        with open(str(out.absolute()), "wb") as f:
+            f.write(new_config)
+
+
+ns.add_task(configure, "configure")
 
 # @task(pre=[clean_build, clean_wasm])
 # def clean(c):

@@ -34,8 +34,14 @@ m2s: matrixMul.cu
 accelsim: matrixMul.cu
 	$(NVCC) $(INCLUDES) $(ALL_CCFLAGS) --std=c++11 $(GENCODE_FLAGS) -o matrixMul.o -c matrixMul.cu
 	$(NVCC) $(ALL_LDFLAGS) --cudart shared $(GENCODE_FLAGS) -o matrixMul matrixMul.o $(LIBRARIES)
-	
-# NOTE: TEJAS (CUDA 4.2) does not support non blocking streams etc.
+
+# NOTE: tejas and macsim (CUDA 4.2) does not support non blocking streams etc.
+tejas: matrixMul.cu
+
+macsim: matrixMul.cu
+	# $(NVCC) $(INCLUDES) -I$(CUDA_PATH)/include  -L$(CUDA_PATH)/lib64 $(ALL_CCFLAGS) $(GENCODE_FLAGS) -arch=sm_20 -o matrixMul.o -c matrixMul.cu
+	# g++-4.4 -o matrixMul matrixMul.o -locelot -locelotTrace
+	# python3 ../get-kernel-info.py $(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -arch=sm_20 matrixMul.cu
 
 clean:
 	rm -f matrixMul matrixMul.o

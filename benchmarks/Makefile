@@ -1,36 +1,47 @@
-native:
-	$(MAKE) $(MAKE_FLAGS) -C CUDA6-transpose native
-	$(MAKE) $(MAKE_FLAGS) -C CUDA10-transpose native
-	$(MAKE) $(MAKE_FLAGS) -C BabelStream native
-	$(MAKE) $(MAKE_FLAGS) -C CUDA10-matrixMul native
-	$(MAKE) $(MAKE_FLAGS) -C CUDA4-matrixMul native
+BENCHES = CUDA6-transpose
+BENCHES += CUDA4-matrixMul
+BENCHES += CUDA10-transpose
+BENCHES += CUDA10-matrixMul
+BENCHES += BabelStream
 
-accelsim:
-	$(MAKE) $(MAKE_FLAGS) -C BabelStream accelsim
-	$(MAKE) $(MAKE_FLAGS) -C CUDA6-transpose accelsim
-	$(MAKE) $(MAKE_FLAGS) -C CUDA10-transpose accelsim
-	$(MAKE) $(MAKE_FLAGS) -C CUDA10-matrixMul accelsim
-	$(MAKE) $(MAKE_FLAGS) -C CUDA4-matrixMul accelsim
+# https://stackoverflow.com/a/23710719
 
-m2s:
-	$(MAKE) $(MAKE_FLAGS) -C BabelStream m2s
-	$(MAKE) $(MAKE_FLAGS) -C CUDA4-matrixMul m2s
-	$(MAKE) $(MAKE_FLAGS) -C CUDA6-transpose m2s
+TEJAS_BENCHES = $(BENCHES:%=tejas-%)
+M2SSIM_BENCHES = $(BENCHES:%=m2s-%)
+MACSIM_BENCHES = $(BENCHES:%=macsim-%)
+ACCELSIM_BENCHES = $(BENCHES:%=accelsim-%)
+NATIVE_BENCHES = $(BENCHES:%=native-%)
+CLEAN_BENCHES = $(BENCHES:%=clean-%)
 
-tejas:
-	$(MAKE) $(MAKE_FLAGS) -C BabelStream tejas
-	$(MAKE) $(MAKE_FLAGS) -C CUDA4-matrixMul tejas
-	$(MAKE) $(MAKE_FLAGS) -C CUDA6-transpose tejas
+native: $(NATIVE_BENCHES)
+macsim: $(MACSIM_BENCHES)
+m2s: $(M2S_BENCHES)
+accelsim: $(ACCELSIM_BENCHES)
+tejas: $(TEJAS_BENCHES)
+clean: $(CLEAN_BENCHES)
 
-macsim:
-	$(MAKE) $(MAKE_FLAGS) -C BabelStream macsim
-	# $(MAKE) $(MAKE_FLAGS) -C CUDA4-matrixMul macsim
-	$(MAKE) $(MAKE_FLAGS) -C CUDA6-transpose macsim
+$(NATIVE_BENCHES):
+	+$(MAKE) $(MAKE_FLAGS) -C $(@:native-%=%) native
 
-clean:
-	$(MAKE) $(MAKE_FLAGS) -C BabelStream clean
-	$(MAKE) $(MAKE_FLAGS) -C CUDA6-transpose clean
-	$(MAKE) $(MAKE_FLAGS) -C CUDA10-transpose clean
-	$(MAKE) $(MAKE_FLAGS) -C CUDA10-matrixMul clean
-	$(MAKE) $(MAKE_FLAGS) -C CUDA4-matrixMul clean
+$(MACSIM_BENCHES):
+	+$(MAKE) $(MAKE_FLAGS) -C $(@:macsim-%=%) macsim
 
+$(M2S_BENCHES):
+	+$(MAKE) $(MAKE_FLAGS) -C $(@:m2s-%=%) m2s
+
+$(ACCELSIM_BENCHES):
+	+$(MAKE) $(MAKE_FLAGS) -C $(@:accelsim-%=%) accelsim
+
+$(TEJAS_BENCHES):
+	+$(MAKE) $(MAKE_FLAGS) -C $(@:tejas-%=%) tejas
+
+$(CLEAN_BENCHES):
+	+$(MAKE) $(MAKE_FLAGS) -C $(@:clean-%=%) clean
+
+.PHONY: $(TEJAS_BENCHES)
+.PHONY: $(ACCELSIM_BENCHES)
+.PHONY: $(NATIVE_BENCHES)
+.PHONY: $(M2S_BENCHES)
+.PHONY: $(MACSIM_BENCHES)
+.PHONY: $(CLEAN_BENCHES)
+.PHONY: clean

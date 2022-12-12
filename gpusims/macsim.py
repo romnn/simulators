@@ -1,21 +1,3 @@
-"""
-# nvcc sourcefile.cu –locelot –ocelotTrace –lz
-
-# Create a trace directory in the /storage/tracesexport
-TRACE_PATH="/storage/traces/"
-# kernel_infohas the kernel information
-export KERNEL_INFO_PATH="kernel_info"
-# Calculate occupancy based on compute capability 2.0
-export COMPUTE_VERSION="2.0"
-
-Availableknobscanbefoundin.param.deffilesindef/directoryundermainsourcedirectory
-params.in
-./macsim --l2_assoc=16
-
-.stat.deffilesindef/
-"""
-
-import os
 import re
 from gpusims.bench import BenchmarkConfig
 import gpusims.utils as utils
