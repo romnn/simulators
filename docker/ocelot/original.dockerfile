@@ -1,5 +1,6 @@
 FROM ubuntu:trusty
 
+
 # Avoid ERROR: invoke-rc.d: policy-rc.d denied execution of start.
 RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0C69C6EC64E1C6DA && \
@@ -22,15 +23,20 @@ RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d && \
     wget && \
     apt-mark hold libbison-dev bison 
 
-RUN mkdir /tmp/cuda_toolkit
-COPY ./docker/ocelot/cudatoolkit_4.2.9_linux_64_ubuntu11.04.run /tmp/cuda_toolkit/
-
 # wget http://security.ubuntu.com/ubuntu/pool/multiverse/n/nvidia-graphics-drivers-352/libcuda1-352_352.63-0ubuntu0.14.04.1_amd64.deb && \
 # dpkg -i libcuda1-352_352.63-0ubuntu0.14.04.1_amd64.deb && \
 # wget http://developer.download.nvidia.com/compute/cuda/4_2/rel/toolkit/cudatoolkit_4.2.9_linux_64_ubuntu11.04.run && \
 
-RUN cd /tmp/cuda_toolkit && \
-    chmod +x cudatoolkit_4.2.9_linux_64_ubuntu11.04.run && \
+SHELL ["/bin/bash", "-c"]
+COPY ./cache/ /cache
+RUN ls -lia /cache
+RUN if [[ ! -f "/cache/cudatoolkit_4.2.9_linux_64_ubuntu11.04.run" ]]; then \
+  echo "downloading" && \
+  wget -O /cache/cudatoolkit_4.2.9_linux_64_ubuntu11.04.run \
+  http://developer.download.nvidia.com/compute/cuda/4_2/rel/toolkit/cudatoolkit_4.2.9_linux_64_ubuntu11.04.run; fi
+
+RUN cd /cache && \
+    chmod +x ./cudatoolkit_4.2.9_linux_64_ubuntu11.04.run && \
     ./cudatoolkit_4.2.9_linux_64_ubuntu11.04.run --tar mxvf && \
     perl install-linux.pl auto && \
     cd / && rm -rf /tmp/cuda_toolkit && \

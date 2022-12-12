@@ -1,5 +1,7 @@
 FROM romnn/ocelot
 
+SHELL ["/bin/bash", "-c"]
+
 RUN apt-get update && apt-get -y upgrade
 RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get -y install tzdata
 RUN apt-get install -y \
@@ -8,11 +10,17 @@ RUN apt-get install -y \
 
 # get gputejas
 # wget https://www.cse.iitd.ac.in/tejas/gputejas/home_files/gputejas_installation_kit.tar.gz
-RUN mkdir -p /tmp/tejas && mkdir -p /simulator
-COPY ./gputejas_installation_kit.tar.gz /tmp/tejas
-RUN tar -I pigz -xf /tmp/tejas/gputejas_installation_kit.tar.gz -C /tmp/tejas && \
-  mv /tmp/tejas/gputejas/* /simulator/ && \
-  rm -rf /tmp/tejas
+RUN mkdir -p /simulator
+# COPY ./gputejas_installation_kit.tar.gz /tmp/tejas
+COPY ./cache /cache
+RUN ls -lia /cache
+RUN if [[ ! -f "/cache/gputejas_installation_kit.tar.gz" ]]; then \
+  echo "downloading" && \
+  wget -O /cache/gputejas_installation_kit.tar.gz https://www.cse.iitd.ac.in/tejas/gputejas/home_files/gputejas_installation_kit.tar.gz
+
+RUN tar -I pigz -xf /cache/gputejas_installation_kit.tar.gz -C /cache && \
+  mv /cache/gputejas/* /simulator/ && \
+  rm -rf /cache
 
 # install java
 RUN apt-get install -y ant openjdk-7-jdk

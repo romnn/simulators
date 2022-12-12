@@ -58,24 +58,26 @@ def lint(c):
 ns.add_task(lint, "lint")
 
 
-def build_container(c, ctx, tag, dockerfile=None):
+def build_container(c, ctx, tag, dockerfile=None, dry_run=False):
     cmd = ["docker", "build", "-t", tag]
     if dockerfile is not None:
         cmd += ["-f", str(dockerfile.absolute())]
     cmd += [str(ctx.absolute())]
     cmd = " ".join(cmd)
     print(cmd)
-    c.run(cmd)
+    if not dry_run:
+        c.run(cmd)
 
 
 @task(
     help={
         "base": "also rebuild the base containers",
         "simulator": "simulator to build container",
+        "dry-run": "print commands that would be run without executing",
     },
     iterable=["simulator"],
 )
-def build(c, simulator, base=False):
+def build(c, simulator, base=False, dry_run=False):
     """Build all the benchmark docker containers"""
     simulator = [s.lower() for s in simulator]
     for s in simulator:
@@ -91,16 +93,35 @@ def build(c, simulator, base=False):
     for sim in should_build:
         if base:
             # base container first
-            containers.append(gpusims.CONTAINERS[sim]["base"])
-        containers.append(gpusims.CONTAINERS[sim]["bench"])
+            containers.append(gpusims.CONTAINERS[sim].base)
+        containers.append(gpusims.CONTAINERS[sim].bench)
 
+    built = set()
     for container in containers:
+        if container.tag in built:
+            continue
+
+        for dep in container.dependencies:
+            # build dependencies first
+            if dep.tag in built:
+                continue
+            build_container(
+                c,
+                ctx=dep.ctx,
+                tag=dep.tag,
+                dockerfile=dep.dockerfile,
+                dry_run=dry_run,
+            )
+            built.add(dep.tag)
+
         build_container(
             c,
-            ctx=container.get("ctx"),
-            tag=container.get("tag"),
-            dockerfile=container.get("dockerfile"),
+            ctx=container.ctx,
+            tag=container.tag,
+            dockerfile=container.dockerfile,
+            dry_run=dry_run,
         )
+        built.add(container.tag)
 
 
 ns.add_task(build, "build")
@@ -209,9 +230,10 @@ ns.add_task(configure_all, "configure-all")
         "base": "base config file path (gpgpusim config)",
         "template": "template file path",
         "out": "output config file path",
+        "verbose": "print the new config to stdout",
     },
 )
-def configure(c, simulator, base, template=None, out=None):
+def configure(c, simulator, base, template=None, out=None, verbose=False):
     """Configure simulator based on gpgpusim base config parameters and a template"""
     simulator = simulator.lower()
     if simulator not in gpusims.SIMULATORS:
@@ -239,11 +261,14 @@ def configure(c, simulator, base, template=None, out=None):
         new_config = gpusims.config.multi2sim.configure_multi2sim(
             gpgpusim_config, config
         )
+    elif simulator == gpusims.MACSIM:
+        new_config = gpusims.config.macsim.configure_macsim(gpgpusim_config, config)
     else:
         raise ValueError("cannot configure {}".format(simulator))
 
-    print("new config:")
-    print(new_config.decode("utf-8"))
+    if verbose:
+        print("new config:")
+        print(new_config.decode("utf-8"))
     if out is not None:
         out = Path(out)
         os.makedirs(out.parent, exist_ok=True)

@@ -25,38 +25,6 @@ CUDADevice = namedtuple(
     ],
 )
 
-# class CUDADevice:
-#     def __init__(
-#         self,
-#         name,
-#         threads_per_core,
-#         cores,
-#         clockrate_mhz,
-#         mem_clockrate_mhz,
-#         major,
-#         minor,
-#     ):
-#         self.name = name
-#         self.threads_per_core = threads_per_core
-#         self.clockrate_mhz = clockrate_mhz
-#         self.mem_clockrate_mhz = mem_clockrate_mhz
-#         self.cores = cores
-#         self.major = major
-#         self.minor = minor
-
-#     def __dict__(self):
-#         return dict(
-#             name=self.name,
-#             threads_per_core=self.threads_per_core,
-#             clockrate_mhz=self.clockrate_mhz,
-#             cores=self.cores,
-#             major=self.major,
-#             minor=self.minor,
-#         )
-
-#     def __repr__(self):
-#         return str(self.__dict__())
-
 
 def load_cuda_driver():
     # this requires the CUDA driver API, so we actually need a device

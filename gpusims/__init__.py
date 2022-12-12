@@ -1,4 +1,5 @@
 from pathlib import Path
+from collections import namedtuple
 
 import gpusims.config  # noqa: F401
 
@@ -27,77 +28,112 @@ SIMULATORS = {
     MACSIM: MacSimBenchmarkConfig,
 }
 
+BenchmarkContainerSpec = namedtuple(
+    "BenchmarkContainerSpec",
+    ["bench", "base"],
+)
+
+Container = namedtuple(
+    "Container",
+    [
+        "tag",
+        "ctx",
+        "dockerfile",
+        "dependencies",
+    ],
+)
+
+OCELOT_CONTAINER = Container(
+    tag="romnn/ocelot",
+    ctx=ROOT_DIR / "docker/ocelot",
+    dockerfile=ROOT_DIR / "docker/ocelot/original.dockerfile",
+    dependencies=[],
+)
+
+
 CONTAINERS = {
-    NATIVE: dict(
-        bench=dict(
+    NATIVE: BenchmarkContainerSpec(
+        bench=Container(
             tag="romnn/native-bench",
             ctx=ROOT_DIR,
             dockerfile=ROOT_DIR / "docker/native/bench.dockerfile",
+            dependencies=[],
         ),
-        base=dict(
+        base=Container(
             tag="romnn/native-base",
             ctx=ROOT_DIR / "docker/native",
             dockerfile=ROOT_DIR / "docker/native/base.dockerfile",
+            dependencies=[],
         ),
     ),
-    ACCELSIM_PTX: dict(
-        bench=dict(
+    ACCELSIM_PTX: BenchmarkContainerSpec(
+        bench=Container(
             tag="romnn/accelsim-ptx-bench",
             ctx=ROOT_DIR,
             dockerfile=ROOT_DIR / "docker/accelsim/bench.ptx.dockerfile",
+            dependencies=[],
         ),
-        base=dict(
+        base=Container(
             tag="romnn/accelsim-base",
             ctx=ROOT_DIR / "docker/accelsim",
             dockerfile=ROOT_DIR / "docker/accelsim/base.dockerfile",
+            dependencies=[],
         ),
     ),
-    ACCELSIM_SASS: dict(
-        bench=dict(
+    ACCELSIM_SASS: BenchmarkContainerSpec(
+        bench=Container(
             tag="romnn/accelsim-sass-bench",
             ctx=ROOT_DIR,
             dockerfile=ROOT_DIR / "docker/accelsim/bench.sass.dockerfile",
+            dependencies=[],
         ),
-        base=dict(
+        base=Container(
             tag="romnn/accelsim-base",
             ctx=ROOT_DIR / "docker/accelsim",
             dockerfile=ROOT_DIR / "docker/accelsim/base.dockerfile",
+            dependencies=[],
         ),
     ),
-    TEJAS: dict(
-        bench=dict(
+    TEJAS: BenchmarkContainerSpec(
+        bench=Container(
             tag="romnn/tejas-bench",
             ctx=ROOT_DIR,
             dockerfile=ROOT_DIR / "docker/tejas/bench.dockerfile",
+            dependencies=[OCELOT_CONTAINER],
         ),
-        base=dict(
+        base=Container(
             tag="romnn/tejas-base",
             ctx=ROOT_DIR / "docker/tejas",
             dockerfile=ROOT_DIR / "docker/tejas/base.dockerfile",
+            dependencies=[OCELOT_CONTAINER],
         ),
     ),
-    MULTI2SIM: dict(
-        bench=dict(
+    MULTI2SIM: BenchmarkContainerSpec(
+        bench=Container(
             tag="romnn/m2s-bench",
             ctx=ROOT_DIR,
             dockerfile=ROOT_DIR / "docker/m2s/bench.dockerfile",
+            dependencies=[],
         ),
-        base=dict(
+        base=Container(
             tag="romnn/m2s-base",
             ctx=ROOT_DIR / "docker/m2s",
             dockerfile=ROOT_DIR / "docker/m2s/base.dockerfile",
+            dependencies=[],
         ),
     ),
-    MACSIM: dict(
-        bench=dict(
+    MACSIM: BenchmarkContainerSpec(
+        bench=Container(
             tag="romnn/macsim-bench",
             ctx=ROOT_DIR,
             dockerfile=ROOT_DIR / "docker/macsim/bench.dockerfile",
+            dependencies=[OCELOT_CONTAINER],
         ),
-        base=dict(
+        base=Container(
             tag="romnn/macsim-base",
             ctx=ROOT_DIR / "docker/macsim",
             dockerfile=ROOT_DIR / "docker/macsim/base.dockerfile",
+            dependencies=[OCELOT_CONTAINER],
         ),
     ),
 }

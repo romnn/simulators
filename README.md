@@ -3,10 +3,9 @@
 #### Docker
 
 #### TODO
-- add macsim (using ocelot base image)
+- allow building docker images without downloaded assets
 - add more benchmarks for all simulators
 
-- match configs and document the mappings between simulators
 - go though all the comments and try to remember the difficulties and things that did not work
 
 - add larger inputs for all simulators once we have more benchmarks and do not care about runtime anymore
@@ -17,6 +16,8 @@
 
 
 #### Done
+- match configs and document the mappings between simulators
+- add macsim (using ocelot base image)
 - add trace driven accelsim
 - copy unused stuff from the dockerfiles into NOTES.md
 - rename the benchmarks to reflect the benchmarks versions they are from

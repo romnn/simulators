@@ -1,5 +1,7 @@
 FROM ubuntu:14.04
 
+SHELL ["/bin/bash", "-c"]
+
 # install basic packages
 RUN apt-get update && apt-get -y upgrade
 RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get -y install tzdata
@@ -28,9 +30,15 @@ RUN cd /simulator && \
 # COPY ./docker/assets/cuda_8.0.61_375.26_linux.run /install_cuda.run
 # COPY ./docker/assets/cuda_7.0.28_linux.run /install_cuda.run
 # COPY ./docker/assets/cuda_5.0.35_linux_64_ubuntu11.10-1.run /install_cuda.run
-COPY ./cuda_6.0.37_linux_64.run /install_cuda.run
-RUN chmod +x /install_cuda.run && \
-  /install_cuda.run --silent --toolkit --override && \
+# COPY ./cuda_6.0.37_linux_64.run /install_cuda.run
+COPY ./cache /cache
+RUN ls -lia /cache
+RUN if [[ ! -f "/cache/cuda_6.0.37_linux_64.run" ]]; then \
+  echo "downloading" && \
+  wget -O /cache/cuda_6.0.37_linux_64.run http://developer.download.nvidia.com/compute/cuda/6_0/rel/installers/cuda_6.0.37_linux_64.run; fi
+
+RUN chmod +x /cache/cuda_6.0.37_linux_64.run && \
+  /cache/cuda_6.0.37_linux_64.run --silent --toolkit --override && \
   if [ -f /var/log/cuda-installer.log ]; then cat /var/log/cuda-installer.log; fi && \
   if [ -f /var/log/nvidia-installer.log ]; then cat /var/log/nvidia-installer.log; fi && \
   find /tmp -name "cuda_install_*.log" | xargs cat && \

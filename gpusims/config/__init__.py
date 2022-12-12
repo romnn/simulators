@@ -2,6 +2,7 @@ import yaml
 import gpusims.config.gpgpusim  # noqa: F401
 import gpusims.config.tejas  # noqa: F401
 import gpusims.config.multi2sim  # noqa: F401
+import gpusims.config.macsim  # noqa: F401
 
 
 class Config:
