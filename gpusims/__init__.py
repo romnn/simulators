@@ -43,6 +43,13 @@ Container = namedtuple(
     ],
 )
 
+TOOLS_CONTAINER = Container(
+    tag="romnn/tools",
+    ctx=ROOT_DIR,
+    dockerfile=ROOT_DIR / "docker/tools.dockerfile",
+    dependencies=[],
+)
+
 OCELOT_CONTAINER = Container(
     tag="romnn/ocelot",
     ctx=ROOT_DIR / "docker/ocelot",

@@ -73,6 +73,6 @@ def configure_macsim(ref, macsim_template):
     pprint(override)
     config.update(override)
 
-    new_config = "THIS FILE IS AUTO GENERATED. DO NOT EDIT.\n\n"
+    new_config = "# THIS FILE IS AUTO GENERATED. DO NOT EDIT.\n\n"
     new_config += "\n".join(["{} {}".format(k, v) for k, v in config.items()])
     return new_config.encode("utf-8")

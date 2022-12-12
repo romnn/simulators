@@ -102,6 +102,8 @@ def build(c, simulator, base=False, dry_run=False):
             continue
 
         for dep in container.dependencies:
+            if not base:
+                break
             # build dependencies first
             if dep.tag in built:
                 continue
@@ -150,7 +152,7 @@ def bench(c, simulator, benchmark, config, repetitions=5, force=False):
 
     for s in simulators:
         print("==> benchmarking", s)
-        container = gpusims.CONTAINERS[s]["bench"]
+        container = gpusims.CONTAINERS[s].bench
         container_run_dir = "/benchrun"
         volumes = {
             ROOT_DIR / "tasks.py": "/tasks.py",
@@ -164,7 +166,7 @@ def bench(c, simulator, benchmark, config, repetitions=5, force=False):
         for src, dest in volumes.items():
             cmd += ["-v", "{}:{}".format(str(src.absolute()), dest)]
 
-        cmd += [container["tag"]]
+        cmd += [container.tag]
         cmd += ["inv", "run", "--simulator", s, "--run-dir", container_run_dir]
         for cfg in config:
             cmd += ["--config", cfg]
@@ -195,7 +197,11 @@ def configure_all(c):
             None,
             "m2s.config.ini",
         ),
-        # gpusims.MACSIM: (config_dir / "macsim_default_params_gtx580", "params.in"),
+        gpusims.MACSIM: (
+            gpusims.config.macsim.configure_macsim,
+            config_dir / "macsim_default_params_gtx580",
+            "params.in",
+        ),
     }
 
     for config_name, config in configs.items():
