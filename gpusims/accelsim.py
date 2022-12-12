@@ -40,7 +40,7 @@ class AccelSimPTXBenchmarkConfig(BenchmarkConfig):
             shell=True,
         )
         print("stdout:")
-        print(stdout[-100:])
+        print("\n".join(stdout.splitlines()[-15:]))
 
         with open(str(log_file.absolute()), "w") as f:
             f.write(stdout)

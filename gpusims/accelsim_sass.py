@@ -126,7 +126,7 @@ class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
             shell=True,
         )
         print("stdout:")
-        print(stdout[-100:])
+        print("\n".join(stdout.splitlines()[-15:]))
 
         print("stderr:")
         print(stderr)

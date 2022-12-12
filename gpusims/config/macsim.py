@@ -3,6 +3,7 @@ import re
 
 
 def configure_macsim(ref, macsim_template):
+    return macsim_template.encode("utf-8")
     config = {}
     for line in macsim_template.splitlines():
         match = re.match(re.compile(r"^\s*(?<!#)\s*(\w+)\s+(\w+)"), line)

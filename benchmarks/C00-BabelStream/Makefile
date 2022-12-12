@@ -27,9 +27,13 @@ TEJAS_LIBRARIES += "-L$(CUDA_PATH)/lib64"
 TEJAS_LIBRARIES += "-L/usr/lib/x86_64-linux-gnu/"
 
 
-native: CUDAStream.cu CUDAStream.h main.cpp Stream.h
-	$(NVCC) $(INCLUDES) $(ALL_CCFLAGS) --std=c++11 $(GENCODE_FLAGS) -o CUDAStream.o -c CUDAStream.cu
-	$(HOST_COMPILER) $(ALL_LDFLAGS) -DCUDA -o CUDAStream main.cpp CUDAStream.o $(LIBRARIES) -lcudart
+# CUDAStream.cu CUDAStream.h main.cpp Stream.h
+# $(NVCC) $(INCLUDES) $(ALL_CCFLAGS) --std=c++11 $(GENCODE_FLAGS) -o CUDAStream.o -c CUDAStream.cu
+# $(HOST_COMPILER) $(ALL_LDFLAGS) -o CUDAStream main.cpp CUDAStream.o $(LIBRARIES) -lcudart
+# -lcudart
+native: CUDAStream.cu
+	$(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -o CUDAStream.o -c CUDAStream.cu
+	$(HOST_COMPILER) -std=c++0x $(ALL_LDFLAGS) -o CUDAStream CUDAStream.o $(LIBRARIES) -lcudart
 
 accelsim: CUDAStream.cu CUDAStream.h main.cpp Stream.h
 	$(NVCC) $(INCLUDES) $(ALL_CCFLAGS) --std=c++11 $(GENCODE_FLAGS) -o CUDAStream.o -c CUDAStream.cu
@@ -46,12 +50,20 @@ tejas: CUDAStream.cu CUDAStream.h main.cpp Stream.h
 	g++-4.8 -std=c++0x $(TEJAS_ROOT)/../Tracegen.cpp -c -I$(TEJAS_ROOT)/../
 	g++-4.8 -std=c++11 -DCUDA -o tracegen CUDAStream.o tejasMain.cpp Tracegen.o $(TEJAS_LIBRARIES) -locelot -ltinfo -Wl,-rpath-link=$(TEJAS_ROOT)/../so_files_64bit
 
-macsim: CUDAStream.cu CUDAStream.h main.cpp Stream.h
+macsim: CUDAStream.cu
 	python3 ../get-kernel-info.py $(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -arch=sm_20 CUDAStream.cu
 	$(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -arch=sm_20 -o CUDAStream.o -c CUDAStream.cu
-	g++-4.4 -std=c++0x -DCUDA -o CUDAStream main.cpp CUDAStream.o \
-		$(LIBRARIES) -Wl,--whole-archive -locelot -locelotTrace -Wl,--no-whole-archive \
-		-lz -lGLU -lboost_system -lboost_thread -Wl,-rpath-link=/usr/lib/x86_64-linux-gnu/
+	g++-4.4 -std=c++0x -o CUDAStream CUDAStream.o \
+		$(LIBRARIES) -locelot -locelotTrace -lz -lGLU -lboost_system -lboost_thread
+
+# $(TEJAS_ROOT)/../so_files_64bit
+# $(NVCC) $(ALL_LDFLAGS) $(GENCODE_FLAGS) -DCUDA -o CUDAStream main.cpp CUDAStream.o $(LIBRARIES) -locelot -locelotTrace -lz -lGLU -lboost_system -lboost_thread
+
+	# g++-4.8 -std=c++0x $(TEJAS_ROOT)/../Tracegen.cpp -c -I$(TEJAS_ROOT)/../
+	# g++-4.8 -std=c++11 -DCUDA -o tracegen CUDAStream.o tejasMain.cpp Tracegen.o $(TEJAS_LIBRARIES) -locelot -ltinfo -Wl,-rpath-link=$(TEJAS_ROOT)/../so_files_64bit
+
+
+# $(HOST_COMPILER) $(ALL_LDFLAGS) $(GENCODE_FLAGS) -o CUDAStream CUDAStream.o $(LIBRARIES)
 
 clean:
 	rm -f CUDAStream *.o

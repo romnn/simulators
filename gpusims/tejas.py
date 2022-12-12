@@ -90,7 +90,7 @@ class TejasBenchmarkConfig(BenchmarkConfig):
         cmd = " ".join(cmd)
         _, stdout, stderr = utils.run_cmd(cmd, cwd=path, timeout_sec=5 * 60)
         print("stdout:")
-        print(stdout)
+        print("\n".join(stdout.splitlines()[-15:]))
         print("stderr:")
         print(stderr)
 
