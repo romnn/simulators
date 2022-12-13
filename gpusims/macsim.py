@@ -149,3 +149,27 @@ class MacSimBenchmarkConfig(BenchmarkConfig):
 
         print("parsing")
         parse_stats(stats_dir)
+
+    def load_dataframe(self, inp):
+        results_dir = self.input_path(inp) / "results"
+        assert results_dir.is_dir(), "{} is not a dir".format(results_dir)
+        stat_files = list((results_dir / "stats").rglob("*stat.out.csv"))
+        return build_macsim_df(stat_files)
+
+
+def build_macsim_df(csv_files):
+    import pandas as pd
+
+    df = pd.concat([pd.read_csv(f) for f in csv_files], axis=0)
+    df = df.set_index("stat")
+    df = df.T
+
+    # not found: "CYC_COUNT_PTX"
+    # APPL_CYC_COUNT0 is the simulator cycles?
+    # CYCLE_GPU is broken, but CYC_COUNT_CORE_0 seems to have some cycles,
+    # so we just aggregate manually
+    cyc_per_core_idx = df.columns[
+        df.columns.str.match(r"CYC_COUNT_CORE_\d+", flags=re.IGNORECASE)
+    ]
+    df["CYC_COUNT_CORE_TOTAL"] = df[cyc_per_core_idx].sum(axis=1)
+    return df

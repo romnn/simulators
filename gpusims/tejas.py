@@ -111,3 +111,14 @@ class TejasBenchmarkConfig(BenchmarkConfig):
         print(stdout)
         print("stderr:")
         print(stderr)
+
+    def load_dataframe(self, inp):
+        results_dir = self.input_path(inp) / "results"
+        assert results_dir.is_dir(), "{} is not a dir".format(results_dir)
+        return build_tejas_df(results_dir / "stats.csv")
+
+
+def build_tejas_df(csv_file):
+    import pandas as pd
+
+    return pd.read_csv(csv_file)

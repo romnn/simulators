@@ -6,7 +6,7 @@ import gpusims.config.macsim  # noqa: F401
 from collections import namedtuple
 
 Config = namedtuple("Config", ["name", "path", "spec"])
-#class Config:
+# class Config:
 #    def __init__(self, name, path):
 #        if path is not None:
 #            assert path.is_dir()

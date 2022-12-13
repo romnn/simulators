@@ -23,6 +23,10 @@ class BenchmarkConfig(abc.ABC):
     def run_input(path, inp, repetitions=1, timeout_mins=5, force=False):
         pass
 
+    @abc.abstractmethod
+    def load_dataframe(self, inp):
+        pass
+
     def input_path(self, inp):
         return self.path / inp.sanitized_name()
 

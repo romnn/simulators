@@ -2,6 +2,7 @@ from pathlib import Path
 from collections import namedtuple
 
 import gpusims.config  # noqa: F401
+import gpusims.plot  # noqa: F401
 
 from gpusims.native import NativeBenchmarkConfig
 from gpusims.accelsim import AccelSimPTXBenchmarkConfig
@@ -64,7 +65,7 @@ CONTAINERS = {
             tag="romnn/native-bench",
             ctx=ROOT_DIR,
             dockerfile=ROOT_DIR / "docker/native/bench.dockerfile",
-            dependencies=[],
+            dependencies=[TOOLS_CONTAINER],
         ),
         base=Container(
             tag="romnn/native-base",
@@ -78,7 +79,7 @@ CONTAINERS = {
             tag="romnn/accelsim-ptx-bench",
             ctx=ROOT_DIR,
             dockerfile=ROOT_DIR / "docker/accelsim/bench.ptx.dockerfile",
-            dependencies=[],
+            dependencies=[TOOLS_CONTAINER],
         ),
         base=Container(
             tag="romnn/accelsim-base",
@@ -92,7 +93,7 @@ CONTAINERS = {
             tag="romnn/accelsim-sass-bench",
             ctx=ROOT_DIR,
             dockerfile=ROOT_DIR / "docker/accelsim/bench.sass.dockerfile",
-            dependencies=[],
+            dependencies=[TOOLS_CONTAINER],
         ),
         base=Container(
             tag="romnn/accelsim-base",
@@ -106,7 +107,7 @@ CONTAINERS = {
             tag="romnn/tejas-bench",
             ctx=ROOT_DIR,
             dockerfile=ROOT_DIR / "docker/tejas/bench.dockerfile",
-            dependencies=[OCELOT_CONTAINER],
+            dependencies=[TOOLS_CONTAINER, OCELOT_CONTAINER],
         ),
         base=Container(
             tag="romnn/tejas-base",
@@ -120,7 +121,7 @@ CONTAINERS = {
             tag="romnn/m2s-bench",
             ctx=ROOT_DIR,
             dockerfile=ROOT_DIR / "docker/m2s/bench.dockerfile",
-            dependencies=[],
+            dependencies=[TOOLS_CONTAINER],
         ),
         base=Container(
             tag="romnn/m2s-base",
@@ -134,7 +135,7 @@ CONTAINERS = {
             tag="romnn/macsim-bench",
             ctx=ROOT_DIR,
             dockerfile=ROOT_DIR / "docker/macsim/bench.dockerfile",
-            dependencies=[OCELOT_CONTAINER],
+            dependencies=[TOOLS_CONTAINER, OCELOT_CONTAINER],
         ),
         base=Container(
             tag="romnn/macsim-base",

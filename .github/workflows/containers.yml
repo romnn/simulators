@@ -26,21 +26,20 @@ jobs:
         with:
           toolchain: stable
           override: true
-      - name: Add musl target toolchain
-        run: rustup target add x86_64-unknown-linux-musl
-
-      - name: Install dependencies
-        run: |
-          pip install pipenv
-          pipenv install --dev --system
-
-      - name: Compile tools
-        run: >-
-          cargo build
-          --release
-          --all-targets
-          --target x86_64-unknown-linux-musl
-
+      # - name: Add musl target toolchain
+      #   run: rustup target add x86_64-unknown-linux-musl
+      # - name: Compile tools
+      #   run: >-
+      #     cargo build
+      #     --release
+      #     --all-targets
+      #     --target x86_64-unknown-linux-musl
+ 
+      # - name: Install dependencies
+      #   run: |
+      #     pip install pipenv
+      #     pipenv install --dev --system
+      
       - name: Build container
         run: >-
           inv build

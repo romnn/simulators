@@ -58,6 +58,30 @@ def lint(c):
 ns.add_task(lint, "lint")
 
 
+@task()
+def build_tools(c):
+    """Build tools"""
+    cmd = ["rustup", "target", "add", "x86_64-unknown-linux-musl"]
+    cmd = " ".join(cmd)
+    print(cmd)
+    c.run(cmd)
+
+    cmd = [
+        "cargo",
+        "build",
+        "--release",
+        "--all-targets",
+        "--target",
+        "x86_64-unknown-linux-musl",
+    ]
+    cmd = " ".join(cmd)
+    print(cmd)
+    c.run(cmd)
+
+
+ns.add_task(build_tools, "build-tools")
+
+
 def build_container(c, ctx, tag, dockerfile=None, dry_run=False):
     cmd = ["docker", "build", "-t", tag]
     if dockerfile is not None:
@@ -137,10 +161,22 @@ ns.add_task(build, "build")
         "config": "list of configurations to run",
         "repetitions": "number of repetitions (only applies to native execution)",
         "timeout-mins": "timeout in minutes per simulation run",
+        "dry-run": "dry run only prints commands that would be executed",
+        "local": "disable mapping the run output volume, which will not write benchmark results",
     },
     iterable=["simulator", "benchmark", "config"],
 )
-def bench(c, simulator, benchmark, config, repetitions=3, force=False, timeout_mins=5):
+def bench(
+    c,
+    simulator,
+    benchmark,
+    config,
+    repetitions=3,
+    force=False,
+    timeout_mins=5,
+    dry_run=False,
+    local=False,
+):
     """Benchmark in simulator inside docker containers"""
     simulator = [s.lower() for s in simulator]
     for s in simulator:
@@ -157,8 +193,13 @@ def bench(c, simulator, benchmark, config, repetitions=3, force=False, timeout_m
         volumes = {
             ROOT_DIR / "tasks.py": "/tasks.py",
             ROOT_DIR / "gpusims": "/gpusims",
-            ROOT_DIR / "run": container_run_dir,
         }
+        if not local:
+            volumes.update(
+                {
+                    ROOT_DIR / "run": container_run_dir,
+                }
+            )
         cmd = ["docker", "run"]
         if s in [gpusims.ACCELSIM_SASS, gpusims.NATIVE]:
             # map in the GPU
@@ -179,7 +220,8 @@ def bench(c, simulator, benchmark, config, repetitions=3, force=False, timeout_m
 
         cmd = " ".join(cmd)
         print(cmd)
-        c.run(cmd)
+        if not dry_run:
+            c.run(cmd)
 
 
 ns.add_task(bench, "bench")
