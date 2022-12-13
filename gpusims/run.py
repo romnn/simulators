@@ -67,7 +67,7 @@ def run(
     pending = []
     for c, b in list(itertools.product(config, benchmark)):
         if simulator == "native":
-            conf = gpusims.config.Config(name=c.lower(), path=None)
+            conf = gpusims.config.Config(name=c.lower(), path=None, spec={})
         else:
             conf = configs.get(c.lower())
 
