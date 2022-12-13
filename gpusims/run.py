@@ -27,7 +27,7 @@ def run(
     benchmark,
     config,
     simulator,
-    repetitions=5,
+    repetitions=3,
     force=False,
     _dir=None,
     timeout_mins=5,

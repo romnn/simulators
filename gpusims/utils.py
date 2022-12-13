@@ -24,6 +24,8 @@ def run_cmd(cmd, cwd=None, shell=False, timeout_sec=None, env=None):
     if not shell and not isinstance(cmd, list):
         cmd = shlex.split(cmd)
     print("running", cmd)
+    if isinstance(cmd, list):
+        print("running", " ".join(cmd))
 
     if isinstance(cwd, Path):
         cwd = str(cwd.absolute())
