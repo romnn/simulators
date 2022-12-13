@@ -1,5 +1,6 @@
 import abc
 import pandas as pd
+import gpusims
 
 
 class Metric(abc.ABC):
@@ -9,6 +10,30 @@ class Metric(abc.ABC):
     @abc.abstractmethod
     def compute(self):
         pass
+
+    @property
+    def m2s_df(self):
+        return self.data.get(gpusims.MULTI2SIM)
+
+    @property
+    def hw_df(self):
+        return self.data.get(gpusims.NATIVE)
+
+    @property
+    def macsim_df(self):
+        return self.data.get(gpusims.MACSIM)
+
+    @property
+    def accelsim_ptx_df(self):
+        return self.data.get(gpusims.ACCELSIM_PTX)
+
+    @property
+    def accelsim_sass_df(self):
+        return self.data.get(gpusims.ACCELSIM_SASS)
+
+    @property
+    def tejas_df(self):
+        return self.data.get(gpusims.TEJAS)
 
 
 class Cycles(Metric):
@@ -28,16 +53,16 @@ class Cycles(Metric):
             data.append(("GPUTejas", tejas_value.mean()))
 
         for name, accel_df in [
-            ("AccelSim PTX", self.accel_ptx_df),
-            ("AccelSim SASS", self.accel_sass_df),
+            ("AccelSim PTX", self.accelsim_ptx_df),
+            ("AccelSim SASS", self.accelsim_sass_df),
         ]:
             if accel_df is not None:
                 accel_value = accel_df["gpu_tot_sim_cycle"]
                 data.append((name, accel_value.mean()))
 
         if self.hw_df is not None:
-            # hw_cycles = self.hw_df["elapsed_cycles_sm"] / self.config.spec["sm_count"]
-            hw_value = self.hw_df["Duration"] * self.config.spec["clock_speed"]
+            # hw_cycles = self.hw_df["elapsed_cycles_sm"] / self.data.config.spec["sm_count"]
+            hw_value = self.hw_df["Duration"] * self.data.config.spec["clock_speed"]
             data.append(("Hardware", hw_value.mean()))
 
         df = pd.DataFrame.from_records(
@@ -58,8 +83,8 @@ class L2ReadHit(Metric):
         #    data.append(("GPUTejas", tejas_cycles.mean()))
         # if self.accel_df is not None:
         for name, accel_df in [
-            ("AccelSim PTX", self.accel_ptx_df),
-            ("AccelSim SASS", self.accel_sass_df),
+            ("AccelSim PTX", self.accelsim_ptx_df),
+            ("AccelSim SASS", self.accelsim_sass_df),
         ]:
             # "float(sim[\"\s+L2_cache_stats_breakdown\[GLOBAL_ACC_R\]\[HIT\]\s*=\s*(.*)\"])"
             if accel_df is not None:
@@ -98,13 +123,13 @@ class InstructionCount(Metric):
         if self.tejas_df is not None:
             # without the multiplication, this does not make sense
             tejas_value = (
-                self.tejas_df["total_inst_count"].mean() * self.config.spec["sm_count"]
+                self.tejas_df["total_inst_count"].mean() * self.data.config.spec["sm_count"]
             )
             data.append(("GPUTejas", tejas_value))
 
         for name, accel_df in [
-            ("AccelSim PTX", self.accel_ptx_df),
-            ("AccelSim SASS", self.accel_sass_df),
+            ("AccelSim PTX", self.accelsim_ptx_df),
+            ("AccelSim SASS", self.accelsim_sass_df),
         ]:
             if accel_df is not None:
                 accel_value = accel_df["gpgpu_n_tot_w_icount"].mean()
@@ -140,16 +165,16 @@ class IPC(Metric):
         if self.tejas_df is not None:
             # their total_ipc does not make sense?
             # tejas_value = self.tejas_df["total_ipc"].mean()
-            # * self.config.spec["sm_count"]
+            # * self.data.config.spec["sm_count"]
             tejas_instr = (
-                self.tejas_df["total_inst_count"].mean() * self.config.spec["sm_count"]
+                self.tejas_df["total_inst_count"].mean() * self.data.config.spec["sm_count"]
             )
             tejas_value = tejas_instr / self.tejas_df["total_cycle_count"].mean()
             data.append(("GPUTejas", tejas_value))
 
         for name, accel_df in [
-            ("AccelSim PTX", self.accel_ptx_df),
-            ("AccelSim SASS", self.accel_sass_df),
+            ("AccelSim PTX", self.accelsim_ptx_df),
+            ("AccelSim SASS", self.accelsim_sass_df),
         ]:
             # "np.average(hw[\"inst_issued\"]) /
             #   float(sim[\"gpu_tot_sim_cycle\s*=\s*(.*)\"])"
@@ -164,7 +189,7 @@ class IPC(Metric):
             # "np.average(hw[\"inst_issued\"]) /
             #   (np.average(hw[\"elapsed_cycles_sm\"])/80)"
             hw_cycles = (
-                self.hw_df["elapsed_cycles_sm"].mean() / self.config.spec["sm_count"]
+                self.hw_df["elapsed_cycles_sm"].mean() / self.data.config.spec["sm_count"]
             )
             hw_value = self.hw_df["inst_issued"].mean() / hw_cycles
             data.append(("Hardware", hw_value))
@@ -179,8 +204,8 @@ class DRAMReads(Metric):
     def compute(self):
         data = []
         for name, accel_df in [
-            ("AccelSim PTX", self.accel_ptx_df),
-            ("AccelSim SASS", self.accel_sass_df),
+            ("AccelSim PTX", self.accelsim_ptx_df),
+            ("AccelSim SASS", self.accelsim_sass_df),
         ]:
             # "float(sim[\"total dram reads\s*=\s*(.*)\"])"
             if accel_df is not None:
@@ -202,8 +227,8 @@ class DRAMWrites(Metric):
     def compute(self):
         data = []
         for name, accel_df in [
-            ("AccelSim PTX", self.accel_ptx_df),
-            ("AccelSim SASS", self.accel_sass_df),
+            ("AccelSim PTX", self.accelsim_ptx_df),
+            ("AccelSim SASS", self.accelsim_sass_df),
         ]:
             # "float(sim[\"total dram writes\s*=\s*(.*)\"])"
             if accel_df is not None:

@@ -142,6 +142,12 @@ class NativeBenchmarkConfig(BenchmarkConfig):
 hw_index_cols = ["Stream", "Context", "Device", "Kernel", "Correlation_ID"]
 
 
+def normalize_device_name(name):
+    # Strip off device numbers, e.g. (0), (1)
+    # that some profiler versions add to the end of device name
+    return re.sub(r" \(\d+\)$", "", name)
+
+
 def build_hw_kernel_df(csv_files):
     import pandas as pd
 
@@ -173,6 +179,9 @@ def build_hw_kernel_df(csv_files):
             "Kernel": "string",
         }
     )
+
+    hw_kernel_df["Device"] = hw_kernel_df["Device"].apply(normalize_device_name)
+
     hw_kernel_df = hw_kernel_df.set_index(hw_index_cols)
 
     # compute min, max, mean, stddev
@@ -204,6 +213,7 @@ def build_hw_cycles_df(csv_files):
     hw_cycle_df = hw_cycle_df[
         hw_cycle_df.columns[~hw_cycle_df.columns.str.contains(r".*_utilization")]
     ]
+    hw_cycle_df["Device"] = hw_cycle_df["Device"].apply(normalize_device_name)
     hw_cycle_df = hw_cycle_df.set_index(hw_index_cols)
     # convert to numeric values
     hw_cycle_df = hw_cycle_df.convert_dtypes()
@@ -243,6 +253,7 @@ def build_hw_df(kernel_csv_files, cycle_csv_files):
     assert kernel_df.shape[0] == cycle_df.shape[0]
 
     inner_hw_df = kernel_df.join(cycle_df, how="inner")
+
     # sort columns
     inner_hw_df = inner_hw_df.sort_index(axis=1)
     # print("inner join shape", inner_hw_df.shape)

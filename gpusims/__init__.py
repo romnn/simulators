@@ -2,7 +2,6 @@ from pathlib import Path
 from collections import namedtuple
 
 import gpusims.config  # noqa: F401
-import gpusims.plot  # noqa: F401
 
 from gpusims.native import NativeBenchmarkConfig
 from gpusims.accelsim import AccelSimPTXBenchmarkConfig
