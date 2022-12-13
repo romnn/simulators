@@ -3,14 +3,10 @@
 #### Docker
 
 #### TODO
-- add bandwidth benchmark
 
-- check that all benchmarks work
 - write a nice readme for how to run ampere native and accelsim sass benches
 
-- check that the ampere config substituion makes sense at all
 - test building docker containers in github actions
-- add more benchmarks for all simulators
 
 - go though all the comments and try to remember the difficulties and things that did not work
 
@@ -22,6 +18,10 @@
 
 
 #### Done
+- add more benchmarks for all simulators
+- check that the ampere config substituion makes sense at all
+- check that all benchmarks work
+- add bandwidth benchmark
 - add vector add with different input sizes as a benchmark
 - make timeout a parameter
 - allow building docker images without downloaded assets
