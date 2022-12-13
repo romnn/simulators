@@ -23,10 +23,6 @@ RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d && \
     wget && \
     apt-mark hold libbison-dev bison 
 
-# wget http://security.ubuntu.com/ubuntu/pool/multiverse/n/nvidia-graphics-drivers-352/libcuda1-352_352.63-0ubuntu0.14.04.1_amd64.deb && \
-# dpkg -i libcuda1-352_352.63-0ubuntu0.14.04.1_amd64.deb && \
-# wget http://developer.download.nvidia.com/compute/cuda/4_2/rel/toolkit/cudatoolkit_4.2.9_linux_64_ubuntu11.04.run && \
-
 SHELL ["/bin/bash", "-c"]
 COPY ./cache /cache
 RUN ls -lia /cache

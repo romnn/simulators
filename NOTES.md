@@ -1,5 +1,13 @@
 ## Notes
 
+##### Ocelot
+original.dockerfile
+```dockerfile
+# wget http://security.ubuntu.com/ubuntu/pool/multiverse/n/nvidia-graphics-drivers-352/libcuda1-352_352.63-0ubuntu0.14.04.1_amd64.deb && \
+# dpkg -i libcuda1-352_352.63-0ubuntu0.14.04.1_amd64.deb && \
+# wget http://developer.download.nvidia.com/compute/cuda/4_2/rel/toolkit/cudatoolkit_4.2.9_linux_64_ubuntu11.04.run && \
+```
+
 ##### MacSim
 base.dockerfile
 ```dockerfile
