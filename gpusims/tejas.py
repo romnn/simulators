@@ -17,7 +17,7 @@ def build_config(config_file, threads):
 
 class TejasBenchmarkConfig(BenchmarkConfig):
     @staticmethod
-    def run_input(path, inp, force=False, **kwargs):
+    def run_input(path, inp, force=False, timeout_mins=5, **kwargs):
         print("tejas run:", inp, inp.args)
 
         threads = multiprocessing.cpu_count()
@@ -42,7 +42,7 @@ class TejasBenchmarkConfig(BenchmarkConfig):
 
         cmd = [str(tracegen.absolute()), inp.args, str(threads)]
         cmd = " ".join(cmd)
-        utils.run_cmd(cmd, cwd=path, timeout_sec=5 * 60)
+        utils.run_cmd(cmd, cwd=path, timeout_sec=timeout_mins * 60)
 
         # check number of kernels
         kernels = 0
@@ -66,7 +66,7 @@ class TejasBenchmarkConfig(BenchmarkConfig):
             str(kernels),
         ]
         cmd = " ".join(cmd)
-        _, stdout, stderr = utils.run_cmd(cmd, cwd=path, timeout_sec=5 * 60)
+        _, stdout, stderr = utils.run_cmd(cmd, cwd=path, timeout_sec=timeout_mins * 60)
         print("stdout:")
         print(stdout)
         print("stderr:")
@@ -88,7 +88,7 @@ class TejasBenchmarkConfig(BenchmarkConfig):
             str(kernels),
         ]
         cmd = " ".join(cmd)
-        _, stdout, stderr = utils.run_cmd(cmd, cwd=path, timeout_sec=5 * 60)
+        _, stdout, stderr = utils.run_cmd(cmd, cwd=path, timeout_sec=timeout_mins * 60)
         print("stdout:")
         print("\n".join(stdout.splitlines()[-15:]))
         print("stderr:")
@@ -105,7 +105,7 @@ class TejasBenchmarkConfig(BenchmarkConfig):
                 str(stat_file.absolute()),
             ],
             cwd=path,
-            timeout_sec=1 * 60,
+            timeout_sec=timeout_mins * 60,
         )
         print("stdout:")
         print(stdout)

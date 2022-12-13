@@ -21,16 +21,11 @@ ALL_LDFLAGS += $(addprefix -Xlinker ,$(EXTRA_LDFLAGS))
 INCLUDES  := -I../Common
 LIBRARIES :=
 
-# lib/gcc-$CC_VERSION/cuda-$CUDA_VERSION_NUMBER/release/
-
 native: matrixMul.cu
 	$(NVCC) $(INCLUDES) $(ALL_CCFLAGS) --std=c++11 $(GENCODE_FLAGS) -o matrixMul.o -c matrixMul.cu
 	$(NVCC) $(ALL_LDFLAGS) $(GENCODE_FLAGS) -o matrixMul matrixMul.o $(LIBRARIES)
 	
-m2s: matrixMul.cu
-	$(NVCC) $(INCLUDES) $(ALL_CCFLAGS) -m32 -Xcicc -O0 -Xptxas -O0 $(GENCODE_FLAGS) -arch sm_35 -o matrixMul.o -c matrixMul.cu
-	$(HOST_COMPILER) $(ALL_LDFLAGS) -L$(M2S_ROOT)/lib/.libs -o matrixMul matrixMul.o -m32 $(LIBRARIES) -lm2s-cuda 
-	
+
 accelsim: matrixMul.cu
 	$(NVCC) $(INCLUDES) $(ALL_CCFLAGS) --std=c++11 $(GENCODE_FLAGS) -o matrixMul.o -c matrixMul.cu
 	$(NVCC) $(ALL_LDFLAGS) --cudart shared $(GENCODE_FLAGS) -o matrixMul matrixMul.o $(LIBRARIES)
@@ -43,6 +38,11 @@ macsim: matrixMul.cu
 	# g++-4.4 -o matrixMul matrixMul.o -locelot -locelotTrace
 	# python3 ../get-kernel-info.py $(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -arch=sm_20 matrixMul.cu
 
+# has no cudaGetErrorName
+m2s: matrixMul.cu
+	# $(NVCC) $(INCLUDES) $(ALL_CCFLAGS) -m32 -Xcicc -O0 -Xptxas -O0 $(GENCODE_FLAGS) -arch sm_35 -o matrixMul.o -c matrixMul.cu
+	# $(HOST_COMPILER) $(ALL_LDFLAGS) -L$(M2S_ROOT)/lib/.libs -o matrixMul matrixMul.o -m32 $(LIBRARIES) -lm2s-cuda 
+	
 clean:
 	rm -f matrixMul matrixMul.o
 

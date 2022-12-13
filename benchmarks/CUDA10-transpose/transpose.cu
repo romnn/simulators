@@ -72,8 +72,6 @@ int MAX_TILES = (FLOOR(MATRIX_SIZE_X, 512) * FLOOR(MATRIX_SIZE_Y, 512)) /
 // performed: 1) over kernel launches and 2) inside the kernel over just the
 // loads and stores
 
-#define NUM_REPS 100
-
 // -------------------------------------------------------
 // Copies
 // width and height must be integral multiples of TILE_DIM
@@ -308,7 +306,7 @@ void computeTransposeGold(float *gold, float *idata, const int size_x,
   }
 }
 
-void getParams(int argc, char **argv, cudaDeviceProp &deviceProp, int &size_x,
+void getParams(int argc, char **argv, cudaDeviceProp &deviceProp, int &repeat, int &size_x,
                int &size_y, int max_tile_dim) {
   // set matrix size (if (x,y) dim of matrix is not square, then this will have
   // to be modified
@@ -338,6 +336,10 @@ void getParams(int argc, char **argv, cudaDeviceProp &deviceProp, int &size_x,
   } else {
     size_y = max_tile_dim;
     size_y = FLOOR(size_y, 512);
+  }
+
+  if (checkCmdLineFlag(argc, (const char **)argv, "repeat")) {
+    repeat = getCmdLineArgumentInt(argc, (const char **)argv, "repeat");
   }
 }
 
@@ -405,7 +407,8 @@ int main(int argc, char **argv) {
 
   // Extract parameters if there are any, command line -dimx and -dimy can
   // override any of these settings
-  getParams(argc, argv, deviceProp, size_x, size_y, max_matrix_dim);
+  int reps = 100;
+  getParams(argc, argv, deviceProp, reps, size_x, size_y, max_matrix_dim);
 
   if (size_x != size_y) {
     printf(
@@ -553,7 +556,7 @@ int main(int argc, char **argv) {
     // take measurements for loop over kernel launches
     checkCudaErrors(cudaEventRecord(start, 0));
 
-    for (int i = 0; i < NUM_REPS; i++) {
+    for (int i = 0; i < reps; i++) {
       kernel<<<grid, threads>>>(d_odata, d_idata, size_x, size_y);
       // Ensure no launch failure
       checkCudaErrors(cudaGetLastError());
@@ -585,11 +588,11 @@ int main(int argc, char **argv) {
 
     // report effective bandwidths
     float kernelBandwidth = 2.0f * 1000.0f * mem_size / (1024 * 1024 * 1024) /
-                            (kernelTime / NUM_REPS);
+                            (kernelTime / reps);
     printf(
         "transpose %s, Throughput = %.4f GB/s, Time = %.5f ms, Size = %u fp32 "
         "elements, NumDevsUsed = %u, Workgroup = %u\n",
-        kernelName, kernelBandwidth, kernelTime / NUM_REPS, (size_x * size_y),
+        kernelName, kernelBandwidth, kernelTime / reps, (size_x * size_y),
         1, TILE_DIM * BLOCK_ROWS);
   }
 

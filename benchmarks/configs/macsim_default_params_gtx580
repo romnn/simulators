@@ -91,10 +91,27 @@ enable_pref_small_core 0
 
 
 bug_detector_enable 1
+# bug_detector_enable 0
+
+# this is just a test
+# repeat_trace 1
 
 sim_cycle_count 0
 max_insts 200000000
 heartbeat_interval 1000000
+
+# A Forward Progress Error is triggered when an active
+# core has not retired any instructions for a number
+# of cycles
+#
+#
+# A Forward Progress Error could be triggered when a
+# uop cannot be retired because the memory request it
+# generated was lost in the memory system.
+# A uop cannot be scheduled because one of its sources
+# operands is not marked ready yet, but the uop producing
+# the source has already retired (or is lost)
+# forward_progress_limit 500000
 forward_progress_limit 50000
 blocks_to_simulate 0
 ptx_exec_ratio 2

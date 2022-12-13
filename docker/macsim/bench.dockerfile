@@ -10,7 +10,6 @@ COPY ./target/x86_64-unknown-linux-musl/release/*-parse /usr/bin/
 COPY ./benchmarks /benchmarks 
 WORKDIR /benchmarks
 
-# SHELL ["/bin/bash", "-c"]
 # compile the benchmarks
 RUN cd /benchmarks && \
   make clean && \

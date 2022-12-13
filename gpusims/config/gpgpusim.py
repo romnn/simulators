@@ -1,6 +1,7 @@
 import re
 from collections import namedtuple
-from pprint import pprint
+from pprint import pprint  # noqa: F401
+
 
 GPGPUSimConfig = namedtuple(
     "GPGPUSimConfig",
@@ -78,7 +79,7 @@ def parse_cache_config(match):
         parts = match.group(1)
         parts = parts.split(",")
         parts = [p.strip().split(":") for p in parts]
-        pprint(parts)
+        # pprint(parts)
         if len(parts) > 0:
             cache_config["assoc"] = parts[0][-1]
             cache_config["bsize"] = parts[0][-2]

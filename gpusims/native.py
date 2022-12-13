@@ -34,7 +34,7 @@ def convert_hw_csv(csv_file, output_csv_file):
 
 class NativeBenchmarkConfig(BenchmarkConfig):
     @staticmethod
-    def run_input(path, inp, repetitions=1, force=False, **kwargs):
+    def run_input(path, inp, repetitions=1, force=False, timeout_mins=5, **kwargs):
         print("native run:", inp)
         # export CUDA_VISIBLE_DEVICES="0"
 
@@ -67,7 +67,9 @@ class NativeBenchmarkConfig(BenchmarkConfig):
             ]
             cmd = " ".join(cmd)
             try:
-                _, stdout, _ = utils.run_cmd(cmd, cwd=path, timeout_sec=5 * 60)
+                _, stdout, _ = utils.run_cmd(
+                    cmd, cwd=path, timeout_sec=timeout_mins * 60
+                )
                 print("stdout:")
                 print(stdout)
                 with open(str(log_file.absolute()), "r") as f:
@@ -106,7 +108,7 @@ class NativeBenchmarkConfig(BenchmarkConfig):
             cycles_cmd = " ".join(cycles_cmd)
             try:
                 _, stdout, _ = utils.run_cmd(
-                    cycles_cmd, cwd=path, timeout_sec=5 * 60
+                    cycles_cmd, cwd=path, timeout_sec=timeout_mins * 60
                 )
                 print("stdout:")
                 print(stdout)

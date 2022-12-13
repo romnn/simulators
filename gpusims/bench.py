@@ -20,13 +20,13 @@ class BenchmarkConfig(abc.ABC):
 
     @staticmethod
     @abc.abstractmethod
-    def run_input(path, inp, repetitions=1, force=False):
+    def run_input(path, inp, repetitions=1, timeout_mins=5, force=False):
         pass
 
     def input_path(self, inp):
         return self.path / inp.sanitized_name()
 
-    def run(self, repetitions=1, force=False):
+    def run(self, repetitions=1, timeout_mins=5, force=False):
         for inp in self.benchmark.inputs:
             print("running input:", inp)
             print(inp.executable)
@@ -39,7 +39,13 @@ class BenchmarkConfig(abc.ABC):
                 repetitions = int(self.benchmark.extra["repetitions"])
             except (KeyError, ValueError):
                 pass
-            self.run_input(path=path, inp=inp, repetitions=repetitions, force=force)
+            self.run_input(
+                path=path,
+                inp=inp,
+                repetitions=repetitions,
+                timeout_mins=timeout_mins,
+                force=force,
+            )
 
     def setup(self, path):
         """setup the benchmark in given run dir"""

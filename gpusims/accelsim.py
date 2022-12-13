@@ -7,7 +7,7 @@ from pprint import pprint  # noqa: F401
 
 class AccelSimPTXBenchmarkConfig(BenchmarkConfig):
     @staticmethod
-    def run_input(path, inp, force=False, **kwargs):
+    def run_input(path, inp, force=False, timeout_mins=5, **kwargs):
         print("accelsim PTX run:", inp)
         sim_root = Path(os.environ["SIM_ROOT"])
         setup_env = sim_root / "setup_environment"
@@ -36,7 +36,7 @@ class AccelSimPTXBenchmarkConfig(BenchmarkConfig):
         _, stdout, _ = utils.run_cmd(
             "bash " + str(tmp_run_file.absolute()),
             cwd=path,
-            timeout_sec=5 * 60,
+            timeout_sec=timeout_mins * 60,
             shell=True,
         )
         print("stdout:")
@@ -56,7 +56,7 @@ class AccelSimPTXBenchmarkConfig(BenchmarkConfig):
                 str(stat_file.absolute()),
             ],
             cwd=path,
-            timeout_sec=1 * 60,
+            timeout_sec=timeout_mins * 60,
         )
 
         tmp_run_file.unlink()

@@ -130,17 +130,17 @@ ns.add_task(build, "build")
 
 
 @task(
-    # post=[chown],
     help={
         "benchmark": "list of benchmarks to run",
         "simulator": "simulator to build container",
         "force": "force rerunning of benchmarks",
         "config": "list of configurations to run",
         "repetitions": "number of repetitions (only applies to native execution)",
+        "timeout-mins": "timeout in minutes per simulation run",
     },
     iterable=["simulator", "benchmark", "config"],
 )
-def bench(c, simulator, benchmark, config, repetitions=5, force=False):
+def bench(c, simulator, benchmark, config, repetitions=1, force=False, timeout_mins=5):
     """Benchmark in simulator inside docker containers"""
     simulator = [s.lower() for s in simulator]
     for s in simulator:
@@ -168,6 +168,8 @@ def bench(c, simulator, benchmark, config, repetitions=5, force=False):
 
         cmd += [container.tag]
         cmd += ["inv", "run", "--simulator", s, "--run-dir", container_run_dir]
+        if timeout_mins is not None:
+            cmd += ["--timeout-mins", str(timeout_mins)]
         for cfg in config:
             cmd += ["--config", cfg]
         for b in benchmark:

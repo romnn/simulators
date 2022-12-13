@@ -1,13 +1,15 @@
 BENCHES = CUDA6-transpose
+BENCHES += CUDA6-bandwidthTest
 BENCHES += CUDA4-matrixMul
 BENCHES += CUDA10-transpose
 BENCHES += CUDA10-matrixMul
+BENCHES += vectorAdd
 BENCHES += BabelStream
 
 # https://stackoverflow.com/a/23710719
 
 TEJAS_BENCHES = $(BENCHES:%=tejas-%)
-M2SSIM_BENCHES = $(BENCHES:%=m2s-%)
+M2S_BENCHES = $(BENCHES:%=m2s-%)
 MACSIM_BENCHES = $(BENCHES:%=macsim-%)
 ACCELSIM_BENCHES = $(BENCHES:%=accelsim-%)
 NATIVE_BENCHES = $(BENCHES:%=native-%)

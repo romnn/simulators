@@ -12,4 +12,4 @@ WORKDIR /benchmarks
 # compile the benchmarks
 RUN cd /benchmarks && \
   make clean && \
-  make -j m2s
+  make m2s

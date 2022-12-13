@@ -17,11 +17,20 @@ from gpusims.bench import parse_benchmarks
         "benchmark": "list of benchmarks to run",
         "config": "list of configurations to run",
         "repetitions": "number of repetitions (only applies to native execution)",
+        "timeout-mins": "timeout in minutes per simulation run",
     },
     iterable=["benchmark", "config"],
 )
 def run(
-    c, run_dir, benchmark, config, simulator, repetitions=5, force=False, _dir=None
+    c,
+    run_dir,
+    benchmark,
+    config,
+    simulator,
+    repetitions=5,
+    force=False,
+    _dir=None,
+    timeout_mins=5,
 ):
     """Run benchmarks"""
     simulator = simulator.lower()
@@ -88,4 +97,4 @@ def run(
 
     for b in pending:
         pprint(b)
-        b.run(repetitions=repetitions, force=force)
+        b.run(repetitions=repetitions, force=force, timeout_mins=timeout_mins)

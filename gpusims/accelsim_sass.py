@@ -7,7 +7,7 @@ from pprint import pprint  # noqa: F401
 
 class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
     @staticmethod
-    def run_input(path, inp, force=False, **kwargs):
+    def run_input(path, inp, force=False, timeout_mins=5, **kwargs):
         print("accelsim SASS run:", inp)
 
         sim_root = Path(os.environ["SIM_ROOT"])
@@ -87,7 +87,7 @@ class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
         _, stdout, stderr = utils.run_cmd(
             "bash " + str(tmp_trace_file.absolute()),
             cwd=path,
-            timeout_sec=5 * 60,
+            timeout_sec=timeout_mins * 60,
             shell=True,
         )
         print("stdout:")
@@ -122,7 +122,7 @@ class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
         _, stdout, stderr = utils.run_cmd(
             "bash " + str(tmp_run_file.absolute()),
             cwd=path,
-            timeout_sec=5 * 60,
+            timeout_sec=timeout_mins * 60,
             shell=True,
         )
         print("stdout:")
@@ -147,5 +147,5 @@ class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
                 str(stat_file.absolute()),
             ],
             cwd=path,
-            timeout_sec=1 * 60,
+            timeout_sec=timeout_mins * 60,
         )

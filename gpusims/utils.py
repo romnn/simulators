@@ -39,10 +39,12 @@ def run_cmd(cmd, cwd=None, shell=False, timeout_sec=None, env=None):
     stdout = stdout.decode("utf-8")
     stderr = stderr.decode("utf-8")
     if proc.returncode != 0:
-        print("stdout:")
-        print(stdout)
-        print("stderr:")
-        print(stderr)
+        print("\nstdout (last 15 lines):\n")
+        print("\n".join(stdout.splitlines()[-15:]))
+        print("\nstderr (last 15 lines):\n")
+        print("\n".join(stderr.splitlines()[-15:]))
+        # there may be a loooot to print, block!
+        sys.stdout.flush()
         raise ExecError(cmd=cmd, status=proc.returncode, stdout=stdout, stderr=stderr)
 
     return proc.returncode, stdout, stderr

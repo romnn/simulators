@@ -5,7 +5,7 @@ import gpusims.utils as utils
 
 class Multi2SimBenchmarkConfig(BenchmarkConfig):
     @staticmethod
-    def run_input(path, inp, force=False, **kwargs):
+    def run_input(path, inp, force=False, timeout_mins=5, **kwargs):
         print("multi2sim run:", inp)
 
         executable = path / inp.executable
@@ -32,7 +32,7 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
         _, stdout, stderr = utils.run_cmd(
             cmd,
             cwd=path,
-            timeout_sec=5 * 60,
+            timeout_sec=timeout_mins * 60,
         )
         print("stdout:")
         print(stdout)
@@ -54,5 +54,5 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
                 str(csv_file.absolute()),
             ],
             cwd=path,
-            timeout_sec=1 * 60,
+            timeout_sec=timeout_mins * 60,
         )

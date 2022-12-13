@@ -2,6 +2,7 @@ import re
 import csv
 from gpusims.bench import BenchmarkConfig
 import gpusims.utils as utils
+from pprint import pprint  # noqa: F401
 
 
 def parse_stats(stats_dir):
@@ -21,6 +22,10 @@ def parse_stats(stats_dir):
     At the end of the simulation, *.stat.out files are generated as usual.
     """
     raw_stat_files = list(stats_dir.rglob("*stat.out*"))
+    if len(raw_stat_files) < 1:
+        raise AssertionError(
+            "ERROR: no raw stat files found. simulation must have been aborted."
+        )
     for raw_stat_file in raw_stat_files:
         stat_file = raw_stat_file.parent / (raw_stat_file.name + ".csv")
         with open(str(raw_stat_file.absolute()), "r") as f:
@@ -43,7 +48,7 @@ def parse_stats(stats_dir):
 
 class MacSimBenchmarkConfig(BenchmarkConfig):
     @staticmethod
-    def run_input(path, inp, force=False, **kwargs):
+    def run_input(path, inp, force=False, timeout_mins=5, **kwargs):
         print("macsim run:", inp)
 
         executable = path / inp.executable
@@ -100,7 +105,7 @@ class MacSimBenchmarkConfig(BenchmarkConfig):
         _, stdout, stderr = utils.run_cmd(
             "bash " + str(tmp_run_file.absolute()),
             cwd=path,
-            timeout_sec=5 * 60,
+            timeout_sec=timeout_mins * 60,
             shell=True,
         )
         print("stdout:")
@@ -134,12 +139,13 @@ class MacSimBenchmarkConfig(BenchmarkConfig):
                 ]
             ),
             cwd=path,
-            timeout_sec=5 * 60,
+            timeout_sec=timeout_mins * 60,
         )
 
         print("stdout:")
-        print(stdout)
+        print("\n".join(stdout.splitlines()[-15:]))
         print("stderr:")
-        print(stderr)
+        print("\n".join(stderr.splitlines()[-15:]))
 
+        print("parsing")
         parse_stats(stats_dir)
