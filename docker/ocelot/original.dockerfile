@@ -28,7 +28,7 @@ RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d && \
 # wget http://developer.download.nvidia.com/compute/cuda/4_2/rel/toolkit/cudatoolkit_4.2.9_linux_64_ubuntu11.04.run && \
 
 SHELL ["/bin/bash", "-c"]
-COPY ./cache/ /cache
+COPY ./cache /cache
 RUN ls -lia /cache
 RUN if [[ ! -f "/cache/cudatoolkit_4.2.9_linux_64_ubuntu11.04.run" ]]; then \
   echo "downloading" && \

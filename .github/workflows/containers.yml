@@ -41,7 +41,7 @@ jobs:
           --all-targets
           --target x86_64-unknown-linux-musl
 
-      - name: Install dependencies
+      - name: Build container
         run: >-
           inv build
           -s ${{ matrix.simulator }}
