@@ -1,5 +1,12 @@
 SM6_GTX1080:
   path: ./SM6_GTX1080
-
+  spec:
+    sm_count: 28
+    clock_speed: 1481
+  
 SM86_RTX3070:
   path: ./SM86_RTX3070
+  spec:
+    sm_count: 46
+    # thats what gpgpusim says (internet says 1500 (1725 boost)
+    clock_speed: 1132
