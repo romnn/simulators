@@ -4,21 +4,28 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: build ${{ matrix.simulator }} container
+    name: build ${{ matrix.simulator.name }} container
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         simulator:
-          - native
-          - accelsim-sass
-          - accelsim-ptx
-          - tejas
-          - m2s
-          - macsim
+          # native and sass require a physical GPU device
+          - name: native
+            bench: false
+          - name: accelsim-sass
+            bench: false
+          - name: accelsim-ptx
+            bench: true
+          - name: tejas
+            bench: true
+          - name: m2s
+            bench: true
+          - name: macsim
+            bench: true
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
         with:
           python-version: "3.10"
@@ -40,8 +47,15 @@ jobs:
           pip install pipenv
           pipenv install --dev --system
       
-      - name: Build container
+      - name: Build ${{ matrix.simulator.name }} container
         run: >-
           inv build
-          -s ${{ matrix.simulator }}
+          -s ${{ matrix.simulator.name }}
           --base
+
+      - name: Benchmark ${{ matrix.simulator.name }}
+        if: ${{ matrix.simulator.bench }}
+        run: >-
+          inv bench
+          -s ${{ matrix.simulator.name }}
+          --local
