@@ -1,12 +1,24 @@
 ## GPGPU Sims
 
-#### Docker
+#### Questions
+
+- why do results differ so much between gtx 1080 and rtx 3070 for accelsim
+- the tejas values seem weird
+- why do tejas number of instructions change with the config?
 
 #### TODO
 
-- write a nice readme for how to run ampere native and accelsim sass benches
+- barplots for more metrics
+- try to extract more metrics
+- plot the duration it takes
+- what effect does repeat have? - add repeat=1 as an input
+- parse the log.txt of multi2sim as well (execution time) - actually no, since the metrics and format are not always second? just measure runtime for  everything
 
-- test building docker containers in github actions
+- check the accelsim logs that the inputs are correct
+- more inputs (longer running)
+- slightly change the GTX 1080 config to reflect my GPU
+
+- write a nice readme for how to run ampere native and accelsim sass benches
 
 - go though all the comments and try to remember the difficulties and things that did not work
 
@@ -18,6 +30,10 @@
 
 
 #### Done
+- better names for plots
+- print the name of the hardware
+- highlight the hardware baseline
+- test building docker containers in github actions
 - add more benchmarks for all simulators
 - check that the ampere config substituion makes sense at all
 - check that all benchmarks work

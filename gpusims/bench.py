@@ -12,7 +12,7 @@ class BenchmarkConfig(abc.ABC):
         self.benchmark = benchmark
         self.config = config
         benchmark_name = utils.slugify(benchmark.name.lower())
-        config_name = utils.slugify(config.name.lower())
+        config_name = utils.slugify(config.key.lower())
         self.path = path or Path(run_dir) / benchmark_name / config_name
 
     def __repr__(self):

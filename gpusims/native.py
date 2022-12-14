@@ -154,7 +154,6 @@ def build_hw_kernel_df(csv_files):
     hw_kernel_df = pd.concat(
         [pd.read_csv(csv) for csv in csv_files], ignore_index=False
     )
-    # print(hw_kernel_df)
     # remove the units
     hw_kernel_df = hw_kernel_df[~hw_kernel_df["Correlation_ID"].isnull()]
     # remove memcopies
@@ -195,7 +194,7 @@ def build_hw_kernel_df(csv_files):
     hw_kernel_df_min = hw_kernel_df_min.rename(
         columns={c: c + "_min" for c in hw_kernel_df_min.columns}
     )
-    hw_kernel_df_std = grouped.std()
+    hw_kernel_df_std = grouped.std(ddof=0)
     hw_kernel_df_std = hw_kernel_df_std.rename(
         columns={c: c + "_std" for c in hw_kernel_df_std.columns}
     )
@@ -206,7 +205,6 @@ def build_hw_cycles_df(csv_files):
     import pandas as pd
 
     hw_cycle_df = pd.concat([pd.read_csv(csv) for csv in csv_files], ignore_index=False)
-    # print(hw_cycle_df)
     # remove the units
     hw_cycle_df = hw_cycle_df[~hw_cycle_df["Correlation_ID"].isnull()]
     # remove textual utilization metrics (high, low, ...)
@@ -230,7 +228,7 @@ def build_hw_cycles_df(csv_files):
     hw_cycle_df_min = hw_cycle_df_min.rename(
         columns={c: c + "_min" for c in hw_cycle_df_min.columns}
     )
-    hw_cycle_df_std = grouped.std()
+    hw_cycle_df_std = grouped.std(ddof=0)
     hw_cycle_df_std = hw_cycle_df_std.rename(
         columns={c: c + "_std" for c in hw_cycle_df_std.columns}
     )

@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: build ${{ matrix.simulator.name }} container
+    name: test ${{ matrix.simulator.name }} container
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false

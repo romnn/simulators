@@ -56,3 +56,44 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
             cwd=path,
             timeout_sec=timeout_mins * 60,
         )
+
+    def load_dataframe(self, inp):
+        results_dir = self.input_path(inp) / "results"
+        assert results_dir.is_dir(), "{} is not a dir".format(results_dir)
+        return build_multi2sim_df(results_dir / "stats.csv")
+
+
+def build_multi2sim_df(csv_file):
+    import pandas as pd
+
+    df = pd.read_csv(csv_file)
+    per_sm_metrics = df[df["Section"].str.match(r"SM \d+")]
+    per_sm_total = per_sm_metrics.groupby("Stat")
+    per_sm_total = per_sm_total.sum(numeric_only=True).reset_index()
+    per_sm_total["Section"] = "Total"
+    # print(len(per_sm_total))
+    # print(len(per_sm_metrics["Stat"].unique()))
+
+    assert len(per_sm_total) == len(per_sm_metrics["Stat"].unique())
+
+    df = pd.concat([df, per_sm_total])
+
+    df["Stat"] = df["Section"] + "." + df["Stat"]
+    del df["Section"]
+
+    df = df.set_index("Stat")
+    df = df.T
+
+    # Total instruction count
+    # SPU Instructions
+    # SFU Instructions
+    # LDS Instructions
+    # IMU Instructions
+    # DPU Instructions
+    # BRU Instructions
+    units = ["SPU", "SFU", "LDS", "IMU", "DPU", "BRU"]
+    df["Total.Instructions"] = df[
+        ["Total.{} Instructions".format(unit) for unit in units]
+    ].sum(axis=1)
+
+    return df
