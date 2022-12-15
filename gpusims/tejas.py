@@ -64,14 +64,19 @@ class TejasBenchmarkConfig(BenchmarkConfig):
         simplifier = tejas_root / "../gputejas/Tracesimplifier.jar"
         assert simplifier.is_file()
 
-        cmd = [
-            "java -jar",
-            str(simplifier.absolute()),
-            str(new_config_file.absolute()),
-            "tmp",
-            str(trace_dir.parent.absolute()),
-            str(kernels),
-        ]
+        java_opts = ["-XX:-UseGCOverheadLimit", "-Xmx{}m".format(6 * 1024)]
+        cmd = (
+            ["java"]
+            + java_opts
+            + [
+                "-jar",
+                str(simplifier.absolute()),
+                str(new_config_file.absolute()),
+                "tmp",
+                str(trace_dir.parent.absolute()),
+                str(kernels),
+            ]
+        )
         cmd = " ".join(cmd)
         _, stdout, stderr, trace_duration2 = utils.run_cmd(
             cmd, cwd=path, timeout_sec=timeout_mins * 60
@@ -93,14 +98,18 @@ class TejasBenchmarkConfig(BenchmarkConfig):
         assert tejas_simulator.is_file()
 
         log_file = results_dir / "stats.txt"
-        cmd = [
-            "java -jar",
-            str(tejas_simulator.absolute()),
-            str(new_config_file.absolute()),
-            str(log_file.absolute()),
-            str(trace_dir.parent.absolute()),
-            str(kernels),
-        ]
+        cmd = (
+            ["java"]
+            + java_opts
+            + [
+                "-jar",
+                str(tejas_simulator.absolute()),
+                str(new_config_file.absolute()),
+                str(log_file.absolute()),
+                str(trace_dir.parent.absolute()),
+                str(kernels),
+            ]
+        )
         cmd = " ".join(cmd)
         _, stdout, stderr, sim_duration = utils.run_cmd(
             cmd, cwd=path, timeout_sec=timeout_mins * 60
