@@ -105,13 +105,16 @@ class ExecutionTime(Metric):
     def compute(self):
         data = []
         if self.m2s_df is not None:
-            # todo
-            # data.append(("Multi2Sim", m2s_value))
-            pass
+            m2s_sim = self.m2s_df["sim_wall_time"].sum()
+            m2s_trace = self.m2s_df["trace_wall_time"].sum()
+            data.append(("Multi2Sim", "Sim", m2s_sim))
+            data.append(("Multi2Sim", "Trace", m2s_trace))
 
         if self.macsim_df is not None:
-            macsim_value = self.macsim_df["EXE_TIME"][0]
-            data.append(("MacSim", "Sim", macsim_value))
+            macsim_sim = self.macsim_df["EXE_TIME"][0]
+            macsim_trace = self.macsim_df["trace_wall_time"].sum()
+            data.append(("MacSim", "Sim", macsim_sim))
+            data.append(("MacSim", "Trace", macsim_trace))
 
         if self.tejas_df is not None:
             tejas_sim = self.tejas_df["sim_time_secs"].sum()
@@ -119,13 +122,20 @@ class ExecutionTime(Metric):
             data.append(("GPUTejas", "Sim", tejas_sim))
             data.append(("GPUTejas", "Trace", tejas_trace))
 
-        for name, accel_df in [
-            ("AccelSim PTX", self.accelsim_ptx_df),
-            ("AccelSim SASS", self.accelsim_sass_df),
-        ]:
-            if accel_df is not None:
-                accel_value = accel_df["gpgpu_simulation_time_sec"].sum()
-                data.append((name, "Sim", accel_value))
+        # for name, accel_df in [
+        #     ("AccelSim PTX", self.accelsim_ptx_df),
+        #     ("AccelSim SASS", self.accelsim_sass_df),
+        # ]:
+        if self.accelsim_ptx_df is not None:
+            accel_value = self.accelsim_ptx_df["gpgpu_simulation_time_sec"].sum()
+            data.append(("AccelSim PTX", "Sim", accel_value))
+            data.append(("AccelSim PTX", "Trace", 0))
+
+        if self.accelsim_sass_df is not None:
+            accel_sim = self.accelsim_sass_df["gpgpu_simulation_time_sec"].sum()
+            accel_trace = self.accelsim_sass_df["trace_wall_time"].sum()
+            data.append(("AccelSim SASS", "Sim", accel_sim))
+            data.append(("AccelSim SASS", "Trace", accel_trace))
 
         if self.hw_df is not None:
             # convert us to seconds
@@ -133,11 +143,13 @@ class ExecutionTime(Metric):
             # print(self.hw_df["Duration"].sum())
             # print("hw exec time:", hw_value)
             data.append(("Hardware", "Sim", hw_value))
+            data.append(("Hardware", "Trace", 0))
 
         df = pd.DataFrame.from_records(
-            data, columns=["Simulator", "Kind", "Value"],
+            data,
+            columns=["Simulator", "Kind", "Value"],
             # index=["Simulator", "Kind"]
-            index=["Kind"]
+            # index=["Kind"]
         )
         df["Value"] = df["Value"].round(6)
         return df

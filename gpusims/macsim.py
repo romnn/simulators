@@ -163,10 +163,13 @@ class MacSimBenchmarkConfig(BenchmarkConfig):
         results_dir = self.input_path(inp) / "results"
         assert results_dir.is_dir(), "{} is not a dir".format(results_dir)
         stat_files = list((results_dir / "stats").rglob("*stat.out.csv"))
-        return build_macsim_df(stat_files)
+        return build_macsim_df(
+            stat_files,
+            trace_dur_csv=results_dir / "trace_wall_time.csv",
+        )
 
 
-def build_macsim_df(csv_files):
+def build_macsim_df(csv_files, trace_dur_csv=None, sim_dur_csv=None):
     import pandas as pd
 
     df = pd.concat([pd.read_csv(f) for f in csv_files], axis=0)
@@ -181,4 +184,11 @@ def build_macsim_df(csv_files):
         df.columns.str.match(r"CYC_COUNT_CORE_\d+", flags=re.IGNORECASE)
     ]
     df["CYC_COUNT_CORE_TOTAL"] = df[cyc_per_core_idx].sum(axis=1)
+
+    if trace_dur_csv is not None:
+        df["trace_wall_time"] = pd.read_csv(trace_dur_csv)["exec_time_sec"]
+
+    if sim_dur_csv is not None:
+        df["sim_wall_time"] = pd.read_csv(sim_dur_csv)["exec_time_sec"]
+
     return df

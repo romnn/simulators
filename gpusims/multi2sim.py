@@ -69,10 +69,14 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
     def load_dataframe(self, inp):
         results_dir = self.input_path(inp) / "results"
         assert results_dir.is_dir(), "{} is not a dir".format(results_dir)
-        return build_multi2sim_df(results_dir / "stats.csv")
+        return build_multi2sim_df(
+            results_dir / "stats.csv",
+            trace_dur_csv=results_dir / "trace_wall_time.csv",
+            sim_dur_csv=results_dir / "sim_wall_time.csv",
+        )
 
 
-def build_multi2sim_df(csv_file):
+def build_multi2sim_df(csv_file, trace_dur_csv=None, sim_dur_csv=None):
     import pandas as pd
 
     df = pd.read_csv(csv_file)
@@ -104,5 +108,10 @@ def build_multi2sim_df(csv_file):
     df["Total.Instructions"] = df[
         ["Total.{} Instructions".format(unit) for unit in units]
     ].sum(axis=1)
+
+    if trace_dur_csv is not None:
+        df["trace_wall_time"] = pd.read_csv(trace_dur_csv)["exec_time_sec"]
+    if sim_dur_csv is not None:
+        df["sim_wall_time"] = pd.read_csv(sim_dur_csv)["exec_time_sec"]
 
     return df

@@ -166,11 +166,44 @@ class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
     def load_dataframe(self, inp):
         results_dir = self.input_path(inp) / "results"
         assert results_dir.is_dir(), "{} is not a dir".format(results_dir)
-        return build_accelsim_sass_df(results_dir / "stats.csv")
+        return build_accelsim_sass_df(
+            results_dir / "stats.csv",
+            trace_dur_csv=results_dir / "trace_wall_time.csv",
+            sim_dur_csv=results_dir / "sim_wall_time.csv",
+        )
 
 
-def build_accelsim_sass_df(csv_file):
+def build_accelsim_sass_df(csv_file, trace_dur_csv=None, sim_dur_csv=None):
     import pandas as pd
+
     df = pd.read_csv(csv_file)
     df = df.pivot(index=["kernel", "kernel_id"], columns=["stat"])["value"]
+    df = df.reset_index()
+    if trace_dur_csv is not None:
+        # print(pd.read_csv(trace_dur_csv)["exec_time_sec"])
+        df["trace_wall_time"] = pd.read_csv(trace_dur_csv)["exec_time_sec"]
+        # df = pd.concat(
+        #     [
+        #         df,
+        #         pd.read_csv(trace_dur_csv).rename(
+        #             columns={"exec_time_sec": "trace_wall_time"}
+        #         ),
+        #     ],
+        #     axis=1,
+        #     # ignore_index=True,
+        # )
+    if sim_dur_csv is not None:
+        df["sim_wall_time"] = pd.read_csv(sim_dur_csv)["exec_time_sec"]
+
+        # df = pd.concat(
+        #     [
+        #         df,
+        #         pd.read_csv(sim_dur_csv).rename(
+        #             columns={"exec_time_sec": "sim_wall_time"}
+        #         ),
+        #     ],
+        #     axis=1,
+        #     # ignore_index=True,
+        # )
+
     return df
