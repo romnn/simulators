@@ -157,24 +157,6 @@ def build_tejas_df(csv_file, trace_dur_csv=None, sim_dur_csv=None):
     df = pd.read_csv(csv_file)
     if trace_dur_csv is not None:
         df["trace_wall_time"] = pd.read_csv(trace_dur_csv)["exec_time_sec"]
-        # df = pd.concat(
-        #     [
-        #         df,
-        #         pd.read_csv(trace_dur_csv).rename(
-        #             columns={"exec_time_sec": "trace_wall_time"}
-        #         ),
-        #     ],
-        #     axis=1,
-        # )
     if sim_dur_csv is not None:
         df["sim_wall_time"] = pd.read_csv(sim_dur_csv)["exec_time_sec"]
-        # df = pd.concat(
-        #     [
-        #         df,
-        #         pd.read_csv(sim_dur_csv).rename(
-        #             columns={"exec_time_sec": "sim_wall_time"}
-        #         ),
-        #     ],
-        #     axis=1,
-        # )
     return df

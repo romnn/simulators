@@ -76,12 +76,19 @@ class AccelSimPTXBenchmarkConfig(BenchmarkConfig):
     def load_dataframe(self, inp):
         results_dir = self.input_path(inp) / "results"
         assert results_dir.is_dir(), "{} is not a dir".format(results_dir)
-        return build_accelsim_ptx_df(results_dir / "stats.csv")
+        return build_accelsim_ptx_df(
+            results_dir / "stats.csv",
+            sim_dur_csv=results_dir / "sim_wall_time.csv",
+        )
 
 
-def build_accelsim_ptx_df(csv_file):
+def build_accelsim_ptx_df(csv_file, sim_dur_csv=None):
     import pandas as pd
 
     df = pd.read_csv(csv_file)
     df = df.pivot(index=["kernel", "kernel_id"], columns=["stat"])["value"]
+    df = df.reset_index()
+    if sim_dur_csv is not None:
+        df["sim_wall_time"] = pd.read_csv(sim_dur_csv)["exec_time_sec"]
+
     return df

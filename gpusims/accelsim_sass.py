@@ -180,30 +180,8 @@ def build_accelsim_sass_df(csv_file, trace_dur_csv=None, sim_dur_csv=None):
     df = df.pivot(index=["kernel", "kernel_id"], columns=["stat"])["value"]
     df = df.reset_index()
     if trace_dur_csv is not None:
-        # print(pd.read_csv(trace_dur_csv)["exec_time_sec"])
         df["trace_wall_time"] = pd.read_csv(trace_dur_csv)["exec_time_sec"]
-        # df = pd.concat(
-        #     [
-        #         df,
-        #         pd.read_csv(trace_dur_csv).rename(
-        #             columns={"exec_time_sec": "trace_wall_time"}
-        #         ),
-        #     ],
-        #     axis=1,
-        #     # ignore_index=True,
-        # )
     if sim_dur_csv is not None:
         df["sim_wall_time"] = pd.read_csv(sim_dur_csv)["exec_time_sec"]
-
-        # df = pd.concat(
-        #     [
-        #         df,
-        #         pd.read_csv(sim_dur_csv).rename(
-        #             columns={"exec_time_sec": "sim_wall_time"}
-        #         ),
-        #     ],
-        #     axis=1,
-        #     # ignore_index=True,
-        # )
 
     return df

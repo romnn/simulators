@@ -4,6 +4,9 @@ import gpusims
 
 
 class Metric(abc.ABC):
+    name = "Unknown"
+    unit = None
+
     def __init__(self, data):
         self.data = data
 
@@ -41,6 +44,8 @@ class Metric(abc.ABC):
 
 
 class Cycles(Metric):
+    name = "Cycles"
+
     @property
     def config(self):
         return dict(
@@ -88,65 +93,84 @@ class Cycles(Metric):
             data.append(("Hardware", hw_value))
 
         df = pd.DataFrame.from_records(
-            data, columns=["Simulator", "Value"], index=["Simulator"]
+            data,
+            columns=["Simulator", "Value"],
+            # index=["Simulator"]
         )
         df["Value"] = df["Value"].astype(int)
         return df
 
 
 class ExecutionTime(Metric):
+    name = "Execution Time"
+    unit = "s"
+
     @property
     def config(self):
         return dict(
             log=True,
-            unit="s",
         )
 
     def compute(self):
-        data = []
+        # data = []
+        m2s_sim = 0
         if self.m2s_df is not None:
             m2s_sim = self.m2s_df["sim_wall_time"].sum()
-            m2s_trace = self.m2s_df["trace_wall_time"].sum()
-            data.append(("Multi2Sim", "Sim", m2s_sim))
-            data.append(("Multi2Sim", "Trace", m2s_trace))
+            # m2s_trace = self.m2s_df["trace_wall_time"].sum()
+        # data.append(("Multi2Sim", "Sim", m2s_sim))
+        # data.append(("Multi2Sim", "Trace", m2s_trace))
 
+        macsim_sim, macsim_trace = 0, 0
         if self.macsim_df is not None:
             macsim_sim = self.macsim_df["EXE_TIME"][0]
             macsim_trace = self.macsim_df["trace_wall_time"].sum()
-            data.append(("MacSim", "Sim", macsim_sim))
-            data.append(("MacSim", "Trace", macsim_trace))
+        # data.append(("MacSim", "Sim", macsim_sim))
+        # data.append(("MacSim", "Trace", macsim_trace))
 
+        tejas_sim, tejas_trace = 0, 0
         if self.tejas_df is not None:
             tejas_sim = self.tejas_df["sim_time_secs"].sum()
             tejas_trace = self.tejas_df["trace_wall_time"].sum()
-            data.append(("GPUTejas", "Sim", tejas_sim))
-            data.append(("GPUTejas", "Trace", tejas_trace))
+        # data.append(("GPUTejas", "Sim", tejas_sim))
+        # data.append(("GPUTejas", "Trace", tejas_trace))
 
-        # for name, accel_df in [
-        #     ("AccelSim PTX", self.accelsim_ptx_df),
-        #     ("AccelSim SASS", self.accelsim_sass_df),
-        # ]:
+        accel_ptx_sim = 0
         if self.accelsim_ptx_df is not None:
-            accel_value = self.accelsim_ptx_df["gpgpu_simulation_time_sec"].sum()
-            data.append(("AccelSim PTX", "Sim", accel_value))
-            data.append(("AccelSim PTX", "Trace", 0))
+            accel_ptx_sim = self.accelsim_ptx_df["gpgpu_simulation_time_sec"].sum()
+        # data.append(("AccelSim PTX", "Sim", accel_sim))
+        # data.append(("AccelSim PTX", "Trace", 0))
 
+        accel_sass_sim, accel_sass_trace = 0, 0
         if self.accelsim_sass_df is not None:
-            accel_sim = self.accelsim_sass_df["gpgpu_simulation_time_sec"].sum()
-            accel_trace = self.accelsim_sass_df["trace_wall_time"].sum()
-            data.append(("AccelSim SASS", "Sim", accel_sim))
-            data.append(("AccelSim SASS", "Trace", accel_trace))
+            accel_sass_sim = self.accelsim_sass_df["gpgpu_simulation_time_sec"].sum()
+            accel_sass_trace = self.accelsim_sass_df["trace_wall_time"].sum()
+        # data.append(("AccelSim SASS", "Sim", accel_sim))
+        # data.append(("AccelSim SASS", "Trace", accel_trace))
 
+        hw_value = 0
         if self.hw_df is not None:
             # convert us to seconds
             hw_value = self.hw_df["Duration"].sum() * 1e-6
             # print(self.hw_df["Duration"].sum())
             # print("hw exec time:", hw_value)
-            data.append(("Hardware", "Sim", hw_value))
-            data.append(("Hardware", "Trace", 0))
+        # data.append(("Hardware", "Sim", hw_value))
+        # data.append(("Hardware", "Trace", 0))
 
         df = pd.DataFrame.from_records(
-            data,
+            data=[
+                ("Multi2Sim", "Sim", m2s_sim),
+                ("Multi2Sim", "Trace", 0),
+                ("MacSim", "Sim", macsim_sim),
+                ("MacSim", "Trace", macsim_trace),
+                ("GPUTejas", "Sim", tejas_sim),
+                ("GPUTejas", "Trace", tejas_trace),
+                ("AccelSim PTX", "Sim", accel_ptx_sim),
+                ("AccelSim PTX", "Trace", 0),
+                ("AccelSim SASS", "Sim", accel_sass_sim),
+                ("AccelSim SASS", "Trace", accel_sass_trace),
+                ("Hardware", "Sim", hw_value),
+                ("Hardware", "Trace", 0),
+            ],
             columns=["Simulator", "Kind", "Value"],
             # index=["Simulator", "Kind"]
             # index=["Kind"]
@@ -156,6 +180,8 @@ class ExecutionTime(Metric):
 
 
 class L2ReadHit(Metric):
+    name = "Total L2 Read Hits"
+
     @property
     def config(self):
         return dict()
@@ -200,6 +226,8 @@ class L2ReadHit(Metric):
 
 
 class InstructionCount(Metric):
+    name = "Total Instruction Count"
+
     @property
     def config(self):
         return dict()
@@ -241,6 +269,8 @@ class InstructionCount(Metric):
 
 
 class IPC(Metric):
+    name = "Total IPC"
+
     @property
     def config(self):
         return dict()
@@ -302,6 +332,8 @@ class IPC(Metric):
 
 
 class DRAMReads(Metric):
+    name = "Total DRAM Reads"
+
     @property
     def config(self):
         return dict()
@@ -345,6 +377,8 @@ class DRAMReads(Metric):
 
 
 class DRAMWrites(Metric):
+    name = "Total DRAM Writes"
+
     @property
     def config(self):
         return dict()
