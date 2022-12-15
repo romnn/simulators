@@ -83,8 +83,8 @@ class Cycles(Metric):
             # clock speed is mhz, so *1e6
             # duration is us, so *1e-6
             # unit conversions cancel each other out
-            hw_duration = self.hw_df["Duration"].sum()
-            hw_value = hw_duration * self.data.config.spec["clock_speed"]
+            # hw_duration = self.hw_df["Duration"].sum()
+            # hw_value = hw_duration * self.data.config.spec["clock_speed"]
             data.append(("Hardware", hw_value))
 
         df = pd.DataFrame.from_records(
@@ -303,11 +303,10 @@ class DRAMReads(Metric):
             macsim_value = self.macsim_df["TOTAL_DRAM"][0]
             data.append(("MacSim", macsim_value))
 
-        # todo: this is temp until we rerun benches
-        # if self.tejas_df is not None:
-        #     # seems to always be 0 but we still report it
-        #     tejas_value = self.tejas_df["dram_total_reads"].sum()
-        #     data.append(("GPUTejas", tejas_value))
+        if self.tejas_df is not None:
+            # seems to always be 0 but we still report it
+            tejas_value = self.tejas_df["dram_total_reads"].sum()
+            data.append(("GPUTejas", tejas_value))
 
         for name, accel_df in [
             ("AccelSim PTX", self.accelsim_ptx_df),
@@ -337,11 +336,10 @@ class DRAMWrites(Metric):
     def compute(self):
         data = []
 
-        # todo: temp until we rerun benches
-        # if self.tejas_df is not None:
-        #     # seems to always be 0 but we still report it
-        #     tejas_value = self.tejas_df["dram_total_writes"].sum()
-        #     data.append(("GPUTejas", tejas_value))
+        if self.tejas_df is not None:
+            # seems to always be 0 but we still report it
+            tejas_value = self.tejas_df["dram_total_writes"].sum()
+            data.append(("GPUTejas", tejas_value))
 
         for name, accel_df in [
             ("AccelSim PTX", self.accelsim_ptx_df),
