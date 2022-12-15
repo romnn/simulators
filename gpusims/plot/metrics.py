@@ -111,11 +111,13 @@ class ExecutionTime(Metric):
 
         if self.macsim_df is not None:
             macsim_value = self.macsim_df["EXE_TIME"][0]
-            data.append(("MacSim", macsim_value))
+            data.append(("MacSim", "Sim", macsim_value))
 
         if self.tejas_df is not None:
-            tejas_value = self.tejas_df["sim_time_secs"].sum()
-            data.append(("GPUTejas", tejas_value))
+            tejas_sim = self.tejas_df["sim_time_secs"].sum()
+            tejas_trace = self.tejas_df["trace_wall_time"].sum()
+            data.append(("GPUTejas", "Sim", tejas_sim))
+            data.append(("GPUTejas", "Trace", tejas_trace))
 
         for name, accel_df in [
             ("AccelSim PTX", self.accelsim_ptx_df),
@@ -123,17 +125,19 @@ class ExecutionTime(Metric):
         ]:
             if accel_df is not None:
                 accel_value = accel_df["gpgpu_simulation_time_sec"].sum()
-                data.append((name, accel_value))
+                data.append((name, "Sim", accel_value))
 
         if self.hw_df is not None:
             # convert us to seconds
             hw_value = self.hw_df["Duration"].sum() * 1e-6
             # print(self.hw_df["Duration"].sum())
             # print("hw exec time:", hw_value)
-            data.append(("Hardware", hw_value))
+            data.append(("Hardware", "Sim", hw_value))
 
         df = pd.DataFrame.from_records(
-            data, columns=["Simulator", "Value"], index=["Simulator"]
+            data, columns=["Simulator", "Kind", "Value"],
+            # index=["Simulator", "Kind"]
+            index=["Kind"]
         )
         df["Value"] = df["Value"].round(6)
         return df

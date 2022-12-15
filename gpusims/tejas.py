@@ -144,10 +144,35 @@ class TejasBenchmarkConfig(BenchmarkConfig):
     def load_dataframe(self, inp):
         results_dir = self.input_path(inp) / "results"
         assert results_dir.is_dir(), "{} is not a dir".format(results_dir)
-        return build_tejas_df(results_dir / "stats.csv")
+        return build_tejas_df(
+            results_dir / "stats.csv",
+            trace_dur_csv=results_dir / "trace_wall_time.csv",
+            sim_dur_csv=results_dir / "sim_wall_time.csv",
+        )
 
 
-def build_tejas_df(csv_file):
+def build_tejas_df(csv_file, trace_dur_csv=None, sim_dur_csv=None):
     import pandas as pd
 
-    return pd.read_csv(csv_file)
+    df = pd.read_csv(csv_file)
+    if trace_dur_csv is not None:
+        df = pd.concat(
+            [
+                df,
+                pd.read_csv(trace_dur_csv).rename(
+                    columns={"exec_time_sec": "trace_wall_time"}
+                ),
+            ],
+            axis=1,
+        )
+    if sim_dur_csv is not None:
+        df = pd.concat(
+            [
+                df,
+                pd.read_csv(sim_dur_csv).rename(
+                    columns={"exec_time_sec": "sim_wall_time"}
+                ),
+            ],
+            axis=1,
+        )
+    return df
