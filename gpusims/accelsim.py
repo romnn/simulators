@@ -1,4 +1,5 @@
 import os
+import csv
 from gpusims.bench import BenchmarkConfig
 from pathlib import Path
 import gpusims.utils as utils
@@ -33,14 +34,21 @@ class AccelSimPTXBenchmarkConfig(BenchmarkConfig):
         with open(str(tmp_run_file.absolute()), "w") as f:
             f.write(tmp_run_sh)
 
-        _, stdout, _ = utils.run_cmd(
+        _, stdout, stderr, duration = utils.run_cmd(
             "bash " + str(tmp_run_file.absolute()),
             cwd=path,
             timeout_sec=timeout_mins * 60,
             shell=True,
         )
-        print("stdout:")
+        print("stdout (last 15 lines):")
         print("\n".join(stdout.splitlines()[-15:]))
+        print("stderr:")
+        print(stderr)
+
+        with open(str((results_dir / "sim_wall_time.csv").absolute()), "w") as f:
+            output_writer = csv.writer(f)
+            output_writer.writerow(["exec_time_sec"])
+            output_writer.writerow([duration])
 
         with open(str(log_file.absolute()), "w") as f:
             f.write(stdout)
@@ -58,6 +66,10 @@ class AccelSimPTXBenchmarkConfig(BenchmarkConfig):
             cwd=path,
             timeout_sec=timeout_mins * 60,
         )
+        print("stdout:")
+        print(stdout)
+        print("stderr:")
+        print(stderr)
 
         tmp_run_file.unlink()
 
@@ -69,6 +81,7 @@ class AccelSimPTXBenchmarkConfig(BenchmarkConfig):
 
 def build_accelsim_ptx_df(csv_file):
     import pandas as pd
+
     df = pd.read_csv(csv_file)
     df = df.pivot(index=["kernel", "kernel_id"], columns=["stat"])["value"]
     return df

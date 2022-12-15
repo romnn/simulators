@@ -1,4 +1,5 @@
 import os
+import csv
 from gpusims.bench import BenchmarkConfig
 from pathlib import Path
 import gpusims.utils as utils
@@ -84,7 +85,7 @@ class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
         with open(str(tmp_trace_file.absolute()), "w") as f:
             f.write(tmp_trace_sh)
 
-        _, stdout, stderr = utils.run_cmd(
+        _, stdout, stderr, duration = utils.run_cmd(
             "bash " + str(tmp_trace_file.absolute()),
             cwd=path,
             timeout_sec=timeout_mins * 60,
@@ -92,9 +93,13 @@ class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
         )
         print("stdout:")
         print(stdout)
-
         print("stderr:")
         print(stderr)
+
+        with open(str((results_dir / "trace_wall_time.csv").absolute()), "w") as f:
+            output_writer = csv.writer(f)
+            output_writer.writerow(["exec_time_sec"])
+            output_writer.writerow([duration])
 
         tmp_trace_file.unlink()
 
@@ -119,17 +124,21 @@ class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
         with open(str(tmp_run_file.absolute()), "w") as f:
             f.write(tmp_run_sh)
 
-        _, stdout, stderr = utils.run_cmd(
+        _, stdout, stderr, duration = utils.run_cmd(
             "bash " + str(tmp_run_file.absolute()),
             cwd=path,
             timeout_sec=timeout_mins * 60,
             shell=True,
         )
-        print("stdout:")
+        print("stdout (last 15 lines):")
         print("\n".join(stdout.splitlines()[-15:]))
-
         print("stderr:")
         print(stderr)
+
+        with open(str((results_dir / "sim_wall_time.csv").absolute()), "w") as f:
+            output_writer = csv.writer(f)
+            output_writer.writerow(["exec_time_sec"])
+            output_writer.writerow([duration])
 
         with open(str(log_file.absolute()), "w") as f:
             f.write(stdout)
@@ -138,7 +147,7 @@ class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
 
         # parse the log file
         stat_file = results_dir / "stats.csv"
-        utils.run_cmd(
+        _, stdout, stderr, _ = utils.run_cmd(
             [
                 "gpgpusim-parse",
                 "--input",
@@ -149,6 +158,10 @@ class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
             cwd=path,
             timeout_sec=timeout_mins * 60,
         )
+        print("stdout:")
+        print(stdout)
+        print("stderr:")
+        print(stderr)
 
     def load_dataframe(self, inp):
         results_dir = self.input_path(inp) / "results"

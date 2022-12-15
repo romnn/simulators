@@ -70,11 +70,14 @@ class NativeBenchmarkConfig(BenchmarkConfig):
             ]
             cmd = " ".join(cmd)
             try:
-                _, stdout, _ = utils.run_cmd(
+                _, stdout, stderr, _ = utils.run_cmd(
                     cmd, cwd=path, timeout_sec=timeout_mins * 60
                 )
                 print("stdout:")
                 print(stdout)
+                print("stderr:")
+                print(stderr)
+
                 with open(str(log_file.absolute()), "r") as f:
                     print("log file:")
                     print(f.read())
@@ -109,11 +112,14 @@ class NativeBenchmarkConfig(BenchmarkConfig):
             ]
             cycles_cmd = " ".join(cycles_cmd)
             try:
-                _, stdout, _ = utils.run_cmd(
+                _, stdout, stderr, _ = utils.run_cmd(
                     cycles_cmd, cwd=path, timeout_sec=timeout_mins * 60
                 )
                 print("stdout:")
                 print(stdout)
+                print("stderr:")
+                print(stderr)
+
                 with open(str(cycles_log_file.absolute()), "r") as f:
                     print("log file:")
                     print(f.read())

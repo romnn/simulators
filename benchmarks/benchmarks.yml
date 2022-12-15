@@ -23,6 +23,8 @@ CUDA10-transpose:
     # cannot compile cooperative threads (CUDA 9+)
     enabled: false
   inputs:
+    - args: -repeat=1 -dimX=32 -dimY=32
+    - args: -repeat=1 -dimX=64 -dimY=64
     - args: -repeat=3 -dimX=32 -dimY=32
 
 # from: CUDA 6.0 SDK
@@ -52,6 +54,8 @@ CUDA6-transpose:
   #   # cannot compile cooperative threads (CUDA 9+)
   #   enabled: false
   inputs:
+    - args: -repeat=1 -dimX=32 -dimY=32
+    - args: -repeat=1 -dimX=64 -dimY=64
     - args: -repeat=3 -dimX=32 -dimY=32
 
 
@@ -70,6 +74,8 @@ CUDA10-matrixMul:
     enabled: false
   inputs:
     - args: -wA=32 -hA=32 -wB=32 -hB=32
+    - args: -wA=32 -hA=64 -wB=64 -hB=32
+    - args: -wA=64 -hA=64 -wB=64 -hB=64
 
 # from: gpu-app-collection/src/cuda/custom-apps/sdk-matrixMul-modified
 # probably CUDA 4.2 SDK ?
@@ -78,6 +84,7 @@ CUDA4-matrixMul:
   executable: matrixMul
   inputs:
     - args: 32
+    - args: 128
 
 # from: https://github.com/UoB-HPC/BabelStream
 BabelStream:
@@ -92,6 +99,9 @@ BabelStream:
     # (deadlock)
     enabled: false
   inputs:
+    - args: --arraysize 1024 --numtimes 1
     - args: --arraysize 1024 --numtimes 2
+    - args: --arraysize 10240 --numtimes 1
+    # - args: --arraysize 1024 --numtimes 1
     # - args: --arraysize 1024000 --numtimes 10
 

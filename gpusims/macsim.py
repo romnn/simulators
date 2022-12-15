@@ -102,7 +102,7 @@ class MacSimBenchmarkConfig(BenchmarkConfig):
         with open(str(tmp_run_file.absolute()), "w") as f:
             f.write(tmp_run_sh)
 
-        _, stdout, stderr = utils.run_cmd(
+        _, stdout, stderr, duration = utils.run_cmd(
             "bash " + str(tmp_run_file.absolute()),
             cwd=path,
             timeout_sec=timeout_mins * 60,
@@ -112,6 +112,10 @@ class MacSimBenchmarkConfig(BenchmarkConfig):
         print(stdout)
         print("stderr:")
         print(stderr)
+        with open(str((results_dir / "trace_wall_time.csv").absolute()), "w") as f:
+            output_writer = csv.writer(f)
+            output_writer.writerow(["exec_time_sec"])
+            output_writer.writerow([duration])
 
         # https://github.com/gthparch/macsim/blob/master/doc/macsim.pdf
         # macsim needs:
@@ -130,7 +134,7 @@ class MacSimBenchmarkConfig(BenchmarkConfig):
 
         stats_dir = results_dir / "stats"
         utils.ensure_empty(stats_dir)
-        _, stdout, stderr = utils.run_cmd(
+        _, stdout, stderr, duration = utils.run_cmd(
             " ".join(
                 [
                     "macsim",
@@ -142,10 +146,15 @@ class MacSimBenchmarkConfig(BenchmarkConfig):
             timeout_sec=timeout_mins * 60,
         )
 
-        print("stdout:")
+        print("stdout (last 15 lines):")
         print("\n".join(stdout.splitlines()[-15:]))
-        print("stderr:")
+        print("stderr (last 15 lines):")
         print("\n".join(stderr.splitlines()[-15:]))
+
+        with open(str((results_dir / "sim_wall_time.csv").absolute()), "w") as f:
+            output_writer = csv.writer(f)
+            output_writer.writerow(["exec_time_sec"])
+            output_writer.writerow([duration])
 
         print("parsing")
         parse_stats(stats_dir)

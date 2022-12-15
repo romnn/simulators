@@ -3,6 +3,7 @@ import stat
 import shutil
 import os
 import shlex
+from timeit import default_timer as timer
 import re
 import unicodedata
 import subprocess as sp
@@ -32,6 +33,7 @@ def run_cmd(cmd, cwd=None, shell=False, timeout_sec=None, env=None):
 
     # the subprocess may take a long time, hence flush all buffers before
     sys.stdout.flush()
+    start = timer()
     proc = sp.Popen(cmd, stdout=sp.PIPE, stderr=sp.PIPE, cwd=cwd, env=env, shell=shell)
     try:
         stdout, stderr = proc.communicate(timeout=timeout_sec)
@@ -49,7 +51,9 @@ def run_cmd(cmd, cwd=None, shell=False, timeout_sec=None, env=None):
         sys.stdout.flush()
         raise ExecError(cmd=cmd, status=proc.returncode, stdout=stdout, stderr=stderr)
 
-    return proc.returncode, stdout, stderr
+    end = timer()
+    duration = end - start
+    return proc.returncode, stdout, stderr, duration
 
 
 def ensure_empty(d):

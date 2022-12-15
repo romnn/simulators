@@ -359,13 +359,17 @@ template <typename T> void run() {
 
     for (int i = 0; i < timings.size(); ++i) {
       // Get min/max; ignore the first result
+      int ignore = 0;
+      if (num_times > 1) {
+        ignore = 1;
+      }
       auto minmax =
-          std::minmax_element(timings[i].begin() + 1, timings[i].end());
+          std::minmax_element(timings[i].begin() + ignore, timings[i].end());
 
       // Calculate average; ignore the first result
       double average =
-          std::accumulate(timings[i].begin() + 1, timings[i].end(), 0.0) /
-          (double)(num_times - 1);
+          std::accumulate(timings[i].begin() + ignore, timings[i].end(), 0.0) /
+          (double)(num_times - ignore);
 
       // Display results
       if (output_as_csv) {
@@ -511,8 +515,9 @@ void parseArguments(int argc, char *argv[]) {
         std::cerr << "Invalid number of times." << std::endl;
         exit(EXIT_FAILURE);
       }
-      if (num_times < 2) {
-        std::cerr << "Number of times must be 2 or more" << std::endl;
+      // allow num_times to be 1
+      if (num_times < 1) {
+        std::cerr << "Number of times must be 1 or more" << std::endl;
         exit(EXIT_FAILURE);
       }
     } else if (!std::string("--float").compare(argv[i])) {

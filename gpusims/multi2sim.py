@@ -1,4 +1,5 @@
 import os
+import csv
 from gpusims.bench import BenchmarkConfig
 import gpusims.utils as utils
 
@@ -29,23 +30,27 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
             inp.args,
         ]
         cmd = " ".join(cmd)
-        _, stdout, stderr = utils.run_cmd(
+        _, stdout, stderr, duration = utils.run_cmd(
             cmd,
             cwd=path,
             timeout_sec=timeout_mins * 60,
         )
         print("stdout:")
         print(stdout)
-
         print("stderr:")
         print(stderr)
+
+        with open(str((results_dir / "sim_wall_time.csv").absolute()), "w") as f:
+            output_writer = csv.writer(f)
+            output_writer.writerow(["exec_time_sec"])
+            output_writer.writerow([duration])
 
         with open(str(log_file.absolute()), "w") as f:
             f.write(stderr)
 
         # parse the stats file
         csv_file = stats_file.with_suffix(".csv")
-        utils.run_cmd(
+        _, stdout, stderr, _ = utils.run_cmd(
             [
                 "m2s-parse",
                 "--input",
@@ -56,6 +61,10 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
             cwd=path,
             timeout_sec=timeout_mins * 60,
         )
+        print("stdout:")
+        print(stdout)
+        print("stderr:")
+        print(stderr)
 
     def load_dataframe(self, inp):
         results_dir = self.input_path(inp) / "results"

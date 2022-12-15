@@ -173,7 +173,7 @@ def bench(
     config,
     repetitions=3,
     force=False,
-    timeout_mins=5,
+    timeout_mins=10,
     dry_run=False,
     local=False,
 ):
@@ -190,6 +190,10 @@ def bench(
         print("==> benchmarking", s)
         container = gpusims.CONTAINERS[s].bench
         container_run_dir = "/benchrun"
+        host_run_dir = ROOT_DIR / "run"
+        os.makedirs(str(host_run_dir.absolute()), exist_ok=True)
+
+        # map volumes into container
         volumes = {
             ROOT_DIR / "tasks.py": "/tasks.py",
             ROOT_DIR / "gpusims": "/gpusims",
@@ -197,12 +201,12 @@ def bench(
         if not local:
             volumes.update(
                 {
-                    ROOT_DIR / "run": container_run_dir,
+                    host_run_dir: container_run_dir,
                 }
             )
         cmd = ["docker", "run"]
         if s in [gpusims.ACCELSIM_SASS, gpusims.NATIVE]:
-            # map in the GPU
+            # map in the GPU device
             cmd += ["--cap-add", "SYS_ADMIN", "--privileged", "--gpus", "all"]
         for src, dest in volumes.items():
             cmd += ["-v", "{}:{}".format(str(src.absolute()), dest)]
@@ -225,6 +229,18 @@ def bench(
 
 
 ns.add_task(bench, "bench")
+
+
+@task(pre=[chown])
+def pack(c):
+    """ create a tar archive with the results """
+    cmd = ["tar", "-czf", "run.tar.gz", "-C", str(ROOT_DIR.absolute()), "run"]
+    cmd = " ".join(cmd)
+    print(cmd)
+    c.run(cmd)
+
+
+ns.add_task(pack, "pack")
 
 
 @task

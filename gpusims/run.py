@@ -30,7 +30,7 @@ def run(
     repetitions=3,
     force=False,
     _dir=None,
-    timeout_mins=5,
+    timeout_mins=10,
 ):
     """Run benchmarks"""
     simulator = simulator.lower()
@@ -53,7 +53,7 @@ def run(
     sim_run_dir = Path(run_dir) / simulator.lower()
 
     if len(config) < 1:
-        if simulator == "native":
+        if simulator == gpusims.NATIVE:
             # find current hardware
             devices = cuda.get_devices()
             config = [devices[0].name]
@@ -66,10 +66,18 @@ def run(
 
     pending = []
     for c, b in list(itertools.product(config, benchmark)):
-        if simulator == "native":
-            conf = gpusims.config.Config(name=c.lower(), path=None, spec={})
-        else:
-            conf = configs.get(c.lower())
+        conf = configs.get(c.lower())
+        if simulator == gpusims.NATIVE:
+            if conf is None:
+                # create a mock config
+                conf = gpusims.config.Config(
+                    key=c.lower(), name=c.lower(), path=None, spec={}
+                )
+            else:
+                # do not inject any config files into the run dir
+                conf = gpusims.config.Config(
+                    key=conf.key, name=conf.name, path=None, spec=conf.spec
+                )
 
         if conf is None:
             have = ",".join(configs.keys())

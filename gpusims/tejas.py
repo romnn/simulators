@@ -1,4 +1,5 @@
 import os
+import csv
 import re
 from pathlib import Path
 from gpusims.bench import BenchmarkConfig
@@ -42,7 +43,13 @@ class TejasBenchmarkConfig(BenchmarkConfig):
 
         cmd = [str(tracegen.absolute()), inp.args, str(threads)]
         cmd = " ".join(cmd)
-        utils.run_cmd(cmd, cwd=path, timeout_sec=timeout_mins * 60)
+        _, stdout, stderr, trace_duration1 = utils.run_cmd(
+            cmd, cwd=path, timeout_sec=timeout_mins * 60
+        )
+        print("stdout:")
+        print(stdout)
+        print("stderr:")
+        print(stderr)
 
         # check number of kernels
         kernels = 0
@@ -66,11 +73,18 @@ class TejasBenchmarkConfig(BenchmarkConfig):
             str(kernels),
         ]
         cmd = " ".join(cmd)
-        _, stdout, stderr = utils.run_cmd(cmd, cwd=path, timeout_sec=timeout_mins * 60)
+        _, stdout, stderr, trace_duration2 = utils.run_cmd(
+            cmd, cwd=path, timeout_sec=timeout_mins * 60
+        )
         print("stdout:")
         print(stdout)
         print("stderr:")
         print(stderr)
+
+        with open(str((results_dir / "trace_wall_time.csv").absolute()), "w") as f:
+            output_writer = csv.writer(f)
+            output_writer.writerow(["exec_time_sec"])
+            output_writer.writerow([trace_duration1 + trace_duration2])
 
         kernels = len(list(trace_dir.glob("hashfile_*")))
         print("kernels:", kernels)
@@ -88,15 +102,21 @@ class TejasBenchmarkConfig(BenchmarkConfig):
             str(kernels),
         ]
         cmd = " ".join(cmd)
-        _, stdout, stderr = utils.run_cmd(cmd, cwd=path, timeout_sec=timeout_mins * 60)
+        _, stdout, stderr, sim_duration = utils.run_cmd(
+            cmd, cwd=path, timeout_sec=timeout_mins * 60
+        )
         print("stdout:")
         print("\n".join(stdout.splitlines()[-15:]))
         print("stderr:")
         print(stderr)
+        with open(str((results_dir / "sim_wall_time.csv").absolute()), "w") as f:
+            output_writer = csv.writer(f)
+            output_writer.writerow(["exec_time_sec"])
+            output_writer.writerow([sim_duration])
 
         # parse the stats file
         stat_file = log_file.with_suffix(".csv")
-        _, stdout, stderr = utils.run_cmd(
+        _, stdout, stderr, _ = utils.run_cmd(
             [
                 "tejas-parse",
                 "--input",
