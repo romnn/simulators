@@ -50,3 +50,97 @@ def build_hw_df(kernel_csv_files, cycle_csv_files):
     #    hw_kernel_df[c + "_min"] = grouped.min()[c]
     #    hw_kernel_df[c + "_stddev"] = grouped.std()[c]
     
+    
+# => per config, benchmark and input, plot bars for each simulator
+
+metrics = [
+    gpusims.plot.metrics.ExecutionTime,
+]
+
+for (config_name, config), (bench_name, bench) in itertools.product(
+    selected_configs.items(),
+    selected_benchmarks.items()
+):
+    print(config_name, bench_name)
+    for inp in bench.inputs:
+        plot_data = PlotData(benchmark=bench, config=config, inp=inp)
+        for (sim_name, sim) in selected_simulators.items():
+            if not bench.enabled(sim_name):
+                continue
+            # print(sim_name, config_name, bench_name)
+            bench_config = sim(
+                run_dir=run_dir / sim_name.lower(),
+                benchmark=bench,
+                config=config,
+            )
+            if not bench_config.input_path(inp).is_dir():
+                print(f"WARN: {bench_config.input_path(inp)} does not exist")
+                continue
+            
+            plot_data[sim_name] = bench_config.load_dataframe(inp)
+        
+        metric = metric_cls(plot_data)
+        # for metric_name, metric in metrics.items():
+            # print("######", metric_name)
+        metric_df = metric.compute()
+        metric_df["Benchmark"] = bench.name
+        fig = plot_bars_exec_time(
+            metric_cls=metric_cls,
+            data=metric_df,
+            config=config,
+            title=f"{metric_cls.name} for {bench.name} {inp.args} ({config.name})",
+        )
+        # fig.show()
+        filename = ["bar", metric_cls.name, bench.name, config.key, inp.sanitized_name()]
+        filename = Path("./figs") / gpusims.utils.slugify("_".join(filename))
+        filename = filename.with_suffix(".pdf")
+        fig.write_image(filename, format='pdf')
+        print("wrote", filename)
+        # break
+    # break
+
+metric_df
+
+all_bench_configs = []
+
+for (sim_name, sim), (config_name, config), (bench_name, bench) in itertools.product(
+    selected_simulators.items(),
+    selected_configs.items(),
+    selected_benchmarks.items()
+):
+    if not bench.enabled(sim):
+        continue
+    
+    # for inp in bench:
+    #all_plot_configs.append(BenchmarkPlot(bench_config=sim(
+    #    run_dir=run_dir / sim_name.lower(),
+    #    benchmark=bench,
+    #    config=config,
+    #)))
+
+print(f"{len(all_bench_configs)} total benchmark configs")
+
+
+for plot_config in all_bench_configs:
+    for inp in plot_config.bench_config.benchmark.inputs:
+        hw_df = plot.load_hardware_df(inp)
+        hw_df = plot.load_hardware_df(inp)
+        accel_sass_df = pd.read_csv(accel_sass_results / "results/stats.csv")
+print("accel sass shape", accel_sass_df.shape)
+accel_sass_df = accel_sass_df.pivot(index=["kernel", "kernel_id"], columns=["stat"])["value"]
+print("accel sass shape", accel_sass_df.shape)
+# pprint(accel_df.columns.tolist())
+accel_sass_df.T
+        break
+    break
+hw_df.T
+# plot = all_bench_configs[0]
+
+plot = all_bench_configs[0]
+hw_df = plot.load_hardware_df()
+
+hw_df = build_hw_df(
+    cycle_csv_files=list((native_results / "results").rglob(r"result.cycles.csv.*")),
+    kernel_csv_files=list((native_results / "results").rglob(r"result.csv.*")),
+)
+hw_df.T

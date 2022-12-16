@@ -219,7 +219,8 @@ class L2ReadHit(Metric):
             data.append(("Hardware", hw_value))
 
         df = pd.DataFrame.from_records(
-            data, columns=["Simulator", "Value"], index=["Simulator"]
+            data, columns=["Simulator", "Value"],
+            # index=["Simulator"]
         )
         df["Value"] = df["Value"].astype(int)
         return df
@@ -262,7 +263,8 @@ class InstructionCount(Metric):
             hw_value = self.hw_df["inst_issued"].sum()
             data.append(("Hardware", hw_value))
         df = pd.DataFrame.from_records(
-            data, columns=["Simulator", "Value"], index=["Simulator"]
+            data, columns=["Simulator", "Value"],
+            # index=["Simulator"]
         )
         df["Value"] = df["Value"].astype(int)
         return df
@@ -325,7 +327,8 @@ class IPC(Metric):
             hw_value = self.hw_df["inst_issued"].sum() / hw_cycles
             data.append(("Hardware", hw_value))
         df = pd.DataFrame.from_records(
-            data, columns=["Simulator", "Value"], index=["Simulator"]
+            data, columns=["Simulator", "Value"],
+            # index=["Simulator"]
         )
         df["Value"] = df["Value"].round(3)
         return df
@@ -370,7 +373,8 @@ class DRAMReads(Metric):
             hw_value = self.hw_df["dram_read_transactions"].sum()
             data.append(("Hardware", hw_value))
         df = pd.DataFrame.from_records(
-            data, columns=["Simulator", "Value"], index=["Simulator"]
+            data, columns=["Simulator", "Value"],
+            # index=["Simulator"]
         )
         df["Value"] = df["Value"].astype(int)
         return df
@@ -405,7 +409,8 @@ class DRAMWrites(Metric):
             hw_value = self.hw_df["dram_write_transactions"].sum()
             data.append(("Hardware", hw_value))
         df = pd.DataFrame.from_records(
-            data, columns=["Simulator", "Value"], index=["Simulator"]
+            data, columns=["Simulator", "Value"],
+            # index=["Simulator"]
         )
         df["Value"] = df["Value"].astype(int)
         return df
