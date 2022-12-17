@@ -44,7 +44,11 @@ class TejasBenchmarkConfig(BenchmarkConfig):
         cmd = [str(tracegen.absolute()), inp.args, str(threads)]
         cmd = " ".join(cmd)
         _, stdout, stderr, trace_duration1 = utils.run_cmd(
-            cmd, cwd=path, timeout_sec=timeout_mins * 60
+            cmd,
+            cwd=path,
+            timeout_sec=timeout_mins * 60,
+            save_to=results_dir / "tracegen",
+            retries=2,
         )
         print("stdout:")
         print(stdout)
@@ -79,7 +83,11 @@ class TejasBenchmarkConfig(BenchmarkConfig):
         )
         cmd = " ".join(cmd)
         _, stdout, stderr, trace_duration2 = utils.run_cmd(
-            cmd, cwd=path, timeout_sec=timeout_mins * 60
+            cmd,
+            cwd=path,
+            timeout_sec=timeout_mins * 60,
+            save_to=results_dir / "trace-simplifier",
+            retries=5,
         )
         print("stdout:")
         print(stdout)
@@ -112,7 +120,11 @@ class TejasBenchmarkConfig(BenchmarkConfig):
         )
         cmd = " ".join(cmd)
         _, stdout, stderr, sim_duration = utils.run_cmd(
-            cmd, cwd=path, timeout_sec=timeout_mins * 60
+            cmd,
+            cwd=path,
+            timeout_sec=timeout_mins * 60,
+            save_to=results_dir / "gputejas",
+            retries=5,
         )
         print("stdout:")
         print("\n".join(stdout.splitlines()[-15:]))
@@ -135,6 +147,7 @@ class TejasBenchmarkConfig(BenchmarkConfig):
             ],
             cwd=path,
             timeout_sec=timeout_mins * 60,
+            save_to=results_dir / "tejas-parse",
         )
         print("stdout:")
         print(stdout)

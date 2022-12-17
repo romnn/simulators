@@ -21,39 +21,67 @@ class ExecError(Exception):
         )
 
 
-def run_cmd(cmd, cwd=None, shell=False, timeout_sec=None, env=None):
+def run_cmd(
+    cmd, cwd=None, shell=False, timeout_sec=None, env=None, save_to=None, retries=1
+):
     if not shell and not isinstance(cmd, list):
         cmd = shlex.split(cmd)
-    print("running", cmd)
-    if isinstance(cmd, list):
-        print("running", " ".join(cmd))
 
-    if isinstance(cwd, Path):
-        cwd = str(cwd.absolute())
+    err = None
+    for attempt in range(retries):
+        print("running {} (attempt {}/{})".format(cmd, attempt + 1, retries))
+        if isinstance(cmd, list):
+            print(
+                "running {} (attempt {}/{})".format(" ".join(cmd), attempt + 1, retries)
+            )
 
-    # the subprocess may take a long time, hence flush all buffers before
-    sys.stdout.flush()
-    start = timer()
-    proc = sp.Popen(cmd, stdout=sp.PIPE, stderr=sp.PIPE, cwd=cwd, env=env, shell=shell)
-    try:
-        stdout, stderr = proc.communicate(timeout=timeout_sec)
-    except sp.TimeoutExpired as timeout:
-        raise timeout
+        if isinstance(cwd, Path):
+            cwd = str(cwd.absolute())
 
-    stdout = stdout.decode("utf-8")
-    stderr = stderr.decode("utf-8")
-    if proc.returncode != 0:
-        print("\nstdout (last 15 lines):\n")
-        print("\n".join(stdout.splitlines()[-15:]))
-        print("\nstderr (last 15 lines):\n")
-        print("\n".join(stderr.splitlines()[-15:]))
-        # there may be a loooot to print, block!
+        # the subprocess may take a long time, hence flush all buffers before
         sys.stdout.flush()
-        raise ExecError(cmd=cmd, status=proc.returncode, stdout=stdout, stderr=stderr)
+        start = timer()
+        proc = sp.Popen(
+            cmd, stdout=sp.PIPE, stderr=sp.PIPE, cwd=cwd, env=env, shell=shell
+        )
+        try:
+            stdout, stderr = proc.communicate(timeout=timeout_sec)
+        except sp.TimeoutExpired as timeout:
+            err = timeout
+            # try again
+            continue
 
-    end = timer()
-    duration = end - start
-    return proc.returncode, stdout, stderr, duration
+        stdout = stdout.decode("utf-8")
+        stderr = stderr.decode("utf-8")
+
+        if save_to is not None:
+            with open(
+                str((save_to.parent / (save_to.name + ".stdout")).absolute()), "w"
+            ) as f:
+                f.write(stdout)
+            with open(
+                str((save_to.parent / (save_to.name + ".stderr")).absolute()), "w"
+            ) as f:
+                f.write(stderr)
+
+        if proc.returncode != 0:
+            print("\nstdout (last 15 lines):\n")
+            print("\n".join(stdout.splitlines()[-15:]))
+            print("\nstderr (last 15 lines):\n")
+            print("\n".join(stderr.splitlines()[-15:]))
+            sys.stdout.flush()
+            err = ExecError(
+                cmd=cmd, status=proc.returncode, stdout=stdout, stderr=stderr
+            )
+            # try again
+            continue
+
+        # command succeeded
+        end = timer()
+        duration = end - start
+        return proc.returncode, stdout, stderr, duration
+
+    raise err
 
 
 def ensure_empty(d):

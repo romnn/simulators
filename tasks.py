@@ -102,7 +102,7 @@ def build_container(c, ctx, tag, dockerfile=None, dry_run=False):
     iterable=["simulator"],
 )
 def build(c, simulator, base=False, dry_run=False):
-    """Build all the benchmark docker containers"""
+    """Build all docker containers"""
     simulator = [s.lower() for s in simulator]
     for s in simulator:
         if s not in gpusims.SIMULATORS:
@@ -173,17 +173,29 @@ def bench(
     config,
     repetitions=3,
     force=False,
-    timeout_mins=10,
+    timeout_mins=20,
     dry_run=False,
     local=False,
 ):
     """Benchmark in simulator inside docker containers"""
-    simulator = [s.lower() for s in simulator]
+    simulator = set([s.lower() for s in simulator])
     for s in simulator:
         if s not in gpusims.SIMULATORS:
             have = list(gpusims.SIMULATORS.keys())
             raise ValueError("unknown simulator: {} (have {})".format(s, have))
-    simulators = [s for s in gpusims.SIMULATORS if s in simulator or len(simulator) < 1]
+    if len(simulator) < 1:
+        # set default simulators
+        # by default, do not run native and accelsim when running everything
+        # this way, we enforce running them separately and explicitely specifying the config
+        simulator = simulator.union(
+            [
+                s
+                for s in gpusims.SIMULATORS
+                if s not in [gpusims.NATIVE, gpusims.ACCELSIM_SASS]
+            ]
+        )
+
+    simulators = sorted([s for s in gpusims.SIMULATORS if s in simulator])
     print(simulators)
 
     for s in simulators:

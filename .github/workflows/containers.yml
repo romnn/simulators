@@ -58,4 +58,5 @@ jobs:
         run: >-
           inv bench
           -s ${{ matrix.simulator.name }}
+          --timeout-mins 40
           --local

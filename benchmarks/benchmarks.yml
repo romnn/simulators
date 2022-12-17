@@ -24,8 +24,9 @@ CUDA10-transpose:
     enabled: false
   inputs:
     - args: -repeat=1 -dimX=32 -dimY=32
-    - args: -repeat=1 -dimX=64 -dimY=64
     - args: -repeat=3 -dimX=32 -dimY=32
+    - args: -repeat=1 -dimX=64 -dimY=64
+    - args: -repeat=1 -dimX=128 -dimY=128
 
 # from: CUDA 6.0 SDK
 # bandwidth test does not make sense because there is no compute
@@ -55,8 +56,9 @@ CUDA6-transpose:
   #   enabled: false
   inputs:
     - args: -repeat=1 -dimX=32 -dimY=32
-    - args: -repeat=1 -dimX=64 -dimY=64
     - args: -repeat=3 -dimX=32 -dimY=32
+    - args: -repeat=1 -dimX=64 -dimY=64
+    - args: -repeat=1 -dimX=128 -dimY=128
 
 
 # from: CUDA 10.1 SDK
@@ -75,7 +77,11 @@ CUDA10-matrixMul:
   inputs:
     - args: -wA=32 -hA=32 -wB=32 -hB=32
     - args: -wA=32 -hA=64 -wB=64 -hB=32
-    - args: -wA=64 -hA=64 -wB=64 -hB=64
+    # - args: -wA=64 -hA=64 -wB=64 -hB=64
+    - args: -wA=128 -hA=128 -wB=128 -hB=128
+    # - args: -wA=256 -hA=256 -wB=256 -hB=256
+    # accelsim-ptx timeout after 10mins, 20mins fine
+    - args: -wA=512 -hA=512 -wB=512 -hB=512
 
 # from: gpu-app-collection/src/cuda/custom-apps/sdk-matrixMul-modified
 # probably CUDA 4.2 SDK ?
@@ -84,7 +90,14 @@ CUDA4-matrixMul:
   executable: matrixMul
   inputs:
     - args: 32
+    # - args: 64
     - args: 128
+    # - args: 256
+    # accelsim-ptx takes 15min
+    - args: 512
+    # - args: 1024
+    # accelsim-ptx times out after 20mins
+    # - args: 2048
 
 # from: https://github.com/UoB-HPC/BabelStream
 BabelStream:
@@ -102,6 +115,8 @@ BabelStream:
     - args: --arraysize 1024 --numtimes 1
     - args: --arraysize 1024 --numtimes 2
     - args: --arraysize 10240 --numtimes 1
+    - args: --arraysize 102400 --numtimes 1
+
     # - args: --arraysize 1024 --numtimes 1
     # - args: --arraysize 1024000 --numtimes 10
 

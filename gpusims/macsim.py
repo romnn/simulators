@@ -107,6 +107,7 @@ class MacSimBenchmarkConfig(BenchmarkConfig):
             cwd=path,
             timeout_sec=timeout_mins * 60,
             shell=True,
+            save_to=results_dir / "run.tmp.sh",
         )
         print("stdout:")
         print(stdout)
@@ -144,6 +145,7 @@ class MacSimBenchmarkConfig(BenchmarkConfig):
             ),
             cwd=path,
             timeout_sec=timeout_mins * 60,
+            save_to=results_dir / "macsim",
         )
 
         print("stdout (last 15 lines):")

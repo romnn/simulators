@@ -34,6 +34,7 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
             cmd,
             cwd=path,
             timeout_sec=timeout_mins * 60,
+            save_to=results_dir / "m2s",
         )
         print("stdout:")
         print(stdout)
@@ -60,6 +61,7 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
             ],
             cwd=path,
             timeout_sec=timeout_mins * 60,
+            save_to=results_dir / "m2s-parse",
         )
         print("stdout:")
         print(stdout)

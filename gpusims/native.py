@@ -71,7 +71,10 @@ class NativeBenchmarkConfig(BenchmarkConfig):
             cmd = " ".join(cmd)
             try:
                 _, stdout, stderr, _ = utils.run_cmd(
-                    cmd, cwd=path, timeout_sec=timeout_mins * 60
+                    cmd,
+                    cwd=path,
+                    timeout_sec=timeout_mins * 60,
+                    save_to=results_dir / "nvprof-kernels",
                 )
                 print("stdout:")
                 print(stdout)
@@ -113,7 +116,10 @@ class NativeBenchmarkConfig(BenchmarkConfig):
             cycles_cmd = " ".join(cycles_cmd)
             try:
                 _, stdout, stderr, _ = utils.run_cmd(
-                    cycles_cmd, cwd=path, timeout_sec=timeout_mins * 60
+                    cycles_cmd,
+                    cwd=path,
+                    timeout_sec=timeout_mins * 60,
+                    save_to=results_dir / "nvprof-cycles",
                 )
                 print("stdout:")
                 print(stdout)

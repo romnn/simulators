@@ -1,103 +1,115 @@
+#include <limits>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-#define CUDA_SAFECALL(call)                                                 \
-    {                                                                       \
-        call;                                                               \
-        cudaError err = cudaGetLastError();                                 \
-        if (cudaSuccess != err) {                                           \
-            fprintf(                                                        \
-                stderr,                                                     \
-                "Cuda error in function '%s' file '%s' in line %i : %s.\n", \
-                #call, __FILE__, __LINE__, cudaGetErrorString(err));        \
-            fflush(stderr);                                                 \
-            exit(EXIT_FAILURE);                                             \
-        }                                                                   \
-    }
-
+#define CUDA_SAFECALL(call)                                                    \
+  {                                                                            \
+    call;                                                                      \
+    cudaError err = cudaGetLastError();                                        \
+    if (cudaSuccess != err) {                                                  \
+      fprintf(stderr,                                                          \
+              "Cuda error in function '%s' file '%s' in line %i : %s.\n",      \
+              #call, __FILE__, __LINE__, cudaGetErrorString(err));             \
+      fflush(stderr);                                                          \
+      exit(EXIT_FAILURE);                                                      \
+    }                                                                          \
+  }
 
 // CUDA kernel. Each thread takes care of one element of c
 __global__ void vecAdd(double *a, double *b, double *c, int n) {
-    // Get our global thread ID
-    int id = blockIdx.x * blockDim.x + threadIdx.x;
+  // Get our global thread ID
+  int id = blockIdx.x * blockDim.x + threadIdx.x;
 
-    // Make sure we do not go out of bounds
-    if (id < n) c[id] = a[id] + b[id];
+  // Make sure we do not go out of bounds
+  if (id < n)
+    c[id] = a[id] + b[id];
 }
 
 int main(int argc, char *argv[]) {
-    // Size of vectors
-    int n = 100000;
-    if (argc > 1) n = atoi(argv[1]);
+  int ret = 0;
 
-    // Host input vectors
-    double *h_a;
-    double *h_b;
-    // Host output vector
-    double *h_c;
+  // Size of vectors
+  int n = 100000;
+  if (argc > 1)
+    n = atoi(argv[1]);
 
-    // Device input vectors
-    double *d_a;
-    double *d_b;
-    // Device output vector
-    double *d_c;
+  // Host input vectors
+  double *h_a;
+  double *h_b;
+  // Host output vector
+  double *h_c;
 
-    // Size, in bytes, of each vector
-    size_t bytes = n * sizeof(double);
+  // Device input vectors
+  double *d_a;
+  double *d_b;
+  // Device output vector
+  double *d_c;
 
-    // Allocate memory for each vector on host
-    h_a = (double *)malloc(bytes);
-    h_b = (double *)malloc(bytes);
-    h_c = (double *)malloc(bytes);
+  // Size, in bytes, of each vector
+  size_t bytes = n * sizeof(double);
 
-    // Allocate memory for each vector on GPU
-    cudaMalloc(&d_a, bytes);
-    cudaMalloc(&d_b, bytes);
-    cudaMalloc(&d_c, bytes);
+  // Allocate memory for each vector on host
+  h_a = (double *)malloc(bytes);
+  h_b = (double *)malloc(bytes);
+  h_c = (double *)malloc(bytes);
 
-    int i;
-    // Initialize vectors on host
-    for (i = 0; i < n; i++) {
-        h_a[i] = sin(i) * sin(i);
-        h_b[i] = cos(i) * cos(i);
-        h_c[i] = 0;
-    }
+  // Allocate memory for each vector on GPU
+  cudaMalloc(&d_a, bytes);
+  cudaMalloc(&d_b, bytes);
+  cudaMalloc(&d_c, bytes);
 
-    // Copy host vectors to device
-    cudaMemcpy(d_a, h_a, bytes, cudaMemcpyHostToDevice);
-    cudaMemcpy(d_b, h_b, bytes, cudaMemcpyHostToDevice);
-    cudaMemcpy(d_c, h_c, bytes, cudaMemcpyHostToDevice);
+  int i;
+  // Initialize vectors on host
+  for (i = 0; i < n; i++) {
+    h_a[i] = sin(i) * sin(i);
+    h_b[i] = cos(i) * cos(i);
+    h_c[i] = 0;
+  }
 
-    int blockSize, gridSize;
+  // Copy host vectors to device
+  cudaMemcpy(d_a, h_a, bytes, cudaMemcpyHostToDevice);
+  cudaMemcpy(d_b, h_b, bytes, cudaMemcpyHostToDevice);
+  cudaMemcpy(d_c, h_c, bytes, cudaMemcpyHostToDevice);
 
-    // Number of threads in each thread block
-    blockSize = 1024;
+  int blockSize, gridSize;
 
-    // Number of thread blocks in grid
-    gridSize = (int)ceil((float)n / blockSize);
+  // Number of threads in each thread block
+  blockSize = 1024;
 
-    // Execute the kernel
-    CUDA_SAFECALL((vecAdd<<<gridSize, blockSize>>>(d_a, d_b, d_c, n)));
+  // Number of thread blocks in grid
+  gridSize = (int)ceil((float)n / blockSize);
 
-    // Copy array back to host
-    cudaMemcpy(h_c, d_c, bytes, cudaMemcpyDeviceToHost);
+  // Execute the kernel
+  CUDA_SAFECALL((vecAdd<<<gridSize, blockSize>>>(d_a, d_b, d_c, n)));
 
-    // Sum up vector c and print result divided by n, this should equal 1 within
-    // error
-    double sum = 0;
-    for (i = 0; i < n; i++) sum += h_c[i];
-    printf("Final sum = %f; sum/n = %f (should be ~1)\n", sum, sum / n);
+  // Copy array back to host
+  cudaMemcpy(h_c, d_c, bytes, cudaMemcpyDeviceToHost);
 
-    // Release device memory
-    cudaFree(d_a);
-    cudaFree(d_b);
-    cudaFree(d_c);
+  // Sum up vector c and print result divided by n, this should equal 1 within
+  // error
+  double sum = 0;
+  for (i = 0; i < n; i++)
+    sum += h_c[i];
+  printf("Final sum = %f; sum/n = %f (should be ~1)\n", sum, sum / n);
 
-    // Release host memory
-    free(h_a);
-    free(h_b);
-    free(h_c);
+  double err = fabs((sum / n) - 1.0);
+  double epsi = std::numeric_limits<double>::epsilon();
 
-    return 0;
+  if (err > epsi) {
+    fprintf(stderr, "Invalid result %f (should be ~1)\n", sum / n);
+    ret = 1;
+  }
+
+  // Release device memory
+  cudaFree(d_a);
+  cudaFree(d_b);
+  cudaFree(d_c);
+
+  // Release host memory
+  free(h_a);
+  free(h_b);
+  free(h_c);
+
+  return ret;
 }
