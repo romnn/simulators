@@ -3,8 +3,10 @@
 /target
 /Cargo.lock
 /deprecated
-# generated ocelot traces can be quite big
+
+# generated traces are too big for github
 **/results/traces/*
+
 /notebooks/figs/*
 .ipynb_checkpoints
 run.tar.gz

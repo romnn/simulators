@@ -94,7 +94,10 @@ CUDA4-matrixMul:
     - args: 128
     # - args: 256
     # accelsim-ptx takes 15min
+    # tejas times out after 20mins
     - args: 512
+      tejas:
+        enabled: false
     # - args: 1024
     # accelsim-ptx times out after 20mins
     # - args: 2048

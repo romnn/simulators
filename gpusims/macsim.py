@@ -48,7 +48,7 @@ def parse_stats(stats_dir):
 
 class MacSimBenchmarkConfig(BenchmarkConfig):
     @staticmethod
-    def run_input(path, inp, force=False, timeout_mins=5, **kwargs):
+    def _run(path, inp, force=False, timeout_mins=5, **kwargs):
         print("macsim run:", inp)
 
         executable = path / inp.executable

@@ -8,7 +8,7 @@ from pprint import pprint  # noqa: F401
 
 class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
     @staticmethod
-    def run_input(path, inp, force=False, timeout_mins=5, **kwargs):
+    def _run(path, inp, force=False, timeout_mins=5, **kwargs):
         print("accelsim SASS run:", inp)
 
         sim_root = Path(os.environ["SIM_ROOT"])
@@ -26,8 +26,8 @@ class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
         utils.chmod_x(executable)
 
         results_dir = path / "results"
-        trace_dir = results_dir / "trace"
-        os.makedirs(str(trace_dir.absolute()), exist_ok=True)
+        traces_dir = results_dir / "traces"
+        os.makedirs(str(traces_dir.absolute()), exist_ok=True)
 
         options = {
             "kernel_number": 0,
@@ -37,7 +37,7 @@ class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
         env = {
             # USER_DEFINED_FOLDERS must be set for TRACES_FOLDER variable to be read
             "USER_DEFINED_FOLDERS": "1",
-            "TRACES_FOLDER": str(trace_dir.absolute()),
+            "TRACES_FOLDER": str(traces_dir.absolute()),
             "CUDA_INJECTION64_PATH": str(
                 (nvbit_tracer_tool / "tracer_tool.so").absolute()
             ),
@@ -69,12 +69,14 @@ class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
         tmp_trace_sh += "{} {}\n".format(str(executable.absolute()), inp.args)
         tmp_trace_sh += "{} {}\n".format(
             str(post_traces_processing.absolute()),
-            str((trace_dir / "kernelslist").absolute()),
+            str((traces_dir / "kernelslist").absolute()),
         )
         if True:
-            tmp_trace_sh += "rm -f {}\n".format(str((trace_dir / "*.trace").absolute()))
             tmp_trace_sh += "rm -f {}\n".format(
-                str((trace_dir / "kernelslist").absolute())
+                str((traces_dir / "*.trace").absolute())
+            )
+            tmp_trace_sh += "rm -f {}\n".format(
+                str((traces_dir / "kernelslist").absolute())
             )
 
         print("\nrunning:\n")
@@ -112,7 +114,7 @@ class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
         cmd = [
             str(accelsim.absolute()),
             "-trace",
-            str((trace_dir / "kernelslist.g").absolute()),
+            str((traces_dir / "kernelslist.g").absolute()),
             "-config",
             str((path / "gpgpusim.config").absolute()),
         ]

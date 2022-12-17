@@ -18,11 +18,10 @@ def build_config(config_file, threads):
 
 class TejasBenchmarkConfig(BenchmarkConfig):
     @staticmethod
-    def run_input(path, inp, force=False, timeout_mins=5, **kwargs):
+    def _run(path, inp, force=False, timeout_mins=5, **kwargs):
         print("tejas run:", inp, inp.args)
 
-        threads = multiprocessing.cpu_count()
-        threads = 8
+        threads = min(8, multiprocessing.cpu_count())
         tejas_root = Path(os.environ["TEJAS_ROOT"])
 
         default_config_file = path / "tejas_config.xml"
@@ -33,9 +32,9 @@ class TejasBenchmarkConfig(BenchmarkConfig):
         new_config.write(str(new_config_file.absolute()))
 
         results_dir = path / "results"
-        trace_dir = results_dir / str(threads)
-        utils.ensure_empty(trace_dir)
-        print(trace_dir)
+        traces_dir = results_dir / "traces" / str(threads)
+        utils.ensure_empty(traces_dir)
+        print(traces_dir)
 
         tracegen = path / "tracegen"
         utils.chmod_x(tracegen)
@@ -63,7 +62,7 @@ class TejasBenchmarkConfig(BenchmarkConfig):
 
         for txt_file in list(path.glob("*.txt")):
             if re.match(r"\d+", txt_file.name):
-                txt_file.rename(trace_dir / txt_file.name)
+                txt_file.rename(traces_dir / txt_file.name)
 
         simplifier = tejas_root / "../gputejas/Tracesimplifier.jar"
         assert simplifier.is_file()
@@ -77,7 +76,7 @@ class TejasBenchmarkConfig(BenchmarkConfig):
                 str(simplifier.absolute()),
                 str(new_config_file.absolute()),
                 "tmp",
-                str(trace_dir.parent.absolute()),
+                str(traces_dir.parent.absolute()),
                 str(kernels),
             ]
         )
@@ -99,7 +98,7 @@ class TejasBenchmarkConfig(BenchmarkConfig):
             output_writer.writerow(["exec_time_sec"])
             output_writer.writerow([trace_duration1 + trace_duration2])
 
-        kernels = len(list(trace_dir.glob("hashfile_*")))
+        kernels = len(list(traces_dir.glob("hashfile_*")))
         print("kernels:", kernels)
 
         tejas_simulator = tejas_root / "../gputejas/jars/GPUTejas.jar"
@@ -114,7 +113,7 @@ class TejasBenchmarkConfig(BenchmarkConfig):
                 str(tejas_simulator.absolute()),
                 str(new_config_file.absolute()),
                 str(log_file.absolute()),
-                str(trace_dir.parent.absolute()),
+                str(traces_dir.parent.absolute()),
                 str(kernels),
             ]
         )

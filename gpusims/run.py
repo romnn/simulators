@@ -105,4 +105,8 @@ def run(
 
     for b in pending:
         pprint(b)
-        b.run(repetitions=repetitions, force=force, timeout_mins=timeout_mins)
+        for inp in b.benchmark.inputs:
+            if inp.enabled(simulator):
+                b.run(
+                    inp, repetitions=repetitions, force=force, timeout_mins=timeout_mins
+                )

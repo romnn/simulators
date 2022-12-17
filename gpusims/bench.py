@@ -20,7 +20,7 @@ class BenchmarkConfig(abc.ABC):
 
     @staticmethod
     @abc.abstractmethod
-    def run_input(path, inp, repetitions=1, timeout_mins=5, force=False):
+    def _run(path, inp, repetitions=1, timeout_mins=5, force=False):
         pass
 
     @abc.abstractmethod
@@ -30,26 +30,27 @@ class BenchmarkConfig(abc.ABC):
     def input_path(self, inp):
         return self.path / inp.sanitized_name()
 
-    def run(self, repetitions=1, timeout_mins=5, force=False):
-        for inp in self.benchmark.inputs:
-            print("running input:", inp)
-            print(inp.executable)
-            print(self.benchmark.extra)
-            # assert self.inp.executable.is_file()
+    def run(self, inp, repetitions=1, timeout_mins=5, force=False):
+        # for inp in self.benchmark.inputs:
+        # if inp.enabled(self.
+        print("running input:", inp)
+        print(inp.executable)
+        print(self.benchmark.extra)
+        # assert self.inp.executable.is_file()
 
-            path = self.input_path(inp)
-            self.setup(path)
-            try:
-                repetitions = int(self.benchmark.extra["repetitions"])
-            except (KeyError, ValueError):
-                pass
-            self.run_input(
-                path=path,
-                inp=inp,
-                repetitions=repetitions,
-                timeout_mins=timeout_mins,
-                force=force,
-            )
+        path = self.input_path(inp)
+        self.setup(path)
+        try:
+            repetitions = int(self.benchmark.extra["repetitions"])
+        except (KeyError, ValueError):
+            pass
+        self._run(
+            path=path,
+            inp=inp,
+            repetitions=repetitions,
+            timeout_mins=timeout_mins,
+            force=force,
+        )
 
     def setup(self, path):
         """setup the benchmark in given run dir"""
@@ -100,14 +101,21 @@ class Benchmark:
 
 
 class Input:
-    def __init__(self, executable, args=None):
+    def __init__(self, executable, args=None, extra=None):
         self.executable = executable
         self.args = ""
+        self.extra = extra or dict()
         if args is not None:
             if isinstance(args, list):
                 self.args = " ".join(args)
             else:
                 self.args = str(args)
+
+    def enabled(self, sim):
+        extra = self.extra.get(sim)
+        if isinstance(extra, dict):
+            return extra.get("enabled", True)
+        return True
 
     def sanitized_name(self):
         sanitized = utils.slugify(self.args)
@@ -131,7 +139,7 @@ def parse_benchmarks(path):
             executable = config["executable"]
             inputs = []
             for inp in config.get("inputs", []):
-                inputs.append(Input(executable, args=inp.get("args")))
+                inputs.append(Input(executable, args=inp.get("args"), extra=inp))
 
             benchmarks[name.lower()] = Benchmark(
                 name=name,

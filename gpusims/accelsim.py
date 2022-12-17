@@ -8,7 +8,7 @@ from pprint import pprint  # noqa: F401
 
 class AccelSimPTXBenchmarkConfig(BenchmarkConfig):
     @staticmethod
-    def run_input(path, inp, force=False, timeout_mins=5, **kwargs):
+    def _run(path, inp, force=False, timeout_mins=5, **kwargs):
         print("accelsim PTX run:", inp)
         sim_root = Path(os.environ["SIM_ROOT"])
         setup_env = sim_root / "setup_environment"

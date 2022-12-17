@@ -6,7 +6,7 @@ import gpusims.utils as utils
 
 class Multi2SimBenchmarkConfig(BenchmarkConfig):
     @staticmethod
-    def run_input(path, inp, force=False, timeout_mins=5, **kwargs):
+    def _run(path, inp, force=False, timeout_mins=5, **kwargs):
         print("multi2sim run:", inp)
 
         executable = path / inp.executable
