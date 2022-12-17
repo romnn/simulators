@@ -98,6 +98,12 @@ def chmod_x(executable):
     executable.chmod(executable.stat().st_mode | stat.S_IEXEC)
 
 
+def duration_to_slurm(duration):
+    hours, remainder = divmod(duration.seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    return "{:02}:{:02}:{:02}".format(int(hours), int(minutes), int(seconds))
+
+
 def slugify(value, allow_unicode=False):
     """
     Taken from https://github.com/django/django/blob/master/django/utils/text.py

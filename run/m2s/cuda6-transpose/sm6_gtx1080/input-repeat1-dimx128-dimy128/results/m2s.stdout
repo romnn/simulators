@@ -1,0 +1,32 @@
+Transpose Starting...
+
+GPU Device 0: "Multi2Sim Tesla K20c" with compute capability 3.5
+
+> Device 0: "Multi2Sim Tesla K20c"
+> SM Capability 3.5 detected:
+> [Multi2Sim Tesla K20c] has 13 MP(s) x 192 (Cores/MP) = 2496 (Cores)
+> Compute performance scaling factor = 1.00
+> MatrixSize X = 128
+> MatrixSize Y = 128
+
+Matrix size: 128x128 (8x8 tiles), tile size: 16x16, block size: 16x16
+
+transpose simple copy       , Throughput = 122.0703 GB/s, Time = 0.00100 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+*** shared memory copy kernel FAILED ***
+*** shared memory copy kernel FAILED ***
+transpose shared memory copy, Throughput = 30.5176 GB/s, Time = 0.00400 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+*** naive              kernel FAILED ***
+*** naive              kernel FAILED ***
+transpose naive             , Throughput = 61.0352 GB/s, Time = 0.00200 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+*** coalesced          kernel FAILED ***
+*** coalesced          kernel FAILED ***
+transpose coalesced         , Throughput = 30.5176 GB/s, Time = 0.00400 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+*** optimized          kernel FAILED ***
+*** optimized          kernel FAILED ***
+transpose optimized         , Throughput = 30.5176 GB/s, Time = 0.00400 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose coarse-grained    , Throughput = 40.6901 GB/s, Time = 0.00300 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose fine-grained      , Throughput = 30.5176 GB/s, Time = 0.00400 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+*** diagonal           kernel FAILED ***
+*** diagonal           kernel FAILED ***
+transpose diagonal          , Throughput = 24.4141 GB/s, Time = 0.00500 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+Test failed!

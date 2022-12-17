@@ -43,8 +43,8 @@ class AccelSimPTXBenchmarkConfig(BenchmarkConfig):
         )
         print("stdout (last 15 lines):")
         print("\n".join(stdout.splitlines()[-15:]))
-        print("stderr:")
-        print(stderr)
+        print("stderr (last 15 lines):")
+        print("\n".join(stderr.splitlines()[-15:]))
 
         with open(str((results_dir / "sim_wall_time.csv").absolute()), "w") as f:
             output_writer = csv.writer(f)
@@ -68,10 +68,10 @@ class AccelSimPTXBenchmarkConfig(BenchmarkConfig):
             timeout_sec=timeout_mins * 60,
             save_to=results_dir / "gpgpusim-parse",
         )
-        print("stdout:")
-        print(stdout)
-        print("stderr:")
-        print(stderr)
+        print("stdout (last 15 lines):")
+        print("\n".join(stdout.splitlines()[-15:]))
+        print("stderr (last 15 lines):")
+        print("\n".join(stderr.splitlines()[-15:]))
 
         tmp_run_file.unlink()
 

@@ -1,0 +1,49 @@
+options: Options {
+    input: "/benchrun/tejas/babelstream/sm6_gtx1080/input-arraysize-102400-numtimes-1/results/stats.txt",
+    output: "/benchrun/tejas/babelstream/sm6_gtx1080/input-arraysize-102400-numtimes-1/results/stats.csv",
+}
+stats: Stats {
+    emulator_type: Some(
+        "OCELOT",
+    ),
+    created: None,
+    sim_time: Some(
+        16.787s,
+    ),
+    total_inst_count: Some(
+        86576,
+    ),
+    total_cycle_count: Some(
+        63690,
+    ),
+    dram_total_reads: 0,
+    dram_total_writes: 0,
+    dram_avg_read_latency: Some(
+        0.0,
+    ),
+    total_instr_cache_access: Some(
+        0,
+    ),
+    total_const_cache_access: Some(
+        0,
+    ),
+    total_shared_cache_access: Some(
+        0,
+    ),
+    total_instr_cache_misses: Some(
+        24,
+    ),
+    total_const_cache_misses: Some(
+        1024,
+    ),
+    total_shared_cache_misses: Some(
+        0,
+    ),
+    kips: Some(
+        5.15732411985465,
+    ),
+    total_ipc: Some(
+        1.3593342753964515,
+    ),
+}
+done after 34.018333ms

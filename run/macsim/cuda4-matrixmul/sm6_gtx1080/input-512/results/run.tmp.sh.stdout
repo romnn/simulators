@@ -1,0 +1,63 @@
+(0.000000) CudaRuntime.cpp:3813: Adding external function 'malloc'
+(0.000000) CudaRuntime.cpp:3813: Adding external function 'free'
+(0.000000) CudaRuntime.cpp:3813: Adding external function 'vprintf'
+(0.000000) CudaRuntime.cpp:3813: Adding external function 'cudaGetParameterBuffer'
+(0.000031) CudaRuntime.cpp:595:  Loading module (fatbin) - matrixMul.cu
+(0.000040) CudaRuntime.cpp:738:  Registered kernel - _Z8mult_gpuPfS_S_ii in module 'matrixMul.cu'
+(0.000056) CudaRuntime.cpp:276:  Creating devices.
+(0.000111) CudaRuntime.cpp:288:   - Added 1 emulator devices.
+(0.000177) CudaRuntime.cpp:446:  Creating new context for thread 0xd8a140
+(0.000207) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x7fe7a510f100, size = 1048576)
+(0.000220) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x7fe7a4f0d100, size = 1048576)
+(0.000229) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x7fe7a4d0b100, size = 1048576)
+(0.010881) CudaRuntime.cpp:1131: cudaMemcpy(0x7fe7a510f100, 0x7fe7aab8d010, 1048576)
+(0.010893) CudaRuntime.cpp:251:    _memcpy(0x7fe7a510f100, 0x7fe7aab8d010, 1048576 bytes) h-to-d
+(0.011424) CudaRuntime.cpp:1131: cudaMemcpy(0x7fe7a4f0d100, 0x7fe7a500e010, 1048576)
+(0.011430) CudaRuntime.cpp:251:    _memcpy(0x7fe7a4f0d100, 0x7fe7a500e010, 1048576 bytes) h-to-d
+grid: (16,16,1)
+threads: (32,32,1)
+(0.011948) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.011955) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.011958) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.011962) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 8
+(0.011965) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 24, size 4
+(0.011967) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 28, size 4
+(0.014852) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xf1 0x10 0xa5 0xe7 0x7f 0x00 0x00 
+(0.014868) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xd1 0xf0 0xa4 0xe7 0x7f 0x00 0x00 
+(0.014880) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 8 to offset 16 of size 8
+   data = 0x00 0xb1 0xd0 0xa4 0xe7 0x7f 0x00 0x00 
+(0.014891) CudaRuntime.cpp:142:  Mapping parameter at offset 24 of size 4 to offset 24 of size 4
+   data = 0x00 0x02 0x00 0x00 
+(0.014901) CudaRuntime.cpp:142:  Mapping parameter at offset 28 of size 4 to offset 28 of size 4
+   data = 0x00 0x02 0x00 0x00 
+(0.014910) CudaRuntime.cpp:2685: kernel launch (_Z8mult_gpuPfS_S_ii) on thread 0xd8a140
+(0.014930) CudaRuntime.cpp:2706:  launch completed successfully
+all enabled
+(0.019026) X86TraceGenerator.cpp:776:  New kernel launched
+(0.019076) X86TraceGenerator.cpp:777:  compute version:2.0
+(0.019084) X86TraceGenerator.cpp:778:  grid  16 x 16 x 1
+(0.019091) X86TraceGenerator.cpp:779:  block 32 x 32 x 1
+(0.019097) X86TraceGenerator.cpp:780:  number of warps per block:32
+(0.019102) X86TraceGenerator.cpp:781:  number of total warps:8192
+(0.019107) X86TraceGenerator.cpp:782:  # threads per block : 1024
+(0.019112) X86TraceGenerator.cpp:783:  number of register per thread:20
+(0.019117) X86TraceGenerator.cpp:784:  number of shared memory per thread:8192
+(0.019124) X86TraceGenerator.cpp:822:  max blocks per core : 1
+(0.021726) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/cuda4-matrixmul/sm6_gtx1080/input-512/results/traces/_Z8mult_gpuPfS_S_ii_0/ (status 0)
+
+(0.021782) X86TraceGenerator.cpp:1083: errno is 0 message is Success
+
+The GPU Elapsed Time:114.077084 Sec.
+(114.089060) CudaRuntime.cpp:1131: cudaMemcpy(0x7fe7a4e0c010, 0x7fe7a4d0b100, 1048576)
+(114.089078) CudaRuntime.cpp:215:    _memcpy(0x7fe7a4e0c010, 0x7fe7a4d0b100, 1048576 bytes) d-to-h
+The CPU Elapsed Time:0.780901 Sec.
+Verifying
+PASS
+(114.872194) CudaRuntime.cpp:887:  cudaFree(0x7fe7a510f100)
+(114.872335) CudaRuntime.cpp:887:  cudaFree(0x7fe7a4f0d100)
+(114.872518) CudaRuntime.cpp:887:  cudaFree(0x7fe7a4d0b100)
+(114.873296) X86TraceGenerator.cpp:725:  destructor
+(114.873447) X86TraceGenerator.cpp:2259: finalize
+(114.873451) X86TraceGenerator.cpp:2263: total instruction count: 471552

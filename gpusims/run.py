@@ -2,22 +2,30 @@ import itertools
 from pprint import pprint
 from pathlib import Path
 from invoke import task
+import datetime
 
 import gpusims
 import gpusims.cuda as cuda
+import gpusims.utils as utils
 from gpusims.bench import parse_benchmarks
+
+
+ROOT_DIR = Path(__file__).parent.parent
 
 
 @task(
     help={
-        "dir": "Benchmark dir",
+        "benchmark-dir": "Benchmark dir",
         "run-dir": "Run dir",
         "simulator": "simulator to run",
-        "force": "force rerunning of benchmarks",
         "benchmark": "list of benchmarks to run",
         "config": "list of configurations to run",
         "repetitions": "number of repetitions (only applies to native execution)",
         "timeout-mins": "timeout in minutes per simulation run",
+        "slurm": "submit jobs using slurm (only for native and accelsim-sass)",
+        "slurm-node": "the slurm node to use",
+        "trace-only": "only generate traces, but do not simulate",
+        "parse-only": "only parse results",
     },
     iterable=["benchmark", "config"],
 )
@@ -28,17 +36,21 @@ def run(
     config,
     simulator,
     repetitions=3,
-    force=False,
-    _dir=None,
-    timeout_mins=10,
+    benchmark_dir=None,
+    timeout_mins=20,
+    slurm=False,
+    slurm_node=None,
+    trace_only=False,
+    parse_only=False,
 ):
     """Run benchmarks"""
     simulator = simulator.lower()
     benchmark = [b.lower() for b in benchmark]
 
-    benchmark_dir = Path(__file__).parent.parent / "benchmarks"
-    if _dir is not None:
-        benchmark_dir = Path(_dir)
+    if benchmark_dir is not None:
+        benchmark_dir = Path(benchmark_dir)
+    else:
+        benchmark_dir = Path(__file__).parent.parent / "benchmarks"
 
     print("running benchmarks ...")
     assert benchmark_dir.is_dir()
@@ -50,7 +62,8 @@ def run(
     assert len(configs) > 0
     assert len(benchmarks) > 0
 
-    sim_run_dir = Path(run_dir) / simulator.lower()
+    run_dir = Path(run_dir)
+    sim_run_dir = run_dir / simulator.lower()
 
     if len(config) < 1:
         if simulator == gpusims.NATIVE:
@@ -105,8 +118,81 @@ def run(
 
     for b in pending:
         pprint(b)
-        for inp in b.benchmark.inputs:
-            if inp.enabled(simulator):
-                b.run(
-                    inp, repetitions=repetitions, force=force, timeout_mins=timeout_mins
+        if slurm:
+            cmd = [
+                "inv",
+                "run",
+                "--benchmark-dir",
+                str(benchmark_dir.absolute()),
+                "--run-dir",
+                str(run_dir.absolute()),
+                "--simulator",
+                simulator,
+                "--config",
+                b.config.key,
+                "--repetitions",
+                str(repetitions),
+                "--timeout-mins",
+                str(timeout_mins),
+            ]
+            if trace_only:
+                cmd += ["--trace-only"]
+            if parse_only:
+                cmd += ["--parse-only"]
+            # pprint(cmd)
+
+            # slurm_job = []
+            slurm_job = [
+                "#!/bin/sh",
+                # 00:15:00"
+                "#SBATCH --time={}".format(
+                    utils.duration_to_slurm(datetime.timedelta(minutes=timeout_mins))
+                ),
+                "#SBATCH -N 1",
+                "#SBATCH -C {}".format("A6000" if slurm_node is None else slurm_node),
+                "#SBATCH --gres=gpu:1",
+                " ".join(cmd),
+            ]
+            # slurm_job += [
+            print("\n".join(slurm_job))
+
+            slurm_job_file = (
+                ROOT_DIR
+                / ".slurm"
+                / "-".join(
+                    [
+                        simulator,
+                        b.benchmark.sanitized_name(),
+                        utils.slugify(b.config.key.lower()),
+                    ]
                 )
+            )
+            slurm_job_file = slurm_job_file.with_suffix(".slurm")
+            print(slurm_job_file)
+
+            # module load cuda11.2/toolkit
+
+            # !/bin/bash
+            # SBATCH --time=00:15:00
+            # SBATCH -N 2
+            # SBATCH --ntasks-per-node=16
+
+            # . /etc/bashrc
+            # DAS-5:
+            # . /etc/profile.d/modules.sh
+            # DAS-6:
+            # . /etc/profile.d/lmod.sh
+            # module load openmpi/gcc/64
+
+        else:
+            for inp in b.benchmark.inputs:
+                if inp.enabled(simulator):
+                    b.run(
+                        inp,
+                        repetitions=repetitions,
+                        # force=force,
+                        timeout_mins=timeout_mins,
+                        trace_ony=trace_only,
+                        parse_only=parse_only,
+                        # slurm=slurm,
+                    )

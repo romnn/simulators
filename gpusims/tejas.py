@@ -21,7 +21,7 @@ class TejasBenchmarkConfig(BenchmarkConfig):
     def _run(path, inp, force=False, timeout_mins=5, **kwargs):
         print("tejas run:", inp, inp.args)
 
-        threads = min(8, multiprocessing.cpu_count())
+        threads = multiprocessing.cpu_count()
         tejas_root = Path(os.environ["TEJAS_ROOT"])
 
         default_config_file = path / "tejas_config.xml"

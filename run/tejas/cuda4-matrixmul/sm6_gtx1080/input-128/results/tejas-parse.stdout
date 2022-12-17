@@ -1,0 +1,49 @@
+options: Options {
+    input: "/benchrun/tejas/cuda4-matrixmul/sm6_gtx1080/input-128/results/stats.txt",
+    output: "/benchrun/tejas/cuda4-matrixmul/sm6_gtx1080/input-128/results/stats.csv",
+}
+stats: Stats {
+    emulator_type: Some(
+        "OCELOT",
+    ),
+    created: None,
+    sim_time: Some(
+        4.976s,
+    ),
+    total_inst_count: Some(
+        7968,
+    ),
+    total_cycle_count: Some(
+        6394,
+    ),
+    dram_total_reads: 0,
+    dram_total_writes: 0,
+    dram_avg_read_latency: Some(
+        0.0,
+    ),
+    total_instr_cache_access: Some(
+        0,
+    ),
+    total_const_cache_access: Some(
+        0,
+    ),
+    total_shared_cache_access: Some(
+        0,
+    ),
+    total_instr_cache_misses: Some(
+        48,
+    ),
+    total_const_cache_misses: Some(
+        1024,
+    ),
+    total_shared_cache_misses: Some(
+        0,
+    ),
+    kips: Some(
+        1.6012861736334405,
+    ),
+    total_ipc: Some(
+        1.2461682827650922,
+    ),
+}
+done after 35.468303ms

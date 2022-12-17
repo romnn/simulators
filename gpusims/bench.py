@@ -11,9 +11,8 @@ class BenchmarkConfig(abc.ABC):
     def __init__(self, run_dir, benchmark, config, path=None):
         self.benchmark = benchmark
         self.config = config
-        benchmark_name = utils.slugify(benchmark.name.lower())
         config_name = utils.slugify(config.key.lower())
-        self.path = path or Path(run_dir) / benchmark_name / config_name
+        self.path = path or Path(run_dir) / benchmark.sanitized_name() / config_name
 
     def __repr__(self):
         return "{}({}, {})".format(self.__class__.__name__, self.benchmark, self.config)
@@ -30,26 +29,30 @@ class BenchmarkConfig(abc.ABC):
     def input_path(self, inp):
         return self.path / inp.sanitized_name()
 
-    def run(self, inp, repetitions=1, timeout_mins=5, force=False):
+    def run(self, inp, **kwargs):
+        # repetitions=1, timeout_mins=5, force=False,
         # for inp in self.benchmark.inputs:
         # if inp.enabled(self.
         print("running input:", inp)
-        print(inp.executable)
+        # print(inp.executable)
         print(self.benchmark.extra)
         # assert self.inp.executable.is_file()
 
         path = self.input_path(inp)
         self.setup(path)
+        # repetitions = kw
         try:
-            repetitions = int(self.benchmark.extra["repetitions"])
+            # repetitions = int(self.benchmark.extra["repetitions"])
+            kwargs["repetitions"] = int(self.benchmark.extra["repetitions"])
         except (KeyError, ValueError):
             pass
         self._run(
             path=path,
             inp=inp,
-            repetitions=repetitions,
-            timeout_mins=timeout_mins,
-            force=force,
+            **kwargs
+            # repetitions=repetitions,
+            # timeout_mins=timeout_mins,
+            # force=force,
         )
 
     def setup(self, path):
@@ -89,6 +92,9 @@ class Benchmark:
         self.executable = executable
         self.inputs = inputs
         self.extra = extra
+
+    def sanitized_name(self):
+        return utils.slugify(self.name.lower())
 
     def enabled(self, simulator):
         try:

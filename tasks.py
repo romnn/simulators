@@ -163,6 +163,9 @@ ns.add_task(build, "build")
         "timeout-mins": "timeout in minutes per simulation run",
         "dry-run": "dry run only prints commands that would be executed",
         "local": "disable mapping the run output volume, which will not write benchmark results",
+        # "slurm": "submit jobs using slurm (only for native and accelsim-sass)",
+        "trace-only": "only generate traces, but do not simulate",
+        "parse-only": "only parse results",
     },
     iterable=["simulator", "benchmark", "config"],
 )
@@ -176,6 +179,9 @@ def bench(
     timeout_mins=20,
     dry_run=False,
     local=False,
+    # slurm=False,
+    trace_only=False,
+    parse_only=False,
 ):
     """Benchmark in simulator inside docker containers"""
     simulator = set([s.lower() for s in simulator])
@@ -225,6 +231,12 @@ def bench(
 
         cmd += [container.tag]
         cmd += ["inv", "run", "--simulator", s, "--run-dir", container_run_dir]
+        # if slurm:
+        #     cmd += ["--slurm"]
+        if trace_only:
+            cmd += ["--parse-only"]
+        if trace_only:
+            cmd += ["--trace-only"]
         if timeout_mins is not None:
             cmd += ["--timeout-mins", str(timeout_mins)]
         if repetitions is not None:

@@ -8,7 +8,6 @@
 - why do tejas number of instructions change with the config?
 
 #### TODO
-- more inputs (longer running)
 - for native and accelsim sass:
     - output slurm files when using --slurm
     - cli options for slurm stuff
@@ -26,6 +25,7 @@
 
 
 #### Done
+- more inputs (longer running)
 - per default do not run native benchmarks or accelsim sass
 - make correlation plots between simulators for matrixMul-modified (and two inputs?)
 - make bar plots between simulators for matrixMul-modified

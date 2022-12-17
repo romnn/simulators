@@ -1,0 +1,57 @@
+(0.000000) CudaRuntime.cpp:3813: Adding external function 'malloc'
+(0.000000) CudaRuntime.cpp:3813: Adding external function 'free'
+(0.000000) CudaRuntime.cpp:3813: Adding external function 'vprintf'
+(0.000000) CudaRuntime.cpp:3813: Adding external function 'cudaGetParameterBuffer'
+(0.000078) CudaRuntime.cpp:595:  Loading module (fatbin) - vectorAdd.cu
+(0.000102) CudaRuntime.cpp:738:  Registered kernel - _Z6vecAddPdS_S_i in module 'vectorAdd.cu'
+(0.000154) CudaRuntime.cpp:276:  Creating devices.
+(0.000257) CudaRuntime.cpp:288:   - Added 1 emulator devices.
+(0.000387) CudaRuntime.cpp:446:  Creating new context for thread 0x1f62000
+(0.000433) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x7f2542c5a100, size = 8000000)
+(0.000450) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x7f25424b8100, size = 8000000)
+(0.000463) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x7f2541d16100, size = 8000000)
+(0.142101) CudaRuntime.cpp:1131: cudaMemcpy(0x7f2542c5a100, 0x7f2544b41010, 8000000)
+(0.142116) CudaRuntime.cpp:251:    _memcpy(0x7f2542c5a100, 0x7f2544b41010, 8000000 bytes) h-to-d
+(0.146065) CudaRuntime.cpp:1131: cudaMemcpy(0x7f25424b8100, 0x7f254439f010, 8000000)
+(0.146073) CudaRuntime.cpp:251:    _memcpy(0x7f25424b8100, 0x7f254439f010, 8000000 bytes) h-to-d
+(0.149977) CudaRuntime.cpp:1131: cudaMemcpy(0x7f2541d16100, 0x7f2543bfd010, 8000000)
+(0.149985) CudaRuntime.cpp:251:    _memcpy(0x7f2541d16100, 0x7f2543bfd010, 8000000 bytes) h-to-d
+(0.153902) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.153918) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.153928) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.153936) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 8
+(0.153944) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 24, size 4
+(0.155157) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xa1 0xc5 0x42 0x25 0x7f 0x00 0x00 
+(0.155164) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0x81 0x4b 0x42 0x25 0x7f 0x00 0x00 
+(0.155167) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 8 to offset 16 of size 8
+   data = 0x00 0x61 0xd1 0x41 0x25 0x7f 0x00 0x00 
+(0.155170) CudaRuntime.cpp:142:  Mapping parameter at offset 24 of size 4 to offset 24 of size 4
+   data = 0x40 0x42 0x0f 0x00 
+(0.155173) CudaRuntime.cpp:2685: kernel launch (_Z6vecAddPdS_S_i) on thread 0x1f62000
+(0.155189) CudaRuntime.cpp:2706:  launch completed successfully
+all enabled
+(0.155922) X86TraceGenerator.cpp:776:  New kernel launched
+(0.155945) X86TraceGenerator.cpp:777:  compute version:2.0
+(0.155953) X86TraceGenerator.cpp:778:  grid  977 x 1 x 1
+(0.155962) X86TraceGenerator.cpp:779:  block 1024 x 1 x 1
+(0.155970) X86TraceGenerator.cpp:780:  number of warps per block:32
+(0.155978) X86TraceGenerator.cpp:781:  number of total warps:31264
+(0.155985) X86TraceGenerator.cpp:782:  # threads per block : 1024
+(0.155992) X86TraceGenerator.cpp:783:  number of register per thread:14
+(0.155999) X86TraceGenerator.cpp:784:  number of shared memory per thread:0
+(0.156008) X86TraceGenerator.cpp:822:  max blocks per core : 1
+(0.164203) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/vectoradd/sm6_gtx1080/input-1000000/results/traces/_Z6vecAddPdS_S_i_0/ (status 0)
+
+(0.164255) X86TraceGenerator.cpp:1083: errno is 0 message is Success
+
+(6.238125) CudaRuntime.cpp:1131: cudaMemcpy(0x7f2543bfd010, 0x7f2541d16100, 8000000)
+(6.238137) CudaRuntime.cpp:215:    _memcpy(0x7f2543bfd010, 0x7f2541d16100, 8000000 bytes) d-to-h
+Final sum = 1000000.000000; sum/n = 1.000000 (should be ~1)
+(6.244684) CudaRuntime.cpp:887:  cudaFree(0x7f2542c5a100)
+(6.245700) CudaRuntime.cpp:887:  cudaFree(0x7f25424b8100)
+(6.246604) CudaRuntime.cpp:887:  cudaFree(0x7f2541d16100)
+(6.250231) X86TraceGenerator.cpp:725:  destructor
+(6.250396) X86TraceGenerator.cpp:2259: finalize
+(6.250401) X86TraceGenerator.cpp:2263: total instruction count: 22473

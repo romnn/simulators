@@ -47,6 +47,9 @@ jobs:
           pip install pipenv
           pipenv install --dev --system
       
+      - name: Template simulator configurations
+        run: inv configure-all
+
       - name: Build ${{ matrix.simulator.name }} container
         run: >-
           inv build
