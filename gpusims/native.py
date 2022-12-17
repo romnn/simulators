@@ -210,6 +210,7 @@ def build_hw_kernel_df(csv_files):
 def build_hw_cycles_df(csv_files):
     import pandas as pd
 
+    # ref: https://docs.nvidia.com/cuda/profiler-users-guide/index.html#metrics-reference # noqa: E501
     hw_cycle_df = pd.concat([pd.read_csv(csv) for csv in csv_files], ignore_index=False)
     # remove the units
     hw_cycle_df = hw_cycle_df[~hw_cycle_df["Correlation_ID"].isnull()]

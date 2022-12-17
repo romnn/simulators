@@ -109,6 +109,6 @@ def build_multi2sim_df(csv_file, sim_dur_csv=None):
     ].sum(axis=1)
 
     if sim_dur_csv is not None:
-        df["sim_wall_time"] = pd.read_csv(sim_dur_csv)["exec_time_sec"]
+        df["sim_wall_time"] = pd.read_csv(sim_dur_csv)["exec_time_sec"][0]
 
     return df

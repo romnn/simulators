@@ -170,6 +170,11 @@ fn main() -> Result<()> {
             r"\s+L2_cache_stats_breakdown\[GLOBAL_ACC_R\]\[HIT\]\s*=\s*(.*)"
         ),
         stat!(
+            "l2_cache_read_miss",
+            StatKind::Aggregate,
+            r"\s+L2_cache_stats_breakdown\[GLOBAL_ACC_R\]\[MISS\]\s*=\s*(.*)"
+        ),
+        stat!(
             "l2_cache_read_total",
             StatKind::Aggregate,
             r"\s+L2_cache_stats_breakdown\[GLOBAL_ACC_R\]\[TOTAL_ACCESS\]\s*=\s*(.*)"
@@ -180,9 +185,24 @@ fn main() -> Result<()> {
             r"\s+L2_cache_stats_breakdown\[GLOBAL_ACC_W\]\[HIT\]\s*=\s*(.*)"
         ),
         stat!(
+            "l2_cache_write_miss",
+            StatKind::Aggregate,
+            r"\s+L2_cache_stats_breakdown\[GLOBAL_ACC_W\]\[MISS\]\s*=\s*(.*)"
+        ),
+        stat!(
             "l2_cache_write_total",
             StatKind::Aggregate,
             r"\s+L2_cache_stats_breakdown\[GLOBAL_ACC_W\]\[TOTAL_ACCESS\]\s*=\s*(.*)"
+        ),
+        stat!(
+            "const_cache_write_total",
+            StatKind::Aggregate,
+            r"\s+L2_cache_stats_breakdown\[CONST_ACC_W\]\[TOTAL_ACCESS\]\s*=\s*(.*)"
+        ),
+        stat!(
+            "const_cache_read_total",
+            StatKind::Aggregate,
+            r"\s+L2_cache_stats_breakdown\[CONST_ACC_R\]\[TOTAL_ACCESS\]\s*=\s*(.*)"
         ),
         stat!(
             "total_core_cache_read_total",

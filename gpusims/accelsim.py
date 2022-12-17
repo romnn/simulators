@@ -89,6 +89,6 @@ def build_accelsim_ptx_df(csv_file, sim_dur_csv=None):
     df = df.pivot(index=["kernel", "kernel_id"], columns=["stat"])["value"]
     df = df.reset_index()
     if sim_dur_csv is not None:
-        df["sim_wall_time"] = pd.read_csv(sim_dur_csv)["exec_time_sec"]
+        df["sim_wall_time"] = pd.read_csv(sim_dur_csv)["exec_time_sec"][0]
 
     return df

@@ -2,34 +2,39 @@
 
 #### Questions
 
+- use duration or cycles sm for computing cycles?
 - why do results differ so much between gtx 1080 and rtx 3070 for accelsim
 - the tejas values seem weird
 - why do tejas number of instructions change with the config?
 
 #### TODO
+- per default do not run native benchmarks or accelsim sass
+- more inputs (longer running)
+- for native and accelsim sass:
+    - output slurm files when using --slurm
+    - cli options for slurm stuff
+    - trace-only mode that only traces / profiles
+    - write a new readme for all this
 
+- add config for A6000
+- profile and trace using slurm on DAS6
 - barplots for more metrics
 - try to extract more metrics
-- plot the duration it takes
-- what effect does repeat have? - add repeat=1 as an input
-- parse the log.txt of multi2sim as well (execution time) - actually no, since the metrics and format are not always second? just measure runtime for  everything
-
-- check the accelsim logs that the inputs are correct
-- more inputs (longer running)
-- slightly change the GTX 1080 config to reflect my GPU
-
-- write a nice readme for how to run ampere native and accelsim sass benches
+- try to make sense of the results
 
 - go though all the comments and try to remember the difficulties and things that did not work
 
-- add larger inputs for all simulators once we have more benchmarks and do not care about runtime anymore
-
-- make bar plots between simulators for matrixMul-modified
-- make correlation plots between simulators for matrixMul-modified (and two inputs?)
-- make correlation plots between simulators for multiple benchmarks (once we have them)
 
 
 #### Done
+- make correlation plots between simulators for matrixMul-modified (and two inputs?)
+- make bar plots between simulators for matrixMul-modified
+- make correlation plots between simulators for multiple benchmarks (once we have them)
+- what effect does repeat have? - add repeat=1 as an input
+- slightly change the GTX 1080 config to reflect my GPU
+- check the accelsim logs that the inputs are correct
+- parse the log.txt of multi2sim as well (execution time) - actually no, since the metrics and format are not always second? just measure runtime for  everything
+- plot the duration it takes
 - better names for plots
 - print the name of the hardware
 - highlight the hardware baseline
