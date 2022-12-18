@@ -1,39 +1,39 @@
-(0.000316) CudaRuntime.cpp:3813: Adding external function 'malloc'
-(0.000353) CudaRuntime.cpp:3813: Adding external function 'free'
-(0.000360) CudaRuntime.cpp:3813: Adding external function 'vprintf'
-(0.000368) CudaRuntime.cpp:3813: Adding external function 'cudaGetParameterBuffer'
-(0.000399) CudaRuntime.cpp:595:  Loading module (fatbin) - vectorAddTejas.cu
-(0.000410) CudaRuntime.cpp:738:  Registered kernel - _Z6vecAddPdS_S_i in module 'vectorAddTejas.cu'
-(0.000442) CudaRuntime.cpp:276:  Creating devices.
-(0.000504) CudaRuntime.cpp:288:   - Added 1 emulator devices.
-(0.000586) CudaRuntime.cpp:446:  Creating new context for thread 0x764150
-(0.000625) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x7f075dbfb100, size = 8000000)
-(0.000643) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x7f075d459100, size = 8000000)
-(0.000657) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x7f075ccb7100, size = 8000000)
-(0.129956) CudaRuntime.cpp:1131: cudaMemcpy(0x7f075dbfb100, 0x7f075fae2010, 8000000)
-(0.129968) CudaRuntime.cpp:251:    _memcpy(0x7f075dbfb100, 0x7f075fae2010, 8000000 bytes) h-to-d
-(0.133901) CudaRuntime.cpp:1131: cudaMemcpy(0x7f075d459100, 0x7f075f340010, 8000000)
-(0.133917) CudaRuntime.cpp:251:    _memcpy(0x7f075d459100, 0x7f075f340010, 8000000 bytes) h-to-d
-(0.137829) CudaRuntime.cpp:1131: cudaMemcpy(0x7f075ccb7100, 0x7f075eb9e010, 8000000)
-(0.137840) CudaRuntime.cpp:251:    _memcpy(0x7f075ccb7100, 0x7f075eb9e010, 8000000 bytes) h-to-d
-(0.141736) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.141745) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.141749) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.141753) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 8
-(0.141755) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 24, size 4
-(0.142501) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0xb1 0xbf 0x5d 0x07 0x7f 0x00 0x00 
-(0.142507) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0x91 0x45 0x5d 0x07 0x7f 0x00 0x00 
-(0.142511) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 8 to offset 16 of size 8
-   data = 0x00 0x71 0xcb 0x5c 0x07 0x7f 0x00 0x00 
-(0.142514) CudaRuntime.cpp:142:  Mapping parameter at offset 24 of size 4 to offset 24 of size 4
+(0.000544) CudaRuntime.cpp:3813: Adding external function 'malloc'
+(0.000589) CudaRuntime.cpp:3813: Adding external function 'free'
+(0.000595) CudaRuntime.cpp:3813: Adding external function 'vprintf'
+(0.000601) CudaRuntime.cpp:3813: Adding external function 'cudaGetParameterBuffer'
+(0.000638) CudaRuntime.cpp:595:  Loading module (fatbin) - vectorAddTejas.cu
+(0.000650) CudaRuntime.cpp:738:  Registered kernel - _Z6vecAddPdS_S_i in module 'vectorAddTejas.cu'
+(0.000695) CudaRuntime.cpp:276:  Creating devices.
+(0.000794) CudaRuntime.cpp:288:   - Added 1 emulator devices.
+(0.000898) CudaRuntime.cpp:446:  Creating new context for thread 0x1233150
+(0.000963) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x7f829825a100, size = 8000000)
+(0.000983) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x7f829385e100, size = 8000000)
+(0.000998) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x7f82930bc100, size = 8000000)
+(0.142717) CudaRuntime.cpp:1131: cudaMemcpy(0x7f829825a100, 0x7f829a141010, 8000000)
+(0.142736) CudaRuntime.cpp:251:    _memcpy(0x7f829825a100, 0x7f829a141010, 8000000 bytes) h-to-d
+(0.146719) CudaRuntime.cpp:1131: cudaMemcpy(0x7f829385e100, 0x7f829999f010, 8000000)
+(0.146730) CudaRuntime.cpp:251:    _memcpy(0x7f829385e100, 0x7f829999f010, 8000000 bytes) h-to-d
+(0.150594) CudaRuntime.cpp:1131: cudaMemcpy(0x7f82930bc100, 0x7f82991fd010, 8000000)
+(0.150601) CudaRuntime.cpp:251:    _memcpy(0x7f82930bc100, 0x7f82991fd010, 8000000 bytes) h-to-d
+(0.154664) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.154682) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.154691) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.154697) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 8
+(0.154703) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 24, size 4
+(0.155486) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xa1 0x25 0x98 0x82 0x7f 0x00 0x00 
+(0.155491) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xe1 0x85 0x93 0x82 0x7f 0x00 0x00 
+(0.155494) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 8 to offset 16 of size 8
+   data = 0x00 0xc1 0x0b 0x93 0x82 0x7f 0x00 0x00 
+(0.155498) CudaRuntime.cpp:142:  Mapping parameter at offset 24 of size 4 to offset 24 of size 4
    data = 0x40 0x42 0x0f 0x00 
-(0.142517) CudaRuntime.cpp:2685: kernel launch (_Z6vecAddPdS_S_i) on thread 0x764150
-(0.142533) CudaRuntime.cpp:2706:  launch completed successfully
-(2.861195) CudaRuntime.cpp:1131: cudaMemcpy(0x7f075eb9e010, 0x7f075ccb7100, 8000000)
-(2.861215) CudaRuntime.cpp:215:    _memcpy(0x7f075eb9e010, 0x7f075ccb7100, 8000000 bytes) d-to-h
+(0.155501) CudaRuntime.cpp:2685: kernel launch (_Z6vecAddPdS_S_i) on thread 0x1233150
+(0.155518) CudaRuntime.cpp:2706:  launch completed successfully
+(2.135551) CudaRuntime.cpp:1131: cudaMemcpy(0x7f82991fd010, 0x7f82930bc100, 8000000)
+(2.135572) CudaRuntime.cpp:215:    _memcpy(0x7f82991fd010, 0x7f82930bc100, 8000000 bytes) d-to-h
 Final sum = 1000000.000000; sum/n = 1.000000 (should be ~1)
-(2.870449) CudaRuntime.cpp:887:  cudaFree(0x7f075dbfb100)
-(2.871614) CudaRuntime.cpp:887:  cudaFree(0x7f075d459100)
-(2.872890) CudaRuntime.cpp:887:  cudaFree(0x7f075ccb7100)
+(2.144742) CudaRuntime.cpp:887:  cudaFree(0x7f829825a100)
+(2.146294) CudaRuntime.cpp:887:  cudaFree(0x7f829385e100)
+(2.147602) CudaRuntime.cpp:887:  cudaFree(0x7f82930bc100)

@@ -1,8 +1,9 @@
+import os
+import datetime
 import itertools
 from pprint import pprint
 from pathlib import Path
 from invoke import task
-import datetime
 
 import gpusims
 import gpusims.cuda as cuda
@@ -143,37 +144,50 @@ def run(
                 cmd += ["--trace-only"]
             if parse_only:
                 cmd += ["--parse-only"]
-            if dry_run:
-                cmd += ["--dry-run"]
+            # if dry_run:
+            #     cmd += ["--dry-run"]
+
+            slurm_job_name = "-".join(
+                [
+                    simulator,
+                    b.benchmark.sanitized_name(),
+                    utils.slugify(b.config.key.lower()),
+                ]
+            )
+
+            slurm_dir = ROOT_DIR / ".slurm"
+            slurm_job_file = (slurm_dir / slurm_job_name).with_suffix(".job")
+            slurm_stdout_file = (slurm_dir / slurm_job_name).with_suffix(".stdout")
+            slurm_stderr_file = (slurm_dir / slurm_job_name).with_suffix(".stderr")
 
             slurm_job = [
                 "#!/bin/sh",
-                # 00:15:00"
+                "#SBATCH --job-name={}".format(slurm_job_name),
+                "#SBATCH --output={}".format(str(slurm_stdout_file.absolute())),
+                "#SBATCH --error={}".format(str(slurm_stderr_file.absolute())),
+                # format: 00:15:00"
                 "#SBATCH --time={}".format(
                     utils.duration_to_slurm(datetime.timedelta(minutes=timeout_mins))
                 ),
                 "#SBATCH -N 1",
-                "#SBATCH -C {}".format("A6000" if slurm_node is None else slurm_node),
                 "#SBATCH --gres=gpu:1",
-                " ".join(cmd),
             ]
-            # print("\n".join(slurm_job))
 
-            slurm_job_file = (
-                ROOT_DIR
-                / ".slurm"
-                / "-".join(
-                    [
-                        simulator,
-                        b.benchmark.sanitized_name(),
-                        utils.slugify(b.config.key.lower()),
-                    ]
-                )
-            )
-            # slurm_job_file = slurm_job_file.with_suffix(".slurm")
-            print("written job to", str(slurm_job_file.absolute()))
+            if slurm_node is not None:
+                slurm_job += ["#SBATCH -C {}".format(slurm_node)]
+
+            slurm_job += [" ".join(cmd)]
+
+            os.makedirs(str(slurm_job_file.parent.absolute()), exist_ok=True)
+
             with open(str(slurm_job_file.absolute()), "w") as f:
-                f.write(slurm_job)
+                f.write("\n".join(slurm_job))
+            print("written job to", str(slurm_job_file.absolute()))
+
+            if not dry_run:
+                # submit the job
+                submit_cmd = ["sbatch", str(slurm_job_file.absolute())]
+                c.run(" ".join(submit_cmd))
 
             # module load cuda11.2/toolkit
             # !/bin/bash

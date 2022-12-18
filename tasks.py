@@ -17,6 +17,7 @@ import gpusims.run
 
 ROOT_DIR = Path(__file__).parent
 RUN_DIR = ROOT_DIR / "run"
+BENCHMARK_DIR = ROOT_DIR / "benchmarks"
 SRC_DIR = ROOT_DIR / "gpusims"
 PYTHON_FILES = [str(f) for f in SRC_DIR.rglob("*.py")]
 
@@ -374,7 +375,16 @@ def configure(c, simulator, base, template=None, out=None, verbose=False):
 
 ns.add_task(configure, "configure")
 
-# @task(pre=[clean_build, clean_wasm])
-# def clean(c):
-#     """Runs all clean sub-tasks"""
-#     pass
+
+@task(pre=[])
+def clean(c):
+    """Performs cleanup"""
+    make_clean_cmd = ["make", "-C", str(BENCHMARK_DIR.absolute()), "clean"]
+    c.run(" ".join(make_clean_cmd))
+    slurm_output_files = list(ROOT_DIR.rglob("slurm-*.out"))
+    for slurm_output_file in slurm_output_files:
+        slurm_output_file.unlink()
+    c.run("rm -rf {}".format(str((ROOT_DIR / ".slurm").absolute())))
+
+
+ns.add_task(clean, "clean")

@@ -1,0 +1,45 @@
+(0.000561) CudaRuntime.cpp:3813: Adding external function 'malloc'
+(0.000609) CudaRuntime.cpp:3813: Adding external function 'free'
+(0.000615) CudaRuntime.cpp:3813: Adding external function 'vprintf'
+(0.000620) CudaRuntime.cpp:3813: Adding external function 'cudaGetParameterBuffer'
+(0.000656) CudaRuntime.cpp:595:  Loading module (fatbin) - matrixMulTejas.cu
+(0.000669) CudaRuntime.cpp:738:  Registered kernel - _Z8mult_gpuPfS_S_ii in module 'matrixMulTejas.cu'
+(0.000699) CudaRuntime.cpp:276:  Creating devices.
+(0.000777) CudaRuntime.cpp:288:   - Added 1 emulator devices.
+(0.000862) CudaRuntime.cpp:446:  Creating new context for thread 0x240b160
+(0.000892) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x240d300, size = 4096)
+(0.000908) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x240f500, size = 4096)
+(0.000920) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x2411600, size = 4096)
+(0.000993) CudaRuntime.cpp:1131: cudaMemcpy(0x240d300, 0x240a150, 4096)
+(0.001003) CudaRuntime.cpp:251:    _memcpy(0x240d300, 0x240a150, 4096 bytes) h-to-d
+(0.001013) CudaRuntime.cpp:1131: cudaMemcpy(0x240f500, 0x240e410, 4096)
+(0.001017) CudaRuntime.cpp:251:    _memcpy(0x240f500, 0x240e410, 4096 bytes) h-to-d
+grid: (1,1,1)
+threads: (32,32,1)
+(0.001034) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.001043) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.001048) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.001054) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 8
+(0.001063) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 24, size 4
+(0.001068) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 28, size 4
+(0.004565) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xd3 0x40 0x02 0x00 0x00 0x00 0x00 
+(0.004583) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xf5 0x40 0x02 0x00 0x00 0x00 0x00 
+(0.004594) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 8 to offset 16 of size 8
+   data = 0x00 0x16 0x41 0x02 0x00 0x00 0x00 0x00 
+(0.004602) CudaRuntime.cpp:142:  Mapping parameter at offset 24 of size 4 to offset 24 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.004615) CudaRuntime.cpp:142:  Mapping parameter at offset 28 of size 4 to offset 28 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.004625) CudaRuntime.cpp:2685: kernel launch (_Z8mult_gpuPfS_S_ii) on thread 0x240b160
+(0.004651) CudaRuntime.cpp:2706:  launch completed successfully
+The GPU Elapsed Time:0.027235 Sec.
+(0.028271) CudaRuntime.cpp:1131: cudaMemcpy(0x2410530, 0x2411600, 4096)
+(0.028279) CudaRuntime.cpp:215:    _memcpy(0x2410530, 0x2411600, 4096 bytes) d-to-h
+The CPU Elapsed Time:0.000079 Sec.
+Verifying
+PASS
+(0.028370) CudaRuntime.cpp:887:  cudaFree(0x240d300)
+(0.028375) CudaRuntime.cpp:887:  cudaFree(0x240f500)
+(0.028378) CudaRuntime.cpp:887:  cudaFree(0x2411600)
