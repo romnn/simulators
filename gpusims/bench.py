@@ -19,7 +19,7 @@ class BenchmarkConfig(abc.ABC):
 
     @staticmethod
     @abc.abstractmethod
-    def _run(path, inp, repetitions=1, timeout_mins=5, force=False):
+    def _run(path, inp, **kwargs):
         pass
 
     @abc.abstractmethod

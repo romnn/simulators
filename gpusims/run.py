@@ -208,7 +208,7 @@ def run(
             for inp in b.benchmark.inputs:
                 if enable or inp.enabled(simulator):
                     b.run(
-                        inp,
+                        inp=inp,
                         repetitions=repetitions,
                         timeout_mins=timeout_mins,
                         trace_ony=trace_only,
