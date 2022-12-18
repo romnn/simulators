@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pipenv
-          pipenv install --dev --system
+          pipenv install --lock --dev --system
       
       - name: Template simulator configurations
         run: inv configure-all
@@ -61,7 +61,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pipenv
-          pipenv install --dev --system
+          pipenv install --lock --dev --system
       
       - name: Template simulator configurations
         run: inv configure-all
