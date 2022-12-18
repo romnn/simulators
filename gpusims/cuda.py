@@ -62,7 +62,7 @@ def get_devices():
     check_cuda(cuda, cuda.cuInit(0), "cuInit", 0)
 
     name_buffer = b" " * 100
-    nGpus = ctypes.c_int()
+    gpu_count = ctypes.c_int()
     device = ctypes.c_int()
     cc_major = ctypes.c_int()
     cc_minor = ctypes.c_int()
@@ -72,9 +72,9 @@ def get_devices():
     mem_clockrate = ctypes.c_int()
 
     devices = []
-    check_cuda(cuda, cuda.cuDeviceGetCount(ctypes.byref(nGpus)), "cuDeviceGetCount")
+    check_cuda(cuda, cuda.cuDeviceGetCount(ctypes.byref(gpu_count)), "cuDeviceGetCount")
 
-    for i in range(nGpus.value):
+    for i in range(gpu_count.value):
         check_cuda(cuda, cuda.cuDeviceGet(ctypes.byref(device), i), "cuDeviceGet")
         check_cuda(
             cuda,

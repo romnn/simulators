@@ -134,6 +134,11 @@ def run_cmd(
     raise err
 
 
+def ensure_exists(d):
+    # also creates parents
+    os.makedirs(str(d.absolute()), exist_ok=True)
+
+
 def ensure_empty(d):
     try:
         print("removing", str(d.absolute()))

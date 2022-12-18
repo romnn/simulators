@@ -41,7 +41,7 @@ class BenchmarkConfig(abc.ABC):
     def setup(self, path):
         """setup the benchmark in given run dir"""
         print("setup {} in {}".format(self.benchmark.name, path))
-        utils.ensure_empty(path)
+        utils.ensure_exists(path)
 
         # copy files to run dir
         benchmark_files = {

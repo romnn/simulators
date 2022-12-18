@@ -1,0 +1,10 @@
+==33== NVPROF is profiling process 33, command: /benchrun/native/vectoradd/sm6_gtx1080/input-1000/vectorAdd 1000
+==33== Profiling application: /benchrun/native/vectoradd/sm6_gtx1080/input-1000/vectorAdd 1000
+==33== Profiling result:
+"Start","Duration","Grid X","Grid Y","Grid Z","Block X","Block Y","Block Z","Registers Per Thread","Static SMem","Dynamic SMem","Size","Throughput","SrcMemType","DstMemType","Device","Context","Stream","Name","Correlation_ID"
+us,us,,,,,,,,B,B,KB,GB/s,,,,,,,
+346354.011000,1.600000,,,,,,,,,,7.812500,4.656613,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",109
+346364.571000,1.312000,,,,,,,,,,7.812500,5.678796,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",110
+346374.619000,1.312000,,,,,,,,,,7.812500,5.678796,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",111
+346407.163000,3.680000,1,1,1,1024,1,1,10,0,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z6vecAddPdS_S_i",112
+346423.483000,1.664000,,,,,,,,,,7.812500,4.477512,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",114

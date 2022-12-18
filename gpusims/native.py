@@ -3,6 +3,7 @@ import os
 import csv
 from pprint import pprint  # noqa: F401
 from gpusims.bench import BenchmarkConfig
+from gpusims.cuda import get_devices
 import gpusims.utils as utils
 
 
@@ -33,114 +34,258 @@ def convert_hw_csv(csv_file, output_csv_file):
         print("parsed stats:", output_csv_file.absolute())
 
 
+def profile_nvsight(path, inp, results_dir, r, timeout_mins=5):
+
+    executable = path / inp.executable
+    assert executable.is_file()
+    utils.chmod_x(executable)
+
+    metrics = [
+        "gpc__cycles_elapsed.avg",
+        "l1tex__t_sectors_pipe_lsu_mem_global_op_ld_lookup_hit.sum",
+        "l1tex__t_sectors_pipe_lsu_mem_global_op_ld.sum",
+        "l1tex__t_sectors_pipe_lsu_mem_global_op_st_lookup_hit.sum",
+        "l1tex__t_sectors_pipe_lsu_mem_global_op_st.sum",
+        "l1tex__t_sectors_pipe_lsu_mem_global_op_ld_lookup_hit.sum",
+        "l1tex__t_sectors_pipe_lsu_mem_global_op_ld_lookup_miss.sum",
+        "l1tex__t_sectors_pipe_lsu_mem_global_op_st_lookup_miss.sum",
+        "lts__t_sector_op_write_hit_rate.pct",
+        "lts__t_sectors_srcunit_tex_op_read.sum",
+        "lts__t_sectors_srcunit_tex_op_write.sum",
+        "lts__t_sectors_srcunit_tex_op_read_lookup_hit.sum",
+        "lts__t_sectors_srcunit_tex_op_write_lookup_hit.sum",
+        "lts__t_sectors_srcunit_tex_op_read.sum.per_second",
+        "lts__t_sectors_srcunit_tex_op_read_lookup_miss.sum",
+        "lts__t_sectors_srcunit_tex_op_write_lookup_miss.sum",
+        "dram__sectors_read.sum",
+        "dram__sectors_write.sum",
+        "dram__bytes_read.sum",
+        "smsp__inst_executed.sum",
+        "smsp__thread_inst_executed_per_inst_executed.ratio",
+        "smsp__cycles_active.avg.pct_of_peak_sustained_elapsed",
+        "idc__requests.sum,idc__requests_lookup_hit.sum",
+        "sm__warps_active.avg.pct_of_peak_sustained_active",
+        "sm__pipe_alu_cycles_active.sum",
+        "sm__pipe_fma_cycles_active.sum",
+        "sm__pipe_fp64_cycles_active.sum",
+        "sm__pipe_shared_cycles_active.sum",
+        "sm__pipe_tensor_cycles_active.sum",
+        "sm__pipe_tensor_op_hmma_cycles_active.sum",
+        "sm__cycles_elapsed.sum",
+        "sm__cycles_active.sum",
+        "sm__cycles_active.avg",
+        "sm__cycles_elapsed.avg",
+        "sm__sass_thread_inst_executed_op_integer_pred_on.sum",
+        "sm__sass_thread_inst_executed_ops_dadd_dmul_dfma_pred_on.sum",
+        "sm__sass_thread_inst_executed_ops_fadd_fmul_ffma_pred_on.sum",
+        "sm__sass_thread_inst_executed_ops_hadd_hmul_hfma_pred_on.sum",
+        "sm__inst_executed.sum",
+        "sm__inst_executed_pipe_alu.sum",
+        "sm__inst_executed_pipe_fma.sum",
+        "sm__inst_executed_pipe_fp16.sum",
+        "sm__inst_executed_pipe_fp64.sum",
+        "sm__inst_executed_pipe_tensor.sum",
+        "sm__inst_executed_pipe_tex.sum",
+        "sm__inst_executed_pipe_xu.sum",
+        "sm__inst_executed_pipe_lsu.sum",
+        "sm__sass_thread_inst_executed_op_fp16_pred_on.sum",
+        "sm__sass_thread_inst_executed_op_fp32_pred_on.sum",
+        "sm__sass_thread_inst_executed_op_fp64_pred_on.sum",
+        "sm__sass_thread_inst_executed_op_dmul_pred_on.sum",
+        "sm__sass_thread_inst_executed_op_dfma_pred_on.sum",
+        "sm__sass_thread_inst_executed.sum",
+        "sm__sass_inst_executed_op_shared_st.sum",
+        "sm__sass_inst_executed_op_shared_ld.sum",
+        "sm__sass_inst_executed_op_memory_128b.sum",
+        "sm__sass_inst_executed_op_memory_64b.sum",
+        "sm__sass_inst_executed_op_memory_32b.sum",
+        "sm__sass_inst_executed_op_memory_16b.sum",
+        "sm__sass_inst_executed_op_memory_8b.sum",
+    ]
+    cmd = [
+        "nv-nsight-cu-cli",
+        "--metrics",
+        ",".join(metrics),
+        "--csv",
+        "--page",
+        "raw",
+        "--target-processes",
+        "all",
+        str(executable.absolute()),
+        inp.args,
+    ]
+    cmd = " ".join(cmd)
+
+    log_file = results_dir / "{}.result.nsight.txt".format(r)
+    _, stdout, stderr, _ = utils.run_cmd(
+        cmd,
+        cwd=path,
+        timeout_sec=timeout_mins * 60,
+        save_to=results_dir / "nsight",
+    )
+    print("stdout:")
+    print(stdout)
+    print("stderr:")
+    print(stderr)
+
+    with open(str(log_file.absolute()), "w") as f:
+        f.write(stdout)
+
+
+def profile_nvprof(path, inp, results_dir, r, timeout_mins=5):
+    log_file = results_dir / "{}.result.nvprof.txt".format(r)
+
+    executable = path / inp.executable
+    assert executable.is_file()
+    utils.chmod_x(executable)
+
+    cmd = [
+        "nvprof",
+        "--unified-memory-profiling",
+        "off",
+        "--concurrent-kernels",
+        "off",
+        "--print-gpu-trace",
+        "-u",
+        "us",
+        "--demangling",
+        "off",
+        "--csv",
+        "--log-file",
+        str(log_file.absolute()),
+        str(executable.absolute()),
+        inp.args,
+    ]
+    cmd = " ".join(cmd)
+    try:
+        _, stdout, stderr, _ = utils.run_cmd(
+            cmd,
+            cwd=path,
+            timeout_sec=timeout_mins * 60,
+            save_to=results_dir / "nvprof-kernels",
+        )
+        print("stdout:")
+        print(stdout)
+        print("stderr:")
+        print(stderr)
+
+        with open(str(log_file.absolute()), "r") as f:
+            print("log file:")
+            print(f.read())
+
+    except utils.ExecError as e:
+        with open(str(log_file.absolute()), "r") as f:
+            print("log file:")
+            print(f.read())
+        raise e
+
+    cycles_log_file = results_dir / "{}.result.nvprof.cycles.txt".format(r)
+    cycles_cmd = [
+        "nvprof",
+        "--unified-memory-profiling",
+        "off",
+        "--concurrent-kernels",
+        "off",
+        "--print-gpu-trace",
+        "--events",
+        "elapsed_cycles_sm",
+        "-u",
+        "us",
+        "--metrics",
+        "all",
+        "--demangling",
+        "off",
+        "--csv",
+        "--log-file",
+        str(cycles_log_file.absolute()),
+        str(executable.absolute()),
+        inp.args,
+    ]
+    cycles_cmd = " ".join(cycles_cmd)
+    try:
+        _, stdout, stderr, _ = utils.run_cmd(
+            cycles_cmd,
+            cwd=path,
+            timeout_sec=timeout_mins * 60,
+            save_to=results_dir / "nvprof-cycles",
+        )
+        print("stdout:")
+        print(stdout)
+        print("stderr:")
+        print(stderr)
+
+        with open(str(cycles_log_file.absolute()), "r") as f:
+            print("log file:")
+            print(f.read())
+
+    except utils.ExecError as e:
+        with open(str(cycles_log_file.absolute()), "r") as f:
+            print("log file:")
+            print(f.read())
+        raise e
+
+
 class NativeBenchmarkConfig(BenchmarkConfig):
     @staticmethod
-    def _run(path, inp, repetitions=1, force=False, timeout_mins=5, **kwargs):
-        print("native run:", inp)
-        print("repetitions:", repetitions)
-        print("timeout mins:", timeout_mins)
-        # export CUDA_VISIBLE_DEVICES="0"
-
-        results_dir = path / "results"
-        os.makedirs(str(results_dir.absolute()), exist_ok=True)
-
-        executable = path / inp.executable
-        assert executable.is_file()
-        utils.chmod_x(executable)
-
-        for r in range(repetitions):
-            log_file = results_dir / "result.txt.{}".format(r)
-
-            cmd = [
-                "nvprof",
-                "--unified-memory-profiling",
-                "off",
-                "--concurrent-kernels",
-                "off",
-                "--print-gpu-trace",
-                "-u",
-                "us",
-                "--demangling",
-                "off",
-                "--csv",
-                "--log-file",
-                str(log_file.absolute()),
-                str(executable.absolute()),
-                inp.args,
-            ]
-            cmd = " ".join(cmd)
-            try:
-                _, stdout, stderr, _ = utils.run_cmd(
-                    cmd,
-                    cwd=path,
-                    timeout_sec=timeout_mins * 60,
-                    save_to=results_dir / "nvprof-kernels",
-                )
-                print("stdout:")
-                print(stdout)
-                print("stderr:")
-                print(stderr)
-
-                with open(str(log_file.absolute()), "r") as f:
-                    print("log file:")
-                    print(f.read())
-
-            except utils.ExecError as e:
-                with open(str(log_file.absolute()), "r") as f:
-                    print("log file:")
-                    print(f.read())
-                raise e
-
-            cycles_log_file = results_dir / "result.cycles.txt.{}".format(r)
-            cycles_cmd = [
-                "nvprof",
-                "--unified-memory-profiling",
-                "off",
-                "--concurrent-kernels",
-                "off",
-                "--print-gpu-trace",
-                "--events",
-                "elapsed_cycles_sm",
-                "-u",
-                "us",
-                "--metrics",
-                "all",
-                "--demangling",
-                "off",
-                "--csv",
-                "--log-file",
-                str(cycles_log_file.absolute()),
-                str(executable.absolute()),
-                inp.args,
-            ]
-            cycles_cmd = " ".join(cycles_cmd)
-            try:
-                _, stdout, stderr, _ = utils.run_cmd(
-                    cycles_cmd,
-                    cwd=path,
-                    timeout_sec=timeout_mins * 60,
-                    save_to=results_dir / "nvprof-cycles",
-                )
-                print("stdout:")
-                print(stdout)
-                print("stderr:")
-                print(stderr)
-
-                with open(str(cycles_log_file.absolute()), "r") as f:
-                    print("log file:")
-                    print(f.read())
-
-            except utils.ExecError as e:
-                with open(str(cycles_log_file.absolute()), "r") as f:
-                    print("log file:")
-                    print(f.read())
-                raise e
-
-            # convert the csv files
-            convert_hw_csv(log_file, results_dir / "result.csv.{}".format(r))
-            convert_hw_csv(
-                cycles_log_file, results_dir / "result.cycles.csv.{}".format(r)
+    def _run(path, inp, repetitions=1, timeout_mins=5, parse_only=False, **kwargs):
+        print("native run")
+        pprint(
+            dict(
+                path=path,
+                inp=inp,
+                repetitions=repetitions,
+                timeout_mins=timeout_mins,
+                kwargs=kwargs,
             )
+        )
+
+        if not parse_only:
+            devices = get_devices()
+            if len(devices) < 1:
+                raise AssertionError("no GPU device found")
+            device = devices[0]
+            if len(devices) > 1:
+                print(
+                    "warn: multiple GPU devices found, using compute capability of",
+                    device.name,
+                )
+
+            print(
+                "{} has compute capability {}.{}".format(
+                    device.name, device.major, device.minor
+                )
+            )
+
+            use_nvsight = int(device.major) >= 8
+
+            results_dir = path / "results"
+            os.makedirs(str(results_dir.absolute()), exist_ok=True)
+
+            for r in range(repetitions):
+                args = dict(
+                    path=path,
+                    inp=inp,
+                    results_dir=results_dir,
+                    r=r,
+                    timeout_mins=timeout_mins,
+                )
+
+                if use_nvsight:
+                    profile_nvsight(**args)
+                else:
+                    profile_nvprof(**args)
+
+        # parse the results
+        nsight_results = sorted(list(results_dir.rglob("*result.nsight.txt")))
+        nvprof_results = sorted(
+            list(results_dir.rglob("*result.nvprof.cycles.txt"))
+            + list(results_dir.rglob("*result.nvprof.txt"))
+        )
+        # pprint(nsight_results)
+        # pprint(nvprof_results)
+
+        for nvprof_result in nvprof_results:
+            convert_hw_csv(nvprof_result, nvprof_result.with_suffix(".csv"))
 
     def load_dataframe(self, inp):
         results_dir = self.input_path(inp) / "results"
