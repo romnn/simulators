@@ -83,13 +83,16 @@ def run(
         benchmark = list(benchmarks.keys())
 
     pending = []
-    for c, b in list(itertools.product(config, benchmark)):
-        conf = configs.get(c.lower())
+    for config_name, b in list(itertools.product(config, benchmark)):
+        conf = configs.get(config_name.lower())
         if simulator == gpusims.NATIVE:
             if conf is None:
                 # create a mock config
                 conf = gpusims.config.Config(
-                    key=c.lower(), name=c.lower(), path=None, spec={}
+                    key=config_name.lower(),
+                    name=config_name.lower(),
+                    path=None,
+                    spec={},
                 )
             else:
                 # do not inject any config files into the run dir
@@ -99,7 +102,7 @@ def run(
 
         if conf is None:
             have = ",".join(configs.keys())
-            raise KeyError("no such config: {} (have: {})".format(c, have))
+            raise KeyError("no such config: {} (have: {})".format(config_name, have))
 
         bench = benchmarks.get(b)
         if bench is None:
@@ -108,10 +111,10 @@ def run(
 
         # check if the benchmark is enabled
         if not enable and not bench.enabled(simulator):
-            print("skipping {} {} ...".format(c, b))
+            print("skipping {} {} ...".format(config_name, b))
             continue
 
-        print("adding {} {} ...".format(c, b))
+        print("adding {} {} ...".format(config_name, b))
         bench_cls = gpusims.SIMULATORS[simulator.lower()]
         bench_config = bench_cls(
             run_dir=sim_run_dir,
