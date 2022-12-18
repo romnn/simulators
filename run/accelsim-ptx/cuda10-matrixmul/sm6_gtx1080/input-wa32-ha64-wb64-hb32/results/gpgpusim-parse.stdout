@@ -14,13 +14,33 @@ stats: {
     (
         "final_kernel",
         0,
-        "gpu_tot_ipc",
-    ): 123.5378,
+        "l2_cache_write_miss",
+    ): 128.0,
     (
         "final_kernel",
         0,
-        "gpgpu_simulation_rate",
-    ): 5106.0,
+        "l2_cache_write_hit",
+    ): 0.0,
+    (
+        "final_kernel",
+        0,
+        "total_dram_writes",
+    ): 512.0,
+    (
+        "final_kernel",
+        0,
+        "kernel_launch_uid",
+    ): 1.0,
+    (
+        "final_kernel",
+        0,
+        "total_core_cache_write_hit",
+    ): 0.0,
+    (
+        "final_kernel",
+        0,
+        "gpgpu_n_tot_w_icount",
+    ): 19968.0,
     (
         "final_kernel",
         0,
@@ -29,12 +49,7 @@ stats: {
     (
         "final_kernel",
         0,
-        "l2_cache_read_total",
-    ): 256.0,
-    (
-        "final_kernel",
-        0,
-        "total_core_cache_write_hit",
+        "l2_cache_read_miss",
     ): 0.0,
     (
         "final_kernel",
@@ -44,53 +59,8 @@ stats: {
     (
         "final_kernel",
         0,
-        "l2_bandwidth_gbps",
-    ): 8.0193,
-    (
-        "final_kernel",
-        0,
-        "gpu_occupancy",
-    ): 48.9476,
-    (
-        "final_kernel",
-        0,
-        "kernel_launch_uid",
-    ): 1.0,
-    (
-        "final_kernel",
-        0,
-        "total_core_cache_read_mshr_hit",
-    ): 0.0,
-    (
-        "final_kernel",
-        0,
-        "total_dram_reads",
-    ): 560.0,
-    (
-        "final_kernel",
-        0,
-        "gpu_ipc",
+        "gpu_tot_ipc",
     ): 123.5378,
-    (
-        "final_kernel",
-        0,
-        "gpgpu_silicon_slowdown",
-    ): 314727.0,
-    (
-        "final_kernel",
-        0,
-        "gpgpu_simulation_time_sec",
-    ): 1.0,
-    (
-        "final_kernel",
-        0,
-        "total_dram_writes",
-    ): 512.0,
-    (
-        "final_kernel",
-        0,
-        "gpgpu_n_tot_w_icount",
-    ): 19968.0,
     (
         "final_kernel",
         0,
@@ -99,12 +69,22 @@ stats: {
     (
         "final_kernel",
         0,
-        "l2_cache_read_miss",
-    ): 0.0,
+        "gpgpu_simulation_rate",
+    ): 2553.0,
     (
         "final_kernel",
         0,
-        "l2_cache_write_hit",
+        "gpgpu_simulation_time_sec",
+    ): 2.0,
+    (
+        "final_kernel",
+        0,
+        "gpgpu_silicon_slowdown",
+    ): 629455.0,
+    (
+        "final_kernel",
+        0,
+        "total_core_cache_read_mshr_hit",
     ): 0.0,
     (
         "final_kernel",
@@ -114,8 +94,13 @@ stats: {
     (
         "final_kernel",
         0,
-        "gpu_tot_sim_cycle",
-    ): 5106.0,
+        "l2_bandwidth_gbps",
+    ): 8.0193,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_read_total",
+    ): 256.0,
     (
         "final_kernel",
         0,
@@ -124,7 +109,22 @@ stats: {
     (
         "final_kernel",
         0,
-        "l2_cache_write_miss",
-    ): 128.0,
+        "total_dram_reads",
+    ): 560.0,
+    (
+        "final_kernel",
+        0,
+        "gpu_tot_sim_cycle",
+    ): 5106.0,
+    (
+        "final_kernel",
+        0,
+        "gpu_ipc",
+    ): 123.5378,
+    (
+        "final_kernel",
+        0,
+        "gpu_occupancy",
+    ): 48.9476,
 }
-done in 11.64284ms: 78.85 KiB parsed (16.00 EiB/s)
+done in 10.975396ms: 78.67 KiB parsed (16.00 EiB/s)

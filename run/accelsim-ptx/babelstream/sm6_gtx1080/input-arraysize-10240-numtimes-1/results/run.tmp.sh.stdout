@@ -305,7 +305,7 @@ self exe links to: /benchrun/accelsim-ptx/babelstream/sm6_gtx1080/input-arraysiz
 Running md5sum using "md5sum /benchrun/accelsim-ptx/babelstream/sm6_gtx1080/input-arraysize-10240-numtimes-1/CUDAStream "
 self exe links to: /benchrun/accelsim-ptx/babelstream/sm6_gtx1080/input-arraysize-10240-numtimes-1/CUDAStream
 Extracting specific PTX file named CUDAStream.1.sm_30.ptx 
-GPGPU-Sim PTX: __cudaRegisterFunction _Z11init_kernelIdEvPT_S1_S1_S0_S0_S0_ : hostFun 0x0x55dea18104f1, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z11init_kernelIdEvPT_S1_S1_S0_S0_S0_ : hostFun 0x0x55f93be104f1, fat_cubin_handle = 1
 GPGPU-Sim PTX: Parsing CUDAStream.1.sm_30.ptx
 GPGPU-Sim PTX: instruction assembly for function '_Z11copy_kernelIfEvPKT_PS0_'...   done.
 GPGPU-Sim PTX: instruction assembly for function '_Z10add_kernelIfEvPKT_S2_PS0_'...   done.
@@ -342,19 +342,19 @@ GPGPU-Sim PTX: Kernel '_Z12triad_kernelIfEvPT_PKS0_S3_' : regs=8, lmem=0, smem=0
 GPGPU-Sim PTX: Kernel '_Z10mul_kernelIfEvPT_PKS0_' : regs=6, lmem=0, smem=0, cmem=336
 GPGPU-Sim PTX: Kernel '_Z10add_kernelIfEvPKT_S2_PS0_' : regs=8, lmem=0, smem=0, cmem=344
 GPGPU-Sim PTX: Kernel '_Z11copy_kernelIfEvPKT_PS0_' : regs=6, lmem=0, smem=0, cmem=336
-GPGPU-Sim PTX: __cudaRegisterFunction _Z10dot_kernelIdEvPKT_S2_PS0_i : hostFun 0x0x55dea18104bf, fat_cubin_handle = 1
-GPGPU-Sim PTX: __cudaRegisterFunction _Z14nstream_kernelIdEvPT_PKS0_S3_ : hostFun 0x0x55dea1810491, fat_cubin_handle = 1
-GPGPU-Sim PTX: __cudaRegisterFunction _Z12triad_kernelIdEvPT_PKS0_S3_ : hostFun 0x0x55dea1810463, fat_cubin_handle = 1
-GPGPU-Sim PTX: __cudaRegisterFunction _Z10mul_kernelIdEvPT_PKS0_ : hostFun 0x0x55dea181043d, fat_cubin_handle = 1
-GPGPU-Sim PTX: __cudaRegisterFunction _Z10add_kernelIdEvPKT_S2_PS0_ : hostFun 0x0x55dea181040f, fat_cubin_handle = 1
-GPGPU-Sim PTX: __cudaRegisterFunction _Z11copy_kernelIdEvPKT_PS0_ : hostFun 0x0x55dea18103e9, fat_cubin_handle = 1
-GPGPU-Sim PTX: __cudaRegisterFunction _Z11init_kernelIfEvPT_S1_S1_S0_S0_S0_ : hostFun 0x0x55dea181039d, fat_cubin_handle = 1
-GPGPU-Sim PTX: __cudaRegisterFunction _Z10dot_kernelIfEvPKT_S2_PS0_i : hostFun 0x0x55dea181036b, fat_cubin_handle = 1
-GPGPU-Sim PTX: __cudaRegisterFunction _Z14nstream_kernelIfEvPT_PKS0_S3_ : hostFun 0x0x55dea181033d, fat_cubin_handle = 1
-GPGPU-Sim PTX: __cudaRegisterFunction _Z12triad_kernelIfEvPT_PKS0_S3_ : hostFun 0x0x55dea181030f, fat_cubin_handle = 1
-GPGPU-Sim PTX: __cudaRegisterFunction _Z10mul_kernelIfEvPT_PKS0_ : hostFun 0x0x55dea18102e9, fat_cubin_handle = 1
-GPGPU-Sim PTX: __cudaRegisterFunction _Z10add_kernelIfEvPKT_S2_PS0_ : hostFun 0x0x55dea18102bb, fat_cubin_handle = 1
-GPGPU-Sim PTX: __cudaRegisterFunction _Z11copy_kernelIfEvPKT_PS0_ : hostFun 0x0x55dea1810295, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z10dot_kernelIdEvPKT_S2_PS0_i : hostFun 0x0x55f93be104bf, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z14nstream_kernelIdEvPT_PKS0_S3_ : hostFun 0x0x55f93be10491, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z12triad_kernelIdEvPT_PKS0_S3_ : hostFun 0x0x55f93be10463, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z10mul_kernelIdEvPT_PKS0_ : hostFun 0x0x55f93be1043d, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z10add_kernelIdEvPKT_S2_PS0_ : hostFun 0x0x55f93be1040f, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z11copy_kernelIdEvPKT_PS0_ : hostFun 0x0x55f93be103e9, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z11init_kernelIfEvPT_S1_S1_S0_S0_S0_ : hostFun 0x0x55f93be1039d, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z10dot_kernelIfEvPKT_S2_PS0_i : hostFun 0x0x55f93be1036b, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z14nstream_kernelIfEvPT_PKS0_S3_ : hostFun 0x0x55f93be1033d, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z12triad_kernelIfEvPT_PKS0_S3_ : hostFun 0x0x55f93be1030f, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z10mul_kernelIfEvPT_PKS0_ : hostFun 0x0x55f93be102e9, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z10add_kernelIfEvPKT_S2_PS0_ : hostFun 0x0x55f93be102bb, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z11copy_kernelIfEvPKT_PS0_ : hostFun 0x0x55f93be10295, fat_cubin_handle = 1
 BabelStream
 Version: 4.0
 Implementation: CUDA
@@ -364,14 +364,14 @@ Array size: 0.1 MB (=0.0 GB)
 Total size: 0.2 MB (=0.0 GB)
 Using CUDA device GPGPU-Sim_vGPGPU-Sim Simulator Version 4.2.0 
 Driver: 10010
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffffa50aac8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffffa50aac0..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffffa50aab8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffffa50aab0..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffffa50aaa8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffffa50aaa0..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffd08942788..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffd08942780..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffd08942778..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffd08942770..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffd08942768..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffd08942760..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55dea18104f1 (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55f93be104f1 (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: finding reconvergence points for '_Z11init_kernelIdEvPT_S1_S1_S0_S0_S0_'...
 GPGPU-Sim PTX: Finding dominators for '_Z11init_kernelIdEvPT_S1_S1_S0_S0_S0_'...
 GPGPU-Sim PTX: Finding immediate dominators for '_Z11init_kernelIdEvPT_S1_S1_S0_S0_S0_'...
@@ -747,7 +747,7 @@ MSHR contents
 
 Cache L2_bank_003:
 MSHR contents
-MSHR: tag=0xc0033980, atomic=0 1 entries : 0x7fd0cd775490 :  mf: uid= 11068, sid05:w25, part=1, addr=0xc0033980, load , size=128, unknown  status = IN_PARTITION_MC_RETURNQ (3388), 
+MSHR: tag=0xc0033980, atomic=0 1 entries : 0x7fc249775490 :  mf: uid= 11068, sid05:w25, part=1, addr=0xc0033980, load , size=128, unknown  status = IN_PARTITION_MC_RETURNQ (3388), 
 
 In Dram Latency Queue (total = 0): 
 DRAM[1]: 16 bks, busW=4 BL=8 CL=12, tRRD=6 tCCD=2, tRCD=12 tRAS=28 tRP=12 tRC=40
@@ -955,13 +955,13 @@ mrqq: max=64 avg=40.7925
 Memory Partition 4: 
 Cache L2_bank_008:
 MSHR contents
-MSHR: tag=0xc002fc00, atomic=0 1 entries : 0x7fd0cd9f6bb0 :  mf: uid= 11072, sid03:w28, part=4, addr=0xc002fc00, load , size=128, unknown  status = IN_PARTITION_L2_FILL_QUEUE (3388), 
-MSHR: tag=0xc0033c00, atomic=0 1 entries : 0x7fd0cd7741c0 :  mf: uid= 11019, sid05:w28, part=4, addr=0xc0033c00, load , size=128, unknown  status = IN_PARTITION_DRAM (3388), 
+MSHR: tag=0xc002fc00, atomic=0 1 entries : 0x7fc2499f6bb0 :  mf: uid= 11072, sid03:w28, part=4, addr=0xc002fc00, load , size=128, unknown  status = IN_PARTITION_L2_FILL_QUEUE (3388), 
+MSHR: tag=0xc0033c00, atomic=0 1 entries : 0x7fc2497741c0 :  mf: uid= 11019, sid05:w28, part=4, addr=0xc0033c00, load , size=128, unknown  status = IN_PARTITION_DRAM (3388), 
 
 Cache L2_bank_009:
 MSHR contents
-MSHR: tag=0xc002fc80, atomic=0 1 entries : 0x7fd0cdcb6370 :  mf: uid= 11067, sid03:w28, part=4, addr=0xc002fc80, load , size=128, unknown  status = IN_PARTITION_DRAM (3385), 
-MSHR: tag=0xc0033c80, atomic=0 1 entries : 0x7fd0cdacea50 :  mf: uid= 11014, sid05:w28, part=4, addr=0xc0033c80, load , size=128, unknown  status = IN_PARTITION_DRAM (3388), 
+MSHR: tag=0xc002fc80, atomic=0 1 entries : 0x7fc249cb6370 :  mf: uid= 11067, sid03:w28, part=4, addr=0xc002fc80, load , size=128, unknown  status = IN_PARTITION_DRAM (3385), 
+MSHR: tag=0xc0033c80, atomic=0 1 entries : 0x7fc249acea50 :  mf: uid= 11014, sid05:w28, part=4, addr=0xc0033c80, load , size=128, unknown  status = IN_PARTITION_DRAM (3388), 
 
 In Dram Latency Queue (total = 0): 
 DRAM[4]: 16 bks, busW=4 BL=8 CL=12, tRRD=6 tCCD=2, tRCD=12 tRAS=28 tRP=12 tRC=40
@@ -1029,11 +1029,11 @@ mrqq: max=64 avg=40.8444
 Memory Partition 5: 
 Cache L2_bank_010:
 MSHR contents
-MSHR: tag=0xc0033d00, atomic=0 1 entries : 0x7fd0cde4acd0 :  mf: uid= 11130, sid05:w29, part=5, addr=0xc0033d00, load , size=128, unknown  status = IN_PARTITION_DRAM (3388), 
+MSHR: tag=0xc0033d00, atomic=0 1 entries : 0x7fc249e4acd0 :  mf: uid= 11130, sid05:w29, part=5, addr=0xc0033d00, load , size=128, unknown  status = IN_PARTITION_DRAM (3388), 
 
 Cache L2_bank_011:
 MSHR contents
-MSHR: tag=0xc0033d80, atomic=0 1 entries : 0x7fd0cdaf0620 :  mf: uid= 11128, sid05:w29, part=5, addr=0xc0033d80, load , size=128, unknown  status = IN_PARTITION_DRAM (3388), 
+MSHR: tag=0xc0033d80, atomic=0 1 entries : 0x7fc249af0620 :  mf: uid= 11128, sid05:w29, part=5, addr=0xc0033d80, load , size=128, unknown  status = IN_PARTITION_DRAM (3388), 
 
 In Dram Latency Queue (total = 0): 
 DRAM[5]: 16 bks, busW=4 BL=8 CL=12, tRRD=6 tCCD=2, tRCD=12 tRAS=28 tRP=12 tRC=40
@@ -1101,12 +1101,12 @@ mrqq: max=64 avg=40.3769
 Memory Partition 6: 
 Cache L2_bank_012:
 MSHR contents
-MSHR: tag=0xc0037e00, atomic=0 1 entries : 0x7fd0cd85f520 :  mf: uid= 11071, sid07:w30, part=6, addr=0xc0037e00, load , size=128, unknown  status = IN_PARTITION_DRAM (3385), 
+MSHR: tag=0xc0037e00, atomic=0 1 entries : 0x7fc24985f520 :  mf: uid= 11071, sid07:w30, part=6, addr=0xc0037e00, load , size=128, unknown  status = IN_PARTITION_DRAM (3385), 
 
 Cache L2_bank_013:
 MSHR contents
-MSHR: tag=0xc002fe80, atomic=0 1 entries : 0x7fd0cdd11080 :  mf: uid= 11126, sid03:w30, part=6, addr=0xc002fe80, load , size=128, unknown  status = IN_PARTITION_L2_FILL_QUEUE (3388), 
-MSHR: tag=0xc0037e80, atomic=0 1 entries : 0x7fd0cd6f0670 :  mf: uid= 11066, sid07:w30, part=6, addr=0xc0037e80, load , size=128, unknown  status = IN_PARTITION_DRAM (3388), 
+MSHR: tag=0xc002fe80, atomic=0 1 entries : 0x7fc249d11080 :  mf: uid= 11126, sid03:w30, part=6, addr=0xc002fe80, load , size=128, unknown  status = IN_PARTITION_L2_FILL_QUEUE (3388), 
+MSHR: tag=0xc0037e80, atomic=0 1 entries : 0x7fc2496f0670 :  mf: uid= 11066, sid07:w30, part=6, addr=0xc0037e80, load , size=128, unknown  status = IN_PARTITION_DRAM (3388), 
 
 In Dram Latency Queue (total = 0): 
 DRAM[6]: 16 bks, busW=4 BL=8 CL=12, tRRD=6 tCCD=2, tRCD=12 tRAS=28 tRP=12 tRC=40
@@ -1174,13 +1174,13 @@ mrqq: max=64 avg=38.2556
 Memory Partition 7: 
 Cache L2_bank_014:
 MSHR contents
-MSHR: tag=0xc001bf00, atomic=0 1 entries : 0x7fd0cd4ccc90 :  mf: uid= 11110, sid03:w31, part=7, addr=0xc001bf00, load , size=128, unknown  status = IN_PARTITION_DRAM (3387), 
-MSHR: tag=0xc0033f00, atomic=0 1 entries : 0x7fd0cdc3f240 :  mf: uid= 11094, sid05:w31, part=7, addr=0xc0033f00, load , size=128, unknown  status = IN_PARTITION_DRAM (3387), 
+MSHR: tag=0xc001bf00, atomic=0 1 entries : 0x7fc2494ccc90 :  mf: uid= 11110, sid03:w31, part=7, addr=0xc001bf00, load , size=128, unknown  status = IN_PARTITION_DRAM (3387), 
+MSHR: tag=0xc0033f00, atomic=0 1 entries : 0x7fc249c3f240 :  mf: uid= 11094, sid05:w31, part=7, addr=0xc0033f00, load , size=128, unknown  status = IN_PARTITION_DRAM (3387), 
 
 Cache L2_bank_015:
 MSHR contents
-MSHR: tag=0xc002ff80, atomic=0 1 entries : 0x7fd0cdde1a60 :  mf: uid= 11114, sid03:w31, part=7, addr=0xc002ff80, load , size=128, unknown  status = IN_PARTITION_DRAM (3382), 
-MSHR: tag=0xc0033f80, atomic=0 1 entries : 0x7fd0cddaa220 :  mf: uid= 11091, sid05:w31, part=7, addr=0xc0033f80, load , size=128, unknown  status = IN_PARTITION_DRAM (3388), 
+MSHR: tag=0xc002ff80, atomic=0 1 entries : 0x7fc249de1a60 :  mf: uid= 11114, sid03:w31, part=7, addr=0xc002ff80, load , size=128, unknown  status = IN_PARTITION_DRAM (3382), 
+MSHR: tag=0xc0033f80, atomic=0 1 entries : 0x7fc249daa220 :  mf: uid= 11091, sid05:w31, part=7, addr=0xc0033f80, load , size=128, unknown  status = IN_PARTITION_DRAM (3388), 
 
 In Dram Latency Queue (total = 0): 
 DRAM[7]: 16 bks, busW=4 BL=8 CL=12, tRRD=6 tCCD=2, tRCD=12 tRAS=28 tRP=12 tRC=40
@@ -1417,10 +1417,10 @@ gpgpu_silicon_slowdown = 474181x
 GPGPU-Sim: synchronize waiting for inactive GPU simulation
 GPGPU-Sim API: Stream Manager State
 GPGPU-Sim: detected inactive GPU simulation thread
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffffa50aad8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffffa50aad0..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffd08942798..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffd08942790..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55dea18103e9 (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55f93be103e9 (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: finding reconvergence points for '_Z11copy_kernelIdEvPKT_PS0_'...
 GPGPU-Sim PTX: Finding dominators for '_Z11copy_kernelIdEvPKT_PS0_'...
 GPGPU-Sim PTX: Finding immediate dominators for '_Z11copy_kernelIdEvPKT_PS0_'...
@@ -1463,7 +1463,7 @@ partiton_level_parallism_util =       4.7636
 partiton_level_parallism_util_total  =       3.8112
 L2_BW  =      84.0671 GB/Sec
 L2_BW_total  =      63.6958 GB/Sec
-gpu_total_sim_rate=179200
+gpu_total_sim_rate=358400
 
 ========= Core cache stats =========
 L1I_cache:
@@ -2448,17 +2448,17 @@ Hops average = 1.000000 (2 samples)
 ----------------------------END-of-Interconnect-DETAILS-------------------------
 
 
-gpgpu_simulation_time = 0 days, 0 hrs, 0 min, 2 sec (2 sec)
-gpgpu_simulation_rate = 179200 (inst/sec)
-gpgpu_simulation_rate = 2433 (cycle/sec)
-gpgpu_silicon_slowdown = 660501x
+gpgpu_simulation_time = 0 days, 0 hrs, 0 min, 1 sec (1 sec)
+gpgpu_simulation_rate = 358400 (inst/sec)
+gpgpu_simulation_rate = 4866 (cycle/sec)
+gpgpu_silicon_slowdown = 330250x
 GPGPU-Sim: synchronize waiting for inactive GPU simulation
 GPGPU-Sim API: Stream Manager State
 GPGPU-Sim: detected inactive GPU simulation thread
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffffa50aad8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffffa50aad0..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffd08942798..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffd08942790..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55dea181043d (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55f93be1043d (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: finding reconvergence points for '_Z10mul_kernelIdEvPT_PKS0_'...
 GPGPU-Sim PTX: Finding dominators for '_Z10mul_kernelIdEvPT_PKS0_'...
 GPGPU-Sim PTX: Finding immediate dominators for '_Z10mul_kernelIdEvPT_PKS0_'...
@@ -3493,11 +3493,11 @@ gpgpu_silicon_slowdown = 512763x
 GPGPU-Sim: synchronize waiting for inactive GPU simulation
 GPGPU-Sim API: Stream Manager State
 GPGPU-Sim: detected inactive GPU simulation thread
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffffa50aab8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffffa50aab0..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffffa50aaa8..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffd08942778..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffd08942770..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffd08942768..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55dea181040f (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55f93be1040f (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: finding reconvergence points for '_Z10add_kernelIdEvPKT_S2_PS0_'...
 GPGPU-Sim PTX: Finding dominators for '_Z10add_kernelIdEvPKT_S2_PS0_'...
 GPGPU-Sim PTX: Finding immediate dominators for '_Z10add_kernelIdEvPKT_S2_PS0_'...
@@ -4532,11 +4532,11 @@ gpgpu_silicon_slowdown = 632926x
 GPGPU-Sim: synchronize waiting for inactive GPU simulation
 GPGPU-Sim API: Stream Manager State
 GPGPU-Sim: detected inactive GPU simulation thread
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffffa50aab8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffffa50aab0..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffffa50aaa8..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffd08942778..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffd08942770..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffd08942768..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55dea1810463 (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55f93be10463 (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: finding reconvergence points for '_Z12triad_kernelIdEvPT_PKS0_S3_'...
 GPGPU-Sim PTX: Finding dominators for '_Z12triad_kernelIdEvPT_PKS0_S3_'...
 GPGPU-Sim PTX: Finding immediate dominators for '_Z12triad_kernelIdEvPT_PKS0_S3_'...
@@ -4579,7 +4579,7 @@ partiton_level_parallism_util =       4.8250
 partiton_level_parallism_util_total  =       4.2533
 L2_BW  =     129.6479 GB/Sec
 L2_BW_total  =      88.4959 GB/Sec
-gpu_total_sim_rate=225280
+gpu_total_sim_rate=300373
 
 ========= Core cache stats =========
 L1I_cache:
@@ -5564,19 +5564,19 @@ Hops average = 1.000000 (5 samples)
 ----------------------------END-of-Interconnect-DETAILS-------------------------
 
 
-gpgpu_simulation_time = 0 days, 0 hrs, 0 min, 4 sec (4 sec)
-gpgpu_simulation_rate = 225280 (inst/sec)
-gpgpu_simulation_rate = 2257 (cycle/sec)
-gpgpu_silicon_slowdown = 712007x
+gpgpu_simulation_time = 0 days, 0 hrs, 0 min, 3 sec (3 sec)
+gpgpu_simulation_rate = 300373 (inst/sec)
+gpgpu_simulation_rate = 3009 (cycle/sec)
+gpgpu_silicon_slowdown = 534064x
 GPGPU-Sim: synchronize waiting for inactive GPU simulation
 GPGPU-Sim API: Stream Manager State
 GPGPU-Sim: detected inactive GPU simulation thread
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffffa50aa98..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffffa50aa90..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffffa50aa88..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffffa50aa84..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffd08942758..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffd08942750..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffd08942748..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffd08942744..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55dea18104bf (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55f93be104bf (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: finding reconvergence points for '_Z10dot_kernelIdEvPKT_S2_PS0_i'...
 GPGPU-Sim PTX: Finding dominators for '_Z10dot_kernelIdEvPKT_S2_PS0_i'...
 GPGPU-Sim PTX: Finding immediate dominators for '_Z10dot_kernelIdEvPKT_S2_PS0_i'...
@@ -5641,7 +5641,7 @@ partiton_level_parallism_util =       2.7882
 partiton_level_parallism_util_total  =       3.9234
 L2_BW  =       4.5663 GB/Sec
 L2_BW_total  =      22.4537 GB/Sec
-gpu_total_sim_rate=635662
+gpu_total_sim_rate=624104
 
 ========= Core cache stats =========
 L1I_cache:
@@ -6627,14 +6627,14 @@ Hops average = 1.000000 (6 samples)
 ----------------------------END-of-Interconnect-DETAILS-------------------------
 
 
-gpgpu_simulation_time = 0 days, 0 hrs, 0 min, 54 sec (54 sec)
-gpgpu_simulation_rate = 635662 (inst/sec)
-gpgpu_simulation_rate = 784 (cycle/sec)
-gpgpu_silicon_slowdown = 2049744x
+gpgpu_simulation_time = 0 days, 0 hrs, 0 min, 55 sec (55 sec)
+gpgpu_simulation_rate = 624104 (inst/sec)
+gpgpu_simulation_rate = 770 (cycle/sec)
+gpgpu_silicon_slowdown = 2087012x
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        0.271       0.60459     0.60459     0.60459     
-Mul         0.271       0.60393     0.60393     0.60393     
-Add         0.349       0.70391     0.70391     0.70391     
-Triad       0.349       0.70409     0.70409     0.70409     
-Dot         0.003       49.94877    49.94877    49.94877    
+Copy        0.271       0.60445     0.60445     0.60445     
+Mul         0.271       0.60358     0.60358     0.60358     
+Add         0.349       0.70386     0.70386     0.70386     
+Triad       0.349       0.70391     0.70391     0.70391     
+Dot         0.003       51.54923    51.54923    51.54923    
 GPGPU-Sim: *** exit detected ***

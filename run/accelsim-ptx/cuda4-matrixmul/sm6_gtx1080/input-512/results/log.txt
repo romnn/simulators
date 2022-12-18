@@ -305,7 +305,7 @@ self exe links to: /benchrun/accelsim-ptx/cuda4-matrixmul/sm6_gtx1080/input-512/
 Running md5sum using "md5sum /benchrun/accelsim-ptx/cuda4-matrixmul/sm6_gtx1080/input-512/matrixMul "
 self exe links to: /benchrun/accelsim-ptx/cuda4-matrixmul/sm6_gtx1080/input-512/matrixMul
 Extracting specific PTX file named matrixMul.1.sm_30.ptx 
-GPGPU-Sim PTX: __cudaRegisterFunction _Z8mult_gpuPfS_S_ii : hostFun 0x0x556af44017d7, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z8mult_gpuPfS_S_ii : hostFun 0x0x55c0a4e017d7, fat_cubin_handle = 1
 GPGPU-Sim PTX: Parsing matrixMul.1.sm_30.ptx
 GPGPU-Sim PTX: allocating shared region for "_ZZ8mult_gpuPfS_S_iiE2As" from 0x0 to 0x1000 (shared memory space)
 GPGPU-Sim PTX: allocating shared region for "_ZZ8mult_gpuPfS_S_iiE2Bs" from 0x1000 to 0x2000 (shared memory space)
@@ -321,13 +321,13 @@ GPGPU-Sim API: Stream Manager State
 GPGPU-Sim: detected inactive GPU simulation thread
 grid: (16,16,1)
 threads: (32,32,1)
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffe96535d88..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffe96535d80..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffe96535d78..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffe96535d74..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffe96535d70..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffe25313b28..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffe25313b20..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffe25313b18..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffe25313b14..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffe25313b10..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x556af44017d7 (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55c0a4e017d7 (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: finding reconvergence points for '_Z8mult_gpuPfS_S_ii'...
 GPGPU-Sim PTX: Finding dominators for '_Z8mult_gpuPfS_S_ii'...
 GPGPU-Sim PTX: Finding immediate dominators for '_Z8mult_gpuPfS_S_ii'...
@@ -384,7 +384,7 @@ partiton_level_parallism_util =       1.2576
 partiton_level_parallism_util_total  =       1.2576
 L2_BW  =      48.9518 GB/Sec
 L2_BW_total  =      48.9518 GB/Sec
-gpu_total_sim_rate=574399
+gpu_total_sim_rate=484161
 
 ========= Core cache stats =========
 L1I_cache:
@@ -1137,7 +1137,7 @@ mrqq: max=64 avg=0.76085
 Memory Partition 7: 
 Cache L2_bank_014:
 MSHR contents
-MSHR: tag=0xc02fff00, atomic=0 1 entries : 0x7f9371441e20 :  mf: uid=7971282, sid00:w31, part=7, addr=0xc02fff00, load , size=128, unknown  status = IN_PARTITION_DRAM (523869), 
+MSHR: tag=0xc02fff00, atomic=0 1 entries : 0x7fa309441e20 :  mf: uid=7971282, sid00:w31, part=7, addr=0xc02fff00, load , size=128, unknown  status = IN_PARTITION_DRAM (523869), 
 
 Cache L2_bank_015:
 MSHR contents
@@ -1371,18 +1371,18 @@ Hops average = 1 (1 samples)
 ----------------------------END-of-Interconnect-DETAILS-------------------------
 
 
-gpgpu_simulation_time = 0 days, 0 hrs, 13 min, 57 sec (837 sec)
-gpgpu_simulation_rate = 574399 (inst/sec)
-gpgpu_simulation_rate = 625 (cycle/sec)
-gpgpu_silicon_slowdown = 2571200x
+gpgpu_simulation_time = 0 days, 0 hrs, 16 min, 33 sec (993 sec)
+gpgpu_simulation_rate = 484161 (inst/sec)
+gpgpu_simulation_rate = 527 (cycle/sec)
+gpgpu_silicon_slowdown = 3049335x
 GPGPU-Sim: synchronize waiting for inactive GPU simulation
 GPGPU-Sim API: Stream Manager State
 GPGPU-Sim: detected inactive GPU simulation thread
-The GPU Elapsed Time:836.971506 Sec.
+The GPU Elapsed Time:992.144063 Sec.
 GPGPU-Sim: synchronize waiting for inactive GPU simulation
 GPGPU-Sim API: Stream Manager State
 GPGPU-Sim: detected inactive GPU simulation thread
-The CPU Elapsed Time:0.630878 Sec.
+The CPU Elapsed Time:0.605282 Sec.
 Verifying
 PASS
 GPGPU-Sim: *** exit detected ***

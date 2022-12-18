@@ -166,6 +166,7 @@ ns.add_task(build, "build")
         # "slurm": "submit jobs using slurm (only for native and accelsim-sass)",
         "trace-only": "only generate traces, but do not simulate",
         "parse-only": "only parse results",
+        "enable": "force running disabled benchmarks or inputs",
     },
     iterable=["simulator", "benchmark", "config"],
 )
@@ -176,12 +177,13 @@ def bench(
     config,
     repetitions=3,
     force=False,
-    timeout_mins=20,
+    timeout_mins=30,
     dry_run=False,
     local=False,
     # slurm=False,
     trace_only=False,
     parse_only=False,
+    enable=False,
 ):
     """Benchmark in simulator inside docker containers"""
     simulator = set([s.lower() for s in simulator])
@@ -233,6 +235,8 @@ def bench(
         cmd += ["inv", "run", "--simulator", s, "--run-dir", container_run_dir]
         # if slurm:
         #     cmd += ["--slurm"]
+        if enable:
+            cmd += ["--enable"]
         if trace_only:
             cmd += ["--parse-only"]
         if trace_only:

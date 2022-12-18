@@ -305,7 +305,7 @@ self exe links to: /benchrun/accelsim-ptx/cuda10-matrixmul/sm6_gtx1080/input-wa3
 Running md5sum using "md5sum /benchrun/accelsim-ptx/cuda10-matrixmul/sm6_gtx1080/input-wa32-ha64-wb64-hb32/matrixMul "
 self exe links to: /benchrun/accelsim-ptx/cuda10-matrixmul/sm6_gtx1080/input-wa32-ha64-wb64-hb32/matrixMul
 Extracting specific PTX file named matrixMul.1.sm_30.ptx 
-GPGPU-Sim PTX: __cudaRegisterFunction _Z13MatrixMulCUDAILi32EEvPfS0_S0_ii : hostFun 0x0x5606f3c0373a, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z13MatrixMulCUDAILi32EEvPfS0_S0_ii : hostFun 0x0x563d3b80373a, fat_cubin_handle = 1
 GPGPU-Sim PTX: Parsing matrixMul.1.sm_30.ptx
 GPGPU-Sim PTX: allocating shared region for "_ZZ13MatrixMulCUDAILi16EEvPfS0_S0_iiE2As" from 0x0 to 0x400 (shared memory space)
 GPGPU-Sim PTX: allocating shared region for "_ZZ13MatrixMulCUDAILi16EEvPfS0_S0_iiE2Bs" from 0x400 to 0x800 (shared memory space)
@@ -320,20 +320,20 @@ GPGPU-Sim PTX: loading constants with explicit initializers...  done.
 GPGPU-Sim PTX: Loading PTXInfo from matrixMul.1.sm_30.ptx
 GPGPU-Sim PTX: Kernel '_Z13MatrixMulCUDAILi32EEvPfS0_S0_ii' : regs=29, lmem=0, smem=8192, cmem=352
 GPGPU-Sim PTX: Kernel '_Z13MatrixMulCUDAILi16EEvPfS0_S0_ii' : regs=29, lmem=0, smem=2048, cmem=352
-GPGPU-Sim PTX: __cudaRegisterFunction _Z13MatrixMulCUDAILi16EEvPfS0_S0_ii : hostFun 0x0x5606f3c036fd, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z13MatrixMulCUDAILi16EEvPfS0_S0_ii : hostFun 0x0x563d3b8036fd, fat_cubin_handle = 1
 [Matrix Multiply Using CUDA] - Starting...
 GPU Device 0: "Volta" with compute capability 7.0
 
 MatrixA(32,64), MatrixB(64,32)
 GPGPU-Sim PTX: cudaStreamCreate
 Computing result using CUDA Kernel...
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffdccd2cca8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffdccd2cca0..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffdccd2cc98..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffdccd2cc94..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffdccd2cc90..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffed1b0b48..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffed1b0b40..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffed1b0b38..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffed1b0b34..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffed1b0b30..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x5606f3c0373a (mode=performance simulation) on stream 1
+GPGPU-Sim PTX: cudaLaunch for 0x0x563d3b80373a (mode=performance simulation) on stream 1
 GPGPU-Sim PTX: finding reconvergence points for '_Z13MatrixMulCUDAILi32EEvPfS0_S0_ii'...
 GPGPU-Sim PTX: Finding dominators for '_Z13MatrixMulCUDAILi32EEvPfS0_S0_ii'...
 GPGPU-Sim PTX: Finding immediate dominators for '_Z13MatrixMulCUDAILi32EEvPfS0_S0_ii'...
@@ -346,17 +346,14 @@ GPGPU-Sim PTX:    immediate post dominator      @  PC=0x7e0 (matrixMul.1.sm_30.p
 GPGPU-Sim PTX:  2 (potential) branch divergence @  PC=0x7d8 (matrixMul.1.sm_30.ptx:315) @%p2 bra BB1_2;
 GPGPU-Sim PTX:    immediate post dominator      @  PC=0x7e0 (matrixMul.1.sm_30.ptx:318) mov.u32 %r31, %ctaid.x;
 GPGPU-Sim PTX: ... end of reconvergence points for _Z13MatrixMulCUDAILi32EEvPfS0_S0_ii
+event update
 GPGPU-Sim PTX: ... done pre-decoding instructions for '_Z13MatrixMulCUDAILi32EEvPfS0_S0_ii'.
 GPGPU-Sim PTX: pushing kernel '_Z13MatrixMulCUDAILi32EEvPfS0_S0_ii' to stream 1, gridDim= (2,2,1) blockDim = (32,32,1) 
 GPGPU-Sim: synchronize waiting for inactive GPU simulation
 GPGPU-Sim API: Stream Manager State
-GPGPU-Sim API:    stream 1 has 5 operations
-GPGPU-Sim API:       0 :  stream operation memcpy host-to-device
-GPGPU-Sim API:       1 :  stream operation memcpy host-to-device
-GPGPU-Sim API:       2 :  stream operation event
-GPGPU-Sim API:       3 :  stream operation kernel
-GPGPU-Sim API:       4 :  stream operation event
-event update
+GPGPU-Sim API:    stream 1 has 2 operations
+GPGPU-Sim API:       0 :  stream operation kernel
+GPGPU-Sim API:       1 :  stream operation event
 GPGPU-Sim uArch: Shader 0 bind to kernel 1 '_Z13MatrixMulCUDAILi32EEvPfS0_S0_ii'
 GPGPU-Sim uArch: CTA/core = 2, limited by: threads shmem regs
 GPGPU-Sim uArch: Shader 1 bind to kernel 1 '_Z13MatrixMulCUDAILi32EEvPfS0_S0_ii'
@@ -384,7 +381,7 @@ partiton_level_parallism_util =       1.9726
 partiton_level_parallism_util_total  =       1.9726
 L2_BW  =       8.0193 GB/Sec
 L2_BW_total  =       8.0193 GB/Sec
-gpu_total_sim_rate=630784
+gpu_total_sim_rate=315392
 
 ========= Core cache stats =========
 L1I_cache:
@@ -856,11 +853,11 @@ mrqq: max=18 avg=0.391255
 Memory Partition 3: 
 Cache L2_bank_006:
 MSHR contents
-MSHR: tag=0xc0007b00, atomic=0 1 entries : 0x7f10547fffd0 :  mf: uid= 11879, sid02:w27, part=3, addr=0xc0007b00, load , size=128, unknown  status = IN_PARTITION_L2_FILL_QUEUE (5105), 
+MSHR: tag=0xc0007b00, atomic=0 1 entries : 0x7f8a047fffd0 :  mf: uid= 11879, sid02:w27, part=3, addr=0xc0007b00, load , size=128, unknown  status = IN_PARTITION_L2_FILL_QUEUE (5105), 
 
 Cache L2_bank_007:
 MSHR contents
-MSHR: tag=0xc0005b80, atomic=0 1 entries : 0x7f1056215190 :  mf: uid= 11880, sid01:w27, part=3, addr=0xc0005b80, load , size=128, unknown  status = IN_PARTITION_DRAM (5102), 
+MSHR: tag=0xc0005b80, atomic=0 1 entries : 0x7f8a06215190 :  mf: uid= 11880, sid01:w27, part=3, addr=0xc0005b80, load , size=128, unknown  status = IN_PARTITION_DRAM (5102), 
 
 In Dram Latency Queue (total = 0): 
 DRAM[3]: 16 bks, busW=4 BL=8 CL=12, tRRD=6 tCCD=2, tRCD=12 tRAS=28 tRP=12 tRC=40
@@ -928,11 +925,11 @@ mrqq: max=19 avg=0.455815
 Memory Partition 4: 
 Cache L2_bank_008:
 MSHR contents
-MSHR: tag=0xc0005c00, atomic=0 1 entries : 0x7f1056701930 :  mf: uid= 11887, sid00:w28, part=4, addr=0xc0005c00, load , size=128, unknown  status = IN_PARTITION_DRAM (5101), 
+MSHR: tag=0xc0005c00, atomic=0 1 entries : 0x7f8a06701930 :  mf: uid= 11887, sid00:w28, part=4, addr=0xc0005c00, load , size=128, unknown  status = IN_PARTITION_DRAM (5101), 
 
 Cache L2_bank_009:
 MSHR contents
-MSHR: tag=0xc0005c80, atomic=0 1 entries : 0x7f105478bf70 :  mf: uid= 11868, sid01:w28, part=4, addr=0xc0005c80, load , size=128, unknown  status = IN_PARTITION_DRAM (5105), 
+MSHR: tag=0xc0005c80, atomic=0 1 entries : 0x7f8a0478bf70 :  mf: uid= 11868, sid01:w28, part=4, addr=0xc0005c80, load , size=128, unknown  status = IN_PARTITION_DRAM (5105), 
 
 In Dram Latency Queue (total = 0): 
 DRAM[4]: 16 bks, busW=4 BL=8 CL=12, tRRD=6 tCCD=2, tRCD=12 tRAS=28 tRP=12 tRC=40
@@ -1000,11 +997,11 @@ mrqq: max=19 avg=0.45261
 Memory Partition 5: 
 Cache L2_bank_010:
 MSHR contents
-MSHR: tag=0xc0007d00, atomic=0 1 entries : 0x7f1055082aa0 :  mf: uid= 11884, sid02:w29, part=5, addr=0xc0007d00, load , size=128, unknown  status = IN_PARTITION_DRAM (5104), 
+MSHR: tag=0xc0007d00, atomic=0 1 entries : 0x7f8a05082aa0 :  mf: uid= 11884, sid02:w29, part=5, addr=0xc0007d00, load , size=128, unknown  status = IN_PARTITION_DRAM (5104), 
 
 Cache L2_bank_011:
 MSHR contents
-MSHR: tag=0xc0005d80, atomic=0 1 entries : 0x7f105484e4c0 :  mf: uid= 11883, sid01:w29, part=5, addr=0xc0005d80, load , size=128, unknown  status = IN_PARTITION_DRAM (5105), 
+MSHR: tag=0xc0005d80, atomic=0 1 entries : 0x7f8a0484e4c0 :  mf: uid= 11883, sid01:w29, part=5, addr=0xc0005d80, load , size=128, unknown  status = IN_PARTITION_DRAM (5105), 
 
 In Dram Latency Queue (total = 0): 
 DRAM[5]: 16 bks, busW=4 BL=8 CL=12, tRRD=6 tCCD=2, tRCD=12 tRAS=28 tRP=12 tRC=40
@@ -1072,11 +1069,11 @@ mrqq: max=20 avg=0.424565
 Memory Partition 6: 
 Cache L2_bank_012:
 MSHR contents
-MSHR: tag=0xc0005e00, atomic=0 1 entries : 0x7f1055ede860 :  mf: uid= 11889, sid00:w30, part=6, addr=0xc0005e00, load , size=128, unknown  status = IN_PARTITION_DRAM (5104), 
+MSHR: tag=0xc0005e00, atomic=0 1 entries : 0x7f8a05ede860 :  mf: uid= 11889, sid00:w30, part=6, addr=0xc0005e00, load , size=128, unknown  status = IN_PARTITION_DRAM (5104), 
 
 Cache L2_bank_013:
 MSHR contents
-MSHR: tag=0xc0005e80, atomic=0 1 entries : 0x7f1055069ac0 :  mf: uid= 11878, sid01:w30, part=6, addr=0xc0005e80, load , size=128, unknown  status = IN_PARTITION_DRAM (5105), 
+MSHR: tag=0xc0005e80, atomic=0 1 entries : 0x7f8a05069ac0 :  mf: uid= 11878, sid01:w30, part=6, addr=0xc0005e80, load , size=128, unknown  status = IN_PARTITION_DRAM (5105), 
 
 In Dram Latency Queue (total = 0): 
 DRAM[6]: 16 bks, busW=4 BL=8 CL=12, tRRD=6 tCCD=2, tRCD=12 tRAS=28 tRP=12 tRC=40
@@ -1144,11 +1141,11 @@ mrqq: max=19 avg=0.457647
 Memory Partition 7: 
 Cache L2_bank_014:
 MSHR contents
-MSHR: tag=0xc0007f00, atomic=0 1 entries : 0x7f1055ef5b10 :  mf: uid= 11888, sid02:w31, part=7, addr=0xc0007f00, load , size=128, unknown  status = IN_PARTITION_DRAM (5105), 
+MSHR: tag=0xc0007f00, atomic=0 1 entries : 0x7f8a05ef5b10 :  mf: uid= 11888, sid02:w31, part=7, addr=0xc0007f00, load , size=128, unknown  status = IN_PARTITION_DRAM (5105), 
 
 Cache L2_bank_015:
 MSHR contents
-MSHR: tag=0xc0005f80, atomic=0 1 entries : 0x7f10546405d0 :  mf: uid= 11886, sid01:w31, part=7, addr=0xc0005f80, load , size=128, unknown  status = IN_PARTITION_DRAM (5104), 
+MSHR: tag=0xc0005f80, atomic=0 1 entries : 0x7f8a046405d0 :  mf: uid= 11886, sid01:w31, part=7, addr=0xc0005f80, load , size=128, unknown  status = IN_PARTITION_DRAM (5104), 
 
 In Dram Latency Queue (total = 0): 
 DRAM[7]: 16 bks, busW=4 BL=8 CL=12, tRRD=6 tCCD=2, tRCD=12 tRAS=28 tRP=12 tRC=40
@@ -1378,12 +1375,12 @@ Hops average = 1 (1 samples)
 ----------------------------END-of-Interconnect-DETAILS-------------------------
 
 
-gpgpu_simulation_time = 0 days, 0 hrs, 0 min, 1 sec (1 sec)
-gpgpu_simulation_rate = 630784 (inst/sec)
-gpgpu_simulation_rate = 5106 (cycle/sec)
-gpgpu_silicon_slowdown = 314727x
+gpgpu_simulation_time = 0 days, 0 hrs, 0 min, 2 sec (2 sec)
+gpgpu_simulation_rate = 315392 (inst/sec)
+gpgpu_simulation_rate = 2553 (cycle/sec)
+gpgpu_silicon_slowdown = 629455x
 GPGPU-Sim: detected inactive GPU simulation thread
-Performance= 0.00 GFlop/s, Time= 1000.000 msec, Size= 262144 Ops, WorkgroupSize= 1024 threads/block
+Performance= 0.00 GFlop/s, Time= 2000.000 msec, Size= 262144 Ops, WorkgroupSize= 1024 threads/block
 GPGPU-Sim: synchronize waiting for inactive GPU simulation
 GPGPU-Sim API: Stream Manager State
 GPGPU-Sim API:    stream 1 has 1 operations

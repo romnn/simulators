@@ -305,7 +305,7 @@ self exe links to: /benchrun/accelsim-ptx/vectoradd/sm6_gtx1080/input-1000000/ve
 Running md5sum using "md5sum /benchrun/accelsim-ptx/vectoradd/sm6_gtx1080/input-1000000/vectorAdd "
 self exe links to: /benchrun/accelsim-ptx/vectoradd/sm6_gtx1080/input-1000000/vectorAdd
 Extracting specific PTX file named vectorAdd.1.sm_30.ptx 
-GPGPU-Sim PTX: __cudaRegisterFunction _Z6vecAddPdS_S_i : hostFun 0x0x55adf7c015dd, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z6vecAddPdS_S_i : hostFun 0x0x55ec620015dd, fat_cubin_handle = 1
 GPGPU-Sim PTX: Parsing vectorAdd.1.sm_30.ptx
 GPGPU-Sim PTX: instruction assembly for function '_Z6vecAddPdS_S_i'...   done.
 GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file vectorAdd.1.sm_30.ptx
@@ -314,12 +314,12 @@ GPGPU-Sim PTX: finished loading globals (0 bytes total).
 GPGPU-Sim PTX: loading constants with explicit initializers...  done.
 GPGPU-Sim PTX: Loading PTXInfo from vectorAdd.1.sm_30.ptx
 GPGPU-Sim PTX: Kernel '_Z6vecAddPdS_S_i' : regs=10, lmem=0, smem=0, cmem=348
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fff5ddafa98..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fff5ddafa90..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fff5ddafa88..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fff5ddafa84..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffec0240768..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffec0240760..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffec0240758..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffec0240754..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55adf7c015dd (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55ec620015dd (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: finding reconvergence points for '_Z6vecAddPdS_S_i'...
 GPGPU-Sim PTX: Finding dominators for '_Z6vecAddPdS_S_i'...
 GPGPU-Sim PTX: Finding immediate dominators for '_Z6vecAddPdS_S_i'...
@@ -374,7 +374,7 @@ partiton_level_parallism_util =       2.6422
 partiton_level_parallism_util_total  =       2.6422
 L2_BW  =     111.5015 GB/Sec
 L2_BW_total  =     111.5015 GB/Sec
-gpu_total_sim_rate=136395
+gpu_total_sim_rate=130465
 
 ========= Core cache stats =========
 L1I_cache:
@@ -847,11 +847,11 @@ mrqq: max=64 avg=57.7969
 Memory Partition 3: 
 Cache L2_bank_006:
 MSHR contents
-MSHR: tag=0xc16dc300, atomic=0 1 entries : 0x7ff0693ea7a0 :  mf: uid=727382, sid11:w31, part=3, addr=0xc16dc300, load , size=128, unknown  status = IN_PARTITION_DRAM (159438), 
+MSHR: tag=0xc16dc300, atomic=0 1 entries : 0x7f6c993ea7a0 :  mf: uid=727382, sid11:w31, part=3, addr=0xc16dc300, load , size=128, unknown  status = IN_PARTITION_DRAM (159438), 
 
 Cache L2_bank_007:
 MSHR contents
-MSHR: tag=0xc16dc380, atomic=0 1 entries : 0x7ff06a56b100 :  mf: uid=727381, sid11:w31, part=3, addr=0xc16dc380, load , size=128, unknown  status = IN_PARTITION_DRAM (159438), 
+MSHR: tag=0xc16dc380, atomic=0 1 entries : 0x7f6c9a56b100 :  mf: uid=727381, sid11:w31, part=3, addr=0xc16dc380, load , size=128, unknown  status = IN_PARTITION_DRAM (159438), 
 
 In Dram Latency Queue (total = 0): 
 DRAM[3]: 16 bks, busW=4 BL=8 CL=12, tRRD=6 tCCD=2, tRCD=12 tRAS=28 tRP=12 tRC=40
@@ -1362,9 +1362,9 @@ Hops average = 1 (1 samples)
 ----------------------------END-of-Interconnect-DETAILS-------------------------
 
 
-gpgpu_simulation_time = 0 days, 0 hrs, 2 min, 34 sec (154 sec)
-gpgpu_simulation_rate = 136395 (inst/sec)
-gpgpu_simulation_rate = 1035 (cycle/sec)
-gpgpu_silicon_slowdown = 1552657x
+gpgpu_simulation_time = 0 days, 0 hrs, 2 min, 41 sec (161 sec)
+gpgpu_simulation_rate = 130465 (inst/sec)
+gpgpu_simulation_rate = 990 (cycle/sec)
+gpgpu_silicon_slowdown = 1623232x
 Final sum = 1000000.000000; sum/n = 1.000000 (should be ~1)
 GPGPU-Sim: *** exit detected ***

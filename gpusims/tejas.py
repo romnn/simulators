@@ -1,6 +1,8 @@
 import os
 import csv
 import re
+import math
+import psutil
 from pathlib import Path
 from gpusims.bench import BenchmarkConfig
 import multiprocessing
@@ -18,7 +20,7 @@ def build_config(config_file, threads):
 
 class TejasBenchmarkConfig(BenchmarkConfig):
     @staticmethod
-    def _run(path, inp, force=False, timeout_mins=5, **kwargs):
+    def _run(path, inp, force=False, timeout_mins=5, retries=1, **kwargs):
         print("tejas run:", inp, inp.args)
 
         threads = multiprocessing.cpu_count()
@@ -47,27 +49,32 @@ class TejasBenchmarkConfig(BenchmarkConfig):
             cwd=path,
             timeout_sec=timeout_mins * 60,
             save_to=results_dir / "tracegen",
-            retries=2,
+            retries=retries,
         )
-        print("stdout:")
-        print(stdout)
-        print("stderr:")
-        print(stderr)
-
-        # check number of kernels
-        kernels = 0
-        with open(str((path / "0.txt").absolute()), "r") as f:
-            kernels = len([line for line in f.readlines() if "KERNEL START" in line])
-        print("kernels={}".format(kernels))
+        print("stdout (last 15 lines):")
+        print("\n".join(stdout.splitlines()[-15:]))
+        print("stderr (last 15 lines):")
+        print("\n".join(stderr.splitlines()[-15:]))
 
         for txt_file in list(path.glob("*.txt")):
             if re.match(r"\d+", txt_file.name):
                 txt_file.rename(traces_dir / txt_file.name)
 
+        # check number of kernels
+        kernels = 0
+        with open(str((traces_dir / "0.txt").absolute()), "r") as f:
+            kernels = len([line for line in f.readlines() if "KERNEL START" in line])
+        print("kernels={}".format(kernels))
+
         simplifier = tejas_root / "../gputejas/Tracesimplifier.jar"
         assert simplifier.is_file()
 
-        java_opts = ["-XX:-UseGCOverheadLimit", "-Xmx{}m".format(6 * 1024)]
+        # 4GB heap
+        # available_mem_bytes = psutil.virtual_memory().total
+        # available_mem_gb = available_mem_bytes * 1e-9
+        # mem_gb = int(math.floor(0.75 * available_mem_gb))
+        mem_gb = 4
+        java_opts = ["-XX:-UseGCOverheadLimit", "-Xmx{}g".format(mem_gb)]
         cmd = (
             ["java"]
             + java_opts
@@ -86,12 +93,12 @@ class TejasBenchmarkConfig(BenchmarkConfig):
             cwd=path,
             timeout_sec=timeout_mins * 60,
             save_to=results_dir / "trace-simplifier",
-            retries=5,
+            retries=retries,
         )
-        print("stdout:")
-        print(stdout)
-        print("stderr:")
-        print(stderr)
+        print("stdout (last 15 lines)")
+        print("\n".join(stdout.splitlines()[-15:]))
+        print("stderr (last 15 lines):")
+        print("\n".join(stderr.splitlines()[-15:]))
 
         with open(str((results_dir / "trace_wall_time.csv").absolute()), "w") as f:
             output_writer = csv.writer(f)
@@ -123,12 +130,13 @@ class TejasBenchmarkConfig(BenchmarkConfig):
             cwd=path,
             timeout_sec=timeout_mins * 60,
             save_to=results_dir / "gputejas",
-            retries=5,
+            retries=retries,
         )
-        print("stdout:")
+        print("stdout (last 15 lines):")
         print("\n".join(stdout.splitlines()[-15:]))
-        print("stderr:")
-        print(stderr)
+        print("stderr (last 15 lines):")
+        print("\n".join(stderr.splitlines()[-15:]))
+
         with open(str((results_dir / "sim_wall_time.csv").absolute()), "w") as f:
             output_writer = csv.writer(f)
             output_writer.writerow(["exec_time_sec"])
@@ -148,10 +156,10 @@ class TejasBenchmarkConfig(BenchmarkConfig):
             timeout_sec=timeout_mins * 60,
             save_to=results_dir / "tejas-parse",
         )
-        print("stdout:")
-        print(stdout)
-        print("stderr:")
-        print(stderr)
+        print("stdout (last 15 lines):")
+        print("\n".join(stdout.splitlines()[-15:]))
+        print("stderr (last 15 lines):")
+        print("\n".join(stderr.splitlines()[-15:]))
 
     def load_dataframe(self, inp):
         results_dir = self.input_path(inp) / "results"

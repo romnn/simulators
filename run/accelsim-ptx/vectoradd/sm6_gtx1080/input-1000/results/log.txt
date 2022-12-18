@@ -305,7 +305,7 @@ self exe links to: /benchrun/accelsim-ptx/vectoradd/sm6_gtx1080/input-1000/vecto
 Running md5sum using "md5sum /benchrun/accelsim-ptx/vectoradd/sm6_gtx1080/input-1000/vectorAdd "
 self exe links to: /benchrun/accelsim-ptx/vectoradd/sm6_gtx1080/input-1000/vectorAdd
 Extracting specific PTX file named vectorAdd.1.sm_30.ptx 
-GPGPU-Sim PTX: __cudaRegisterFunction _Z6vecAddPdS_S_i : hostFun 0x0x558050e015dd, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z6vecAddPdS_S_i : hostFun 0x0x559dbde015dd, fat_cubin_handle = 1
 GPGPU-Sim PTX: Parsing vectorAdd.1.sm_30.ptx
 GPGPU-Sim PTX: instruction assembly for function '_Z6vecAddPdS_S_i'...   done.
 GPGPU-Sim PTX: finished parsing EMBEDDED .ptx file vectorAdd.1.sm_30.ptx
@@ -314,12 +314,12 @@ GPGPU-Sim PTX: finished loading globals (0 bytes total).
 GPGPU-Sim PTX: loading constants with explicit initializers...  done.
 GPGPU-Sim PTX: Loading PTXInfo from vectorAdd.1.sm_30.ptx
 GPGPU-Sim PTX: Kernel '_Z6vecAddPdS_S_i' : regs=10, lmem=0, smem=0, cmem=348
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc53c4ce68..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc53c4ce60..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc53c4ce58..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc53c4ce54..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc0e0bc3d8..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc0e0bc3d0..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc0e0bc3c8..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc0e0bc3c4..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x558050e015dd (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x559dbde015dd (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: finding reconvergence points for '_Z6vecAddPdS_S_i'...
 GPGPU-Sim PTX: Finding dominators for '_Z6vecAddPdS_S_i'...
 GPGPU-Sim PTX: Finding immediate dominators for '_Z6vecAddPdS_S_i'...

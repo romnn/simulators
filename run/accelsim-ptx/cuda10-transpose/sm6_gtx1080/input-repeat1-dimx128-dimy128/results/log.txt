@@ -305,7 +305,7 @@ self exe links to: /benchrun/accelsim-ptx/cuda10-transpose/sm6_gtx1080/input-rep
 Running md5sum using "md5sum /benchrun/accelsim-ptx/cuda10-transpose/sm6_gtx1080/input-repeat1-dimx128-dimy128/transpose "
 self exe links to: /benchrun/accelsim-ptx/cuda10-transpose/sm6_gtx1080/input-repeat1-dimx128-dimy128/transpose
 Extracting specific PTX file named transpose.1.sm_30.ptx 
-GPGPU-Sim PTX: __cudaRegisterFunction _Z22transposeCoarseGrainedPfS_ii : hostFun 0x0x55988fa03420, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z22transposeCoarseGrainedPfS_ii : hostFun 0x0x55d28ce03420, fat_cubin_handle = 1
 GPGPU-Sim PTX: Parsing transpose.1.sm_30.ptx
 GPGPU-Sim PTX: instruction assembly for function '_Z4copyPfS_ii'...   done.
 GPGPU-Sim PTX: allocating shared region for "_ZZ13copySharedMemPfS_iiE4tile" from 0x0 to 0x400 (shared memory space)
@@ -334,13 +334,13 @@ GPGPU-Sim PTX: Kernel '_Z18transposeCoalescedPfS_ii' : regs=10, lmem=0, smem=102
 GPGPU-Sim PTX: Kernel '_Z14transposeNaivePfS_ii' : regs=6, lmem=0, smem=0, cmem=344
 GPGPU-Sim PTX: Kernel '_Z13copySharedMemPfS_ii' : regs=9, lmem=0, smem=1024, cmem=344
 GPGPU-Sim PTX: Kernel '_Z4copyPfS_ii' : regs=6, lmem=0, smem=0, cmem=344
-GPGPU-Sim PTX: __cudaRegisterFunction _Z20transposeFineGrainedPfS_ii : hostFun 0x0x55988fa03286, fat_cubin_handle = 1
-GPGPU-Sim PTX: __cudaRegisterFunction _Z17transposeDiagonalPfS_ii : hostFun 0x0x55988fa030ec, fat_cubin_handle = 1
-GPGPU-Sim PTX: __cudaRegisterFunction _Z24transposeNoBankConflictsPfS_ii : hostFun 0x0x55988fa02f52, fat_cubin_handle = 1
-GPGPU-Sim PTX: __cudaRegisterFunction _Z18transposeCoalescedPfS_ii : hostFun 0x0x55988fa02db8, fat_cubin_handle = 1
-GPGPU-Sim PTX: __cudaRegisterFunction _Z14transposeNaivePfS_ii : hostFun 0x0x55988fa02c1e, fat_cubin_handle = 1
-GPGPU-Sim PTX: __cudaRegisterFunction _Z13copySharedMemPfS_ii : hostFun 0x0x55988fa02a84, fat_cubin_handle = 1
-GPGPU-Sim PTX: __cudaRegisterFunction _Z4copyPfS_ii : hostFun 0x0x55988fa028ea, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z20transposeFineGrainedPfS_ii : hostFun 0x0x55d28ce03286, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z17transposeDiagonalPfS_ii : hostFun 0x0x55d28ce030ec, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z24transposeNoBankConflictsPfS_ii : hostFun 0x0x55d28ce02f52, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z18transposeCoalescedPfS_ii : hostFun 0x0x55d28ce02db8, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z14transposeNaivePfS_ii : hostFun 0x0x55d28ce02c1e, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z13copySharedMemPfS_ii : hostFun 0x0x55d28ce02a84, fat_cubin_handle = 1
+GPGPU-Sim PTX: __cudaRegisterFunction _Z4copyPfS_ii : hostFun 0x0x55d28ce028ea, fat_cubin_handle = 1
 Transpose Starting...
 
 GPU Device 0: "Volta" with compute capability 7.0
@@ -354,12 +354,12 @@ GPU Device 0: "Volta" with compute capability 7.0
 
 Matrix size: 128x128 (8x8 tiles), tile size: 16x16, block size: 16x16
 
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c0..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9bc..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9b8..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125178..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125170..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc1412516c..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc14125168..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55988fa028ea (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55d28ce028ea (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: finding reconvergence points for '_Z4copyPfS_ii'...
 GPGPU-Sim PTX: Finding dominators for '_Z4copyPfS_ii'...
 GPGPU-Sim PTX: Finding immediate dominators for '_Z4copyPfS_ii'...
@@ -412,7 +412,7 @@ partiton_level_parallism_util =       5.2438
 partiton_level_parallism_util_total  =       5.2438
 L2_BW  =      93.4977 GB/Sec
 L2_BW_total  =      93.4977 GB/Sec
-gpu_total_sim_rate=163840
+gpu_total_sim_rate=327680
 
 ========= Core cache stats =========
 L1I_cache:
@@ -1397,17 +1397,17 @@ Hops average = 1 (1 samples)
 ----------------------------END-of-Interconnect-DETAILS-------------------------
 
 
-gpgpu_simulation_time = 0 days, 0 hrs, 0 min, 2 sec (2 sec)
-gpgpu_simulation_rate = 163840 (inst/sec)
-gpgpu_simulation_rate = 1068 (cycle/sec)
-gpgpu_silicon_slowdown = 1504681x
+gpgpu_simulation_time = 0 days, 0 hrs, 0 min, 1 sec (1 sec)
+gpgpu_simulation_rate = 327680 (inst/sec)
+gpgpu_simulation_rate = 2137 (cycle/sec)
+gpgpu_silicon_slowdown = 751988x
 event update
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c0..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9bc..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9b8..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125178..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125170..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc1412516c..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc14125168..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55988fa028ea (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55d28ce028ea (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: PDOM analysis already done for _Z4copyPfS_ii 
 GPGPU-Sim PTX: pushing kernel '_Z4copyPfS_ii' to stream 0, gridDim= (8,8,1) blockDim = (16,16,1) 
 GPGPU-Sim uArch: Shader 4 bind to kernel 2 '_Z4copyPfS_ii'
@@ -1451,7 +1451,7 @@ partiton_level_parallism_util =       5.2920
 partiton_level_parallism_util_total  =       5.2674
 L2_BW  =     275.3442 GB/Sec
 L2_BW_total  =     138.6074 GB/Sec
-gpu_total_sim_rate=218453
+gpu_total_sim_rate=327680
 
 ========= Core cache stats =========
 L1I_cache:
@@ -2436,20 +2436,20 @@ Hops average = 1 (2 samples)
 ----------------------------END-of-Interconnect-DETAILS-------------------------
 
 
-gpgpu_simulation_time = 0 days, 0 hrs, 0 min, 3 sec (3 sec)
-gpgpu_simulation_rate = 218453 (inst/sec)
-gpgpu_simulation_rate = 947 (cycle/sec)
-gpgpu_silicon_slowdown = 1696937x
+gpgpu_simulation_time = 0 days, 0 hrs, 0 min, 2 sec (2 sec)
+gpgpu_simulation_rate = 327680 (inst/sec)
+gpgpu_simulation_rate = 1421 (cycle/sec)
+gpgpu_silicon_slowdown = 1130893x
 event update
 GPGPU-Sim API: cudaEventSynchronize ** waiting for event
 GPGPU-Sim API: cudaEventSynchronize ** event detected
 transpose simple copy       , Throughput = 0.0001 GB/s, Time = 1000.00000 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c0..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9bc..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9b8..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125178..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125170..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc1412516c..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc14125168..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55988fa02a84 (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55d28ce02a84 (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: finding reconvergence points for '_Z13copySharedMemPfS_ii'...
 GPGPU-Sim PTX: Finding dominators for '_Z13copySharedMemPfS_ii'...
 GPGPU-Sim PTX: Finding immediate dominators for '_Z13copySharedMemPfS_ii'...
@@ -3496,12 +3496,12 @@ gpgpu_simulation_rate = 307200 (inst/sec)
 gpgpu_simulation_rate = 1053 (cycle/sec)
 gpgpu_silicon_slowdown = 1526115x
 event update
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c0..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9bc..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9b8..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125178..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125170..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc1412516c..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc14125168..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55988fa02a84 (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55d28ce02a84 (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: PDOM analysis already done for _Z13copySharedMemPfS_ii 
 GPGPU-Sim PTX: pushing kernel '_Z13copySharedMemPfS_ii' to stream 0, gridDim= (8,8,1) blockDim = (16,16,1) 
 GPGPU-Sim uArch: Shader 12 bind to kernel 4 '_Z13copySharedMemPfS_ii'
@@ -4538,12 +4538,12 @@ event update
 GPGPU-Sim API: cudaEventSynchronize ** waiting for event
 GPGPU-Sim API: cudaEventSynchronize ** event detected
 transpose shared memory copy, Throughput = 0.0001 GB/s, Time = 1000.00000 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c0..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9bc..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9b8..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125178..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125170..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc1412516c..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc14125168..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55988fa02c1e (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55d28ce02c1e (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: finding reconvergence points for '_Z14transposeNaivePfS_ii'...
 GPGPU-Sim PTX: Finding dominators for '_Z14transposeNaivePfS_ii'...
 GPGPU-Sim PTX: Finding immediate dominators for '_Z14transposeNaivePfS_ii'...
@@ -5586,12 +5586,12 @@ gpgpu_simulation_rate = 311296 (inst/sec)
 gpgpu_simulation_rate = 1081 (cycle/sec)
 gpgpu_silicon_slowdown = 1486586x
 event update
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c0..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9bc..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9b8..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125178..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125170..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc1412516c..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc14125168..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55988fa02c1e (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55d28ce02c1e (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: PDOM analysis already done for _Z14transposeNaivePfS_ii 
 GPGPU-Sim PTX: pushing kernel '_Z14transposeNaivePfS_ii' to stream 0, gridDim= (8,8,1) blockDim = (16,16,1) 
 GPGPU-Sim uArch: Shader 0 bind to kernel 6 '_Z14transposeNaivePfS_ii'
@@ -6628,12 +6628,12 @@ event update
 GPGPU-Sim API: cudaEventSynchronize ** waiting for event
 GPGPU-Sim API: cudaEventSynchronize ** event detected
 transpose naive             , Throughput = 0.0001 GB/s, Time = 2000.00000 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c0..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9bc..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9b8..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125178..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125170..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc1412516c..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc14125168..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55988fa02db8 (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55d28ce02db8 (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: finding reconvergence points for '_Z18transposeCoalescedPfS_ii'...
 GPGPU-Sim PTX: Finding dominators for '_Z18transposeCoalescedPfS_ii'...
 GPGPU-Sim PTX: Finding immediate dominators for '_Z18transposeCoalescedPfS_ii'...
@@ -7676,12 +7676,12 @@ gpgpu_simulation_rate = 316211 (inst/sec)
 gpgpu_simulation_rate = 1157 (cycle/sec)
 gpgpu_silicon_slowdown = 1388936x
 event update
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c0..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9bc..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9b8..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125178..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125170..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc1412516c..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc14125168..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55988fa02db8 (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55d28ce02db8 (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: PDOM analysis already done for _Z18transposeCoalescedPfS_ii 
 GPGPU-Sim PTX: pushing kernel '_Z18transposeCoalescedPfS_ii' to stream 0, gridDim= (8,8,1) blockDim = (16,16,1) 
 GPGPU-Sim uArch: Shader 8 bind to kernel 8 '_Z18transposeCoalescedPfS_ii'
@@ -8718,12 +8718,12 @@ event update
 GPGPU-Sim API: cudaEventSynchronize ** waiting for event
 GPGPU-Sim API: cudaEventSynchronize ** event detected
 transpose coalesced         , Throughput = 0.0001 GB/s, Time = 2000.00000 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c0..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9bc..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9b8..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125178..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125170..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc1412516c..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc14125168..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55988fa02f52 (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55d28ce02f52 (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: finding reconvergence points for '_Z24transposeNoBankConflictsPfS_ii'...
 GPGPU-Sim PTX: Finding dominators for '_Z24transposeNoBankConflictsPfS_ii'...
 GPGPU-Sim PTX: Finding immediate dominators for '_Z24transposeNoBankConflictsPfS_ii'...
@@ -9766,12 +9766,12 @@ gpgpu_simulation_rate = 333981 (inst/sec)
 gpgpu_simulation_rate = 1086 (cycle/sec)
 gpgpu_silicon_slowdown = 1479742x
 event update
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c0..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9bc..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9b8..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125178..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125170..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc1412516c..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc14125168..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55988fa02f52 (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55d28ce02f52 (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: PDOM analysis already done for _Z24transposeNoBankConflictsPfS_ii 
 GPGPU-Sim PTX: pushing kernel '_Z24transposeNoBankConflictsPfS_ii' to stream 0, gridDim= (8,8,1) blockDim = (16,16,1) 
 GPGPU-Sim uArch: Shader 16 bind to kernel 10 '_Z24transposeNoBankConflictsPfS_ii'
@@ -10807,13 +10807,13 @@ gpgpu_silicon_slowdown = 1487962x
 event update
 GPGPU-Sim API: cudaEventSynchronize ** waiting for event
 GPGPU-Sim API: cudaEventSynchronize ** event detected
-transpose optimized         , Throughput = 0.0001 GB/s, Time = 2000.00000 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c0..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9bc..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9b8..
+transpose optimized         , Throughput = 0.0001 GB/s, Time = 1000.00000 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125178..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125170..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc1412516c..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc14125168..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55988fa03420 (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55d28ce03420 (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: finding reconvergence points for '_Z22transposeCoarseGrainedPfS_ii'...
 GPGPU-Sim PTX: Finding dominators for '_Z22transposeCoarseGrainedPfS_ii'...
 GPGPU-Sim PTX: Finding immediate dominators for '_Z22transposeCoarseGrainedPfS_ii'...
@@ -11856,12 +11856,12 @@ gpgpu_simulation_rate = 339968 (inst/sec)
 gpgpu_simulation_rate = 1054 (cycle/sec)
 gpgpu_silicon_slowdown = 1524667x
 event update
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c0..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9bc..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9b8..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125178..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125170..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc1412516c..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc14125168..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55988fa03420 (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55d28ce03420 (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: PDOM analysis already done for _Z22transposeCoarseGrainedPfS_ii 
 GPGPU-Sim PTX: pushing kernel '_Z22transposeCoarseGrainedPfS_ii' to stream 0, gridDim= (8,8,1) blockDim = (16,16,1) 
 GPGPU-Sim uArch: Shader 4 bind to kernel 12 '_Z22transposeCoarseGrainedPfS_ii'
@@ -12898,12 +12898,12 @@ event update
 GPGPU-Sim API: cudaEventSynchronize ** waiting for event
 GPGPU-Sim API: cudaEventSynchronize ** event detected
 transpose coarse-grained    , Throughput = 0.0001 GB/s, Time = 1000.00000 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c0..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9bc..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9b8..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125178..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125170..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc1412516c..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc14125168..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55988fa03286 (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55d28ce03286 (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: finding reconvergence points for '_Z20transposeFineGrainedPfS_ii'...
 GPGPU-Sim PTX: Finding dominators for '_Z20transposeFineGrainedPfS_ii'...
 GPGPU-Sim PTX: Finding immediate dominators for '_Z20transposeFineGrainedPfS_ii'...
@@ -13946,12 +13946,12 @@ gpgpu_simulation_rate = 339752 (inst/sec)
 gpgpu_simulation_rate = 1009 (cycle/sec)
 gpgpu_silicon_slowdown = 1592666x
 event update
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c0..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9bc..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9b8..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125178..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125170..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc1412516c..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc14125168..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55988fa03286 (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55d28ce03286 (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: PDOM analysis already done for _Z20transposeFineGrainedPfS_ii 
 GPGPU-Sim PTX: pushing kernel '_Z20transposeFineGrainedPfS_ii' to stream 0, gridDim= (8,8,1) blockDim = (16,16,1) 
 GPGPU-Sim uArch: Shader 12 bind to kernel 14 '_Z20transposeFineGrainedPfS_ii'
@@ -14988,12 +14988,12 @@ event update
 GPGPU-Sim API: cudaEventSynchronize ** waiting for event
 GPGPU-Sim API: cudaEventSynchronize ** event detected
 transpose fine-grained      , Throughput = 0.0001 GB/s, Time = 1000.00000 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c0..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9bc..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9b8..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125178..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125170..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc1412516c..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc14125168..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55988fa030ec (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55d28ce030ec (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: finding reconvergence points for '_Z17transposeDiagonalPfS_ii'...
 GPGPU-Sim PTX: Finding dominators for '_Z17transposeDiagonalPfS_ii'...
 GPGPU-Sim PTX: Finding immediate dominators for '_Z17transposeDiagonalPfS_ii'...
@@ -15052,7 +15052,7 @@ partiton_level_parallism_util =       4.2353
 partiton_level_parallism_util_total  =       5.2305
 L2_BW  =     120.1633 GB/Sec
 L2_BW_total  =     199.3567 GB/Sec
-gpu_total_sim_rate=362788
+gpu_total_sim_rate=346298
 
 ========= Core cache stats =========
 L1I_cache:
@@ -16037,17 +16037,17 @@ Hops average = 1 (15 samples)
 ----------------------------END-of-Interconnect-DETAILS-------------------------
 
 
-gpgpu_simulation_time = 0 days, 0 hrs, 0 min, 21 sec (21 sec)
-gpgpu_simulation_rate = 362788 (inst/sec)
-gpgpu_simulation_rate = 1028 (cycle/sec)
-gpgpu_silicon_slowdown = 1563229x
+gpgpu_simulation_time = 0 days, 0 hrs, 0 min, 22 sec (22 sec)
+gpgpu_simulation_rate = 346298 (inst/sec)
+gpgpu_simulation_rate = 981 (cycle/sec)
+gpgpu_silicon_slowdown = 1638124x
 event update
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c8..
-GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7fffb822f9c0..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9bc..
-GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7fffb822f9b8..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125178..
+GPGPU-Sim PTX: Setting up arguments for 8 bytes starting at 0x7ffc14125170..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc1412516c..
+GPGPU-Sim PTX: Setting up arguments for 4 bytes starting at 0x7ffc14125168..
 
-GPGPU-Sim PTX: cudaLaunch for 0x0x55988fa030ec (mode=performance simulation) on stream 0
+GPGPU-Sim PTX: cudaLaunch for 0x0x55d28ce030ec (mode=performance simulation) on stream 0
 GPGPU-Sim PTX: PDOM analysis already done for _Z17transposeDiagonalPfS_ii 
 GPGPU-Sim PTX: pushing kernel '_Z17transposeDiagonalPfS_ii' to stream 0, gridDim= (8,8,1) blockDim = (16,16,1) 
 GPGPU-Sim uArch: Shader 0 bind to kernel 16 '_Z17transposeDiagonalPfS_ii'
@@ -17083,6 +17083,6 @@ gpgpu_silicon_slowdown = 1633130x
 event update
 GPGPU-Sim API: cudaEventSynchronize ** waiting for event
 GPGPU-Sim API: cudaEventSynchronize ** event detected
-transpose diagonal          , Throughput = 0.0001 GB/s, Time = 2000.00000 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose diagonal          , Throughput = 0.0001 GB/s, Time = 1000.00000 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
 Test passed
 GPGPU-Sim: *** exit detected ***

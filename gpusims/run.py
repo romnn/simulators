@@ -26,6 +26,8 @@ ROOT_DIR = Path(__file__).parent.parent
         "slurm-node": "the slurm node to use",
         "trace-only": "only generate traces, but do not simulate",
         "parse-only": "only parse results",
+        "dry-run": "print commands that would be executed but do not simulate",
+        "enable": "force running disabled benchmarks or inputs",
     },
     iterable=["benchmark", "config"],
 )
@@ -37,11 +39,13 @@ def run(
     simulator,
     repetitions=3,
     benchmark_dir=None,
-    timeout_mins=20,
+    timeout_mins=30,
     slurm=False,
     slurm_node=None,
     trace_only=False,
     parse_only=False,
+    dry_run=False,
+    enable=False,
 ):
     """Run benchmarks"""
     simulator = simulator.lower()
@@ -102,7 +106,7 @@ def run(
             raise KeyError("no such benchmark: {} (have: {})".format(b, have))
 
         # check if the benchmark is enabled
-        if not bench.enabled(simulator):
+        if not enable and not bench.enabled(simulator):
             print("skipping {} {} ...".format(c, b))
             continue
 
@@ -139,9 +143,9 @@ def run(
                 cmd += ["--trace-only"]
             if parse_only:
                 cmd += ["--parse-only"]
-            # pprint(cmd)
+            if dry_run:
+                cmd += ["--dry-run"]
 
-            # slurm_job = []
             slurm_job = [
                 "#!/bin/sh",
                 # 00:15:00"
@@ -153,8 +157,7 @@ def run(
                 "#SBATCH --gres=gpu:1",
                 " ".join(cmd),
             ]
-            # slurm_job += [
-            print("\n".join(slurm_job))
+            # print("\n".join(slurm_job))
 
             slurm_job_file = (
                 ROOT_DIR
@@ -167,16 +170,16 @@ def run(
                     ]
                 )
             )
-            slurm_job_file = slurm_job_file.with_suffix(".slurm")
-            print(slurm_job_file)
+            # slurm_job_file = slurm_job_file.with_suffix(".slurm")
+            print("written job to", str(slurm_job_file.absolute()))
+            with open(str(slurm_job_file.absolute()), "w") as f:
+                f.write(slurm_job)
 
             # module load cuda11.2/toolkit
-
             # !/bin/bash
             # SBATCH --time=00:15:00
             # SBATCH -N 2
             # SBATCH --ntasks-per-node=16
-
             # . /etc/bashrc
             # DAS-5:
             # . /etc/profile.d/modules.sh
@@ -186,7 +189,7 @@ def run(
 
         else:
             for inp in b.benchmark.inputs:
-                if inp.enabled(simulator):
+                if enable or inp.enabled(simulator):
                     b.run(
                         inp,
                         repetitions=repetitions,
@@ -194,5 +197,6 @@ def run(
                         timeout_mins=timeout_mins,
                         trace_ony=trace_only,
                         parse_only=parse_only,
+                        dry_run=dry_run,
                         # slurm=slurm,
                     )
