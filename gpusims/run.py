@@ -211,7 +211,7 @@ def run(
                         inp=inp,
                         repetitions=repetitions,
                         timeout_mins=timeout_mins,
-                        trace_ony=trace_only,
+                        trace_only=trace_only,
                         parse_only=parse_only,
                         dry_run=dry_run,
                     )

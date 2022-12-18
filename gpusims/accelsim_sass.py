@@ -62,18 +62,14 @@ def trace_commands(path, inp, traces_dir):
         nvbit_tracer_tool / "traces-processing/post-traces-processing"
     )
 
-    # create the tracing script
+    # create the tracing commands
     # 1. generate the .trace and kernelslist trace files
     # 2. post-processing for the traces and generate .traceg and kernelslist.g files
     # 3. delete the intermediate .trace and kernelslist files
     trace_cmds = []
-    # tmp_trace_sh = "set -e\n"
     for k, v in env.items():
         trace_cmds += ['export {}="{}"\n'.format(k, v)]
-        # tmp_trace_sh += 'export {}="{}"\n'.format(k, v)
     trace_cmds += ["{} {}\n".format(str(executable.absolute()), inp.args)]
-    # tmp_trace_sh += "{} {}\n".format(str(executable.absolute()), inp.args)
-    # tmp_trace_sh += "{} {}\n".format(
     trace_cmds += [
         "{} {}\n".format(
             str(post_traces_processing.absolute()),
@@ -81,9 +77,7 @@ def trace_commands(path, inp, traces_dir):
         )
     ]
     if True:
-        # tmp_trace_sh += "rm -f {}\n".format(str((traces_dir / "*.trace").absolute()))
         trace_cmds += ["rm -f {}\n".format(str((traces_dir / "*.trace").absolute()))]
-        # tmp_trace_sh += "rm -f {}\n".format(
         trace_cmds += [
             "rm -f {}\n".format(str((traces_dir / "kernelslist").absolute()))
         ]
@@ -94,6 +88,7 @@ class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
     @staticmethod
     def _run(path, inp, timeout_mins=5, parse_only=False, trace_only=False, **kwargs):
         print("accelsim SASS run")
+
         pprint(
             dict(
                 path=path,
