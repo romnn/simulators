@@ -12,16 +12,14 @@ def convert_hw_csv(csv_file, output_csv_file):
         reader = csv.reader(f)
 
         # find the start of the csv dump
-        prof_pat = re.compile(r"^==\d*==\s*Profiling result:\s*$")
-        prof_abort = re.compile(r"^==PROF== Disconnected\s*$")
+        csv_start_nvprof = re.compile(r"^==\d*==\s*Profiling result:\s*$")
+        csv_start_nsight = re.compile(r"^==PROF== Disconnected[\S\s]*$")
         for row in reader:
             line = ", ".join(row)
             # print(line)
-            if prof_pat.match(line) is not None:
-                # print("found start")
+            if csv_start_nvprof.match(line) is not None:
                 break
-            if prof_abort.match(line) is not None:
-                # print("found abort")
+            if csv_start_nsight.match(line) is not None:
                 break
 
         os.makedirs(output_csv_file.parent, exist_ok=True)
@@ -277,15 +275,13 @@ class NativeBenchmarkConfig(BenchmarkConfig):
 
         # parse the results
         nsight_results = sorted(list(results_dir.rglob("*result.nsight.txt")))
-        nvprof_results = sorted(
+        nvprof_cycles_results = sorted(
             list(results_dir.rglob("*result.nvprof.cycles.txt"))
-            + list(results_dir.rglob("*result.nvprof.txt"))
         )
-        # pprint(nsight_results)
-        # pprint(nvprof_results)
+        nvprof_results = sorted(list(results_dir.rglob("*result.nvprof.txt")))
 
-        for nvprof_result in nvprof_results:
-            convert_hw_csv(nvprof_result, nvprof_result.with_suffix(".csv"))
+        for result in nvprof_results + nvprof_cycles_results + nsight_results:
+            convert_hw_csv(result, result.with_suffix(".csv"))
 
     def load_dataframe(self, inp):
         results_dir = self.input_path(inp) / "results"
