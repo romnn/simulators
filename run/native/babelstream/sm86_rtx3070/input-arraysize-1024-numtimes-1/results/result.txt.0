@@ -1,0 +1,15 @@
+==1132== NVPROF is profiling process 1132, command: /benchrun/native/babelstream/sm86_rtx3070/input-arraysize-1024-numtimes-1/CUDAStream --arraysize 1024 --numtimes 1
+==1132== Profiling application: /benchrun/native/babelstream/sm86_rtx3070/input-arraysize-1024-numtimes-1/CUDAStream --arraysize 1024 --numtimes 1
+==1132== Profiling result:
+"Start","Duration","Grid X","Grid Y","Grid Z","Block X","Block Y","Block Z","Registers Per Thread","Static SMem","Dynamic SMem","Size","Throughput","SrcMemType","DstMemType","Device","Context","Stream","Name","Correlation_ID"
+us,us,,,,,,,,KB,B,KB,GB/s,,,,,,,
+346724.903000,3.520000,1,1,1,1024,1,1,14,0.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z11init_kernelIdEvPT_S1_S1_S0_S0_S0_",125
+346750.055000,1.888000,1,1,1,1024,1,1,8,0.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z11copy_kernelIdEvPKT_PS0_",129
+346765.671000,2.048000,1,1,1,1024,1,1,10,0.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z10mul_kernelIdEvPT_PKS0_",133
+346779.975000,1.920000,1,1,1,1024,1,1,10,0.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z10add_kernelIdEvPKT_S2_PS0_",137
+346794.567000,2.080000,1,1,1,1024,1,1,10,0.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z12triad_kernelIdEvPT_PKS0_S3_",141
+346809.927000,22.656000,256,1,1,1024,1,1,13,8.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z10dot_kernelIdEvPKT_S2_PS0_i",145
+346835.655000,1.056000,,,,,,,,,,2.000000,1.806201,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",147
+346858.791000,1.952000,,,,,,,,,,8.000000,3.908501,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",149
+346873.960000,1.408000,,,,,,,,,,8.000000,5.418604,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",151
+346888.200000,1.408000,,,,,,,,,,8.000000,5.418604,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",153

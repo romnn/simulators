@@ -44,17 +44,6 @@ def configure_tejas(ref, tejas_template):
             assoc=ref.l1_instr_cache_assoc,
         )
     )
-    # int(
-    #     math.floor(
-    #         (
-    #             ref.l1_instr_cache_num_sets
-    #             * ref.l1_instr_cache_blocksize
-    #             * ref.l1_instr_cache_assoc
-    #         )
-    #         / 1024.0
-    #     )
-    # )
-    # )
 
     const_cache = root.find("./Library/constantCache")
     const_cache.find("./BlockSize").text = str(int(ref.l1_const_cache_blocksize))
@@ -66,11 +55,6 @@ def configure_tejas(ref, tejas_template):
             block_size=ref.l1_const_cache_blocksize,
             assoc=ref.l1_const_cache_assoc,
         )
-        # int(
-        #     ref.l1_const_cache_num_sets
-        #     * ref.l1_const_cache_blocksize
-        #     * ref.l1_const_cache_assoc
-        # )
     )
 
     l1d = root.find("./Library/dCache")
@@ -85,11 +69,6 @@ def configure_tejas(ref, tejas_template):
         )
         * int(ref.num_tpc_sm_clusters)
         * int(ref.num_tpc_sm_per_cluster)
-        # int(
-        #     ref.l1_data_cache_num_sets
-        #     * ref.l1_data_cache_blocksize
-        #     * ref.l1_data_cache_assoc
-        # )
     )
 
     l2 = root.find("./Library/L2")
@@ -104,11 +83,6 @@ def configure_tejas(ref, tejas_template):
         * int(ref.dram_num_sub_partitions_per_memory_controller)
         * int(ref.dram_num_memory_controllers)
     )
-    # int(
-    #     ref.l2_data_cache_num_sets
-    #     * ref.l2_data_cache_block_size
-    #     * ref.l2_data_cache_assoc
-    # )
 
     dram_mapping = {
         "numBanks": "nbk",

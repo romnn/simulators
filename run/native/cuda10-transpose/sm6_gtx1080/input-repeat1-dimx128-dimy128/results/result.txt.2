@@ -1,0 +1,38 @@
+==2804== NVPROF is profiling process 2804, command: /benchrun/native/cuda10-transpose/sm6_gtx1080/input-repeat1-dimx128-dimy128/transpose -repeat=1 -dimX=128 -dimY=128
+==2804== Profiling application: /benchrun/native/cuda10-transpose/sm6_gtx1080/input-repeat1-dimx128-dimy128/transpose -repeat=1 -dimX=128 -dimY=128
+==2804== Profiling result:
+"Start","Duration","Grid X","Grid Y","Grid Z","Block X","Block Y","Block Z","Registers Per Thread","Static SMem","Dynamic SMem","Size","Throughput","SrcMemType","DstMemType","Device","Context","Stream","Name","Correlation_ID"
+us,us,,,,,,,,KB,B,KB,GB/s,,,,,,,
+330600.643000,8.416000,,,,,,,,,,64.000000,7.252276,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",118
+330680.803000,2.752000,8,8,1,16,16,1,8,0.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z4copyPfS_ii",122
+330691.235000,1.984000,8,8,1,16,16,1,8,0.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z4copyPfS_ii",124
+330709.059000,10.400000,,,,,,,,,,64.000000,5.868765,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",129
+330822.564000,10.400000,,,,,,,,,,64.000000,5.868765,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",130
+330905.412000,2.144000,8,8,1,16,16,1,9,1.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z13copySharedMemPfS_ii",132
+330911.812000,2.048000,8,8,1,16,16,1,9,1.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z13copySharedMemPfS_ii",134
+330923.108000,10.080000,,,,,,,,,,64.000000,6.055075,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",139
+330998.372000,10.208000,,,,,,,,,,64.000000,5.979149,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",140
+331076.389000,3.328000,8,8,1,16,16,1,8,0.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z14transposeNaivePfS_ii",142
+331082.565000,3.104000,8,8,1,16,16,1,8,0.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z14transposeNaivePfS_ii",144
+331093.957000,10.112000,,,,,,,,,,64.000000,6.035913,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",149
+331167.685000,10.112000,,,,,,,,,,64.000000,6.035913,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",150
+331244.933000,2.208000,8,8,1,16,16,1,10,1.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z18transposeCoalescedPfS_ii",152
+331250.853000,2.080000,8,8,1,16,16,1,10,1.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z18transposeCoalescedPfS_ii",154
+331261.285000,10.113000,,,,,,,,,,64.000000,6.035317,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",159
+331336.134000,10.112000,,,,,,,,,,64.000000,6.035913,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",160
+331414.118000,2.176000,8,8,1,16,16,1,11,1.062500,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z24transposeNoBankConflictsPfS_ii",162
+331420.006000,1.984000,8,8,1,16,16,1,11,1.062500,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z24transposeNoBankConflictsPfS_ii",164
+331430.182000,10.080000,,,,,,,,,,64.000000,6.055075,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",169
+331503.206000,10.081000,,,,,,,,,,64.000000,6.054474,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",170
+331580.359000,2.272000,8,8,1,16,16,1,10,1.062500,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z22transposeCoarseGrainedPfS_ii",172
+331586.407000,2.016000,8,8,1,16,16,1,10,1.062500,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z22transposeCoarseGrainedPfS_ii",174
+331601.223000,10.080000,,,,,,,,,,64.000000,6.055075,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",179
+331687.495000,10.112000,,,,,,,,,,64.000000,6.035913,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",180
+331766.696000,2.144000,8,8,1,16,16,1,11,1.062500,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z20transposeFineGrainedPfS_ii",182
+331772.520000,2.016000,8,8,1,16,16,1,11,1.062500,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z20transposeFineGrainedPfS_ii",184
+331783.144000,10.080000,,,,,,,,,,64.000000,6.055075,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",189
+331857.672000,10.112000,,,,,,,,,,64.000000,6.035913,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",190
+331935.784000,2.336000,8,8,1,16,16,1,11,1.062500,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z17transposeDiagonalPfS_ii",192
+331941.800000,2.208000,8,8,1,16,16,1,11,1.062500,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z17transposeDiagonalPfS_ii",194
+331952.200000,10.080000,,,,,,,,,,64.000000,6.055075,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",199
+332025.737000,10.112000,,,,,,,,,,64.000000,6.035913,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",200

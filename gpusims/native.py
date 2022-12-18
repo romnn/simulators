@@ -35,7 +35,7 @@ def convert_hw_csv(csv_file, output_csv_file):
 
 class NativeBenchmarkConfig(BenchmarkConfig):
     @staticmethod
-    def run_input(path, inp, repetitions=1, force=False, timeout_mins=5, **kwargs):
+    def _run(path, inp, repetitions=1, force=False, timeout_mins=5, **kwargs):
         print("native run:", inp)
         print("repetitions:", repetitions)
         print("timeout mins:", timeout_mins)

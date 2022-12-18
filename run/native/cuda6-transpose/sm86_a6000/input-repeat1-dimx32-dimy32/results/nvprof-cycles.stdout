@@ -1,0 +1,26 @@
+Transpose Starting...
+
+MapSMtoCores for SM 6.1 is undefined.  Default to use 192 Cores/SM
+GPU Device 0: "NVIDIA GeForce GTX 1080" with compute capability 6.1
+
+MapSMtoCores for SM 6.1 is undefined.  Default to use 192 Cores/SM
+> Device 0: "NVIDIA GeForce GTX 1080"
+> SM Capability 6.1 detected:
+MapSMtoCores for SM 6.1 is undefined.  Default to use 192 Cores/SM
+MapSMtoCores for SM 6.1 is undefined.  Default to use 192 Cores/SM
+> [NVIDIA GeForce GTX 1080] has 20 MP(s) x 192 (Cores/MP) = 3840 (Cores)
+> Compute performance scaling factor = 1.00
+> MatrixSize X = 32
+> MatrixSize Y = 32
+
+Matrix size: 32x32 (2x2 tiles), tile size: 16x16, block size: 16x16
+
+transpose simple copy       , Throughput = 0.0000 GB/s, Time = 723.31665 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose shared memory copy, Throughput = 0.0000 GB/s, Time = 708.34686 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose naive             , Throughput = 0.0000 GB/s, Time = 726.29968 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose coalesced         , Throughput = 0.0000 GB/s, Time = 708.61578 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose optimized         , Throughput = 0.0000 GB/s, Time = 710.80676 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose coarse-grained    , Throughput = 0.0000 GB/s, Time = 722.07202 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose fine-grained      , Throughput = 0.0000 GB/s, Time = 755.00031 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose diagonal          , Throughput = 0.0000 GB/s, Time = 717.76837 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+Test passed

@@ -3,6 +3,7 @@
 /target
 /Cargo.lock
 /deprecated
+Pipfile.lock
 
 # generated traces are too big for github
 **/results/traces/*
@@ -11,6 +12,8 @@
 .ipynb_checkpoints
 run.tar.gz
 
+.slurm/
+slurm-*.out
 .traceg
 _cuobjdump_list_ptx_*
 _app_cuda_version_*

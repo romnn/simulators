@@ -14,7 +14,7 @@ COPY ./cache /cache
 RUN ls -lia /cache
 RUN if [[ ! -f "/cache/gputejas_installation_kit.tar.gz" ]]; then \
   echo "downloading" && \
-  wget --no-check-certificate \
+  wget --tries=10 --retry-connrefused --waitretry=5 --no-check-certificate \
   -O /cache/gputejas_installation_kit.tar.gz \
   https://www.cse.iitd.ac.in/tejas/gputejas/home_files/gputejas_installation_kit.tar.gz; fi
 

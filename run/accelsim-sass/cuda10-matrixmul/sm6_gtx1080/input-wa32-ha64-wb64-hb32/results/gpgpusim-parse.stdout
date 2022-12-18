@@ -1,0 +1,125 @@
+options: Options {
+    input: "/benchrun/accelsim-sass/cuda10-matrixmul/sm6_gtx1080/input-wa32-ha64-wb64-hb32/results/log.txt",
+    output: "/benchrun/accelsim-sass/cuda10-matrixmul/sm6_gtx1080/input-wa32-ha64-wb64-hb32/results/stats.csv",
+    per_kernel: false,
+    kernel_instance: false,
+    configs_as_rows: false,
+    config_list: None,
+    benchmark_list: None,
+    sim_name: None,
+    strict: false,
+}
+GPGPU-sim version: Some("accelsim-commit-e02c99dbadefc0b9dc95317100be2a446eec142c_modified_0.0")
+stats: {
+    (
+        "final_kernel",
+        0,
+        "l2_cache_read_hit",
+    ): 0.0,
+    (
+        "final_kernel",
+        0,
+        "total_dram_writes",
+    ): 512.0,
+    (
+        "final_kernel",
+        0,
+        "gpu_ipc",
+    ): 95.2233,
+    (
+        "final_kernel",
+        0,
+        "gpgpu_silicon_slowdown",
+    ): 274700.0,
+    (
+        "final_kernel",
+        0,
+        "gpu_tot_ipc",
+    ): 95.2233,
+    (
+        "final_kernel",
+        0,
+        "gpu_occupancy",
+    ): 48.9981,
+    (
+        "final_kernel",
+        0,
+        "gpu_total_instructions",
+    ): 557056.0,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_read_miss",
+    ): 128.0,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_write_hit",
+    ): 0.0,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_write_total",
+    ): 128.0,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_write_miss",
+    ): 128.0,
+    (
+        "final_kernel",
+        0,
+        "gpu_tot_sim_cycle",
+    ): 5850.0,
+    (
+        "final_kernel",
+        0,
+        "total_core_cache_read_mshr_hit",
+    ): 0.0,
+    (
+        "final_kernel",
+        0,
+        "l2_bandwidth_gbps",
+    ): 6.9994,
+    (
+        "final_kernel",
+        0,
+        "total_dram_reads",
+    ): 1072.0,
+    (
+        "final_kernel",
+        0,
+        "total_core_cache_read_hit",
+    ): 0.0,
+    (
+        "final_kernel",
+        0,
+        "total_core_cache_write_hit",
+    ): 0.0,
+    (
+        "final_kernel",
+        0,
+        "kernel_launch_uid",
+    ): 1.0,
+    (
+        "final_kernel",
+        0,
+        "gpgpu_n_tot_w_icount",
+    ): 17664.0,
+    (
+        "final_kernel",
+        0,
+        "gpgpu_simulation_time_sec",
+    ): 1.0,
+    (
+        "final_kernel",
+        0,
+        "gpgpu_simulation_rate",
+    ): 5850.0,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_read_total",
+    ): 256.0,
+}
+done in 20.570886ms: 74.16 KiB parsed (16.00 EiB/s)

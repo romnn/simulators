@@ -1,0 +1,22 @@
+Transpose Starting...
+
+GPU Device 0: "Pascal" with compute capability 6.1
+
+> Device 0: "NVIDIA GeForce GTX 1080"
+> SM Capability 6.1 detected:
+> [NVIDIA GeForce GTX 1080] has 20 MP(s) x 128 (Cores/MP) = 2560 (Cores)
+> Compute performance scaling factor = 1.00
+> MatrixSize X = 64
+> MatrixSize Y = 64
+
+Matrix size: 64x64 (4x4 tiles), tile size: 16x16, block size: 16x16
+
+transpose simple copy       , Throughput = 3.5453 GB/s, Time = 0.00861 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose shared memory copy, Throughput = 4.7212 GB/s, Time = 0.00646 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose naive             , Throughput = 5.2400 GB/s, Time = 0.00582 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose coalesced         , Throughput = 5.6430 GB/s, Time = 0.00541 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose optimized         , Throughput = 5.7798 GB/s, Time = 0.00528 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose coarse-grained    , Throughput = 5.6098 GB/s, Time = 0.00544 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose fine-grained      , Throughput = 5.3577 GB/s, Time = 0.00570 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose diagonal          , Throughput = 5.4186 GB/s, Time = 0.00563 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+Test passed

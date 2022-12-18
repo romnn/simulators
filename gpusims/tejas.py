@@ -74,7 +74,9 @@ class TejasBenchmarkConfig(BenchmarkConfig):
         available_mem_gb = available_mem_bytes * 1e-9
         max_mem_gb = int(math.floor(0.75 * available_mem_gb))
         mem_gb = min(8, max_mem_gb)
-        java_opts = ["-XX:-UseGCOverheadLimit", "-Xmx{}g".format(mem_gb)]
+        java_opts = []
+        # java_opts += ["-XX:-UseGCOverheadLimit"]
+        java_opts += ["-Xmx{}g".format(mem_gb)]
         cmd = (
             ["java"]
             + java_opts

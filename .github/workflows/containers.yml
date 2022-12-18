@@ -4,43 +4,21 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: test ${{ matrix.simulator.name }} container
+    name: build ${{ matrix.simulator }} container
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         simulator:
           # native and sass require a physical GPU device
-          - name: native
-            bench: false
-          - name: accelsim-sass
-            bench: false
-          - name: accelsim-ptx
-            bench: true
-          - name: tejas
-            bench: true
-          - name: m2s
-            bench: true
-          - name: macsim
-            bench: true
+          - native
+          - accelsim-sass
 
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
         with:
           python-version: "3.10"
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
-      # - name: Add musl target toolchain
-      #   run: rustup target add x86_64-unknown-linux-musl
-      # - name: Compile tools
-      #   run: >-
-      #     cargo build
-      #     --release
-      #     --all-targets
-      #     --target x86_64-unknown-linux-musl
  
       - name: Install dependencies
         run: |
@@ -50,16 +28,54 @@ jobs:
       - name: Template simulator configurations
         run: inv configure-all
 
-      - name: Build ${{ matrix.simulator.name }} container
+      - name: Build ${{ matrix.simulator }} container
         run: >-
           inv build
-          -s ${{ matrix.simulator.name }}
+          -s ${{ matrix.simulator }}
           --base
 
-      - name: Benchmark ${{ matrix.simulator.name }}
-        if: ${{ matrix.simulator.bench }}
+  benchmark:
+    name: benchmark ${{ matrix.simulator }} (${{ matrix.config }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - sm6_gtx1080
+          - sm86_rtx3070
+          - sm86_a6000
+          - sm86_a4000
+        simulator:
+          # native and sass require a physical GPU device
+          - accelsim-ptx
+          - tejas
+          - m2s
+          - macsim
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+ 
+      - name: Install dependencies
+        run: |
+          pip install pipenv
+          pipenv install --dev --system
+      
+      - name: Template simulator configurations
+        run: inv configure-all
+
+      - name: Build ${{ matrix.simulator }} container
+        run: >-
+          inv build
+          -s ${{ matrix.simulator }}
+          --base
+
+      - name: Benchmark ${{ matrix.simulator }} (${{ matrix.config }})
         run: >-
           inv bench
-          -s ${{ matrix.simulator.name }}
+          -s ${{ matrix.simulator }}
+          -c ${{ matrix.config }}
           --timeout-mins 40
           --local

@@ -1,0 +1,9 @@
+==3530== NVPROF is profiling process 3530, command: /benchrun/native/cuda4-matrixmul/sm6_gtx1080/input-512/matrixMul 512
+==3530== Profiling application: /benchrun/native/cuda4-matrixmul/sm6_gtx1080/input-512/matrixMul 512
+==3530== Profiling result:
+"Start","Duration","Grid X","Grid Y","Grid Z","Block X","Block Y","Block Z","Registers Per Thread","Static SMem","Dynamic SMem","Size","Throughput","SrcMemType","DstMemType","Device","Context","Stream","Name","Correlation_ID"
+us,us,,,,,,,,KB,B,MB,GB/s,,,,,,,
+363905.626000,171.200000,,,,,,,,,,1.000000,5.704220,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",109
+364185.691000,171.648000,,,,,,,,,,1.000000,5.689332,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",110
+364391.067000,247.296000,16,16,1,32,32,1,30,8.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z8mult_gpuPfS_S_ii",112
+364654.043000,159.329000,,,,,,,,,,1.000000,6.129220,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",114
