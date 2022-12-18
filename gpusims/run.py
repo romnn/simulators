@@ -147,8 +147,6 @@ def run(
                 cmd += ["--trace-only"]
             if parse_only:
                 cmd += ["--parse-only"]
-            # if dry_run:
-            #     cmd += ["--dry-run"]
 
             slurm_job_name = "-".join(
                 [
@@ -210,10 +208,8 @@ def run(
                     b.run(
                         inp,
                         repetitions=repetitions,
-                        # force=force,
                         timeout_mins=timeout_mins,
                         trace_ony=trace_only,
                         parse_only=parse_only,
                         dry_run=dry_run,
-                        # slurm=slurm,
                     )

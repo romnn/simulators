@@ -90,37 +90,31 @@ def trace_commands(path, inp, traces_dir):
     return trace_cmds
 
 
-# def slurm_run(path, inp, timeout_mins=5, parse_only=False, trace_only=False, **kwargs):
-#     pass
-
-
 class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
     @staticmethod
     def _run(
         path,
         inp,
         timeout_mins=5,
-        # slurm=False,
         parse_only=False,
         trace_only=False,
         **kwargs
     ):
-        print("accelsim SASS run:", inp)
+        print("accelsim SASS run")
+        pprint(
+            dict(
+                path=path,
+                inp=inp,
+                timeout_mins=timeout_mins,
+                parse_only=parse_only,
+                trace_only=trace_only,
+                kwargs=kwargs,
+            )
+        )
 
         results_dir = path / "results"
         traces_dir = results_dir / "traces"
         os.makedirs(str(traces_dir.absolute()), exist_ok=True)
-
-        # if slurm:
-        #     # use dedicated method
-        #     return slurm_run(
-        #         path=path,
-        #         inp=inp,
-        #         timeout_mins=timeout_mins,
-        #         parse_only=parse_only,
-        #         trace_only=trace_only,
-        #         **kwargs
-        #     )
 
         if not parse_only:
             trace_cmds = trace_commands(
