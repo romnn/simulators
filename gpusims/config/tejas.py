@@ -1,4 +1,9 @@
+import math
 import xml.etree.ElementTree as ET
+
+
+def cache_size_kb(sets, block_size, assoc):
+    return int(math.floor((int(sets) * int(block_size) * int(assoc)) / 1024.0))
 
 
 def configure_tejas(ref, tejas_template):
@@ -24,6 +29,86 @@ def configure_tejas(ref, tejas_template):
     dram_controller = root.find("./System/MainMemoryController")
     # dram_controller.find("./rankLatency").text = str(ref.dram_latency)  # correct ?
     dram_controller.find("./rankOperatingFrequency").text = str(int(ref.dram_clock_mhz))
+    # seems that num chans is the number of memory controllers?
+    dram_controller.find("./numChans").text = str(int(ref.dram_num_memory_controllers))
+
+    # MSHRSize could also set MSHRSize  from gpgpusim config
+    instr_cache = root.find("./Library/iCache")
+    instr_cache.find("./BlockSize").text = str(int(ref.l1_instr_cache_blocksize))
+    instr_cache.find("./Associativity").text = str(int(ref.l1_instr_cache_assoc))
+    # size is in KB
+    instr_cache.find("./Size").text = str(
+        cache_size_kb(
+            sets=ref.l1_instr_cache_num_sets,
+            block_size=ref.l1_instr_cache_blocksize,
+            assoc=ref.l1_instr_cache_assoc,
+        )
+    )
+    # int(
+    #     math.floor(
+    #         (
+    #             ref.l1_instr_cache_num_sets
+    #             * ref.l1_instr_cache_blocksize
+    #             * ref.l1_instr_cache_assoc
+    #         )
+    #         / 1024.0
+    #     )
+    # )
+    # )
+
+    const_cache = root.find("./Library/constantCache")
+    const_cache.find("./BlockSize").text = str(int(ref.l1_const_cache_blocksize))
+    const_cache.find("./Associativity").text = str(int(ref.l1_const_cache_assoc))
+    # size is in KB
+    const_cache.find("./Size").text = str(
+        cache_size_kb(
+            sets=ref.l1_const_cache_num_sets,
+            block_size=ref.l1_const_cache_blocksize,
+            assoc=ref.l1_const_cache_assoc,
+        )
+        # int(
+        #     ref.l1_const_cache_num_sets
+        #     * ref.l1_const_cache_blocksize
+        #     * ref.l1_const_cache_assoc
+        # )
+    )
+
+    l1d = root.find("./Library/dCache")
+    l1d.find("./BlockSize").text = str(int(ref.l1_data_cache_blocksize))
+    l1d.find("./Associativity").text = str(int(ref.l1_data_cache_assoc))
+    # size is in KB, but total and not per SM
+    l1d.find("./Size").text = str(
+        cache_size_kb(
+            sets=ref.l1_data_cache_num_sets,
+            block_size=ref.l1_data_cache_blocksize,
+            assoc=ref.l1_data_cache_assoc,
+        )
+        * int(ref.num_tpc_sm_clusters)
+        * int(ref.num_tpc_sm_per_cluster)
+        # int(
+        #     ref.l1_data_cache_num_sets
+        #     * ref.l1_data_cache_blocksize
+        #     * ref.l1_data_cache_assoc
+        # )
+    )
+
+    l2 = root.find("./Library/L2")
+    l2.find("./BlockSize").text = str(int(ref.l2_data_cache_blocksize))
+    l2.find("./Associativity").text = str(int(ref.l2_data_cache_assoc))
+    l2.find("./Size").text = str(
+        cache_size_kb(
+            sets=ref.l2_data_cache_num_sets,
+            block_size=ref.l2_data_cache_blocksize,
+            assoc=ref.l2_data_cache_assoc,
+        )
+        * int(ref.dram_num_sub_partitions_per_memory_controller)
+        * int(ref.dram_num_memory_controllers)
+    )
+    # int(
+    #     ref.l2_data_cache_num_sets
+    #     * ref.l2_data_cache_block_size
+    #     * ref.l2_data_cache_assoc
+    # )
 
     dram_mapping = {
         "numBanks": "nbk",

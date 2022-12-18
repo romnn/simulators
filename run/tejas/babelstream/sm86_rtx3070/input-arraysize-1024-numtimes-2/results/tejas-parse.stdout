@@ -1,0 +1,49 @@
+options: Options {
+    input: "/benchrun/tejas/babelstream/sm86_rtx3070/input-arraysize-1024-numtimes-2/results/stats.txt",
+    output: "/benchrun/tejas/babelstream/sm86_rtx3070/input-arraysize-1024-numtimes-2/results/stats.csv",
+}
+stats: Stats {
+    emulator_type: Some(
+        "OCELOT",
+    ),
+    created: None,
+    sim_time: Some(
+        45.591s,
+    ),
+    total_inst_count: Some(
+        151746,
+    ),
+    total_cycle_count: Some(
+        34480,
+    ),
+    dram_total_reads: 0,
+    dram_total_writes: 0,
+    dram_avg_read_latency: Some(
+        0.0,
+    ),
+    total_instr_cache_access: Some(
+        0,
+    ),
+    total_const_cache_access: Some(
+        0,
+    ),
+    total_shared_cache_access: Some(
+        0,
+    ),
+    total_instr_cache_misses: Some(
+        16,
+    ),
+    total_const_cache_misses: Some(
+        2048,
+    ),
+    total_shared_cache_misses: Some(
+        0,
+    ),
+    kips: Some(
+        3.328420082911101,
+    ),
+    total_ipc: Some(
+        4.400986078886311,
+    ),
+}
+done after 38.196166ms

@@ -40,6 +40,13 @@ $(TEJAS_BENCHES):
 $(CLEAN_BENCHES):
 	+$(MAKE) $(MAKE_FLAGS) -C $(@:clean-%=%) clean
 
+nvbit-tracer-tool:
+	rm -rf accel-sim-framework
+	git clone git@github.com:accel-sim/accel-sim-framework.git
+	curl -L -o ./accel-sim-framework/util/tracer_nvbit/nvbit.tar.bz2 https://github.com/NVlabs/NVBit/releases/download/1.5.5/nvbit-Linux-x86_64-1.5.5.tar.bz2
+	tar -xf ./accel-sim-framework/util/tracer_nvbit/nvbit.tar.bz2 -C ./accel-sim-framework/util/tracer_nvbit/
+	make -C ./accel-sim-framework/util/tracer_nvbit/
+
 .PHONY: $(TEJAS_BENCHES)
 .PHONY: $(ACCELSIM_BENCHES)
 .PHONY: $(NATIVE_BENCHES)

@@ -5,9 +5,28 @@ from pathlib import Path
 import gpusims.utils as utils
 from pprint import pprint  # noqa: F401
 
+ROOT_DIR = Path(__file__).parent.parent
+
 
 def trace_commands(path, inp, traces_dir):
-    nvbit_tracer_root = Path(os.environ["NVBIT_TRACER_ROOT"])
+    # locate nvbit tracing tool
+    if os.environ.get("NVBIT_TRACER_ROOT") is not None:
+        nvbit_tracer_root = Path(os.environ["NVBIT_TRACER_ROOT"])
+    else:
+        nvbit_tracer_root = (
+            ROOT_DIR / "benchmarks/accel-sim-framework/util/tracer_nvbit/"
+        )
+        print(
+            "NVBIT_TRACER_ROOT environment variable is not set, trying",
+            str(nvbit_tracer_root.absolute()),
+        )
+        if not nvbit_tracer_root.is_dir():
+            raise AssertionError(
+                "NVBIT_TRACER_ROOT not set and default installation at {} does not exist.".format(
+                    str(nvbit_tracer_root.absolute())
+                )
+            )
+
     nvbit_tracer_tool = nvbit_tracer_root / "tracer_tool"
     assert nvbit_tracer_tool.is_dir()
 

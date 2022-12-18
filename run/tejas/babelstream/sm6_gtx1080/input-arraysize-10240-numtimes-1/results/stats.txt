@@ -1,7 +1,7 @@
 [Configuration]
 
 EmulatorType: OCELOT
-Schedule: Sat Dec 17 19:38:10 UTC 2022
+Schedule: Sun Dec 18 05:01:41 UTC 2022
 
 [RAM statistics]
 
@@ -87,13 +87,13 @@ Total Reads and Writes: 0 Bytes
 
 
 [Simulator Time]
-Time Taken		=	0 : 20 minutes
+Time Taken		=	0 : 28 minutes
 Total Instructions executed : 76856
-Instructions per Second	=	3.7796793547752534 KIPS		
+Instructions per Second	=	2.7348943135719876 KIPS		
 ****************************************************************************
 TOTAL INSTRUCTIONS = 76856
-TOTAL CYCLES = 34353
-TOTAL INSTRUCTIONS PER CYCLE = 2.2372427444473555
+TOTAL CYCLES = 17158
+TOTAL INSTRUCTIONS PER CYCLE = 4.479309942883786
 **************************************************************************** 
 
 [Memory System Statistics]
@@ -217,113 +217,113 @@ SM : 0 of TPC : 8
 iCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 3
 constantCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 128
 sharedCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 128
 iCacheRequests are zero for SM 0 of TPC 9
 SM : 0 of TPC : 9
 iCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 3
 constantCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 128
 sharedCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 128
 iCacheRequests are zero for SM 0 of TPC 10
 SM : 0 of TPC : 10
 iCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 3
 constantCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 128
 sharedCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 128
 iCacheRequests are zero for SM 0 of TPC 11
 SM : 0 of TPC : 11
 iCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 3
 constantCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 128
 sharedCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 128
 iCacheRequests are zero for SM 0 of TPC 12
 SM : 0 of TPC : 12
 iCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 3
 constantCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 128
 sharedCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 128
 iCacheRequests are zero for SM 0 of TPC 13
 SM : 0 of TPC : 13
 iCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 3
 constantCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 128
 sharedCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 128
 iCacheRequests are zero for SM 0 of TPC 14
 SM : 0 of TPC : 14
 iCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 3
 constantCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 128
 sharedCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 128
 iCacheRequests are zero for SM 0 of TPC 15
 SM : 0 of TPC : 15
 iCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 3
 constantCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 128
 sharedCache details
 NO OF REQUESTS 0
 NO OF HITS 0
-NO OF MISSES 0
+NO OF MISSES 128
 iCacheRequests are zero for SM 0 of TPC 16
 SM : 0 of TPC : 16
 iCache details
@@ -383,10 +383,10 @@ NO OF MISSES 0
 ****************************************************************************
 Cache details
 Total Instruction Cache Access 0
-Total Instruction Cache Misses 24
+Total Instruction Cache Misses 48
 
 Total Constant Cache Access 0
-Total Constant Cache Misses 1024
+Total Constant Cache Misses 2048
 
 Total Shared Cache Access 0
 Total Shared Cache Misses 0
@@ -397,235 +397,227 @@ Total Shared Cache Misses 0
 [ComponentName LeakageEnergy DynamicEnergy TotalEnergy NumDynamicAccesses] : 
 
 
-core[0][0].iCache	3751.3476	1.0189	3752.3665	3
-core[0][0].dCache	3751.3476	43.4743	3794.8219	128
-core[0][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[0][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[0][0].iCache	1873.6536	1.0189	1874.6725	3
+core[0][0].dCache	1873.6536	43.4743	1917.1279	128
+core[0][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[0][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[0][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[0][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[0][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[0][0].total	21882.8610	44.4932	21927.3542	0
+core[0][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[0][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[0][0].total	10929.6460	44.4932	10974.1392	0
 
 
-core[1][0].iCache	3751.3476	1.0189	3752.3665	3
-core[1][0].dCache	3751.3476	43.4743	3794.8219	128
-core[1][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[1][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[1][0].iCache	1873.6536	1.0189	1874.6725	3
+core[1][0].dCache	1873.6536	43.4743	1917.1279	128
+core[1][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[1][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[1][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[1][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[1][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[1][0].total	21882.8610	44.4932	21927.3542	0
+core[1][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[1][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[1][0].total	10929.6460	44.4932	10974.1392	0
 
 
-core[2][0].iCache	3751.3476	1.0189	3752.3665	3
-core[2][0].dCache	3751.3476	43.4743	3794.8219	128
-core[2][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[2][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[2][0].iCache	1873.6536	1.0189	1874.6725	3
+core[2][0].dCache	1873.6536	43.4743	1917.1279	128
+core[2][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[2][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[2][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[2][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[2][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[2][0].total	21882.8610	44.4932	21927.3542	0
+core[2][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[2][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[2][0].total	10929.6460	44.4932	10974.1392	0
 
 
-core[3][0].iCache	3751.3476	1.0189	3752.3665	3
-core[3][0].dCache	3751.3476	43.4743	3794.8219	128
-core[3][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[3][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[3][0].iCache	1873.6536	1.0189	1874.6725	3
+core[3][0].dCache	1873.6536	43.4743	1917.1279	128
+core[3][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[3][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[3][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[3][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[3][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[3][0].total	21882.8610	44.4932	21927.3542	0
+core[3][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[3][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[3][0].total	10929.6460	44.4932	10974.1392	0
 
 
-core[4][0].iCache	3751.3476	1.0189	3752.3665	3
-core[4][0].dCache	3751.3476	43.4743	3794.8219	128
-core[4][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[4][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[4][0].iCache	1873.6536	1.0189	1874.6725	3
+core[4][0].dCache	1873.6536	43.4743	1917.1279	128
+core[4][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[4][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[4][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[4][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[4][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[4][0].total	21882.8610	44.4932	21927.3542	0
+core[4][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[4][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[4][0].total	10929.6460	44.4932	10974.1392	0
 
 
-core[5][0].iCache	3751.3476	1.0189	3752.3665	3
-core[5][0].dCache	3751.3476	43.4743	3794.8219	128
-core[5][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[5][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[5][0].iCache	1873.6536	1.0189	1874.6725	3
+core[5][0].dCache	1873.6536	43.4743	1917.1279	128
+core[5][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[5][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[5][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[5][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[5][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[5][0].total	21882.8610	44.4932	21927.3542	0
+core[5][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[5][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[5][0].total	10929.6460	44.4932	10974.1392	0
 
 
-core[6][0].iCache	3751.3476	1.0189	3752.3665	3
-core[6][0].dCache	3751.3476	43.4743	3794.8219	128
-core[6][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[6][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[6][0].iCache	1873.6536	1.0189	1874.6725	3
+core[6][0].dCache	1873.6536	43.4743	1917.1279	128
+core[6][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[6][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[6][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[6][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[6][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[6][0].total	21882.8610	44.4932	21927.3542	0
+core[6][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[6][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[6][0].total	10929.6460	44.4932	10974.1392	0
 
 
-core[7][0].iCache	3751.3476	1.0189	3752.3665	3
-core[7][0].dCache	3751.3476	43.4743	3794.8219	128
-core[7][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[7][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[7][0].iCache	1873.6536	1.0189	1874.6725	3
+core[7][0].dCache	1873.6536	43.4743	1917.1279	128
+core[7][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[7][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[7][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[7][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[7][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[7][0].total	21882.8610	44.4932	21927.3542	0
-coreCyclesTaken is shown to zero
+core[7][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[7][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[7][0].total	10929.6460	44.4932	10974.1392	0
 
 
-core[8][0].iCache	3751.3476	0.0000	3751.3476	0
-core[8][0].dCache	3751.3476	0.0000	3751.3476	0
-core[8][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[8][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[8][0].iCache	1873.6536	1.0189	1874.6725	3
+core[8][0].dCache	1873.6536	43.4743	1917.1279	128
+core[8][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[8][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[8][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[8][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[8][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[8][0].total	21882.8610	0.0000	21882.8610	0
-coreCyclesTaken is shown to zero
+core[8][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[8][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[8][0].total	10929.6460	44.4932	10974.1392	0
 
 
-core[9][0].iCache	3751.3476	0.0000	3751.3476	0
-core[9][0].dCache	3751.3476	0.0000	3751.3476	0
-core[9][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[9][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[9][0].iCache	1873.6536	1.0189	1874.6725	3
+core[9][0].dCache	1873.6536	43.4743	1917.1279	128
+core[9][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[9][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[9][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[9][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[9][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[9][0].total	21882.8610	0.0000	21882.8610	0
-coreCyclesTaken is shown to zero
+core[9][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[9][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[9][0].total	10929.6460	44.4932	10974.1392	0
 
 
-core[10][0].iCache	3751.3476	0.0000	3751.3476	0
-core[10][0].dCache	3751.3476	0.0000	3751.3476	0
-core[10][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[10][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[10][0].iCache	1873.6536	1.0189	1874.6725	3
+core[10][0].dCache	1873.6536	43.4743	1917.1279	128
+core[10][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[10][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[10][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[10][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[10][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[10][0].total	21882.8610	0.0000	21882.8610	0
-coreCyclesTaken is shown to zero
+core[10][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[10][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[10][0].total	10929.6460	44.4932	10974.1392	0
 
 
-core[11][0].iCache	3751.3476	0.0000	3751.3476	0
-core[11][0].dCache	3751.3476	0.0000	3751.3476	0
-core[11][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[11][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[11][0].iCache	1873.6536	1.0189	1874.6725	3
+core[11][0].dCache	1873.6536	43.4743	1917.1279	128
+core[11][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[11][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[11][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[11][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[11][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[11][0].total	21882.8610	0.0000	21882.8610	0
-coreCyclesTaken is shown to zero
+core[11][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[11][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[11][0].total	10929.6460	44.4932	10974.1392	0
 
 
-core[12][0].iCache	3751.3476	0.0000	3751.3476	0
-core[12][0].dCache	3751.3476	0.0000	3751.3476	0
-core[12][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[12][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[12][0].iCache	1873.6536	1.0189	1874.6725	3
+core[12][0].dCache	1873.6536	43.4743	1917.1279	128
+core[12][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[12][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[12][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[12][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[12][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[12][0].total	21882.8610	0.0000	21882.8610	0
-coreCyclesTaken is shown to zero
+core[12][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[12][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[12][0].total	10929.6460	44.4932	10974.1392	0
 
 
-core[13][0].iCache	3751.3476	0.0000	3751.3476	0
-core[13][0].dCache	3751.3476	0.0000	3751.3476	0
-core[13][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[13][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[13][0].iCache	1873.6536	1.0189	1874.6725	3
+core[13][0].dCache	1873.6536	43.4743	1917.1279	128
+core[13][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[13][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[13][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[13][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[13][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[13][0].total	21882.8610	0.0000	21882.8610	0
-coreCyclesTaken is shown to zero
+core[13][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[13][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[13][0].total	10929.6460	44.4932	10974.1392	0
 
 
-core[14][0].iCache	3751.3476	0.0000	3751.3476	0
-core[14][0].dCache	3751.3476	0.0000	3751.3476	0
-core[14][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[14][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[14][0].iCache	1873.6536	1.0189	1874.6725	3
+core[14][0].dCache	1873.6536	43.4743	1917.1279	128
+core[14][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[14][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[14][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[14][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[14][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[14][0].total	21882.8610	0.0000	21882.8610	0
-coreCyclesTaken is shown to zero
+core[14][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[14][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[14][0].total	10929.6460	44.4932	10974.1392	0
 
 
-core[15][0].iCache	3751.3476	0.0000	3751.3476	0
-core[15][0].dCache	3751.3476	0.0000	3751.3476	0
-core[15][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[15][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[15][0].iCache	1873.6536	1.0189	1874.6725	3
+core[15][0].dCache	1873.6536	43.4743	1917.1279	128
+core[15][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[15][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[15][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[15][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[15][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[15][0].total	21882.8610	0.0000	21882.8610	0
+core[15][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[15][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[15][0].total	10929.6460	44.4932	10974.1392	0
 coreCyclesTaken is shown to zero
 
 
-core[16][0].iCache	3751.3476	0.0000	3751.3476	0
-core[16][0].dCache	3751.3476	0.0000	3751.3476	0
-core[16][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[16][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[16][0].iCache	1873.6536	0.0000	1873.6536	0
+core[16][0].dCache	1873.6536	0.0000	1873.6536	0
+core[16][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[16][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[16][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[16][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[16][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[16][0].total	21882.8610	0.0000	21882.8610	0
+core[16][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[16][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[16][0].total	10929.6460	0.0000	10929.6460	0
 coreCyclesTaken is shown to zero
 
 
-core[17][0].iCache	3751.3476	0.0000	3751.3476	0
-core[17][0].dCache	3751.3476	0.0000	3751.3476	0
-core[17][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[17][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[17][0].iCache	1873.6536	0.0000	1873.6536	0
+core[17][0].dCache	1873.6536	0.0000	1873.6536	0
+core[17][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[17][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[17][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[17][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[17][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[17][0].total	21882.8610	0.0000	21882.8610	0
+core[17][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[17][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[17][0].total	10929.6460	0.0000	10929.6460	0
 coreCyclesTaken is shown to zero
 
 
-core[18][0].iCache	3751.3476	0.0000	3751.3476	0
-core[18][0].dCache	3751.3476	0.0000	3751.3476	0
-core[18][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[18][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[18][0].iCache	1873.6536	0.0000	1873.6536	0
+core[18][0].dCache	1873.6536	0.0000	1873.6536	0
+core[18][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[18][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[18][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[18][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[18][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[18][0].total	21882.8610	0.0000	21882.8610	0
+core[18][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[18][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[18][0].total	10929.6460	0.0000	10929.6460	0
 coreCyclesTaken is shown to zero
 
 
-core[19][0].iCache	3751.3476	0.0000	3751.3476	0
-core[19][0].dCache	3751.3476	0.0000	3751.3476	0
-core[19][0].pipeline.regFile	12325.8564	0.0000	12325.8564	0
-core[19][0].pipeline.FuncUnit.decoder	2054.3094	0.0000	2054.3094	0
+core[19][0].iCache	1873.6536	0.0000	1873.6536	0
+core[19][0].dCache	1873.6536	0.0000	1873.6536	0
+core[19][0].pipeline.regFile	6156.2904	0.0000	6156.2904	0
+core[19][0].pipeline.FuncUnit.decoder	1026.0484	0.0000	1026.0484	0
 core[19][0].pipeline.FuncUnit.totalalu	0.0000	0.0000	0.0000	0
-core[19][0].pipeline.resultsBroadcastBus	2054.3094	0.0000	2054.3094	0
-core[19][0].pipeline.total	14380.1658	0.0000	14380.1658	0
-core[19][0].total	21882.8610	0.0000	21882.8610	0
+core[19][0].pipeline.resultsBroadcastBus	1026.0484	0.0000	1026.0484	0
+core[19][0].pipeline.total	7182.3388	0.0000	7182.3388	0
+core[19][0].total	10929.6460	0.0000	10929.6460	0
 
 
-coreEnergy.total	437657.2200	355.9455	438013.1655	0
+coreEnergy.total	218592.9200	711.8910	219304.8110	0
 
 
-L2	22640.2184	0.0000	22640.2184	0
-L2[0]	22640.2184	0.0000	22640.2184	0
+L2	11307.9168	0.0000	11307.9168	0
+L2[0]	11307.9168	0.0000	11307.9168	0
 
 
-sharedCacheEnergy.total	45280.4367	0.0000	45280.4367	0
+sharedCacheEnergy.total	22615.8336	0.0000	22615.8336	0
 
 
-MainMemoryDRAMController[0]	6448.0581	0.0000	6448.0581	0
-MainMemoryDRAMController[1]	6448.0581	0.0000	6448.0581	0
+MainMemoryDRAMController[0]	3220.5566	0.0000	3220.5566	0
+MainMemoryDRAMController[1]	3220.5566	0.0000	3220.5566	0
 
-mainMemoryControllerEnergy.total	12896.1162	0.0000	12896.1162	0
+mainMemoryControllerEnergy.total	6441.1132	0.0000	6441.1132	0
 
 
 coherenceEnergy.total	0.0000	0.0000	0.0000	0
 
 
-TotalEnergy	495833.7729	355.9455	496189.7184	0
+TotalEnergy	247649.8668	711.8910	248361.7578	0

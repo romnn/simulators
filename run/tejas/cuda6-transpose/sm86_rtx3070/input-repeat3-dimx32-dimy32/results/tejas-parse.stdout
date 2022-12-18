@@ -1,0 +1,49 @@
+options: Options {
+    input: "/benchrun/tejas/cuda6-transpose/sm86_rtx3070/input-repeat3-dimx32-dimy32/results/stats.txt",
+    output: "/benchrun/tejas/cuda6-transpose/sm86_rtx3070/input-repeat3-dimx32-dimy32/results/stats.csv",
+}
+stats: Stats {
+    emulator_type: Some(
+        "OCELOT",
+    ),
+    created: None,
+    sim_time: Some(
+        59.426s,
+    ),
+    total_inst_count: Some(
+        4608,
+    ),
+    total_cycle_count: Some(
+        19131,
+    ),
+    dram_total_reads: 0,
+    dram_total_writes: 0,
+    dram_avg_read_latency: Some(
+        0.0,
+    ),
+    total_instr_cache_access: Some(
+        0,
+    ),
+    total_const_cache_access: Some(
+        0,
+    ),
+    total_shared_cache_access: Some(
+        0,
+    ),
+    total_instr_cache_misses: Some(
+        4,
+    ),
+    total_const_cache_misses: Some(
+        68,
+    ),
+    total_shared_cache_misses: Some(
+        0,
+    ),
+    kips: Some(
+        0.07754181671322317,
+    ),
+    total_ipc: Some(
+        0.24086561078877214,
+    ),
+}
+done after 31.488242ms

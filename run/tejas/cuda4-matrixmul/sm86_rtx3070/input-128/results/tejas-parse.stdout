@@ -1,0 +1,49 @@
+options: Options {
+    input: "/benchrun/tejas/cuda4-matrixmul/sm86_rtx3070/input-128/results/stats.txt",
+    output: "/benchrun/tejas/cuda4-matrixmul/sm86_rtx3070/input-128/results/stats.csv",
+}
+stats: Stats {
+    emulator_type: Some(
+        "OCELOT",
+    ),
+    created: None,
+    sim_time: Some(
+        17.008s,
+    ),
+    total_inst_count: Some(
+        7968,
+    ),
+    total_cycle_count: Some(
+        3214,
+    ),
+    dram_total_reads: 0,
+    dram_total_writes: 0,
+    dram_avg_read_latency: Some(
+        0.0,
+    ),
+    total_instr_cache_access: Some(
+        0,
+    ),
+    total_const_cache_access: Some(
+        0,
+    ),
+    total_shared_cache_access: Some(
+        0,
+    ),
+    total_instr_cache_misses: Some(
+        32,
+    ),
+    total_const_cache_misses: Some(
+        2048,
+    ),
+    total_shared_cache_misses: Some(
+        0,
+    ),
+    kips: Some(
+        0.4684854186265287,
+    ),
+    total_ipc: Some(
+        2.4791537025513377,
+    ),
+}
+done after 38.683395ms

@@ -144,7 +144,7 @@
 			<rankOccupancy>1</rankOccupancy>
 			<rankLatency>100</rankLatency>
 			<rankOperatingFrequency>3500</rankOperatingFrequency>
-			<numChans>2</numChans>      
+			<numChans>16</numChans>      
 			<numRanks>1</numRanks>      
 			<numBanks>16</numBanks>      
 			<numRows>16384</numRows>      
@@ -182,9 +182,9 @@
 		<iCache>
 			<WriteMode>WT</WriteMode>			
 			<LastLevel>N</LastLevel>			
-			<BlockSize>32</BlockSize>			
-			<Associativity>4</Associativity>
-			<Size>4</Size>					
+			<BlockSize>128</BlockSize>			
+			<Associativity>16</Associativity>
+			<Size>128</Size>					
 			<Latency>1</Latency>				
 			<PortType>UL</PortType>				
 			<AccessPorts>1</AccessPorts>			
@@ -204,8 +204,8 @@
 			<WriteMode>WT</WriteMode>			
 			<LastLevel>N</LastLevel>			
 			<BlockSize>64</BlockSize>			
-			<Associativity>2</Associativity>
-			<Size>8</Size>					
+			<Associativity>8</Associativity>
+			<Size>64</Size>					
 			<Latency>1</Latency>				
 			<PortType>UL</PortType>				
 			<AccessPorts>1</AccessPorts>			
@@ -245,9 +245,9 @@
 		<dCache>
 			<WriteMode>WB</WriteMode>			
 			<LastLevel>Y</LastLevel>			
-			<BlockSize>1024</BlockSize>			
-			<Associativity>1</Associativity>
-			<Size>1024</Size>					
+			<BlockSize>128</BlockSize>			
+			<Associativity>256</Associativity>
+			<Size>5888</Size>					
 			<Latency>2</Latency>				
 			<PortType>FCFS</PortType>				
 			<AccessPorts>1</AccessPorts>			
@@ -266,9 +266,9 @@
 		<L2>
 			<WriteMode>WT</WriteMode>			
 			<LastLevel>Y</LastLevel>			
-			<BlockSize>64</BlockSize>			
+			<BlockSize>128</BlockSize>			
 			<Associativity>16</Associativity>
-			<Size>8192</Size>				
+			<Size>4096</Size>				
 			<Latency>45</Latency>				
 			<PortType>UL</PortType>				
 			<AccessPorts>2</AccessPorts>			

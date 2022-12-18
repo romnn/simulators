@@ -20,7 +20,7 @@ def build_config(config_file, threads):
 
 class TejasBenchmarkConfig(BenchmarkConfig):
     @staticmethod
-    def _run(path, inp, force=False, timeout_mins=5, retries=1, **kwargs):
+    def _run(path, inp, force=False, timeout_mins=5, retries=2, **kwargs):
         print("tejas run:", inp, inp.args)
 
         threads = multiprocessing.cpu_count()
@@ -69,11 +69,11 @@ class TejasBenchmarkConfig(BenchmarkConfig):
         simplifier = tejas_root / "../gputejas/Tracesimplifier.jar"
         assert simplifier.is_file()
 
-        # 4GB heap
-        # available_mem_bytes = psutil.virtual_memory().total
-        # available_mem_gb = available_mem_bytes * 1e-9
-        # mem_gb = int(math.floor(0.75 * available_mem_gb))
-        mem_gb = 4
+        # up to 8GB heap if the system allows it
+        available_mem_bytes = psutil.virtual_memory().total
+        available_mem_gb = available_mem_bytes * 1e-9
+        max_mem_gb = int(math.floor(0.75 * available_mem_gb))
+        mem_gb = min(8, max_mem_gb)
         java_opts = ["-XX:-UseGCOverheadLimit", "-Xmx{}g".format(mem_gb)]
         cmd = (
             ["java"]

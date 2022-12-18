@@ -16,6 +16,7 @@ GPGPUSimConfig = namedtuple(
         "mem_unit_ports",
         "dram_latency",
         "dram_num_memory_controllers",
+        "dram_num_sub_partitions_per_memory_controller",
         "shmem_latency",
         "max_threads_per_sm",
         "warp_size",
@@ -105,6 +106,9 @@ def parse_gpgpusim_config(config):
     )
     dram_latency = extract(r"^\s*-dram_latency\s*(\d+)")
     gpgpu_n_mem = extract(r"^\s*-gpgpu_n_mem\s*(\d+)")
+    gpgpu_n_sub_partition_per_mchannel = extract(
+        r"^\s*-gpgpu_n_sub_partition_per_mchannel\s*(\d+)"
+    )
     gpgpu_smem_latency = extract(r"^\s*-gpgpu_smem_latency\s*(\d+)")
     gpgpu_num_sched_per_core = extract(r"^\s*-gpgpu_num_sched_per_core\s*(\d+)")
     gpgpu_shader_cta = extract(r"^\s*-gpgpu_shader_cta\s*(\d+)")
@@ -184,6 +188,9 @@ def parse_gpgpusim_config(config):
         ),
         dram_latency=int(dram_latency.group(1)),
         dram_num_memory_controllers=get_group_int(gpgpu_n_mem, 1, required=False),
+        dram_num_sub_partitions_per_memory_controller=get_group_int(
+            gpgpu_n_sub_partition_per_mchannel, 1, required=False
+        ),
         shmem_latency=get_group_int(gpgpu_smem_latency, 1, required=False),
         max_threads_per_sm=int(gpgpu_shader_core_pipeline.group(1)),
         warp_size=int(gpgpu_shader_core_pipeline.group(2)),
