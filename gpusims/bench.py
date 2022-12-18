@@ -30,30 +30,13 @@ class BenchmarkConfig(abc.ABC):
         return self.path / inp.sanitized_name()
 
     def run(self, inp, **kwargs):
-        # repetitions=1, timeout_mins=5, force=False,
-        # for inp in self.benchmark.inputs:
-        # if inp.enabled(self.
-        print("running input:", inp)
-        # print(inp.executable)
-        print(self.benchmark.extra)
-        # assert self.inp.executable.is_file()
-
         path = self.input_path(inp)
         self.setup(path)
-        # repetitions = kw
         try:
-            # repetitions = int(self.benchmark.extra["repetitions"])
             kwargs["repetitions"] = int(self.benchmark.extra["repetitions"])
         except (KeyError, ValueError):
             pass
-        self._run(
-            path=path,
-            inp=inp,
-            **kwargs
-            # repetitions=repetitions,
-            # timeout_mins=timeout_mins,
-            # force=force,
-        )
+        self._run(path=path, inp=inp, **kwargs)
 
     def setup(self, path):
         """setup the benchmark in given run dir"""

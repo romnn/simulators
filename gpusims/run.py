@@ -138,6 +138,8 @@ def run(
                 simulator,
                 "--config",
                 b.config.key,
+                "--config",
+                b.benchmark.name.lower(),
                 "--repetitions",
                 str(repetitions),
                 "--timeout-mins",

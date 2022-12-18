@@ -92,14 +92,7 @@ def trace_commands(path, inp, traces_dir):
 
 class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
     @staticmethod
-    def _run(
-        path,
-        inp,
-        timeout_mins=5,
-        parse_only=False,
-        trace_only=False,
-        **kwargs
-    ):
+    def _run(path, inp, timeout_mins=5, parse_only=False, trace_only=False, **kwargs):
         print("accelsim SASS run")
         pprint(
             dict(

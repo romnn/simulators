@@ -137,7 +137,7 @@ def run_cmd(
 def ensure_empty(d):
     try:
         print("removing", str(d.absolute()))
-        shutil.rmtree(str(d.absolute()))
+        shutil.rmtree(str(d.absolute()), ignore_errors=True)
     except FileNotFoundError:
         pass
     # also creates parents
