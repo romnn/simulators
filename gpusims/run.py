@@ -138,7 +138,7 @@ def run(
                 simulator,
                 "--config",
                 b.config.key,
-                "--config",
+                "--benchmark",
                 b.benchmark.name.lower(),
                 "--repetitions",
                 str(repetitions),
