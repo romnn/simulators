@@ -1,0 +1,135 @@
+options: Options {
+    input: "/benchrun/accelsim-sass/sm86_a4000/cuda6-transpose/input-repeat1-dimx128-dimy128/results/log.txt",
+    output: "/benchrun/accelsim-sass/sm86_a4000/cuda6-transpose/input-repeat1-dimx128-dimy128/results/stats.csv",
+    per_kernel: false,
+    kernel_instance: false,
+    configs_as_rows: false,
+    config_list: None,
+    benchmark_list: None,
+    sim_name: None,
+    strict: false,
+}
+GPGPU-sim version: Some("accelsim-commit-e02c99dbadefc0b9dc95317100be2a446eec142c_modified_0.0")
+stats: {
+    (
+        "final_kernel",
+        0,
+        "gpu_tot_ipc",
+    ): 65.6115,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_write_miss",
+    ): 512.0,
+    (
+        "final_kernel",
+        0,
+        "gpgpu_silicon_slowdown",
+    ): 298901.0,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_read_total",
+    ): 32768.0,
+    (
+        "final_kernel",
+        0,
+        "total_dram_reads",
+    ): 2048.0,
+    (
+        "final_kernel",
+        0,
+        "total_core_cache_write_total",
+    ): 45056.0,
+    (
+        "final_kernel",
+        0,
+        "total_core_cache_read_mshr_hit",
+    ): 0.0,
+    (
+        "final_kernel",
+        0,
+        "gpgpu_simulation_time_sec",
+    ): 38.0,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_read_hit",
+    ): 30720.0,
+    (
+        "final_kernel",
+        0,
+        "total_dram_writes",
+    ): 0.0,
+    (
+        "final_kernel",
+        0,
+        "total_core_cache_write_hit",
+    ): 12288.0,
+    (
+        "final_kernel",
+        0,
+        "gpgpu_n_tot_w_icount",
+    ): 196608.0,
+    (
+        "final_kernel",
+        0,
+        "total_core_cache_read_hit",
+    ): 0.0,
+    (
+        "final_kernel",
+        0,
+        "gpu_total_instructions",
+    ): 6131200.0,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_write_hit",
+    ): 43008.0,
+    (
+        "final_kernel",
+        0,
+        "kernel_launch_uid",
+    ): 16.0,
+    (
+        "final_kernel",
+        0,
+        "gpu_occupancy",
+    ): 21.995,
+    (
+        "final_kernel",
+        0,
+        "total_core_cache_read_total",
+    ): 32768.0,
+    (
+        "final_kernel",
+        0,
+        "gpgpu_simulation_rate",
+    ): 2459.0,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_write_total",
+    ): 45056.0,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_read_miss",
+    ): 512.0,
+    (
+        "final_kernel",
+        0,
+        "gpu_tot_sim_cycle",
+    ): 93447.0,
+    (
+        "final_kernel",
+        0,
+        "l2_bandwidth_gbps",
+    ): 16.3036,
+    (
+        "final_kernel",
+        0,
+        "gpu_ipc",
+    ): 116.7575,
+}
+done in 96.093757ms: 1.24 MiB parsed (16.00 EiB/s)

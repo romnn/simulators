@@ -6,6 +6,7 @@ import gpusims.utils as utils
 from pprint import pprint  # noqa: F401
 
 ROOT_DIR = Path(__file__).parent.parent
+LOG_FILE_NAME = "log.txt"
 
 
 def trace_commands(path, inp, traces_dir):
@@ -84,17 +85,139 @@ def trace_commands(path, inp, traces_dir):
     return trace_cmds
 
 
+def run_trace(path, inp, traces_dir, results_dir, timeout_mins=5):
+    trace_cmds = trace_commands(
+        path=path,
+        inp=inp,
+        traces_dir=traces_dir,
+    )
+    tmp_trace_sh = "\n".join(["set -e"] + trace_cmds)
+
+    print("\nrunning:\n")
+    print(tmp_trace_sh)
+    print("")
+
+    tmp_trace_file = path / "trace.tmp.sh"
+    with open(str(tmp_trace_file.absolute()), "w") as f:
+        f.write(tmp_trace_sh)
+
+    _, stdout, stderr, duration = utils.run_cmd(
+        "bash " + str(tmp_trace_file.absolute()),
+        cwd=path,
+        timeout_sec=timeout_mins * 60,
+        shell=True,
+        save_to=results_dir / "trace.tmp.sh",
+    )
+    print("stdout (last 15 lines):")
+    print("\n".join(stdout.splitlines()[-15:]))
+    print("stderr (last 15 lines):")
+    print("\n".join(stderr.splitlines()[-15:]))
+
+    with open(str((results_dir / "trace_wall_time.csv").absolute()), "w") as f:
+        output_writer = csv.writer(f)
+        output_writer.writerow(["exec_time_sec"])
+        output_writer.writerow([duration])
+
+    tmp_trace_file.unlink()
+
+
+def run_simulate(path, inp, traces_dir, results_dir, timeout_mins=5):
+    sim_root = Path(os.environ["SIM_ROOT"])
+    setup_env = sim_root / "setup_environment"
+    assert setup_env.is_file()
+    utils.chmod_x(setup_env)
+
+    accelsim = sim_root.parent / "bin/release/accel-sim.out"
+    log_file = results_dir / LOG_FILE_NAME
+
+    tmp_run_sh = "set -e\n"
+    tmp_run_sh += "source {}\n".format(str(setup_env.absolute()))
+    gpgpusim_config = path / "gpgpusim.config"
+    assert gpgpusim_config.is_file()
+    gpgpusim_trace_config = path / "gpgpusim.trace.config"
+    cmd = [
+        str(accelsim.absolute()),
+        "-trace",
+        str((traces_dir / "kernelslist.g").absolute()),
+        "-config",
+        str(gpgpusim_config.absolute()),
+    ]
+    if gpgpusim_trace_config.is_file():
+        cmd += ["-config", str(gpgpusim_trace_config.absolute())]
+    tmp_run_sh += " ".join(cmd)
+    print("\nrunning:\n")
+    print(tmp_run_sh)
+    print("")
+
+    tmp_run_file = path / "run.tmp.sh"
+    with open(str(tmp_run_file.absolute()), "w") as f:
+        f.write(tmp_run_sh)
+
+    _, stdout, stderr, duration = utils.run_cmd(
+        "bash " + str(tmp_run_file.absolute()),
+        cwd=path,
+        timeout_sec=timeout_mins * 60,
+        shell=True,
+        save_to=results_dir / "run.tmp.sh",
+    )
+    print("stdout (last 15 lines):")
+    print("\n".join(stdout.splitlines()[-15:]))
+    print("stderr (last 15 lines):")
+    print("\n".join(stderr.splitlines()[-15:]))
+
+    with open(str((results_dir / "sim_wall_time.csv").absolute()), "w") as f:
+        output_writer = csv.writer(f)
+        output_writer.writerow(["exec_time_sec"])
+        output_writer.writerow([duration])
+
+    with open(str(log_file.absolute()), "w") as f:
+        f.write(stdout)
+
+    tmp_run_file.unlink()
+
+
+def run_parse(path, inp, traces_dir, results_dir, timeout_mins=5):
+    """ parse the log file"""
+    log_file = results_dir / LOG_FILE_NAME
+    stat_file = results_dir / "stats.csv"
+    _, stdout, stderr, _ = utils.run_cmd(
+        [
+            "gpgpusim-parse",
+            "--input",
+            str(log_file.absolute()),
+            "--output",
+            str(stat_file.absolute()),
+        ],
+        cwd=path,
+        timeout_sec=timeout_mins * 60,
+        save_to=results_dir / "gpgpusim-parse",
+    )
+    print("stdout (last 15 lines):")
+    print("\n".join(stdout.splitlines()[-15:]))
+    print("stderr (last 15 lines):")
+    print("\n".join(stderr.splitlines()[-15:]))
+
+
 class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
     @staticmethod
-    def _run(path, inp, timeout_mins=5, parse_only=False, trace_only=False, **kwargs):
+    def _run(
+        path,
+        inp,
+        timeout_mins=5,
+        trace=False,
+        simulate=True,
+        parse_only=False,
+        **kwargs
+    ):
         print("accelsim SASS run")
         pprint(
             dict(
                 path=path,
                 inp=inp,
                 timeout_mins=timeout_mins,
+                trace=trace,
+                simulate=simulate,
                 parse_only=parse_only,
-                trace_only=trace_only,
                 kwargs=kwargs,
             )
         )
@@ -103,111 +226,25 @@ class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
         traces_dir = results_dir / "traces"
         os.makedirs(str(traces_dir.absolute()), exist_ok=True)
 
-        if not parse_only:
-            trace_cmds = trace_commands(
-                path=path,
-                inp=inp,
-                traces_dir=traces_dir,
-            )
-            tmp_trace_sh = "\n".join(["set -e"] + trace_cmds)
+        args = dict(
+            path=path,
+            inp=inp,
+            timeout_mins=timeout_mins,
+            traces_dir=traces_dir,
+            results_dir=results_dir,
+        )
 
-            print("\nrunning:\n")
-            print(tmp_trace_sh)
-            print("")
-
-            tmp_trace_file = path / "trace.tmp.sh"
-            with open(str(tmp_trace_file.absolute()), "w") as f:
-                f.write(tmp_trace_sh)
-
-            _, stdout, stderr, duration = utils.run_cmd(
-                "bash " + str(tmp_trace_file.absolute()),
-                cwd=path,
-                timeout_sec=timeout_mins * 60,
-                shell=True,
-                save_to=results_dir / "trace.tmp.sh",
-            )
-            print("stdout (last 15 lines):")
-            print("\n".join(stdout.splitlines()[-15:]))
-            print("stderr (last 15 lines):")
-            print("\n".join(stderr.splitlines()[-15:]))
-
-            with open(str((results_dir / "trace_wall_time.csv").absolute()), "w") as f:
-                output_writer = csv.writer(f)
-                output_writer.writerow(["exec_time_sec"])
-                output_writer.writerow([duration])
-
-            tmp_trace_file.unlink()
-
-        if trace_only:
+        if parse_only:
+            run_parse(**args)
             return
 
-        if not parse_only:
-            sim_root = Path(os.environ["SIM_ROOT"])
-            setup_env = sim_root / "setup_environment"
-            assert setup_env.is_file()
-            utils.chmod_x(setup_env)
+        if trace:
+            run_trace(**args)
 
-            accelsim = sim_root.parent / "bin/release/accel-sim.out"
-            log_file = results_dir / "log.txt"
+        if simulate:
+            run_simulate(**args)
 
-            tmp_run_sh = "set -e\n"
-            tmp_run_sh += "source {}\n".format(str(setup_env.absolute()))
-            cmd = [
-                str(accelsim.absolute()),
-                "-trace",
-                str((traces_dir / "kernelslist.g").absolute()),
-                "-config",
-                str((path / "gpgpusim.config").absolute()),
-            ]
-            tmp_run_sh += " ".join(cmd)
-            print("\nrunning:\n")
-            print(tmp_run_sh)
-            print("")
-
-            tmp_run_file = path / "run.tmp.sh"
-            with open(str(tmp_run_file.absolute()), "w") as f:
-                f.write(tmp_run_sh)
-
-            _, stdout, stderr, duration = utils.run_cmd(
-                "bash " + str(tmp_run_file.absolute()),
-                cwd=path,
-                timeout_sec=timeout_mins * 60,
-                shell=True,
-                save_to=results_dir / "run.tmp.sh",
-            )
-            print("stdout (last 15 lines):")
-            print("\n".join(stdout.splitlines()[-15:]))
-            print("stderr (last 15 lines):")
-            print("\n".join(stderr.splitlines()[-15:]))
-
-            with open(str((results_dir / "sim_wall_time.csv").absolute()), "w") as f:
-                output_writer = csv.writer(f)
-                output_writer.writerow(["exec_time_sec"])
-                output_writer.writerow([duration])
-
-            with open(str(log_file.absolute()), "w") as f:
-                f.write(stdout)
-
-            tmp_run_file.unlink()
-
-        # parse the log file
-        stat_file = results_dir / "stats.csv"
-        _, stdout, stderr, _ = utils.run_cmd(
-            [
-                "gpgpusim-parse",
-                "--input",
-                str(log_file.absolute()),
-                "--output",
-                str(stat_file.absolute()),
-            ],
-            cwd=path,
-            timeout_sec=timeout_mins * 60,
-            save_to=results_dir / "gpgpusim-parse",
-        )
-        print("stdout (last 15 lines):")
-        print("\n".join(stdout.splitlines()[-15:]))
-        print("stderr (last 15 lines):")
-        print("\n".join(stderr.splitlines()[-15:]))
+        run_parse(**args)
 
     def load_dataframe(self, inp):
         results_dir = self.input_path(inp) / "results"

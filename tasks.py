@@ -158,14 +158,13 @@ ns.add_task(build, "build")
     help={
         "benchmark": "list of benchmarks to run",
         "simulator": "simulator to build container",
-        "force": "force rerunning of benchmarks",
         "config": "list of configurations to run",
         "repetitions": "number of repetitions (only applies to native execution)",
         "timeout-mins": "timeout in minutes per simulation run",
         "dry-run": "dry run only prints commands that would be executed",
         "local": "disable mapping the run output volume, which will not write benchmark results",
-        # "slurm": "submit jobs using slurm (only for native and accelsim-sass)",
-        "trace-only": "only generate traces, but do not simulate",
+        "simulate": "run simulation",
+        "trace": "generate traces",
         "parse-only": "only parse results",
         "enable": "force running disabled benchmarks or inputs",
     },
@@ -177,12 +176,11 @@ def bench(
     benchmark,
     config,
     repetitions=3,
-    force=False,
     timeout_mins=30,
     dry_run=False,
     local=False,
-    # slurm=False,
-    trace_only=False,
+    simulate=True,
+    trace=False,
     parse_only=False,
     enable=False,
 ):
@@ -233,15 +231,21 @@ def bench(
             cmd += ["-v", "{}:{}".format(str(src.absolute()), dest)]
 
         cmd += [container.tag]
-        cmd += ["inv", "run", "--simulator", s, "--run-dir", container_run_dir]
-        # if slurm:
-        #     cmd += ["--slurm"]
+        cmd += [
+            "inv",
+            "run",
+            "--simulator",
+            s,
+            "--run-dir",
+            container_run_dir,
+            "--simulate" if simulate else "--no-simulate",
+        ]
         if enable:
             cmd += ["--enable"]
-        if trace_only:
+        if trace:
+            cmd += ["--trace"]
+        if parse_only:
             cmd += ["--parse-only"]
-        if trace_only:
-            cmd += ["--trace-only"]
         if timeout_mins is not None:
             cmd += ["--timeout-mins", str(timeout_mins)]
         if repetitions is not None:

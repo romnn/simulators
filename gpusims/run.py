@@ -25,7 +25,8 @@ ROOT_DIR = Path(__file__).parent.parent
         "timeout-mins": "timeout in minutes per simulation run",
         "slurm": "submit jobs using slurm (only for native and accelsim-sass)",
         "slurm-node": "the slurm node to use",
-        "trace-only": "only generate traces, but do not simulate",
+        "simulate": "run simulation",
+        "trace": "generate traces",
         "parse-only": "only parse results",
         "dry-run": "print commands that would be executed but do not simulate",
         "enable": "force running disabled benchmarks or inputs",
@@ -43,7 +44,8 @@ def run(
     timeout_mins=30,
     slurm=False,
     slurm_node=None,
-    trace_only=False,
+    simulate=True,
+    trace=False,
     parse_only=False,
     dry_run=False,
     enable=False,
@@ -144,9 +146,10 @@ def run(
                 str(repetitions),
                 "--timeout-mins",
                 str(timeout_mins),
+                "--simulate" if simulate else "--no-simulate",
             ]
-            if trace_only:
-                cmd += ["--trace-only"]
+            if trace:
+                cmd += ["--trace"]
             if parse_only:
                 cmd += ["--parse-only"]
 
@@ -211,7 +214,8 @@ def run(
                         inp=inp,
                         repetitions=repetitions,
                         timeout_mins=timeout_mins,
-                        trace_only=trace_only,
                         parse_only=parse_only,
+                        simulate=simulate,
+                        trace=trace,
                         dry_run=dry_run,
                     )
