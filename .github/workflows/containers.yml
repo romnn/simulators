@@ -10,7 +10,6 @@ jobs:
       fail-fast: false
       matrix:
         simulator:
-          # native and sass require a physical GPU device
           - native
           - accelsim-sass
 
@@ -44,10 +43,10 @@ jobs:
         config:
           - sm6_gtx1080
           - sm86_rtx3070
-          - sm86_a6000
           - sm86_a4000
+          # - sm86_a6000
         simulator:
-          # native and sass require a physical GPU device
+          # native and SASS require a physical GPU device
           - accelsim-ptx
           - tejas
           - m2s

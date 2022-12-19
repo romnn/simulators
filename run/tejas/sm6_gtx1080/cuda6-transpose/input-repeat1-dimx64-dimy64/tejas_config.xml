@@ -1,0 +1,324 @@
+<Configuration>
+	
+	
+	<Simulation>
+	    <MaxNumJavaThreads>8</MaxNumJavaThreads>		
+	    <MaxNumBlocksPerJavaThread>5000</MaxNumBlocksPerJavaThread>
+	    <GPUType>Kepler</GPUType> 						
+		<ThreadsPerCTA>2048</ThreadsPerCTA>
+	</Simulation>
+
+	
+	<System>
+		<NoOfTPC>20</NoOfTPC>				
+		<GlobalClock>
+		<LeakageEnergy>0.0598</LeakageEnergy>
+		<DynamicEnergy>0.0347</DynamicEnergy>
+		</GlobalClock>
+		
+		
+		<TPC>
+			<NoOfSM>1</NoOfSM> 				
+			
+		
+			<SM>
+				<Frequency>1607</Frequency>		
+				<NoOfWarpSchedulers>2</NoOfWarpSchedulers>
+				<NoOfSP>4</NoOfSP> 				
+				<WarpSize>32</WarpSize>			
+				
+				<TreeBarrier>false</TreeBarrier>			
+				<BarrierLatency>2</BarrierLatency>
+				<BarrierUnit>Distributed</BarrierUnit>			
+				
+		
+				<SP>
+					<NoOfThreadsSupported>32</NoOfThreadsSupported>
+				</SP>	
+				
+				<Cache>
+				<iCache nextLevel="L2" firstlevel="true" type="iCache" />
+				<constantCache nextLevel="L2" firstlevel="true" type="constantCache" />
+				<sharedCache nextLevel="L2" type="sharedCache" />
+				
+				</Cache>
+
+				<Decode>								
+				<LeakageEnergy>0.0598</LeakageEnergy>
+				<DynamicEnergy>0.0347</DynamicEnergy>
+				</Decode>
+				
+				<ResultsBroadcastBus>						
+				<LeakageEnergy>0.0598</LeakageEnergy>
+				<DynamicEnergy>0.0347</DynamicEnergy>
+				</ResultsBroadcastBus>
+				
+				<RegisterFile>
+					<Bank>
+						<BankSize>32</BankSize>
+						<LeakageEnergy>0.0598</LeakageEnergy>
+						<DynamicEnergy>0.0347</DynamicEnergy>
+					</Bank>
+					<Collector>
+						<CollectorSize>20</CollectorSize>
+						<LeakageEnergy>0.0598</LeakageEnergy>
+						<DynamicEnergy>0.0347</DynamicEnergy>
+					</Collector>
+					<Dispatch>
+						<DispatchSize>1</DispatchSize>
+						<LeakageEnergy>0.0598</LeakageEnergy>
+						<DynamicEnergy>0.0347</DynamicEnergy>
+					</Dispatch>
+					<Alloc>
+						<LeakageEnergy>0.0598</LeakageEnergy>
+						<DynamicEnergy>0.0347</DynamicEnergy>
+					</Alloc>
+					<Scoreboard>
+						<LeakageEnergy>0.0598</LeakageEnergy>
+						<DynamicEnergy>0.0347</DynamicEnergy>
+					</Scoreboard>
+					<Arbiter>
+						<LeakageEnergy>0.0598</LeakageEnergy>
+						<DynamicEnergy>0.0347</DynamicEnergy>
+					</Arbiter>
+					
+				</RegisterFile>	
+		</SM>
+			
+			
+		</TPC>
+		<SharedCaches>
+				<Cache name="L2" nextLevel="" type="L2" />	
+		</SharedCaches>
+		<MainMemory>
+			<MemControllerToUse>true</MemControllerToUse> 
+			<MainMemoryLatency>100</MainMemoryLatency>		
+			<MainMemoryFrequency>2750</MainMemoryFrequency>		
+			<MainMemoryPortType>FCFS</MainMemoryPortType>		
+			<MainMemoryAccessPorts>10</MainMemoryAccessPorts>	
+			<MainMemoryPortOccupancy>1</MainMemoryPortOccupancy>
+			<LeakageEnergy>0.1877</LeakageEnergy>
+			<DynamicEnergy>2.1164</DynamicEnergy>	
+		</MainMemory>
+		
+		<CacheBusLatency>1</CacheBusLatency>
+		<Interconnect>BUS</Interconnect>
+		
+		<NOC>
+			<NocConfigFile>/home/janib/Desktop/gpu_with_l2/Tejas-cuda/final_gpu_tejas/gputejas/src/simulator/config/NocConfig8.txt</NocConfigFile>
+			<NocSelScheme>STATIC</NocSelScheme>
+			<NocNumberOfBuffers>4</NocNumberOfBuffers>
+			<NocPortType>FCFS</NocPortType>
+			<NocAccessPorts>4</NocAccessPorts>
+			<NocPortOccupancy>1</NocPortOccupancy>
+			<NocLatency>1</NocLatency>
+			<NocOperatingFreq>2000</NocOperatingFreq>
+			<NocTopology>TORUS</NocTopology>     
+			<NocRoutingAlgorithm>SIMPLE</NocRoutingAlgorithm>
+			<NocLatencyBetweenNOCElements>4</NocLatencyBetweenNOCElements>
+			<NocRouterArbiter>RR_ARBITER</NocRouterArbiter>
+			<TechPoint>90</TechPoint>
+			<NocConnection>ELECTRICAL</NocConnection>
+			<LeakageEnergy>0.1877</LeakageEnergy>
+			<DynamicEnergy>2.1164</DynamicEnergy>
+		</NOC>
+		
+		<Laser>
+			<noctype>gpushare</noctype>    
+			<interval>1000</interval>
+			<threshold>5</threshold>
+			<maxpower>16</maxpower>
+		</Laser>
+			
+		<BUS>
+			<Latency>30</Latency>
+			<LeakageEnergy>0.1877</LeakageEnergy>
+			<DynamicEnergy>2.1164</DynamicEnergy>
+		</BUS>
+		<MainMemoryController>               
+			<rowBufferPolicy>OpenPage</rowBufferPolicy>		
+			<schedulingPolicy>RankThenBankRoundRobin</schedulingPolicy>	
+			<queuingStructure>PerRankPerBank</queuingStructure>	
+			<numRankPorts>100</numRankPorts>
+			<rankPortType>FCFS</rankPortType>	
+			<rankOccupancy>1</rankOccupancy>
+			<rankLatency>100</rankLatency>
+			<rankOperatingFrequency>2750</rankOperatingFrequency>
+			<numChans>8</numChans>      
+			<numRanks>1</numRanks>      
+			<numBanks>16</numBanks>      
+			<numRows>16384</numRows>      
+			<numCols>2048</numCols>      
+			<TRANSQUEUE_DEPTH>32</TRANSQUEUE_DEPTH>      
+			<TOTAL_ROW_ACCESSES>4</TOTAL_ROW_ACCESSES>      
+
+			
+			
+			
+
+			<tCCD>4</tCCD>      
+			<tBL>8</tBL>      
+			<tCL>12</tCL>      
+			<tAL>0</tAL>      
+			<tRP>12</tRP>      
+			<tCMD>1</tCMD>      
+			<tRC>40</tRC>      
+			<tRCD>12</tRCD>      
+			<tRAS>28</tRAS>      
+			<tRFC>88</tRFC>      
+			<tRTRS>1</tRTRS>      
+			<tRRD>5</tRRD>      
+			<tFAW>24</tFAW>      
+			<tRTP>6</tRTP>      
+			<tWTR>6</tWTR>      
+			<tWR>12</tWR>      
+			<tCK>1.25</tCK>      
+			<RefreshPeriod>7800</RefreshPeriod>      
+			<DATA_BUS_BITS>64</DATA_BUS_BITS>      
+		</MainMemoryController>
+	</System>
+	
+	<Library>
+		<iCache>
+			<WriteMode>WT</WriteMode>			
+			<LastLevel>N</LastLevel>			
+			<BlockSize>128</BlockSize>			
+			<Associativity>4</Associativity>
+			<Size>4</Size>					
+			<Latency>1</Latency>				
+			<PortType>UL</PortType>				
+			<AccessPorts>1</AccessPorts>			
+			<PortOccupancy>1</PortOccupancy>		
+			<MultiPortingType>B</MultiPortingType>		
+			<Coherence>N</Coherence>			
+			<NumBuses>1</NumBuses>			
+			<MSHRSize>32</MSHRSize>
+			<BusOccupancy>0</BusOccupancy>
+			<Nuca>NONE</Nuca>	
+		    <NucaMapping>S</NucaMapping>					
+			<LeakagePower>0.1092</LeakagePower>
+			<ReadDynamicPower>0.33964264705</ReadDynamicPower>
+			<WriteDynamicPower>0.33964264705</WriteDynamicPower>
+		</iCache>
+		<constantCache>
+			<WriteMode>WT</WriteMode>			
+			<LastLevel>N</LastLevel>			
+			<BlockSize>64</BlockSize>			
+			<Associativity>2</Associativity>
+			<Size>16</Size>					
+			<Latency>1</Latency>				
+			<PortType>UL</PortType>				
+			<AccessPorts>1</AccessPorts>			
+			<PortOccupancy>1</PortOccupancy>		
+			<MultiPortingType>B</MultiPortingType>		
+			<Coherence>N</Coherence>			
+			<NumBuses>1</NumBuses>			
+			<MSHRSize>32</MSHRSize>
+			<BusOccupancy>0</BusOccupancy>
+			<Nuca>NONE</Nuca>	
+			<NucaMapping>S</NucaMapping>					
+			<LeakagePower>0.1092</LeakagePower>
+			<ReadDynamicPower>0.33964264705</ReadDynamicPower>
+			<WriteDynamicPower>0.33964264705</WriteDynamicPower>
+		</constantCache>
+		<sharedCache>
+			<WriteMode>WB</WriteMode>			
+			<LastLevel>N</LastLevel>			
+			<BlockSize>64</BlockSize>			
+			<Associativity>8</Associativity>
+			<Size>32</Size>					
+			<Latency>2</Latency>				
+			<PortType>UL</PortType>				
+			<AccessPorts>1</AccessPorts>			
+			<PortOccupancy>1</PortOccupancy>		
+			<MultiPortingType>B</MultiPortingType>		
+			<Coherence>N</Coherence>			
+			<NumBuses>1</NumBuses>			
+			<MSHRSize>32</MSHRSize>
+			<BusOccupancy>0</BusOccupancy>
+			<Nuca>NONE</Nuca>	
+			<NucaMapping>S</NucaMapping>					
+			<LeakagePower>0.1092</LeakagePower>
+			<ReadDynamicPower>0.33964264705</ReadDynamicPower>
+			<WriteDynamicPower>0.33964264705</WriteDynamicPower>
+		</sharedCache>
+		<dCache>
+			<WriteMode>WB</WriteMode>			
+			<LastLevel>Y</LastLevel>			
+			<BlockSize>128</BlockSize>			
+			<Associativity>6</Associativity>
+			<Size>960</Size>					
+			<Latency>2</Latency>				
+			<PortType>FCFS</PortType>				
+			<AccessPorts>1</AccessPorts>			
+			<PortOccupancy>2</PortOccupancy>		
+			<MultiPortingType>B</MultiPortingType>		
+			<Coherence>N</Coherence>			
+			<NumBuses>1</NumBuses>			
+			<MSHRSize>32</MSHRSize>
+			<BusOccupancy>0</BusOccupancy>
+			<Nuca>NONE</Nuca>	
+			<NucaMapping>S</NucaMapping>					
+			<LeakagePower>0.1092</LeakagePower>
+			<ReadDynamicPower>0.33964264705</ReadDynamicPower>
+			<WriteDynamicPower>0.33964264705</WriteDynamicPower>
+		</dCache>
+		<L2>
+			<WriteMode>WT</WriteMode>			
+			<LastLevel>Y</LastLevel>			
+			<BlockSize>128</BlockSize>			
+			<Associativity>16</Associativity>
+			<Size>2048</Size>				
+			<Latency>45</Latency>				
+			<PortType>UL</PortType>				
+			<AccessPorts>2</AccessPorts>			
+			<PortOccupancy>2</PortOccupancy>		
+			<MultiPortingType>B</MultiPortingType>		
+			<Coherence>N</Coherence>			
+			<NumBuses>1</NumBuses>				
+			<MSHRSize>8</MSHRSize>
+			<BusOccupancy>0</BusOccupancy>
+			<Nuca>S_NUCA</Nuca>	
+			<NucaMapping>S</NucaMapping>					
+			<LeakagePower>0.65904632352</LeakagePower>
+			<ReadDynamicPower>0.81449264705</ReadDynamicPower>
+			<WriteDynamicPower>0.81449264705</WriteDynamicPower>
+		</L2>
+		
+		
+	</Library>
+		
+	<OperationLatency>
+			<load>100</load>
+			<store>1</store>
+			<address>1</address>
+			<intALU>1</intALU>
+			<intMUL>2</intMUL>
+			<intDIV>4</intDIV>
+			<floatALU>1</floatALU>
+			<floatMUL>4</floatMUL>
+			<floatDIV>8</floatDIV>
+			<predicate>1</predicate>
+			<branch>1</branch>
+			<call>1</call>
+			<return>1</return>
+			<exit>1</exit>
+	</OperationLatency>
+	
+	<OperationEnergy>
+			<load>0.001</load>
+			<store>0.001</store>
+			<address>0.001</address>
+			<intALU>0.001</intALU>
+			<intMUL>0.001</intMUL>
+			<intDIV>0.001</intDIV>
+			<floatALU>0.001</floatALU>
+			<floatMUL>0.001</floatMUL>
+			<floatDIV>0.001</floatDIV>
+			<predicate>0.001</predicate>
+			<branch>0.001</branch>
+			<call>0.001</call>
+			<return>0.001</return>
+			<exit>0.001</exit>
+	</OperationEnergy>
+</Configuration>

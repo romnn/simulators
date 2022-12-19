@@ -1,0 +1,162 @@
+------------- NVBit (NVidia Binary Instrumentation Tool v1.5.5) Loaded --------------
+NVBit core environment variables (mostly for nvbit-devs):
+            NVDISASM = nvdisasm - override default nvdisasm found in PATH
+            NOBANNER = 0 - if set, does not print this banner
+---------------------------------------------------------------------------------
+         INSTR_BEGIN = 0 - Beginning of the instruction interval where to apply instrumentation
+           INSTR_END = 4294967295 - End of the instruction interval where to apply instrumentation
+    EXCLUDE_PRED_OFF = 1 - Exclude predicated off instruction from count
+DYNAMIC_KERNEL_LIMIT_END = 0 - Limit of the number kernel to be printed, 0 means no limit
+DYNAMIC_KERNEL_LIMIT_START = 0 - start to report kernel from this kernel id, 0 means starts from the beginning, i.e. first kernel
+   ACTIVE_FROM_START = 1 - Start instruction tracing from start or wait for cuProfilerStart and cuProfilerStop. If set to 0, DYNAMIC_KERNEL_LIMIT options have no effect
+        TOOL_VERBOSE = 0 - Enable verbosity inside the tool
+       TOOL_COMPRESS = 1 - Enable traces compression
+     TOOL_TRACE_CORE = 0 - write the core id in the traces
+TERMINATE_UPON_LIMIT = 0 - Stop the process once the current kernel > DYNAMIC_KERNEL_LIMIT_END
+USER_DEFINED_FOLDERS = 1 - Uses the user defined folder TRACES_FOLDER path environment
+----------------------------------------------------------------------------------------------------
+Transpose Starting...
+
+MapSMtoCores for SM 8.6 is undefined.  Default to use 192 Cores/SM
+GPU Device 0: "NVIDIA RTX A4000" with compute capability 8.6
+
+MapSMtoCores for SM 8.6 is undefined.  Default to use 192 Cores/SM
+> Device 0: "NVIDIA RTX A4000"
+> SM Capability 8.6 detected:
+MapSMtoCores for SM 8.6 is undefined.  Default to use 192 Cores/SM
+MapSMtoCores for SM 8.6 is undefined.  Default to use 192 Cores/SM
+> [NVIDIA RTX A4000] has 48 MP(s) x 192 (Cores/MP) = 9216 (Cores)
+> Compute performance scaling factor = 1.00
+> MatrixSize X = 32
+> MatrixSize Y = 32
+
+ Traces location is /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces 
+Kernelslist location is /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernelslist 
+Stats location is /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/stats.csv 
+
+Matrix size: 32x32 (2x2 tiles), tile size: 16x16, block size: 16x16
+
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-1.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-2.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-3.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-4.trace
+transpose simple copy       , Throughput = 0.0022 GB/s, Time = 3.42153 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-5.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-6.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-7.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-8.trace
+transpose shared memory copy, Throughput = 0.0017 GB/s, Time = 4.54660 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-9.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-10.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-11.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-12.trace
+transpose naive             , Throughput = 0.0021 GB/s, Time = 3.68469 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-13.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-14.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-15.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-16.trace
+transpose coalesced         , Throughput = 0.0019 GB/s, Time = 4.12266 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-17.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-18.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-19.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-20.trace
+transpose optimized         , Throughput = 0.0020 GB/s, Time = 3.82191 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-21.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-22.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-23.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-24.trace
+transpose coarse-grained    , Throughput = 0.0020 GB/s, Time = 3.73589 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-25.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-26.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-27.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-28.trace
+transpose fine-grained      , Throughput = 0.0023 GB/s, Time = 3.31844 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-29.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-30.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-31.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-32.trace
+transpose diagonal          , Throughput = 0.0018 GB/s, Time = 4.22810 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+Test passed
+------------- NVBit (NVidia Binary Instrumentation Tool v1.5.5) Loaded --------------
+NVBit core environment variables (mostly for nvbit-devs):
+            NVDISASM = nvdisasm - override default nvdisasm found in PATH
+            NOBANNER = 0 - if set, does not print this banner
+---------------------------------------------------------------------------------
+         INSTR_BEGIN = 0 - Beginning of the instruction interval where to apply instrumentation
+           INSTR_END = 4294967295 - End of the instruction interval where to apply instrumentation
+    EXCLUDE_PRED_OFF = 1 - Exclude predicated off instruction from count
+DYNAMIC_KERNEL_LIMIT_END = 0 - Limit of the number kernel to be printed, 0 means no limit
+DYNAMIC_KERNEL_LIMIT_START = 0 - start to report kernel from this kernel id, 0 means starts from the beginning, i.e. first kernel
+   ACTIVE_FROM_START = 1 - Start instruction tracing from start or wait for cuProfilerStart and cuProfilerStop. If set to 0, DYNAMIC_KERNEL_LIMIT options have no effect
+        TOOL_VERBOSE = 0 - Enable verbosity inside the tool
+       TOOL_COMPRESS = 1 - Enable traces compression
+     TOOL_TRACE_CORE = 0 - write the core id in the traces
+TERMINATE_UPON_LIMIT = 0 - Stop the process once the current kernel > DYNAMIC_KERNEL_LIMIT_END
+USER_DEFINED_FOLDERS = 1 - Uses the user defined folder TRACES_FOLDER path environment
+----------------------------------------------------------------------------------------------------
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-1.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-2.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-3.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-4.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-5.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-6.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-7.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-8.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-9.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-10.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-11.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-12.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-13.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-14.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-15.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-16.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-17.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-18.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-19.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-20.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-21.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-22.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-23.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-24.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-25.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-26.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-27.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-28.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-29.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-30.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-31.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/traces/kernel-32.trace
+------------- NVBit (NVidia Binary Instrumentation Tool v1.5.5) Loaded --------------
+NVBit core environment variables (mostly for nvbit-devs):
+            NVDISASM = nvdisasm - override default nvdisasm found in PATH
+            NOBANNER = 0 - if set, does not print this banner
+---------------------------------------------------------------------------------
+         INSTR_BEGIN = 0 - Beginning of the instruction interval where to apply instrumentation
+           INSTR_END = 4294967295 - End of the instruction interval where to apply instrumentation
+    EXCLUDE_PRED_OFF = 1 - Exclude predicated off instruction from count
+DYNAMIC_KERNEL_LIMIT_END = 0 - Limit of the number kernel to be printed, 0 means no limit
+DYNAMIC_KERNEL_LIMIT_START = 0 - start to report kernel from this kernel id, 0 means starts from the beginning, i.e. first kernel
+   ACTIVE_FROM_START = 1 - Start instruction tracing from start or wait for cuProfilerStart and cuProfilerStop. If set to 0, DYNAMIC_KERNEL_LIMIT options have no effect
+        TOOL_VERBOSE = 0 - Enable verbosity inside the tool
+       TOOL_COMPRESS = 1 - Enable traces compression
+     TOOL_TRACE_CORE = 0 - write the core id in the traces
+TERMINATE_UPON_LIMIT = 0 - Stop the process once the current kernel > DYNAMIC_KERNEL_LIMIT_END
+USER_DEFINED_FOLDERS = 1 - Uses the user defined folder TRACES_FOLDER path environment
+----------------------------------------------------------------------------------------------------
+------------- NVBit (NVidia Binary Instrumentation Tool v1.5.5) Loaded --------------
+NVBit core environment variables (mostly for nvbit-devs):
+            NVDISASM = nvdisasm - override default nvdisasm found in PATH
+            NOBANNER = 0 - if set, does not print this banner
+---------------------------------------------------------------------------------
+         INSTR_BEGIN = 0 - Beginning of the instruction interval where to apply instrumentation
+           INSTR_END = 4294967295 - End of the instruction interval where to apply instrumentation
+    EXCLUDE_PRED_OFF = 1 - Exclude predicated off instruction from count
+DYNAMIC_KERNEL_LIMIT_END = 0 - Limit of the number kernel to be printed, 0 means no limit
+DYNAMIC_KERNEL_LIMIT_START = 0 - start to report kernel from this kernel id, 0 means starts from the beginning, i.e. first kernel
+   ACTIVE_FROM_START = 1 - Start instruction tracing from start or wait for cuProfilerStart and cuProfilerStop. If set to 0, DYNAMIC_KERNEL_LIMIT options have no effect
+        TOOL_VERBOSE = 0 - Enable verbosity inside the tool
+       TOOL_COMPRESS = 1 - Enable traces compression
+     TOOL_TRACE_CORE = 0 - write the core id in the traces
+TERMINATE_UPON_LIMIT = 0 - Stop the process once the current kernel > DYNAMIC_KERNEL_LIMIT_END
+USER_DEFINED_FOLDERS = 1 - Uses the user defined folder TRACES_FOLDER path environment
+----------------------------------------------------------------------------------------------------

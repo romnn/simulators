@@ -1,0 +1,3035 @@
+options: Options {
+    input: "/benchrun/m2s/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/stats.txt",
+    output: "/benchrun/m2s/cuda6-transpose/sm86_a4000/input-repeat3-dimx32-dimy32/results/stats.csv",
+}
+Section: Some("Config.Device")
+"Frequency":"735"
+"NumSM":"48"
+Section: Some("Config.SM")
+"NumWarpPools":"4"
+"NumRegisters":"65536"
+"MaxBlocksPerWarpPool":"4"
+"MaxWarpsPerWarpPool":"32"
+Section: Some("Config.FrontEnd")
+"FetchLatency":"2"
+"FetchBufferSize":"10"
+"DispatchLatency":"2"
+"DispatchWidth":"5"
+"MaxInstDispatchedPerType":"2"
+Section: Some("Config.SPU")
+"NumSPULanes":"32"
+"Width":"1"
+"DispatchBufferSize":"2"
+"ReadLatency":"1"
+"ReadBufferSize":"1"
+"ExecutionLatency":"1"
+"ExecutionBufferSize":"1"
+"WriteLatency":"1"
+"WriteBufferSize":"1"
+Section: Some("Config.DPU")
+"NumSPULanes":"32"
+"Width":"1"
+"DispatchBufferSize":"2"
+"ReadLatency":"15"
+"ReadBufferSize":"15"
+"ExecutionLatency":"15"
+"ExecutionBufferSize":"15"
+"WriteLatency":"12"
+"WriteBufferSize":"12"
+Section: Some("Config.SFU")
+"NumSPULanes":"32"
+"Width":"1"
+"DispatchBufferSize":"2"
+"ReadLatency":"1"
+"ReadBufferSize":"1"
+"ExecutionLatency":"1"
+"ExecutionBufferSize":"1"
+"WriteLatency":"1"
+"WriteBufferSize":"1"
+Section: Some("Config.IMU")
+"NumSPULanes":"32"
+"Width":"1"
+"DispatchBufferSize":"2"
+"ReadLatency":"1"
+"ReadBufferSize":"1"
+"ExecutionLatency":"1"
+"ExecutionBufferSize":"1"
+"WriteLatency":"1"
+"WriteBufferSize":"1"
+Section: Some("Config.BRU")
+"NumSPULanes":"32"
+"Width":"1"
+"DispatchBufferSize":"2"
+"ReadLatency":"5"
+"ReadBufferSize":"5"
+"ExecutionLatency":"5"
+"ExecutionBufferSize":"5"
+"WriteLatency":"5"
+"WriteBufferSize":"5"
+Section: Some("Config.LSU")
+"Width":"1"
+"DispatchBufferSize":"2"
+"ReadLatency":"1"
+"ReadBufferSize":"1"
+"WriteLatency":"1"
+"WriteBufferSize":"1"
+Section: Some("Device")
+"GridCount":"0"
+"Instructions":"0"
+"Cycles":"101293"
+"instructionsPerCycle":"0"
+Section: Some("SM 0")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"1280"
+"IMU Instructions":"200"
+"BRU Instructions":"248"
+"LDS Instructions":"136"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 1")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"1280"
+"IMU Instructions":"200"
+"BRU Instructions":"248"
+"LDS Instructions":"136"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 2")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"1280"
+"IMU Instructions":"200"
+"BRU Instructions":"248"
+"LDS Instructions":"136"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 3")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"1280"
+"IMU Instructions":"200"
+"BRU Instructions":"248"
+"LDS Instructions":"136"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 4")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"1280"
+"IMU Instructions":"200"
+"BRU Instructions":"248"
+"LDS Instructions":"136"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 5")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"1280"
+"IMU Instructions":"200"
+"BRU Instructions":"248"
+"LDS Instructions":"136"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 6")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"1280"
+"IMU Instructions":"200"
+"BRU Instructions":"248"
+"LDS Instructions":"136"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 7")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"1280"
+"IMU Instructions":"200"
+"BRU Instructions":"248"
+"LDS Instructions":"136"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 8")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"1280"
+"IMU Instructions":"200"
+"BRU Instructions":"248"
+"LDS Instructions":"136"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 9")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"1280"
+"IMU Instructions":"200"
+"BRU Instructions":"248"
+"LDS Instructions":"136"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 10")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"1280"
+"IMU Instructions":"200"
+"BRU Instructions":"248"
+"LDS Instructions":"136"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 11")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"1280"
+"IMU Instructions":"200"
+"BRU Instructions":"248"
+"LDS Instructions":"136"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 12")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"1280"
+"IMU Instructions":"200"
+"BRU Instructions":"248"
+"LDS Instructions":"136"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 13")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"1280"
+"IMU Instructions":"200"
+"BRU Instructions":"248"
+"LDS Instructions":"136"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 14")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"1280"
+"IMU Instructions":"200"
+"BRU Instructions":"248"
+"LDS Instructions":"136"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 15")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"1280"
+"IMU Instructions":"200"
+"BRU Instructions":"248"
+"LDS Instructions":"136"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 16")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"24"
+"SFU Instructions":"1872"
+"IMU Instructions":"296"
+"BRU Instructions":"392"
+"LDS Instructions":"152"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 17")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"24"
+"SFU Instructions":"1872"
+"IMU Instructions":"296"
+"BRU Instructions":"392"
+"LDS Instructions":"152"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 18")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"24"
+"SFU Instructions":"1872"
+"IMU Instructions":"296"
+"BRU Instructions":"392"
+"LDS Instructions":"152"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 19")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"24"
+"SFU Instructions":"1872"
+"IMU Instructions":"296"
+"BRU Instructions":"392"
+"LDS Instructions":"152"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 20")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"24"
+"SFU Instructions":"1872"
+"IMU Instructions":"296"
+"BRU Instructions":"392"
+"LDS Instructions":"152"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 21")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"24"
+"SFU Instructions":"1872"
+"IMU Instructions":"296"
+"BRU Instructions":"392"
+"LDS Instructions":"152"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 22")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"24"
+"SFU Instructions":"1872"
+"IMU Instructions":"296"
+"BRU Instructions":"392"
+"LDS Instructions":"152"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 23")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"24"
+"SFU Instructions":"1872"
+"IMU Instructions":"296"
+"BRU Instructions":"392"
+"LDS Instructions":"152"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 24")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"24"
+"SFU Instructions":"1872"
+"IMU Instructions":"296"
+"BRU Instructions":"392"
+"LDS Instructions":"152"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 25")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"24"
+"SFU Instructions":"1872"
+"IMU Instructions":"296"
+"BRU Instructions":"392"
+"LDS Instructions":"152"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 26")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"24"
+"SFU Instructions":"1872"
+"IMU Instructions":"296"
+"BRU Instructions":"392"
+"LDS Instructions":"152"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 27")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"24"
+"SFU Instructions":"1872"
+"IMU Instructions":"296"
+"BRU Instructions":"392"
+"LDS Instructions":"152"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 28")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"24"
+"SFU Instructions":"1872"
+"IMU Instructions":"296"
+"BRU Instructions":"392"
+"LDS Instructions":"152"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 29")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"24"
+"SFU Instructions":"1872"
+"IMU Instructions":"296"
+"BRU Instructions":"392"
+"LDS Instructions":"152"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 30")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"24"
+"SFU Instructions":"1872"
+"IMU Instructions":"296"
+"BRU Instructions":"392"
+"LDS Instructions":"152"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 31")
+"BlockCount":"3"
+"SPU Instructions":"0"
+"DPU Instructions":"24"
+"SFU Instructions":"1872"
+"IMU Instructions":"296"
+"BRU Instructions":"392"
+"LDS Instructions":"152"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 32")
+"BlockCount":"2"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"824"
+"IMU Instructions":"128"
+"BRU Instructions":"152"
+"LDS Instructions":"96"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 33")
+"BlockCount":"2"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"824"
+"IMU Instructions":"128"
+"BRU Instructions":"152"
+"LDS Instructions":"96"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 34")
+"BlockCount":"2"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"824"
+"IMU Instructions":"128"
+"BRU Instructions":"152"
+"LDS Instructions":"96"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 35")
+"BlockCount":"2"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"824"
+"IMU Instructions":"128"
+"BRU Instructions":"152"
+"LDS Instructions":"96"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 36")
+"BlockCount":"2"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"824"
+"IMU Instructions":"128"
+"BRU Instructions":"152"
+"LDS Instructions":"96"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 37")
+"BlockCount":"2"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"824"
+"IMU Instructions":"128"
+"BRU Instructions":"152"
+"LDS Instructions":"96"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 38")
+"BlockCount":"2"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"824"
+"IMU Instructions":"128"
+"BRU Instructions":"152"
+"LDS Instructions":"96"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 39")
+"BlockCount":"2"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"824"
+"IMU Instructions":"128"
+"BRU Instructions":"152"
+"LDS Instructions":"96"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 40")
+"BlockCount":"2"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"824"
+"IMU Instructions":"128"
+"BRU Instructions":"152"
+"LDS Instructions":"96"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 41")
+"BlockCount":"2"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"824"
+"IMU Instructions":"128"
+"BRU Instructions":"152"
+"LDS Instructions":"96"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 42")
+"BlockCount":"2"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"824"
+"IMU Instructions":"128"
+"BRU Instructions":"152"
+"LDS Instructions":"96"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 43")
+"BlockCount":"2"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"824"
+"IMU Instructions":"128"
+"BRU Instructions":"152"
+"LDS Instructions":"96"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 44")
+"BlockCount":"2"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"824"
+"IMU Instructions":"128"
+"BRU Instructions":"152"
+"LDS Instructions":"96"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 45")
+"BlockCount":"2"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"824"
+"IMU Instructions":"128"
+"BRU Instructions":"152"
+"LDS Instructions":"96"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 46")
+"BlockCount":"2"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"824"
+"IMU Instructions":"128"
+"BRU Instructions":"152"
+"LDS Instructions":"96"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+Section: Some("SM 47")
+"BlockCount":"2"
+"SPU Instructions":"0"
+"DPU Instructions":"0"
+"SFU Instructions":"824"
+"IMU Instructions":"128"
+"BRU Instructions":"152"
+"LDS Instructions":"96"
+"Cycles":"101293"
+"InstructionsPerCycle":"0"
+"RegistersReads":"0"
+"RegistersWrites":"0"
+stats: {
+    (
+        "SM 13",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 16",
+        "IMU Instructions",
+    ): 296.0,
+    (
+        "SM 46",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 38",
+        "BlockCount",
+    ): 2.0,
+    (
+        "Config.SPU",
+        "ExecutionBufferSize",
+    ): 1.0,
+    (
+        "SM 17",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 31",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 37",
+        "LDS Instructions",
+    ): 96.0,
+    (
+        "SM 14",
+        "BRU Instructions",
+    ): 248.0,
+    (
+        "SM 6",
+        "BRU Instructions",
+    ): 248.0,
+    (
+        "SM 5",
+        "BRU Instructions",
+    ): 248.0,
+    (
+        "SM 13",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 2",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 46",
+        "SFU Instructions",
+    ): 824.0,
+    (
+        "SM 30",
+        "SFU Instructions",
+    ): 1872.0,
+    (
+        "SM 0",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 2",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 23",
+        "DPU Instructions",
+    ): 24.0,
+    (
+        "SM 26",
+        "IMU Instructions",
+    ): 296.0,
+    (
+        "SM 44",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "Config.SPU",
+        "NumSPULanes",
+    ): 32.0,
+    (
+        "SM 36",
+        "BRU Instructions",
+    ): 152.0,
+    (
+        "SM 6",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 31",
+        "LDS Instructions",
+    ): 152.0,
+    (
+        "SM 21",
+        "LDS Instructions",
+    ): 152.0,
+    (
+        "SM 35",
+        "LDS Instructions",
+    ): 96.0,
+    (
+        "SM 9",
+        "BRU Instructions",
+    ): 248.0,
+    (
+        "SM 13",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 14",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 23",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 12",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 26",
+        "DPU Instructions",
+    ): 24.0,
+    (
+        "SM 39",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "Config.SFU",
+        "ReadLatency",
+    ): 1.0,
+    (
+        "SM 32",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 19",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 45",
+        "IMU Instructions",
+    ): 128.0,
+    (
+        "Config.FrontEnd",
+        "MaxInstDispatchedPerType",
+    ): 2.0,
+    (
+        "SM 13",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 40",
+        "Cycles",
+    ): 101293.0,
+    (
+        "Config.SPU",
+        "ReadLatency",
+    ): 1.0,
+    (
+        "SM 4",
+        "BRU Instructions",
+    ): 248.0,
+    (
+        "SM 6",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "Config.DPU",
+        "ReadBufferSize",
+    ): 15.0,
+    (
+        "SM 30",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 8",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 24",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "Config.IMU",
+        "NumSPULanes",
+    ): 32.0,
+    (
+        "SM 29",
+        "SFU Instructions",
+    ): 1872.0,
+    (
+        "SM 31",
+        "BRU Instructions",
+    ): 392.0,
+    (
+        "SM 28",
+        "SFU Instructions",
+    ): 1872.0,
+    (
+        "SM 35",
+        "IMU Instructions",
+    ): 128.0,
+    (
+        "SM 0",
+        "IMU Instructions",
+    ): 200.0,
+    (
+        "SM 41",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "Config.FrontEnd",
+        "DispatchWidth",
+    ): 5.0,
+    (
+        "SM 39",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "Config.DPU",
+        "NumSPULanes",
+    ): 32.0,
+    (
+        "SM 10",
+        "SFU Instructions",
+    ): 1280.0,
+    (
+        "SM 46",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "Config.LSU",
+        "WriteLatency",
+    ): 1.0,
+    (
+        "SM 31",
+        "DPU Instructions",
+    ): 24.0,
+    (
+        "SM 32",
+        "IMU Instructions",
+    ): 128.0,
+    (
+        "SM 31",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 17",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 21",
+        "IMU Instructions",
+    ): 296.0,
+    (
+        "SM 35",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 44",
+        "BlockCount",
+    ): 2.0,
+    (
+        "SM 44",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 29",
+        "BlockCount",
+    ): 3.0,
+    (
+        "Config.BRU",
+        "NumSPULanes",
+    ): 32.0,
+    (
+        "SM 10",
+        "LDS Instructions",
+    ): 136.0,
+    (
+        "SM 6",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 12",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 36",
+        "LDS Instructions",
+    ): 96.0,
+    (
+        "SM 12",
+        "IMU Instructions",
+    ): 200.0,
+    (
+        "SM 11",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 16",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 2",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 34",
+        "IMU Instructions",
+    ): 128.0,
+    (
+        "SM 9",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 18",
+        "IMU Instructions",
+    ): 296.0,
+    (
+        "SM 34",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 23",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "Config.SPU",
+        "Width",
+    ): 1.0,
+    (
+        "SM 20",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 31",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 29",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 19",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 39",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 27",
+        "BRU Instructions",
+    ): 392.0,
+    (
+        "SM 9",
+        "SFU Instructions",
+    ): 1280.0,
+    (
+        "SM 37",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 1",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 42",
+        "LDS Instructions",
+    ): 96.0,
+    (
+        "SM 0",
+        "LDS Instructions",
+    ): 136.0,
+    (
+        "SM 12",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 23",
+        "IMU Instructions",
+    ): 296.0,
+    (
+        "SM 1",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 25",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 1",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 30",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "Config.LSU",
+        "DispatchBufferSize",
+    ): 2.0,
+    (
+        "Config.BRU",
+        "WriteLatency",
+    ): 5.0,
+    (
+        "SM 0",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 4",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 36",
+        "BlockCount",
+    ): 2.0,
+    (
+        "SM 45",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 31",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 8",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 44",
+        "SFU Instructions",
+    ): 824.0,
+    (
+        "Config.IMU",
+        "ReadBufferSize",
+    ): 1.0,
+    (
+        "SM 13",
+        "LDS Instructions",
+    ): 136.0,
+    (
+        "SM 24",
+        "BlockCount",
+    ): 3.0,
+    (
+        "Config.BRU",
+        "WriteBufferSize",
+    ): 5.0,
+    (
+        "SM 27",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 29",
+        "IMU Instructions",
+    ): 296.0,
+    (
+        "SM 43",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 45",
+        "LDS Instructions",
+    ): 96.0,
+    (
+        "SM 47",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 4",
+        "SFU Instructions",
+    ): 1280.0,
+    (
+        "Config.DPU",
+        "WriteBufferSize",
+    ): 12.0,
+    (
+        "SM 22",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 29",
+        "DPU Instructions",
+    ): 24.0,
+    (
+        "SM 39",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 41",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 19",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 15",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 40",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 44",
+        "LDS Instructions",
+    ): 96.0,
+    (
+        "SM 15",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "Config.BRU",
+        "Width",
+    ): 1.0,
+    (
+        "SM 28",
+        "BRU Instructions",
+    ): 392.0,
+    (
+        "SM 41",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 9",
+        "IMU Instructions",
+    ): 200.0,
+    (
+        "Config.FrontEnd",
+        "FetchLatency",
+    ): 2.0,
+    (
+        "Config.BRU",
+        "ExecutionLatency",
+    ): 5.0,
+    (
+        "SM 20",
+        "BRU Instructions",
+    ): 392.0,
+    (
+        "SM 29",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 38",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 47",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 11",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 37",
+        "SFU Instructions",
+    ): 824.0,
+    (
+        "SM 5",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 3",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 38",
+        "SFU Instructions",
+    ): 824.0,
+    (
+        "SM 38",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 40",
+        "SFU Instructions",
+    ): 824.0,
+    (
+        "SM 17",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 13",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 10",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 26",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 3",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 20",
+        "IMU Instructions",
+    ): 296.0,
+    (
+        "SM 42",
+        "Cycles",
+    ): 101293.0,
+    (
+        "Config.SM",
+        "NumRegisters",
+    ): 65536.0,
+    (
+        "Config.IMU",
+        "ExecutionLatency",
+    ): 1.0,
+    (
+        "SM 47",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "Config.SPU",
+        "WriteLatency",
+    ): 1.0,
+    (
+        "SM 1",
+        "SFU Instructions",
+    ): 1280.0,
+    (
+        "SM 11",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 21",
+        "SFU Instructions",
+    ): 1872.0,
+    (
+        "SM 44",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 8",
+        "SFU Instructions",
+    ): 1280.0,
+    (
+        "SM 5",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 31",
+        "SFU Instructions",
+    ): 1872.0,
+    (
+        "SM 40",
+        "IMU Instructions",
+    ): 128.0,
+    (
+        "SM 31",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 43",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 25",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 28",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 26",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 1",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 27",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 21",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 1",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "Config.SM",
+        "NumWarpPools",
+    ): 4.0,
+    (
+        "SM 30",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 21",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 34",
+        "LDS Instructions",
+    ): 96.0,
+    (
+        "SM 11",
+        "BRU Instructions",
+    ): 248.0,
+    (
+        "SM 44",
+        "Cycles",
+    ): 101293.0,
+    (
+        "Device",
+        "Instructions",
+    ): 0.0,
+    (
+        "SM 5",
+        "LDS Instructions",
+    ): 136.0,
+    (
+        "SM 17",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "Config.FrontEnd",
+        "DispatchLatency",
+    ): 2.0,
+    (
+        "Config.SFU",
+        "WriteLatency",
+    ): 1.0,
+    (
+        "SM 19",
+        "BRU Instructions",
+    ): 392.0,
+    (
+        "SM 23",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 32",
+        "BlockCount",
+    ): 2.0,
+    (
+        "SM 0",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 34",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 36",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 41",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 18",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 11",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 39",
+        "BlockCount",
+    ): 2.0,
+    (
+        "SM 46",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "Config.Device",
+        "NumSM",
+    ): 48.0,
+    (
+        "SM 45",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 47",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 37",
+        "BlockCount",
+    ): 2.0,
+    (
+        "SM 13",
+        "IMU Instructions",
+    ): 200.0,
+    (
+        "SM 40",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "Config.SFU",
+        "ExecutionBufferSize",
+    ): 1.0,
+    (
+        "SM 16",
+        "SFU Instructions",
+    ): 1872.0,
+    (
+        "SM 6",
+        "LDS Instructions",
+    ): 136.0,
+    (
+        "SM 16",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 0",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 15",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 17",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 32",
+        "BRU Instructions",
+    ): 152.0,
+    (
+        "SM 16",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 37",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 20",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 14",
+        "LDS Instructions",
+    ): 136.0,
+    (
+        "Config.BRU",
+        "ReadLatency",
+    ): 5.0,
+    (
+        "SM 23",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 29",
+        "BRU Instructions",
+    ): 392.0,
+    (
+        "SM 17",
+        "LDS Instructions",
+    ): 152.0,
+    (
+        "SM 4",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 41",
+        "SFU Instructions",
+    ): 824.0,
+    (
+        "SM 36",
+        "IMU Instructions",
+    ): 128.0,
+    (
+        "SM 4",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 7",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 28",
+        "IMU Instructions",
+    ): 296.0,
+    (
+        "SM 18",
+        "BRU Instructions",
+    ): 392.0,
+    (
+        "SM 15",
+        "BRU Instructions",
+    ): 248.0,
+    (
+        "SM 18",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 43",
+        "BlockCount",
+    ): 2.0,
+    (
+        "SM 30",
+        "IMU Instructions",
+    ): 296.0,
+    (
+        "Config.LSU",
+        "WriteBufferSize",
+    ): 1.0,
+    (
+        "SM 15",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 25",
+        "DPU Instructions",
+    ): 24.0,
+    (
+        "SM 0",
+        "BRU Instructions",
+    ): 248.0,
+    (
+        "SM 4",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 14",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 10",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 11",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 7",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 43",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 18",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 15",
+        "IMU Instructions",
+    ): 200.0,
+    (
+        "SM 24",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 31",
+        "IMU Instructions",
+    ): 296.0,
+    (
+        "SM 40",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 21",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 24",
+        "LDS Instructions",
+    ): 152.0,
+    (
+        "SM 33",
+        "IMU Instructions",
+    ): 128.0,
+    (
+        "SM 34",
+        "SFU Instructions",
+    ): 824.0,
+    (
+        "SM 9",
+        "LDS Instructions",
+    ): 136.0,
+    (
+        "SM 15",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "Config.SFU",
+        "Width",
+    ): 1.0,
+    (
+        "SM 0",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 32",
+        "LDS Instructions",
+    ): 96.0,
+    (
+        "SM 39",
+        "SFU Instructions",
+    ): 824.0,
+    (
+        "SM 44",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 7",
+        "LDS Instructions",
+    ): 136.0,
+    (
+        "SM 11",
+        "IMU Instructions",
+    ): 200.0,
+    (
+        "SM 3",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 45",
+        "Cycles",
+    ): 101293.0,
+    (
+        "Config.IMU",
+        "Width",
+    ): 1.0,
+    (
+        "SM 22",
+        "IMU Instructions",
+    ): 296.0,
+    (
+        "SM 8",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 21",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 22",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 17",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 19",
+        "IMU Instructions",
+    ): 296.0,
+    (
+        "SM 36",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 0",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 43",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 18",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 38",
+        "LDS Instructions",
+    ): 96.0,
+    (
+        "SM 7",
+        "BRU Instructions",
+    ): 248.0,
+    (
+        "Config.SFU",
+        "WriteBufferSize",
+    ): 1.0,
+    (
+        "SM 4",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 12",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 20",
+        "SFU Instructions",
+    ): 1872.0,
+    (
+        "SM 42",
+        "IMU Instructions",
+    ): 128.0,
+    (
+        "SM 7",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "Config.DPU",
+        "Width",
+    ): 1.0,
+    (
+        "SM 20",
+        "LDS Instructions",
+    ): 152.0,
+    (
+        "SM 4",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 41",
+        "BRU Instructions",
+    ): 152.0,
+    (
+        "SM 33",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 8",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 22",
+        "SFU Instructions",
+    ): 1872.0,
+    (
+        "SM 8",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 11",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "Config.DPU",
+        "DispatchBufferSize",
+    ): 2.0,
+    (
+        "SM 37",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 3",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 30",
+        "LDS Instructions",
+    ): 152.0,
+    (
+        "SM 47",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 18",
+        "DPU Instructions",
+    ): 24.0,
+    (
+        "SM 35",
+        "SFU Instructions",
+    ): 824.0,
+    (
+        "SM 3",
+        "SFU Instructions",
+    ): 1280.0,
+    (
+        "SM 38",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 39",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "Config.IMU",
+        "WriteBufferSize",
+    ): 1.0,
+    (
+        "SM 30",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 21",
+        "BRU Instructions",
+    ): 392.0,
+    (
+        "SM 25",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 35",
+        "BRU Instructions",
+    ): 152.0,
+    (
+        "SM 19",
+        "LDS Instructions",
+    ): 152.0,
+    (
+        "SM 30",
+        "DPU Instructions",
+    ): 24.0,
+    (
+        "SM 39",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 46",
+        "BlockCount",
+    ): 2.0,
+    (
+        "SM 28",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 19",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 36",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 44",
+        "IMU Instructions",
+    ): 128.0,
+    (
+        "SM 26",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 35",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 45",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 4",
+        "IMU Instructions",
+    ): 200.0,
+    (
+        "SM 25",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 29",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 38",
+        "IMU Instructions",
+    ): 128.0,
+    (
+        "SM 17",
+        "IMU Instructions",
+    ): 296.0,
+    (
+        "Config.SFU",
+        "ExecutionLatency",
+    ): 1.0,
+    (
+        "SM 46",
+        "IMU Instructions",
+    ): 128.0,
+    (
+        "SM 4",
+        "LDS Instructions",
+    ): 136.0,
+    (
+        "SM 13",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 18",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 23",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 37",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 26",
+        "LDS Instructions",
+    ): 152.0,
+    (
+        "SM 14",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 16",
+        "LDS Instructions",
+    ): 152.0,
+    (
+        "SM 5",
+        "IMU Instructions",
+    ): 200.0,
+    (
+        "SM 23",
+        "BRU Instructions",
+    ): 392.0,
+    (
+        "SM 27",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 35",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "Config.BRU",
+        "DispatchBufferSize",
+    ): 2.0,
+    (
+        "SM 27",
+        "SFU Instructions",
+    ): 1872.0,
+    (
+        "SM 7",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 38",
+        "BRU Instructions",
+    ): 152.0,
+    (
+        "SM 8",
+        "BRU Instructions",
+    ): 248.0,
+    (
+        "SM 10",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 1",
+        "IMU Instructions",
+    ): 200.0,
+    (
+        "SM 17",
+        "DPU Instructions",
+    ): 24.0,
+    (
+        "SM 46",
+        "LDS Instructions",
+    ): 96.0,
+    (
+        "SM 23",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 12",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 10",
+        "BRU Instructions",
+    ): 248.0,
+    (
+        "Config.SFU",
+        "NumSPULanes",
+    ): 32.0,
+    (
+        "SM 47",
+        "BRU Instructions",
+    ): 152.0,
+    (
+        "Config.DPU",
+        "ExecutionBufferSize",
+    ): 15.0,
+    (
+        "SM 21",
+        "DPU Instructions",
+    ): 24.0,
+    (
+        "SM 43",
+        "IMU Instructions",
+    ): 128.0,
+    (
+        "SM 21",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 45",
+        "BlockCount",
+    ): 2.0,
+    (
+        "SM 34",
+        "BlockCount",
+    ): 2.0,
+    (
+        "SM 3",
+        "IMU Instructions",
+    ): 200.0,
+    (
+        "SM 9",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 22",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 17",
+        "BRU Instructions",
+    ): 392.0,
+    (
+        "SM 26",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 7",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 46",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 8",
+        "LDS Instructions",
+    ): 136.0,
+    (
+        "SM 6",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 25",
+        "BRU Instructions",
+    ): 392.0,
+    (
+        "SM 5",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 44",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 42",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 7",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "Config.DPU",
+        "ReadLatency",
+    ): 15.0,
+    (
+        "SM 18",
+        "LDS Instructions",
+    ): 152.0,
+    (
+        "SM 33",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 12",
+        "SFU Instructions",
+    ): 1280.0,
+    (
+        "SM 41",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 32",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 23",
+        "SFU Instructions",
+    ): 1872.0,
+    (
+        "SM 27",
+        "LDS Instructions",
+    ): 152.0,
+    (
+        "SM 4",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 1",
+        "LDS Instructions",
+    ): 136.0,
+    (
+        "SM 6",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 5",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 15",
+        "LDS Instructions",
+    ): 136.0,
+    (
+        "SM 28",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 34",
+        "BRU Instructions",
+    ): 152.0,
+    (
+        "Config.LSU",
+        "Width",
+    ): 1.0,
+    (
+        "Config.SM",
+        "MaxWarpsPerWarpPool",
+    ): 32.0,
+    (
+        "SM 17",
+        "SFU Instructions",
+    ): 1872.0,
+    (
+        "SM 36",
+        "SFU Instructions",
+    ): 824.0,
+    (
+        "SM 37",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 42",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 45",
+        "SFU Instructions",
+    ): 824.0,
+    (
+        "SM 10",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 32",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 5",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 21",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 35",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 36",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 42",
+        "BRU Instructions",
+    ): 152.0,
+    (
+        "SM 13",
+        "SFU Instructions",
+    ): 1280.0,
+    (
+        "SM 46",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 12",
+        "BRU Instructions",
+    ): 248.0,
+    (
+        "SM 19",
+        "DPU Instructions",
+    ): 24.0,
+    (
+        "SM 26",
+        "SFU Instructions",
+    ): 1872.0,
+    (
+        "SM 27",
+        "DPU Instructions",
+    ): 24.0,
+    (
+        "SM 8",
+        "IMU Instructions",
+    ): 200.0,
+    (
+        "SM 28",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 14",
+        "SFU Instructions",
+    ): 1280.0,
+    (
+        "SM 19",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 28",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 33",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 35",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 1",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 47",
+        "LDS Instructions",
+    ): 96.0,
+    (
+        "SM 40",
+        "LDS Instructions",
+    ): 96.0,
+    (
+        "SM 2",
+        "SFU Instructions",
+    ): 1280.0,
+    (
+        "Config.SFU",
+        "ReadBufferSize",
+    ): 1.0,
+    (
+        "SM 7",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 22",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 18",
+        "SFU Instructions",
+    ): 1872.0,
+    (
+        "SM 24",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 3",
+        "LDS Instructions",
+    ): 136.0,
+    (
+        "SM 8",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 43",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 13",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 45",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 40",
+        "BRU Instructions",
+    ): 152.0,
+    (
+        "SM 41",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 42",
+        "SFU Instructions",
+    ): 824.0,
+    (
+        "SM 3",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 30",
+        "BRU Instructions",
+    ): 392.0,
+    (
+        "SM 24",
+        "BRU Instructions",
+    ): 392.0,
+    (
+        "SM 42",
+        "BlockCount",
+    ): 2.0,
+    (
+        "SM 40",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 20",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 33",
+        "LDS Instructions",
+    ): 96.0,
+    (
+        "SM 34",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 24",
+        "IMU Instructions",
+    ): 296.0,
+    (
+        "Config.LSU",
+        "ReadBufferSize",
+    ): 1.0,
+    (
+        "SM 10",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 41",
+        "LDS Instructions",
+    ): 96.0,
+    (
+        "SM 45",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "Config.DPU",
+        "WriteLatency",
+    ): 12.0,
+    (
+        "SM 32",
+        "SFU Instructions",
+    ): 824.0,
+    (
+        "SM 30",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 39",
+        "BRU Instructions",
+    ): 152.0,
+    (
+        "SM 14",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 38",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 47",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 42",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 20",
+        "Cycles",
+    ): 101293.0,
+    (
+        "Config.SPU",
+        "WriteBufferSize",
+    ): 1.0,
+    (
+        "SM 25",
+        "SFU Instructions",
+    ): 1872.0,
+    (
+        "SM 9",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 34",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 7",
+        "IMU Instructions",
+    ): 200.0,
+    (
+        "SM 16",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 27",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 2",
+        "IMU Instructions",
+    ): 200.0,
+    (
+        "SM 35",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 20",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 40",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 43",
+        "BRU Instructions",
+    ): 152.0,
+    (
+        "SM 5",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 47",
+        "BlockCount",
+    ): 2.0,
+    (
+        "SM 10",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 38",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 9",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 33",
+        "SFU Instructions",
+    ): 824.0,
+    (
+        "SM 25",
+        "LDS Instructions",
+    ): 152.0,
+    (
+        "SM 36",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 40",
+        "BlockCount",
+    ): 2.0,
+    (
+        "SM 25",
+        "BlockCount",
+    ): 3.0,
+    (
+        "Config.IMU",
+        "WriteLatency",
+    ): 1.0,
+    (
+        "SM 25",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 16",
+        "DPU Instructions",
+    ): 24.0,
+    (
+        "Config.SFU",
+        "DispatchBufferSize",
+    ): 2.0,
+    (
+        "SM 12",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "Config.SPU",
+        "ReadBufferSize",
+    ): 1.0,
+    (
+        "Device",
+        "instructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 37",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 1",
+        "BRU Instructions",
+    ): 248.0,
+    (
+        "SM 28",
+        "LDS Instructions",
+    ): 152.0,
+    (
+        "SM 15",
+        "SFU Instructions",
+    ): 1280.0,
+    (
+        "SM 20",
+        "DPU Instructions",
+    ): 24.0,
+    (
+        "SM 6",
+        "IMU Instructions",
+    ): 200.0,
+    (
+        "SM 15",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 35",
+        "BlockCount",
+    ): 2.0,
+    (
+        "SM 43",
+        "LDS Instructions",
+    ): 96.0,
+    (
+        "SM 46",
+        "BRU Instructions",
+    ): 152.0,
+    (
+        "SM 44",
+        "BRU Instructions",
+    ): 152.0,
+    (
+        "Config.FrontEnd",
+        "FetchBufferSize",
+    ): 10.0,
+    (
+        "SM 43",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 9",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 47",
+        "IMU Instructions",
+    ): 128.0,
+    (
+        "Device",
+        "GridCount",
+    ): 0.0,
+    (
+        "SM 26",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "Config.IMU",
+        "ExecutionBufferSize",
+    ): 1.0,
+    (
+        "Config.BRU",
+        "ExecutionBufferSize",
+    ): 5.0,
+    (
+        "SM 3",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 16",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 37",
+        "BRU Instructions",
+    ): 152.0,
+    (
+        "SM 27",
+        "IMU Instructions",
+    ): 296.0,
+    (
+        "SM 37",
+        "IMU Instructions",
+    ): 128.0,
+    (
+        "SM 24",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "Config.IMU",
+        "DispatchBufferSize",
+    ): 2.0,
+    (
+        "SM 27",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 26",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 10",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 27",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 33",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 22",
+        "BRU Instructions",
+    ): 392.0,
+    (
+        "SM 33",
+        "BlockCount",
+    ): 2.0,
+    (
+        "SM 6",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "Config.SPU",
+        "DispatchBufferSize",
+    ): 2.0,
+    (
+        "SM 7",
+        "SFU Instructions",
+    ): 1280.0,
+    (
+        "SM 39",
+        "LDS Instructions",
+    ): 96.0,
+    (
+        "SM 2",
+        "BRU Instructions",
+    ): 248.0,
+    (
+        "SM 2",
+        "LDS Instructions",
+    ): 136.0,
+    (
+        "Device",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 2",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 36",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 28",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 29",
+        "LDS Instructions",
+    ): 152.0,
+    (
+        "SM 32",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "Config.IMU",
+        "ReadLatency",
+    ): 1.0,
+    (
+        "SM 12",
+        "LDS Instructions",
+    ): 136.0,
+    (
+        "SM 5",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 32",
+        "Cycles",
+    ): 101293.0,
+    (
+        "Config.Device",
+        "Frequency",
+    ): 735.0,
+    (
+        "SM 34",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 5",
+        "SFU Instructions",
+    ): 1280.0,
+    (
+        "Config.SM",
+        "MaxBlocksPerWarpPool",
+    ): 4.0,
+    (
+        "SM 3",
+        "BRU Instructions",
+    ): 248.0,
+    (
+        "SM 22",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 38",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 41",
+        "IMU Instructions",
+    ): 128.0,
+    (
+        "SM 43",
+        "SFU Instructions",
+    ): 824.0,
+    (
+        "Config.LSU",
+        "ReadLatency",
+    ): 1.0,
+    (
+        "SM 3",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 0",
+        "Cycles",
+    ): 101293.0,
+    (
+        "SM 9",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 10",
+        "IMU Instructions",
+    ): 200.0,
+    (
+        "SM 22",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 2",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 16",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 39",
+        "IMU Instructions",
+    ): 128.0,
+    (
+        "SM 14",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 33",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 2",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 24",
+        "SFU Instructions",
+    ): 1872.0,
+    (
+        "SM 26",
+        "BRU Instructions",
+    ): 392.0,
+    (
+        "SM 46",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 11",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 0",
+        "SFU Instructions",
+    ): 1280.0,
+    (
+        "SM 2",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 6",
+        "SFU Instructions",
+    ): 1280.0,
+    (
+        "SM 20",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 25",
+        "IMU Instructions",
+    ): 296.0,
+    (
+        "SM 14",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 34",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 14",
+        "IMU Instructions",
+    ): 200.0,
+    (
+        "SM 11",
+        "SFU Instructions",
+    ): 1280.0,
+    (
+        "SM 11",
+        "LDS Instructions",
+    ): 136.0,
+    (
+        "SM 42",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 14",
+        "DPU Instructions",
+    ): 0.0,
+    (
+        "SM 22",
+        "LDS Instructions",
+    ): 152.0,
+    (
+        "SM 19",
+        "SFU Instructions",
+    ): 1872.0,
+    (
+        "SM 42",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 16",
+        "BRU Instructions",
+    ): 392.0,
+    (
+        "SM 32",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 18",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "SM 1",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 47",
+        "SFU Instructions",
+    ): 824.0,
+    (
+        "SM 22",
+        "DPU Instructions",
+    ): 24.0,
+    (
+        "SM 15",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 13",
+        "BRU Instructions",
+    ): 248.0,
+    (
+        "SM 29",
+        "RegistersReads",
+    ): 0.0,
+    (
+        "SM 9",
+        "RegistersWrites",
+    ): 0.0,
+    (
+        "SM 28",
+        "DPU Instructions",
+    ): 24.0,
+    (
+        "SM 24",
+        "DPU Instructions",
+    ): 24.0,
+    (
+        "SM 33",
+        "BRU Instructions",
+    ): 152.0,
+    (
+        "SM 6",
+        "Cycles",
+    ): 101293.0,
+    (
+        "Config.SPU",
+        "ExecutionLatency",
+    ): 1.0,
+    (
+        "SM 45",
+        "BRU Instructions",
+    ): 152.0,
+    (
+        "SM 12",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 24",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 23",
+        "LDS Instructions",
+    ): 152.0,
+    (
+        "SM 33",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 41",
+        "BlockCount",
+    ): 2.0,
+    (
+        "SM 19",
+        "BlockCount",
+    ): 3.0,
+    (
+        "SM 31",
+        "SPU Instructions",
+    ): 0.0,
+    (
+        "Config.DPU",
+        "ExecutionLatency",
+    ): 15.0,
+    (
+        "Config.BRU",
+        "ReadBufferSize",
+    ): 5.0,
+    (
+        "SM 8",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 29",
+        "InstructionsPerCycle",
+    ): 0.0,
+    (
+        "SM 30",
+        "Cycles",
+    ): 101293.0,
+}
+done after 12.625981ms

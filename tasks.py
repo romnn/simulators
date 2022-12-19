@@ -376,6 +376,39 @@ def configure(c, simulator, base, template=None, out=None, verbose=False):
 ns.add_task(configure, "configure")
 
 
+@task
+def migrate(c):
+    """temporary migration"""
+    import itertools
+    from gpusims.bench import parse_benchmarks
+    from gpusims.utils import slugify
+
+    simulators = gpusims.SIMULATORS
+    configs = gpusims.config.parse_configs(BENCHMARK_DIR / "configs" / "configs.yml")
+    benchmarks = parse_benchmarks(BENCHMARK_DIR / "benchmarks.yml")
+    for sim, conf, bench in list(
+        itertools.product(simulators, configs.values(), benchmarks.values())
+    ):
+        # if not bench.enabled(sim):
+        #     continue
+        # print(sim, conf, bench)
+        sim_run_dir = RUN_DIR / sim
+        config_name = slugify(conf.key.lower())
+        old_path = sim_run_dir / bench.sanitized_name() / config_name
+        new_path = sim_run_dir / config_name / bench.sanitized_name()
+        if not old_path.is_dir():
+            # print("missing", old_path)
+            pass
+        else:
+            print("mkdir", str(new_path.parent.absolute()))
+            print(old_path, "=>", new_path)
+            # os.makedirs(str(new_path.parent.absolute()), exist_ok=True)
+            # old_path.rename(new_path)
+
+
+ns.add_task(migrate, "migrate")
+
+
 @task(pre=[])
 def clean(c):
     """Performs cleanup"""

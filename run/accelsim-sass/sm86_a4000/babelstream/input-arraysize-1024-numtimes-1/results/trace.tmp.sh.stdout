@@ -1,0 +1,99 @@
+------------- NVBit (NVidia Binary Instrumentation Tool v1.5.5) Loaded --------------
+NVBit core environment variables (mostly for nvbit-devs):
+            NVDISASM = nvdisasm - override default nvdisasm found in PATH
+            NOBANNER = 0 - if set, does not print this banner
+---------------------------------------------------------------------------------
+         INSTR_BEGIN = 0 - Beginning of the instruction interval where to apply instrumentation
+           INSTR_END = 4294967295 - End of the instruction interval where to apply instrumentation
+    EXCLUDE_PRED_OFF = 1 - Exclude predicated off instruction from count
+DYNAMIC_KERNEL_LIMIT_END = 0 - Limit of the number kernel to be printed, 0 means no limit
+DYNAMIC_KERNEL_LIMIT_START = 0 - start to report kernel from this kernel id, 0 means starts from the beginning, i.e. first kernel
+   ACTIVE_FROM_START = 1 - Start instruction tracing from start or wait for cuProfilerStart and cuProfilerStop. If set to 0, DYNAMIC_KERNEL_LIMIT options have no effect
+        TOOL_VERBOSE = 0 - Enable verbosity inside the tool
+       TOOL_COMPRESS = 1 - Enable traces compression
+     TOOL_TRACE_CORE = 0 - write the core id in the traces
+TERMINATE_UPON_LIMIT = 0 - Stop the process once the current kernel > DYNAMIC_KERNEL_LIMIT_END
+USER_DEFINED_FOLDERS = 1 - Uses the user defined folder TRACES_FOLDER path environment
+----------------------------------------------------------------------------------------------------
+BabelStream
+Version: 4.0
+Implementation: CUDA
+Running kernels 1 times
+Precision: double
+Array size: 0.0 MB (=0.0 GB)
+Total size: 0.0 MB (=0.0 GB)
+Using CUDA device NVIDIA RTX A4000
+Driver: 11070
+
+ Traces location is /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/babelstream/sm86_a4000/input-arraysize-1024-numtimes-1/results/traces 
+Kernelslist location is /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/babelstream/sm86_a4000/input-arraysize-1024-numtimes-1/results/traces/kernelslist 
+Stats location is /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/babelstream/sm86_a4000/input-arraysize-1024-numtimes-1/results/traces/stats.csv 
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/babelstream/sm86_a4000/input-arraysize-1024-numtimes-1/results/traces/kernel-1.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/babelstream/sm86_a4000/input-arraysize-1024-numtimes-1/results/traces/kernel-2.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/babelstream/sm86_a4000/input-arraysize-1024-numtimes-1/results/traces/kernel-3.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/babelstream/sm86_a4000/input-arraysize-1024-numtimes-1/results/traces/kernel-4.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/babelstream/sm86_a4000/input-arraysize-1024-numtimes-1/results/traces/kernel-5.trace
+Writing results to /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/babelstream/sm86_a4000/input-arraysize-1024-numtimes-1/results/traces/kernel-6.trace
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        0.036       0.45928     0.45928     0.45928     
+Mul         0.036       0.45988     0.45988     0.45988     
+Add         0.054       0.45826     0.45826     0.45826     
+Triad       0.053       0.46118     0.46118     0.46118     
+Dot         0.009       1.73796     1.73796     1.73796     
+------------- NVBit (NVidia Binary Instrumentation Tool v1.5.5) Loaded --------------
+NVBit core environment variables (mostly for nvbit-devs):
+            NVDISASM = nvdisasm - override default nvdisasm found in PATH
+            NOBANNER = 0 - if set, does not print this banner
+---------------------------------------------------------------------------------
+         INSTR_BEGIN = 0 - Beginning of the instruction interval where to apply instrumentation
+           INSTR_END = 4294967295 - End of the instruction interval where to apply instrumentation
+    EXCLUDE_PRED_OFF = 1 - Exclude predicated off instruction from count
+DYNAMIC_KERNEL_LIMIT_END = 0 - Limit of the number kernel to be printed, 0 means no limit
+DYNAMIC_KERNEL_LIMIT_START = 0 - start to report kernel from this kernel id, 0 means starts from the beginning, i.e. first kernel
+   ACTIVE_FROM_START = 1 - Start instruction tracing from start or wait for cuProfilerStart and cuProfilerStop. If set to 0, DYNAMIC_KERNEL_LIMIT options have no effect
+        TOOL_VERBOSE = 0 - Enable verbosity inside the tool
+       TOOL_COMPRESS = 1 - Enable traces compression
+     TOOL_TRACE_CORE = 0 - write the core id in the traces
+TERMINATE_UPON_LIMIT = 0 - Stop the process once the current kernel > DYNAMIC_KERNEL_LIMIT_END
+USER_DEFINED_FOLDERS = 1 - Uses the user defined folder TRACES_FOLDER path environment
+----------------------------------------------------------------------------------------------------
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/babelstream/sm86_a4000/input-arraysize-1024-numtimes-1/results/traces/kernel-1.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/babelstream/sm86_a4000/input-arraysize-1024-numtimes-1/results/traces/kernel-2.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/babelstream/sm86_a4000/input-arraysize-1024-numtimes-1/results/traces/kernel-3.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/babelstream/sm86_a4000/input-arraysize-1024-numtimes-1/results/traces/kernel-4.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/babelstream/sm86_a4000/input-arraysize-1024-numtimes-1/results/traces/kernel-5.trace
+Processing file /var/scratch/rdm420/gpgpusims/../run/accelsim-sass/babelstream/sm86_a4000/input-arraysize-1024-numtimes-1/results/traces/kernel-6.trace
+------------- NVBit (NVidia Binary Instrumentation Tool v1.5.5) Loaded --------------
+NVBit core environment variables (mostly for nvbit-devs):
+            NVDISASM = nvdisasm - override default nvdisasm found in PATH
+            NOBANNER = 0 - if set, does not print this banner
+---------------------------------------------------------------------------------
+         INSTR_BEGIN = 0 - Beginning of the instruction interval where to apply instrumentation
+           INSTR_END = 4294967295 - End of the instruction interval where to apply instrumentation
+    EXCLUDE_PRED_OFF = 1 - Exclude predicated off instruction from count
+DYNAMIC_KERNEL_LIMIT_END = 0 - Limit of the number kernel to be printed, 0 means no limit
+DYNAMIC_KERNEL_LIMIT_START = 0 - start to report kernel from this kernel id, 0 means starts from the beginning, i.e. first kernel
+   ACTIVE_FROM_START = 1 - Start instruction tracing from start or wait for cuProfilerStart and cuProfilerStop. If set to 0, DYNAMIC_KERNEL_LIMIT options have no effect
+        TOOL_VERBOSE = 0 - Enable verbosity inside the tool
+       TOOL_COMPRESS = 1 - Enable traces compression
+     TOOL_TRACE_CORE = 0 - write the core id in the traces
+TERMINATE_UPON_LIMIT = 0 - Stop the process once the current kernel > DYNAMIC_KERNEL_LIMIT_END
+USER_DEFINED_FOLDERS = 1 - Uses the user defined folder TRACES_FOLDER path environment
+----------------------------------------------------------------------------------------------------
+------------- NVBit (NVidia Binary Instrumentation Tool v1.5.5) Loaded --------------
+NVBit core environment variables (mostly for nvbit-devs):
+            NVDISASM = nvdisasm - override default nvdisasm found in PATH
+            NOBANNER = 0 - if set, does not print this banner
+---------------------------------------------------------------------------------
+         INSTR_BEGIN = 0 - Beginning of the instruction interval where to apply instrumentation
+           INSTR_END = 4294967295 - End of the instruction interval where to apply instrumentation
+    EXCLUDE_PRED_OFF = 1 - Exclude predicated off instruction from count
+DYNAMIC_KERNEL_LIMIT_END = 0 - Limit of the number kernel to be printed, 0 means no limit
+DYNAMIC_KERNEL_LIMIT_START = 0 - start to report kernel from this kernel id, 0 means starts from the beginning, i.e. first kernel
+   ACTIVE_FROM_START = 1 - Start instruction tracing from start or wait for cuProfilerStart and cuProfilerStop. If set to 0, DYNAMIC_KERNEL_LIMIT options have no effect
+        TOOL_VERBOSE = 0 - Enable verbosity inside the tool
+       TOOL_COMPRESS = 1 - Enable traces compression
+     TOOL_TRACE_CORE = 0 - write the core id in the traces
+TERMINATE_UPON_LIMIT = 0 - Stop the process once the current kernel > DYNAMIC_KERNEL_LIMIT_END
+USER_DEFINED_FOLDERS = 1 - Uses the user defined folder TRACES_FOLDER path environment
+----------------------------------------------------------------------------------------------------

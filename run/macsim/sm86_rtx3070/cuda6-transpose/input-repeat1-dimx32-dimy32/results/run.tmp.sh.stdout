@@ -1,0 +1,561 @@
+(0.000000) CudaRuntime.cpp:3813: Adding external function 'malloc'
+(0.000000) CudaRuntime.cpp:3813: Adding external function 'free'
+(0.000000) CudaRuntime.cpp:3813: Adding external function 'vprintf'
+(0.000000) CudaRuntime.cpp:3813: Adding external function 'cudaGetParameterBuffer'
+(0.000060) CudaRuntime.cpp:595:  Loading module (fatbin) - transpose.cu
+(0.000079) CudaRuntime.cpp:738:  Registered kernel - _Z22transposeCoarseGrainedPfS_ii in module 'transpose.cu'
+(0.000094) CudaRuntime.cpp:738:  Registered kernel - _Z20transposeFineGrainedPfS_ii in module 'transpose.cu'
+(0.000103) CudaRuntime.cpp:738:  Registered kernel - _Z17transposeDiagonalPfS_ii in module 'transpose.cu'
+(0.000112) CudaRuntime.cpp:738:  Registered kernel - _Z24transposeNoBankConflictsPfS_ii in module 'transpose.cu'
+(0.000121) CudaRuntime.cpp:738:  Registered kernel - _Z18transposeCoalescedPfS_ii in module 'transpose.cu'
+(0.000129) CudaRuntime.cpp:738:  Registered kernel - _Z14transposeNaivePfS_ii in module 'transpose.cu'
+(0.000137) CudaRuntime.cpp:738:  Registered kernel - _Z13copySharedMemPfS_ii in module 'transpose.cu'
+(0.000145) CudaRuntime.cpp:738:  Registered kernel - _Z4copyPfS_ii in module 'transpose.cu'
+Transpose Starting...
+
+(0.000199) CudaRuntime.cpp:446:  Creating new context for thread 0x2238920
+(0.000228) CudaRuntime.cpp:276:  Creating devices.
+(0.000377) CudaRuntime.cpp:288:   - Added 1 emulator devices.
+(0.000488) CudaRuntime.cpp:2203: cuda::CudaRuntime::cudaGetDeviceProperties(dev = 0) - major: 2, minor: 1
+(0.000503) CudaRuntime.cpp:2241:   returning: prop->major = 2, prop->minor = 1
+(0.000697) CudaRuntime.cpp:276:  Creating devices.
+(0.000781) CudaRuntime.cpp:288:   - Added 1 emulator devices.
+(0.000833) CudaRuntime.cpp:2203: cuda::CudaRuntime::cudaGetDeviceProperties(dev = 0) - major: 2, minor: 1
+(0.000842) CudaRuntime.cpp:2241:   returning: prop->major = 2, prop->minor = 1
+(0.000935) CudaRuntime.cpp:2289: Setting device for thread 0x2238920 to 0
+(0.000945) CudaRuntime.cpp:276:  Creating devices.
+(0.001016) CudaRuntime.cpp:288:   - Added 1 emulator devices.
+(0.001078) CudaRuntime.cpp:2203: cuda::CudaRuntime::cudaGetDeviceProperties(dev = 0) - major: 2, minor: 1
+(0.001087) CudaRuntime.cpp:2241:   returning: prop->major = 2, prop->minor = 1
+GPU Device 0: "Ocelot PTX Emulator" with compute capability 2.1
+
+(0.001128) CudaRuntime.cpp:276:  Creating devices.
+(0.001199) CudaRuntime.cpp:288:   - Added 1 emulator devices.
+(0.001245) CudaRuntime.cpp:2203: cuda::CudaRuntime::cudaGetDeviceProperties(dev = 0) - major: 2, minor: 1
+(0.001255) CudaRuntime.cpp:2241:   returning: prop->major = 2, prop->minor = 1
+> Device 0: "Ocelot PTX Emulator"
+> SM Capability 2.1 detected:
+> [Ocelot PTX Emulator] has 1 MP(s) x 48 (Cores/MP) = 48 (Cores)
+> Compute performance scaling factor = 4.00
+> MatrixSize X = 32
+> MatrixSize Y = 32
+(0.001386) CudaRuntime.cpp:276:  Creating devices.
+(0.001466) CudaRuntime.cpp:288:   - Added 1 emulator devices.
+(0.001532) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x223e900, size = 4096)
+(0.001552) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x223fa00, size = 4096)
+(0.001578) CudaRuntime.cpp:1131: cudaMemcpy(0x223e900, 0x223b8a0, 4096)
+(0.001587) CudaRuntime.cpp:251:    _memcpy(0x223e900, 0x223b8a0, 4096 bytes) h-to-d
+
+Matrix size: 32x32 (2x2 tiles), tile size: 16x16, block size: 16x16
+
+(0.001627) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.001637) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.001652) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.001662) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.001670) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.011717) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xfa 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.011733) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xe9 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.011741) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.011759) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.011765) CudaRuntime.cpp:2685: kernel launch (_Z4copyPfS_ii) on thread 0x2238920
+(0.011783) CudaRuntime.cpp:2706:  launch completed successfully
+all enabled
+(0.012434) X86TraceGenerator.cpp:776:  New kernel launched
+(0.012457) X86TraceGenerator.cpp:777:  compute version:2.0
+(0.012466) X86TraceGenerator.cpp:778:  grid  2 x 2 x 1
+(0.012475) X86TraceGenerator.cpp:779:  block 16 x 16 x 1
+(0.012484) X86TraceGenerator.cpp:780:  number of warps per block:8
+(0.012491) X86TraceGenerator.cpp:781:  number of total warps:32
+(0.012498) X86TraceGenerator.cpp:782:  # threads per block : 256
+(0.012505) X86TraceGenerator.cpp:783:  number of register per thread:7
+(0.012512) X86TraceGenerator.cpp:784:  number of shared memory per thread:0
+(0.012522) X86TraceGenerator.cpp:822:  max blocks per core : 6
+(0.016552) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/cuda6-transpose/sm86_rtx3070/input-repeat1-dimx32-dimy32/results/traces/_Z4copyPfS_ii_0/ (status 0)
+
+(0.016613) X86TraceGenerator.cpp:1083: errno is 0 message is Success
+
+(0.053489) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.053512) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.053521) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.053529) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.053536) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.053574) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xfa 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.053587) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xe9 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.053597) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.053608) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.053625) CudaRuntime.cpp:2685: kernel launch (_Z4copyPfS_ii) on thread 0x2238920
+(0.053653) CudaRuntime.cpp:2706:  launch completed successfully
+(0.054544) X86TraceGenerator.cpp:776:  New kernel launched
+(0.054553) X86TraceGenerator.cpp:777:  compute version:2.0
+(0.054556) X86TraceGenerator.cpp:778:  grid  2 x 2 x 1
+(0.054560) X86TraceGenerator.cpp:779:  block 16 x 16 x 1
+(0.054563) X86TraceGenerator.cpp:780:  number of warps per block:8
+(0.054566) X86TraceGenerator.cpp:781:  number of total warps:32
+(0.054569) X86TraceGenerator.cpp:782:  # threads per block : 256
+(0.054572) X86TraceGenerator.cpp:783:  number of register per thread:7
+(0.054575) X86TraceGenerator.cpp:784:  number of shared memory per thread:0
+(0.054579) X86TraceGenerator.cpp:822:  max blocks per core : 6
+(0.058509) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/cuda6-transpose/sm86_rtx3070/input-repeat1-dimx32-dimy32/results/traces/_Z4copyPfS_ii_1/ (status 0)
+
+(0.058526) X86TraceGenerator.cpp:1083: errno is 0 message is Success
+
+(0.074667) CudaRuntime.cpp:1131: cudaMemcpy(0x223c8b0, 0x223fa00, 4096)
+(0.074702) CudaRuntime.cpp:215:    _memcpy(0x223c8b0, 0x223fa00, 4096 bytes) d-to-h
+(0.074758) CudaRuntime.cpp:1131: cudaMemcpy(0x223c8b0, 0x223fa00, 4096)
+(0.074783) CudaRuntime.cpp:215:    _memcpy(0x223c8b0, 0x223fa00, 4096 bytes) d-to-h
+transpose simple copy       , Throughput = 0.0004 GB/s, Time = 21.15035 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+(0.074832) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.074857) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.074917) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.074941) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.074965) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.075036) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xfa 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.075075) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xe9 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.075123) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.075158) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.075175) CudaRuntime.cpp:2685: kernel launch (_Z13copySharedMemPfS_ii) on thread 0x2238920
+(0.075228) CudaRuntime.cpp:2706:  launch completed successfully
+(0.076090) X86TraceGenerator.cpp:776:  New kernel launched
+(0.076097) X86TraceGenerator.cpp:777:  compute version:2.0
+(0.076099) X86TraceGenerator.cpp:778:  grid  2 x 2 x 1
+(0.076102) X86TraceGenerator.cpp:779:  block 16 x 16 x 1
+(0.076104) X86TraceGenerator.cpp:780:  number of warps per block:8
+(0.076107) X86TraceGenerator.cpp:781:  number of total warps:32
+(0.076109) X86TraceGenerator.cpp:782:  # threads per block : 256
+(0.076111) X86TraceGenerator.cpp:783:  number of register per thread:10
+(0.076114) X86TraceGenerator.cpp:784:  number of shared memory per thread:1024
+(0.076116) X86TraceGenerator.cpp:822:  max blocks per core : 6
+(0.080349) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/cuda6-transpose/sm86_rtx3070/input-repeat1-dimx32-dimy32/results/traces/_Z13copySharedMemPfS_ii_0/ (status 0)
+
+(0.080365) X86TraceGenerator.cpp:1083: errno is 0 message is Success
+
+(0.108473) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.108496) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.108505) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.108513) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.108520) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.108556) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xfa 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.108569) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xe9 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.108579) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.108590) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.108607) CudaRuntime.cpp:2685: kernel launch (_Z13copySharedMemPfS_ii) on thread 0x2238920
+(0.108631) CudaRuntime.cpp:2706:  launch completed successfully
+(0.109663) X86TraceGenerator.cpp:776:  New kernel launched
+(0.109670) X86TraceGenerator.cpp:777:  compute version:2.0
+(0.109673) X86TraceGenerator.cpp:778:  grid  2 x 2 x 1
+(0.109675) X86TraceGenerator.cpp:779:  block 16 x 16 x 1
+(0.109678) X86TraceGenerator.cpp:780:  number of warps per block:8
+(0.109680) X86TraceGenerator.cpp:781:  number of total warps:32
+(0.109682) X86TraceGenerator.cpp:782:  # threads per block : 256
+(0.109684) X86TraceGenerator.cpp:783:  number of register per thread:10
+(0.109686) X86TraceGenerator.cpp:784:  number of shared memory per thread:1024
+(0.109689) X86TraceGenerator.cpp:822:  max blocks per core : 6
+(0.113921) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/cuda6-transpose/sm86_rtx3070/input-repeat1-dimx32-dimy32/results/traces/_Z13copySharedMemPfS_ii_1/ (status 0)
+
+(0.113961) X86TraceGenerator.cpp:1083: errno is 0 message is Success
+
+(0.157526) CudaRuntime.cpp:1131: cudaMemcpy(0x223c8b0, 0x223fa00, 4096)
+(0.157544) CudaRuntime.cpp:215:    _memcpy(0x223c8b0, 0x223fa00, 4096 bytes) d-to-h
+(0.157582) CudaRuntime.cpp:1131: cudaMemcpy(0x223c8b0, 0x223fa00, 4096)
+(0.157590) CudaRuntime.cpp:215:    _memcpy(0x223c8b0, 0x223fa00, 4096 bytes) d-to-h
+transpose shared memory copy, Throughput = 0.0002 GB/s, Time = 49.05343 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+(0.157620) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.157629) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.157637) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.157645) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.157652) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.157699) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xfa 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.157726) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xe9 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.157737) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.157748) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.157757) CudaRuntime.cpp:2685: kernel launch (_Z14transposeNaivePfS_ii) on thread 0x2238920
+(0.157780) CudaRuntime.cpp:2706:  launch completed successfully
+(0.158931) X86TraceGenerator.cpp:776:  New kernel launched
+(0.158940) X86TraceGenerator.cpp:777:  compute version:2.0
+(0.158942) X86TraceGenerator.cpp:778:  grid  2 x 2 x 1
+(0.158945) X86TraceGenerator.cpp:779:  block 16 x 16 x 1
+(0.158947) X86TraceGenerator.cpp:780:  number of warps per block:8
+(0.158949) X86TraceGenerator.cpp:781:  number of total warps:32
+(0.158952) X86TraceGenerator.cpp:782:  # threads per block : 256
+(0.158954) X86TraceGenerator.cpp:783:  number of register per thread:10
+(0.158956) X86TraceGenerator.cpp:784:  number of shared memory per thread:0
+(0.158959) X86TraceGenerator.cpp:822:  max blocks per core : 6
+(0.163250) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/cuda6-transpose/sm86_rtx3070/input-repeat1-dimx32-dimy32/results/traces/_Z14transposeNaivePfS_ii_0/ (status 0)
+
+(0.163268) X86TraceGenerator.cpp:1083: errno is 0 message is Success
+
+(0.181298) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.181317) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.181325) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.181333) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.181340) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.181377) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xfa 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.181393) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xe9 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.181405) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.181415) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.181432) CudaRuntime.cpp:2685: kernel launch (_Z14transposeNaivePfS_ii) on thread 0x2238920
+(0.181452) CudaRuntime.cpp:2706:  launch completed successfully
+(0.182096) X86TraceGenerator.cpp:776:  New kernel launched
+(0.182102) X86TraceGenerator.cpp:777:  compute version:2.0
+(0.182105) X86TraceGenerator.cpp:778:  grid  2 x 2 x 1
+(0.182108) X86TraceGenerator.cpp:779:  block 16 x 16 x 1
+(0.182110) X86TraceGenerator.cpp:780:  number of warps per block:8
+(0.182112) X86TraceGenerator.cpp:781:  number of total warps:32
+(0.182115) X86TraceGenerator.cpp:782:  # threads per block : 256
+(0.182117) X86TraceGenerator.cpp:783:  number of register per thread:10
+(0.182119) X86TraceGenerator.cpp:784:  number of shared memory per thread:0
+(0.182122) X86TraceGenerator.cpp:822:  max blocks per core : 6
+(0.186604) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/cuda6-transpose/sm86_rtx3070/input-repeat1-dimx32-dimy32/results/traces/_Z14transposeNaivePfS_ii_1/ (status 0)
+
+(0.186621) X86TraceGenerator.cpp:1083: errno is 0 message is Success
+
+(0.204559) CudaRuntime.cpp:1131: cudaMemcpy(0x223c8b0, 0x223fa00, 4096)
+(0.204578) CudaRuntime.cpp:215:    _memcpy(0x223c8b0, 0x223fa00, 4096 bytes) d-to-h
+(0.204625) CudaRuntime.cpp:1131: cudaMemcpy(0x223c8b0, 0x223fa00, 4096)
+(0.204633) CudaRuntime.cpp:215:    _memcpy(0x223c8b0, 0x223fa00, 4096 bytes) d-to-h
+transpose naive             , Throughput = 0.0003 GB/s, Time = 23.25892 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+(0.204664) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.204673) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.204681) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.204703) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.204711) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.204756) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xfa 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.204769) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xe9 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.204779) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.204790) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.204798) CudaRuntime.cpp:2685: kernel launch (_Z18transposeCoalescedPfS_ii) on thread 0x2238920
+(0.204821) CudaRuntime.cpp:2706:  launch completed successfully
+(0.205606) X86TraceGenerator.cpp:776:  New kernel launched
+(0.205617) X86TraceGenerator.cpp:777:  compute version:2.0
+(0.205625) X86TraceGenerator.cpp:778:  grid  2 x 2 x 1
+(0.205632) X86TraceGenerator.cpp:779:  block 16 x 16 x 1
+(0.205639) X86TraceGenerator.cpp:780:  number of warps per block:8
+(0.205646) X86TraceGenerator.cpp:781:  number of total warps:32
+(0.205653) X86TraceGenerator.cpp:782:  # threads per block : 256
+(0.205659) X86TraceGenerator.cpp:783:  number of register per thread:8
+(0.205666) X86TraceGenerator.cpp:784:  number of shared memory per thread:1024
+(0.205673) X86TraceGenerator.cpp:822:  max blocks per core : 6
+(0.210027) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/cuda6-transpose/sm86_rtx3070/input-repeat1-dimx32-dimy32/results/traces/_Z18transposeCoalescedPfS_ii_0/ (status 0)
+
+(0.210043) X86TraceGenerator.cpp:1083: errno is 0 message is Success
+
+(0.235273) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.235291) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.235301) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.235308) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.235316) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.235352) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xfa 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.235368) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xe9 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.235379) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.235389) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.235405) CudaRuntime.cpp:2685: kernel launch (_Z18transposeCoalescedPfS_ii) on thread 0x2238920
+(0.235428) CudaRuntime.cpp:2706:  launch completed successfully
+(0.236537) X86TraceGenerator.cpp:776:  New kernel launched
+(0.236544) X86TraceGenerator.cpp:777:  compute version:2.0
+(0.236547) X86TraceGenerator.cpp:778:  grid  2 x 2 x 1
+(0.236550) X86TraceGenerator.cpp:779:  block 16 x 16 x 1
+(0.236552) X86TraceGenerator.cpp:780:  number of warps per block:8
+(0.236554) X86TraceGenerator.cpp:781:  number of total warps:32
+(0.236556) X86TraceGenerator.cpp:782:  # threads per block : 256
+(0.236558) X86TraceGenerator.cpp:783:  number of register per thread:8
+(0.236561) X86TraceGenerator.cpp:784:  number of shared memory per thread:1024
+(0.236563) X86TraceGenerator.cpp:822:  max blocks per core : 6
+(0.240914) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/cuda6-transpose/sm86_rtx3070/input-repeat1-dimx32-dimy32/results/traces/_Z18transposeCoalescedPfS_ii_1/ (status 0)
+
+(0.240932) X86TraceGenerator.cpp:1083: errno is 0 message is Success
+
+(0.265605) CudaRuntime.cpp:1131: cudaMemcpy(0x223c8b0, 0x223fa00, 4096)
+(0.265624) CudaRuntime.cpp:215:    _memcpy(0x223c8b0, 0x223fa00, 4096 bytes) d-to-h
+(0.265662) CudaRuntime.cpp:1131: cudaMemcpy(0x223c8b0, 0x223fa00, 4096)
+(0.265670) CudaRuntime.cpp:215:    _memcpy(0x223c8b0, 0x223fa00, 4096 bytes) d-to-h
+transpose coalesced         , Throughput = 0.0003 GB/s, Time = 30.32851 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+(0.265712) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.265721) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.265729) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.265736) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.265744) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.265786) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xfa 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.265799) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xe9 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.265810) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.265820) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.265829) CudaRuntime.cpp:2685: kernel launch (_Z24transposeNoBankConflictsPfS_ii) on thread 0x2238920
+(0.265847) CudaRuntime.cpp:2706:  launch completed successfully
+(0.267128) X86TraceGenerator.cpp:776:  New kernel launched
+(0.267135) X86TraceGenerator.cpp:777:  compute version:2.0
+(0.267138) X86TraceGenerator.cpp:778:  grid  2 x 2 x 1
+(0.267141) X86TraceGenerator.cpp:779:  block 16 x 16 x 1
+(0.267143) X86TraceGenerator.cpp:780:  number of warps per block:8
+(0.267145) X86TraceGenerator.cpp:781:  number of total warps:32
+(0.267148) X86TraceGenerator.cpp:782:  # threads per block : 256
+(0.267150) X86TraceGenerator.cpp:783:  number of register per thread:8
+(0.267152) X86TraceGenerator.cpp:784:  number of shared memory per thread:1088
+(0.267155) X86TraceGenerator.cpp:822:  max blocks per core : 6
+(0.271566) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/cuda6-transpose/sm86_rtx3070/input-repeat1-dimx32-dimy32/results/traces/_Z24transposeNoBankConflictsPfS_ii_0/ (status 0)
+
+(0.271583) X86TraceGenerator.cpp:1083: errno is 0 message is Success
+
+(0.296306) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.296324) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.296333) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.296341) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.296348) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.296381) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xfa 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.296398) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xe9 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.296409) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.296420) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.296436) CudaRuntime.cpp:2685: kernel launch (_Z24transposeNoBankConflictsPfS_ii) on thread 0x2238920
+(0.296456) CudaRuntime.cpp:2706:  launch completed successfully
+(0.297585) X86TraceGenerator.cpp:776:  New kernel launched
+(0.297590) X86TraceGenerator.cpp:777:  compute version:2.0
+(0.297593) X86TraceGenerator.cpp:778:  grid  2 x 2 x 1
+(0.297596) X86TraceGenerator.cpp:779:  block 16 x 16 x 1
+(0.297598) X86TraceGenerator.cpp:780:  number of warps per block:8
+(0.297600) X86TraceGenerator.cpp:781:  number of total warps:32
+(0.297602) X86TraceGenerator.cpp:782:  # threads per block : 256
+(0.297604) X86TraceGenerator.cpp:783:  number of register per thread:8
+(0.297606) X86TraceGenerator.cpp:784:  number of shared memory per thread:1088
+(0.297609) X86TraceGenerator.cpp:822:  max blocks per core : 6
+(0.301989) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/cuda6-transpose/sm86_rtx3070/input-repeat1-dimx32-dimy32/results/traces/_Z24transposeNoBankConflictsPfS_ii_1/ (status 0)
+
+(0.302004) X86TraceGenerator.cpp:1083: errno is 0 message is Success
+
+(0.327372) CudaRuntime.cpp:1131: cudaMemcpy(0x223c8b0, 0x223fa00, 4096)
+(0.327391) CudaRuntime.cpp:215:    _memcpy(0x223c8b0, 0x223fa00, 4096 bytes) d-to-h
+(0.327442) CudaRuntime.cpp:1131: cudaMemcpy(0x223c8b0, 0x223fa00, 4096)
+(0.327451) CudaRuntime.cpp:215:    _memcpy(0x223c8b0, 0x223fa00, 4096 bytes) d-to-h
+transpose optimized         , Throughput = 0.0002 GB/s, Time = 31.06332 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+(0.327481) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.327490) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.327498) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.327505) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.327513) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.327553) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xfa 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.327565) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xe9 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.327575) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.327586) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.327595) CudaRuntime.cpp:2685: kernel launch (_Z22transposeCoarseGrainedPfS_ii) on thread 0x2238920
+(0.327617) CudaRuntime.cpp:2706:  launch completed successfully
+(0.328890) X86TraceGenerator.cpp:776:  New kernel launched
+(0.328895) X86TraceGenerator.cpp:777:  compute version:2.0
+(0.328898) X86TraceGenerator.cpp:778:  grid  2 x 2 x 1
+(0.328901) X86TraceGenerator.cpp:779:  block 16 x 16 x 1
+(0.328903) X86TraceGenerator.cpp:780:  number of warps per block:8
+(0.328905) X86TraceGenerator.cpp:781:  number of total warps:32
+(0.328907) X86TraceGenerator.cpp:782:  # threads per block : 256
+(0.328909) X86TraceGenerator.cpp:783:  number of register per thread:8
+(0.328912) X86TraceGenerator.cpp:784:  number of shared memory per thread:1088
+(0.328914) X86TraceGenerator.cpp:822:  max blocks per core : 6
+(0.333316) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/cuda6-transpose/sm86_rtx3070/input-repeat1-dimx32-dimy32/results/traces/_Z22transposeCoarseGrainedPfS_ii_0/ (status 0)
+
+(0.333334) X86TraceGenerator.cpp:1083: errno is 0 message is Success
+
+(0.358733) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.358767) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.358792) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.358817) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.358841) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.358912) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xfa 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.358930) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xe9 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.358941) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.358952) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.358968) CudaRuntime.cpp:2685: kernel launch (_Z22transposeCoarseGrainedPfS_ii) on thread 0x2238920
+(0.358987) CudaRuntime.cpp:2706:  launch completed successfully
+(0.360018) X86TraceGenerator.cpp:776:  New kernel launched
+(0.360026) X86TraceGenerator.cpp:777:  compute version:2.0
+(0.360029) X86TraceGenerator.cpp:778:  grid  2 x 2 x 1
+(0.360031) X86TraceGenerator.cpp:779:  block 16 x 16 x 1
+(0.360034) X86TraceGenerator.cpp:780:  number of warps per block:8
+(0.360036) X86TraceGenerator.cpp:781:  number of total warps:32
+(0.360038) X86TraceGenerator.cpp:782:  # threads per block : 256
+(0.360040) X86TraceGenerator.cpp:783:  number of register per thread:8
+(0.360043) X86TraceGenerator.cpp:784:  number of shared memory per thread:1088
+(0.360045) X86TraceGenerator.cpp:822:  max blocks per core : 6
+(0.364333) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/cuda6-transpose/sm86_rtx3070/input-repeat1-dimx32-dimy32/results/traces/_Z22transposeCoarseGrainedPfS_ii_1/ (status 0)
+
+(0.364357) X86TraceGenerator.cpp:1083: errno is 0 message is Success
+
+(0.388769) CudaRuntime.cpp:1131: cudaMemcpy(0x223c8b0, 0x223fa00, 4096)
+(0.388788) CudaRuntime.cpp:215:    _memcpy(0x223c8b0, 0x223fa00, 4096 bytes) d-to-h
+(0.388824) CudaRuntime.cpp:1131: cudaMemcpy(0x223c8b0, 0x223fa00, 4096)
+(0.388833) CudaRuntime.cpp:215:    _memcpy(0x223c8b0, 0x223fa00, 4096 bytes) d-to-h
+transpose coarse-grained    , Throughput = 0.0003 GB/s, Time = 30.04456 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+(0.388863) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.388872) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.388880) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.388887) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.388894) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.388933) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xfa 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.388946) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xe9 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.388956) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.388967) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.388976) CudaRuntime.cpp:2685: kernel launch (_Z20transposeFineGrainedPfS_ii) on thread 0x2238920
+(0.388999) CudaRuntime.cpp:2706:  launch completed successfully
+(0.390146) X86TraceGenerator.cpp:776:  New kernel launched
+(0.390152) X86TraceGenerator.cpp:777:  compute version:2.0
+(0.390154) X86TraceGenerator.cpp:778:  grid  2 x 2 x 1
+(0.390157) X86TraceGenerator.cpp:779:  block 16 x 16 x 1
+(0.390159) X86TraceGenerator.cpp:780:  number of warps per block:8
+(0.390161) X86TraceGenerator.cpp:781:  number of total warps:32
+(0.390163) X86TraceGenerator.cpp:782:  # threads per block : 256
+(0.390166) X86TraceGenerator.cpp:783:  number of register per thread:8
+(0.390168) X86TraceGenerator.cpp:784:  number of shared memory per thread:1088
+(0.390171) X86TraceGenerator.cpp:822:  max blocks per core : 6
+(0.394539) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/cuda6-transpose/sm86_rtx3070/input-repeat1-dimx32-dimy32/results/traces/_Z20transposeFineGrainedPfS_ii_0/ (status 0)
+
+(0.394555) X86TraceGenerator.cpp:1083: errno is 0 message is Success
+
+(0.420933) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.420952) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.420961) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.420968) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.420976) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.421014) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xfa 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.421031) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xe9 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.421041) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.421052) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.421068) CudaRuntime.cpp:2685: kernel launch (_Z20transposeFineGrainedPfS_ii) on thread 0x2238920
+(0.421087) CudaRuntime.cpp:2706:  launch completed successfully
+(0.422215) X86TraceGenerator.cpp:776:  New kernel launched
+(0.422223) X86TraceGenerator.cpp:777:  compute version:2.0
+(0.422225) X86TraceGenerator.cpp:778:  grid  2 x 2 x 1
+(0.422228) X86TraceGenerator.cpp:779:  block 16 x 16 x 1
+(0.422230) X86TraceGenerator.cpp:780:  number of warps per block:8
+(0.422232) X86TraceGenerator.cpp:781:  number of total warps:32
+(0.422234) X86TraceGenerator.cpp:782:  # threads per block : 256
+(0.422237) X86TraceGenerator.cpp:783:  number of register per thread:8
+(0.422245) X86TraceGenerator.cpp:784:  number of shared memory per thread:1088
+(0.422248) X86TraceGenerator.cpp:822:  max blocks per core : 6
+(0.426569) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/cuda6-transpose/sm86_rtx3070/input-repeat1-dimx32-dimy32/results/traces/_Z20transposeFineGrainedPfS_ii_1/ (status 0)
+
+(0.426585) X86TraceGenerator.cpp:1083: errno is 0 message is Success
+
+(0.451663) CudaRuntime.cpp:1131: cudaMemcpy(0x223c8b0, 0x223fa00, 4096)
+(0.451681) CudaRuntime.cpp:215:    _memcpy(0x223c8b0, 0x223fa00, 4096 bytes) d-to-h
+(0.451718) CudaRuntime.cpp:1131: cudaMemcpy(0x223c8b0, 0x223fa00, 4096)
+(0.451726) CudaRuntime.cpp:215:    _memcpy(0x223c8b0, 0x223fa00, 4096 bytes) d-to-h
+transpose fine-grained      , Throughput = 0.0002 GB/s, Time = 30.72548 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+(0.451756) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.451765) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.451773) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.451781) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.451788) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.451833) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xfa 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.451845) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xe9 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.451855) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.451866) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.451874) CudaRuntime.cpp:2685: kernel launch (_Z17transposeDiagonalPfS_ii) on thread 0x2238920
+(0.451893) CudaRuntime.cpp:2706:  launch completed successfully
+(0.453213) X86TraceGenerator.cpp:776:  New kernel launched
+(0.453219) X86TraceGenerator.cpp:777:  compute version:2.0
+(0.453222) X86TraceGenerator.cpp:778:  grid  2 x 2 x 1
+(0.453224) X86TraceGenerator.cpp:779:  block 16 x 16 x 1
+(0.453226) X86TraceGenerator.cpp:780:  number of warps per block:8
+(0.453229) X86TraceGenerator.cpp:781:  number of total warps:32
+(0.453231) X86TraceGenerator.cpp:782:  # threads per block : 256
+(0.453233) X86TraceGenerator.cpp:783:  number of register per thread:10
+(0.453235) X86TraceGenerator.cpp:784:  number of shared memory per thread:1088
+(0.453238) X86TraceGenerator.cpp:822:  max blocks per core : 6
+(0.457561) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/cuda6-transpose/sm86_rtx3070/input-repeat1-dimx32-dimy32/results/traces/_Z17transposeDiagonalPfS_ii_0/ (status 0)
+
+(0.457576) X86TraceGenerator.cpp:1083: errno is 0 message is Success
+
+(0.487718) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.487736) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.487744) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.487752) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.487759) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.487793) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xfa 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.487809) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xe9 0x23 0x02 0x00 0x00 0x00 0x00 
+(0.487820) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.487831) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+   data = 0x20 0x00 0x00 0x00 
+(0.487847) CudaRuntime.cpp:2685: kernel launch (_Z17transposeDiagonalPfS_ii) on thread 0x2238920
+(0.487870) CudaRuntime.cpp:2706:  launch completed successfully
+(0.489258) X86TraceGenerator.cpp:776:  New kernel launched
+(0.489264) X86TraceGenerator.cpp:777:  compute version:2.0
+(0.489266) X86TraceGenerator.cpp:778:  grid  2 x 2 x 1
+(0.489269) X86TraceGenerator.cpp:779:  block 16 x 16 x 1
+(0.489271) X86TraceGenerator.cpp:780:  number of warps per block:8
+(0.489280) X86TraceGenerator.cpp:781:  number of total warps:32
+(0.489281) X86TraceGenerator.cpp:782:  # threads per block : 256
+(0.489284) X86TraceGenerator.cpp:783:  number of register per thread:10
+(0.489286) X86TraceGenerator.cpp:784:  number of shared memory per thread:1088
+(0.489289) X86TraceGenerator.cpp:822:  max blocks per core : 6
+(0.493632) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/cuda6-transpose/sm86_rtx3070/input-repeat1-dimx32-dimy32/results/traces/_Z17transposeDiagonalPfS_ii_1/ (status 0)
+
+(0.493647) X86TraceGenerator.cpp:1083: errno is 0 message is Success
+
+(0.524329) CudaRuntime.cpp:1131: cudaMemcpy(0x223c8b0, 0x223fa00, 4096)
+(0.524348) CudaRuntime.cpp:215:    _memcpy(0x223c8b0, 0x223fa00, 4096 bytes) d-to-h
+(0.524386) CudaRuntime.cpp:1131: cudaMemcpy(0x223c8b0, 0x223fa00, 4096)
+(0.524394) CudaRuntime.cpp:215:    _memcpy(0x223c8b0, 0x223fa00, 4096 bytes) d-to-h
+transpose diagonal          , Throughput = 0.0002 GB/s, Time = 36.60774 ms, Size = 1024 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+(0.524444) CudaRuntime.cpp:887:  cudaFree(0x223e900)
+(0.524463) CudaRuntime.cpp:887:  cudaFree(0x223fa00)
+Test passed
+(0.526372) X86TraceGenerator.cpp:725:  destructor
+(0.526691) X86TraceGenerator.cpp:2259: finalize
+(0.526701) X86TraceGenerator.cpp:2263: total instruction count: 2304

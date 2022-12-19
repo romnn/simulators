@@ -1,0 +1,9 @@
+==737== NVPROF is profiling process 737, command: /benchrun/native/cuda10-matrixmul/sm6_gtx1080/input-wa32-ha64-wb64-hb32/matrixMul -wA=32 -hA=64 -wB=64 -hB=32
+==737== Profiling application: /benchrun/native/cuda10-matrixmul/sm6_gtx1080/input-wa32-ha64-wb64-hb32/matrixMul -wA=32 -hA=64 -wB=64 -hB=32
+==737== Profiling result:
+"Start","Duration","Grid X","Grid Y","Grid Z","Block X","Block Y","Block Z","Registers Per Thread","Static SMem","Dynamic SMem","Size","Throughput","SrcMemType","DstMemType","Device","Context","Stream","Name","Correlation_ID"
+us,us,,,,,,,,KB,B,KB,GB/s,,,,,,,
+308917.643000,1.344000,,,,,,,,,,8.000000,5.676633,"Pinned","Device","NVIDIA GeForce GTX 1080 (0)","1","14","[CUDA memcpy HtoD]",123
+308923.947000,2.497000,,,,,,,,,,8.000000,3.055424,"Pinned","Device","NVIDIA GeForce GTX 1080 (0)","1","14","[CUDA memcpy HtoD]",124
+308957.868000,5.152000,2,2,1,32,32,1,30,8.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","14","_Z13MatrixMulCUDAILi32EEvPfS0_S0_ii",127
+308986.156000,2.688000,,,,,,,,,,16.000000,5.676633,"Device","Pinned","NVIDIA GeForce GTX 1080 (0)","1","14","[CUDA memcpy DtoH]",132

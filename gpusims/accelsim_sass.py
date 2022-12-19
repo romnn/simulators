@@ -88,7 +88,6 @@ class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
     @staticmethod
     def _run(path, inp, timeout_mins=5, parse_only=False, trace_only=False, **kwargs):
         print("accelsim SASS run")
-
         pprint(
             dict(
                 path=path,

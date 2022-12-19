@@ -1,0 +1,56 @@
+Arguments: macsim --out=/benchrun/macsim/vectoradd/sm86_a4000/input-1000/results/stats 
+src/macsim.cc:122: (I=0  C=0):  initialize knobs
+number of cores : 48
+src/macsim.cc:537: (I=0  C=0):  initialize simulation
+src/macsim.cc:323: (I=0  C=0):  initialize cores (0/0/48)
+src/memory.cc:1568: (I=0  C=0):  Memory system(l2_decoupled_network) has been initialized.
+src/network_simple.cc:92: (I=0  C=0):  TOTAL_ROUTER:71 CPU:0 GPU:48 L3:1 LLC:6 MC:16
+enabling bug detector
+src/macsim.cc:750: (I=0  C=0):  Initializing new noc
+
+src/macsim.cc:838: (I=0  C=0):  Clock LCM           : 35
+src/macsim.cc:839: (I=0  C=0):  CPU clock frequency : 1 GHz
+src/macsim.cc:840: (I=0  C=0):  GPU clock frequency : 0.735 GHz
+src/macsim.cc:841: (I=0  C=0):  LLC clock frequency : 0.735 GHz
+src/macsim.cc:842: (I=0  C=0):  NOC clock frequency : 0.735 GHz
+src/macsim.cc:843: (I=0  C=0):  MC  clock frequency : 3.5 GHz
+src/process_manager.cc:434: (I=0  C=0):  setup_process:0 /benchrun/macsim/vectoradd/sm86_a4000/input-1000/results/traces/_Z6vecAddPdS_S_i_0/Trace.txt current_index:0 (1)
+trace:/benchrun/macsim/vectoradd/sm86_a4000/input-1000/results/traces/_Z6vecAddPdS_S_i_0/Trace.txt is opened 
+src/process_manager.cc:541: (I=0  C=0):  thread_count:32
+**Core 00 Thread 20 Finished:   insts:24          cycles:920        (4595)  seconds:1     -- 0.03 IPC (0.03 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 15 Finished:   insts:24          cycles:922        (4605)  seconds:1     -- 0.03 IPC (0.03 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 25 Finished:   insts:24          cycles:924        (4615)  seconds:1     -- 0.03 IPC (0.03 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 13 Finished:   insts:24          cycles:940        (4695)  seconds:1     -- 0.03 IPC (0.03 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 23 Finished:   insts:24          cycles:951        (4750)  seconds:1     -- 0.03 IPC (0.03 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 01 Finished:   insts:24          cycles:956        (4775)  seconds:1     -- 0.03 IPC (0.03 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 10 Finished:   insts:24          cycles:956        (4775)  seconds:1     -- 0.03 IPC (0.03 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 16 Finished:   insts:24          cycles:960        (4795)  seconds:1     -- 0.03 IPC (0.03 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 31 Finished:   insts:24          cycles:965        (4820)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 12 Finished:   insts:24          cycles:971        (4850)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 26 Finished:   insts:24          cycles:974        (4865)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 27 Finished:   insts:24          cycles:976        (4875)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 08 Finished:   insts:24          cycles:978        (4885)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 00 Finished:   insts:24          cycles:981        (4900)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 29 Finished:   insts:24          cycles:987        (4930)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 17 Finished:   insts:24          cycles:997        (4980)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 28 Finished:   insts:24          cycles:998        (4985)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 24 Finished:   insts:24          cycles:1000       (4995)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 03 Finished:   insts:24          cycles:1003       (5010)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 02 Finished:   insts:24          cycles:1006       (5025)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 30 Finished:   insts:24          cycles:1010       (5045)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 18 Finished:   insts:24          cycles:1019       (5090)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 19 Finished:   insts:24          cycles:1022       (5105)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 04 Finished:   insts:24          cycles:1026       (5125)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 14 Finished:   insts:24          cycles:1038       (5185)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 21 Finished:   insts:24          cycles:1042       (5205)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 05 Finished:   insts:24          cycles:1045       (5220)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 11 Finished:   insts:24          cycles:1058       (5285)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 22 Finished:   insts:24          cycles:1061       (5300)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 07 Finished:   insts:24          cycles:1064       (5315)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 09 Finished:   insts:24          cycles:1075       (5370)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+**Core 00 Thread 06 Finished:   insts:24          cycles:1086       (5425)  seconds:1     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (0.02 KHz) 
+src/retire.cc:566: (I=24  C=5425):  ----- application 0 terminated (/benchrun/macsim/vectoradd/sm86_a4000/input-1000/results/traces/_Z6vecAddPdS_S_i_0/Trace.txt,0) at 5425
+**Core 00 Core_Total  Finished:   insts:768         cycles:1086       (5425) seconds:1     -- 0.71 IPC (0.71 IPC) --  N/A  KHz (0.77 KHz)
+src/macsim.cc:620: (I=24  C=5426):  finalize simulation
+src/macsim.cc:627: (I=24  C=5426):  elapsed time:1.1 seconds
+Done
