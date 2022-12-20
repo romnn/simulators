@@ -243,8 +243,7 @@ class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
 
         if simulate:
             run_simulate(**args)
-
-        run_parse(**args)
+            run_parse(**args)
 
     def load_dataframe(self, inp):
         results_dir = self.input_path(inp) / "results"
