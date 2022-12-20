@@ -70,13 +70,13 @@ To use the docker approach, docker must be installed on the GPU host and contain
   **Note**: Remember to set the correct config you are running with the `-c` flag.
 
   ```bash
-  inv run -s accelsim-sass -c sm86_a4000 --trace-only --run-dir ./your-run-dir
+  inv run -s accelsim-sass -c sm86_a4000 --no-simulate --trace --run-dir ./your-run-dir
   ```
 
   When using the DAS cluster, you can submit slurm jobs using `--slurm` and specify the GPU to use with the `--slurm-node` flag:
 
   ```bash
-  inv run -s accelsim-sass -c sm86_a4000 --slurm --slurm-node A4000 --trace-only --run-dir ./your-run-dir
+  inv run -s accelsim-sass -c sm86_a4000 --slurm --slurm-node A4000 --no-simulate --trace --run-dir ./your-run-dir
   ```
 
 - Review results
@@ -116,7 +116,8 @@ To use the docker approach, docker must be installed on the GPU host and contain
 - Run benchmarks
 
   ```bash
-  inv bench -s accelsim-sass -s native -c sm86_rtx3070
+  inv bench -s native -c sm86_rtx3070
+  inv bench -s accelsim-sass -c sm86_rtx3070 --no-simulate --trace
   ```
 
 - Archive the results

@@ -8,7 +8,7 @@ USE_DURATION = False
 class Metric(abc.ABC):
     name = "Unknown"
     unit = None
-    log = False
+    log = True
 
     def __init__(self, data):
         self.data = data
@@ -126,10 +126,17 @@ class BaseMetric(Metric):
         else:
             raise ValueError("hw dataframe missing instructions")
 
+    def num_blocks(self):
+        if "Grid X" in self.hw_df:
+            return (
+                self.hw_df["Grid X"] * self.hw_df["Grid Y"] * self.hw_df["Grid Z"]
+            ).sum()
+        else:
+            return self.hw_df["launch__grid_size"].sum()
+
 
 class Cycles(BaseMetric):
     name = "Cycles"
-    log = True
 
     def compute_m2s(self, df):
         per_core_cycles = df["Total.Cycles"].sum() / df["Config.Device.NumSM"].mean()
@@ -143,7 +150,8 @@ class Cycles(BaseMetric):
         return df["CYC_COUNT_CORE_TOTAL"][0]
 
     def compute_tejas(self, df):
-        return df["total_cycle_count"].sum()
+        # todo: get num threads
+        return df["total_cycle_count"].sum() # * 16
 
     def compute_accelsim_ptx(self, df):
         return df["gpu_tot_sim_cycle"].sum()
@@ -229,7 +237,6 @@ class Cycles(BaseMetric):
 class ExecutionTime(BaseMetric):
     name = "Execution Time"
     unit = "s"
-    log = True
 
     # def compute_m2s(self, df):
     #     return df["sim_wall_time"].sum()
@@ -383,7 +390,6 @@ class L2WriteHit(BaseMetric):
 
 class InstructionCount(BaseMetric):
     name = "Total Instruction Count"
-    log = True
 
     def compute_m2s(self, df):
         return df["Total.Instructions"].sum()
@@ -392,7 +398,9 @@ class InstructionCount(BaseMetric):
         return df["INST_COUNT_TOT"][0]
 
     def compute_tejas(self, df):
-        return df["total_inst_count"].sum() * self.data.config.spec["sm_count"]
+        # * self.data.config.spec["sm_count"]
+        # todo: get num threads
+        return df["total_inst_count"].sum() * 16
 
     def compute_accelsim_ptx(self, df):
         return df["gpgpu_n_tot_w_icount"].sum()
@@ -550,7 +558,6 @@ class IPC(BaseMetric):
 
 # class DRAMReads(Metric):
 #     name = "Total DRAM Reads"
-#     log = True
 
 #     def compute(self):
 #         data = []
@@ -587,7 +594,6 @@ class IPC(BaseMetric):
 
 class DRAMAccesses(BaseMetric):
     name = "Total DRAM Accesses (Read/Write)"
-    log = True
 
     # def compute(self):
     #     data = []
@@ -612,7 +618,6 @@ class DRAMAccesses(BaseMetric):
 
 # class L2Reads(Metric):
 #     name = "Total L2 Reads"
-#     # log = True
 
 #     def compute(self):
 #         data = []
@@ -683,12 +688,14 @@ class DRAMAccesses(BaseMetric):
 
 class L2Writes(BaseMetric):
     name = "Total L2 Writes"
-    # log = True
 
     # m2s has no l2 writes
     # macsim has no l2 writes
     # tejas has no l2 writes
     def compute_accelsim_ptx(self, df):
+        return df["l2_cache_write_total"].sum()
+
+    def compute_accelsim_sass(self, df):
         return df["l2_cache_write_total"].sum()
 
     def compute_native(self, df):
@@ -700,7 +707,6 @@ class L2Writes(BaseMetric):
 
 class L2Reads(BaseMetric):
     name = "Total L2 Reads"
-    # log = True
 
     # m2s has no l2 reads
     # macsim has no l2 reads
@@ -720,7 +726,6 @@ class L2Reads(BaseMetric):
 
 class DRAMReads(BaseMetric):
     name = "Total DRAM Reads"
-    log = True
 
     # m2s has no dram writes
     # macsim has no dram writes
@@ -742,7 +747,6 @@ class DRAMReads(BaseMetric):
 
 class DRAMWrites(BaseMetric):
     name = "Total DRAM Writes"
-    log = True
 
     # m2s has no dram writes
     # macsim has no dram writes
@@ -962,29 +966,40 @@ LLC_MISS_GPU
 
 class L2Accesses(BaseMetric):
     name = "Total L2 Accesses"
-    # log = True
 
     # m2s has no l2 accesses
     # tejas has no l2 accesses
     def compute_accelsim_ptx(self, df):
         return df["l2_cache_write_total"].sum() + df["l2_cache_read_total"].sum()
 
+    def compute_accelsim_sass(self, df):
+        return df["l2_cache_write_total"].sum() + df["l2_cache_read_total"].sum()
+
     def compute_macsim(self, df):
         return df["L2_HIT_GPU"][0] + df["L2_MISS_GPU"][0]
 
     def compute_native(self, df):
-        return (
-            df["l2_tex_write_transactions"].sum() + df["l2_tex_read_transactions"].sum()
-        )
+        if "l2_tex_read_transactions" in df:
+            return (
+                df["l2_tex_write_transactions"].sum()
+                + df["l2_tex_read_transactions"].sum()
+            )
+        else:
+            return (
+                df["lts__t_sectors_srcunit_tex_op_write.sum_sector"].sum()
+                + df["lts__t_sectors_srcunit_tex_op_read.sum_sector"].sum()
+            )
 
 
 class L2Hits(BaseMetric):
     name = "Total L2 Hits"
-    # log = True
 
     # m2s has no l2 hits
     # tejas has no l2 hits
     def compute_accelsim_ptx(self, df):
+        return df["l2_cache_write_hit"].sum() + df["l2_cache_read_hit"].sum()
+
+    def compute_accelsim_sass(self, df):
         return df["l2_cache_write_hit"].sum() + df["l2_cache_read_hit"].sum()
 
     def compute_macsim(self, df):
@@ -1002,11 +1017,13 @@ class L2Hits(BaseMetric):
 
 class L2Misses(BaseMetric):
     name = "Total L2 Misses"
-    # log = True
 
     # m2s has no l2 misses
     # tejas has no l2 misses
     def compute_accelsim_ptx(self, df):
+        return df["l2_cache_write_miss"].sum() + df["l2_cache_read_miss"].sum()
+
+    def compute_accelsim_sass(self, df):
         return df["l2_cache_write_miss"].sum() + df["l2_cache_read_miss"].sum()
 
     def compute_macsim(self, df):
