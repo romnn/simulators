@@ -22,24 +22,24 @@ Running kernels 1 times
 Precision: double
 Array size: 0.1 MB (=0.0 GB)
 Total size: 0.2 MB (=0.0 GB)
-Using CUDA device NVIDIA GeForce GTX 1080
-Driver: 11040
+Using CUDA device NVIDIA GeForce RTX 3070
+Driver: 11070
 
- Traces location is /benchrun/accelsim-sass/babelstream/sm86_rtx3070/input-arraysize-10240-numtimes-1/results/traces 
-Kernelslist location is /benchrun/accelsim-sass/babelstream/sm86_rtx3070/input-arraysize-10240-numtimes-1/results/traces/kernelslist 
-Stats location is /benchrun/accelsim-sass/babelstream/sm86_rtx3070/input-arraysize-10240-numtimes-1/results/traces/stats.csv 
-Writing results to /benchrun/accelsim-sass/babelstream/sm86_rtx3070/input-arraysize-10240-numtimes-1/results/traces/kernel-1.trace
-Writing results to /benchrun/accelsim-sass/babelstream/sm86_rtx3070/input-arraysize-10240-numtimes-1/results/traces/kernel-2.trace
-Writing results to /benchrun/accelsim-sass/babelstream/sm86_rtx3070/input-arraysize-10240-numtimes-1/results/traces/kernel-3.trace
-Writing results to /benchrun/accelsim-sass/babelstream/sm86_rtx3070/input-arraysize-10240-numtimes-1/results/traces/kernel-4.trace
-Writing results to /benchrun/accelsim-sass/babelstream/sm86_rtx3070/input-arraysize-10240-numtimes-1/results/traces/kernel-5.trace
-Writing results to /benchrun/accelsim-sass/babelstream/sm86_rtx3070/input-arraysize-10240-numtimes-1/results/traces/kernel-6.trace
+ Traces location is /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/babelstream/input-arraysize-10240-numtimes-1/results/traces 
+Kernelslist location is /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/babelstream/input-arraysize-10240-numtimes-1/results/traces/kernelslist 
+Stats location is /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/babelstream/input-arraysize-10240-numtimes-1/results/traces/stats.csv 
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/babelstream/input-arraysize-10240-numtimes-1/results/traces/kernel-1.trace
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/babelstream/input-arraysize-10240-numtimes-1/results/traces/kernel-2.trace
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/babelstream/input-arraysize-10240-numtimes-1/results/traces/kernel-3.trace
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/babelstream/input-arraysize-10240-numtimes-1/results/traces/kernel-4.trace
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/babelstream/input-arraysize-10240-numtimes-1/results/traces/kernel-5.trace
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/babelstream/input-arraysize-10240-numtimes-1/results/traces/kernel-6.trace
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        1.175       0.13947     0.13947     0.13947     
-Mul         1.236       0.13253     0.13253     0.13253     
-Add         1.756       0.13996     0.13996     0.13996     
-Triad       1.656       0.14840     0.14840     0.14840     
-Dot         0.097       1.68511     1.68511     1.68511     
+Copy        1.090       0.15032     0.15032     0.15032     
+Mul         1.089       0.15049     0.15049     0.15049     
+Add         1.612       0.15242     0.15242     0.15242     
+Triad       1.621       0.15164     0.15164     0.15164     
+Dot         0.221       0.74013     0.74013     0.74013     
 ------------- NVBit (NVidia Binary Instrumentation Tool v1.5.5) Loaded --------------
 NVBit core environment variables (mostly for nvbit-devs):
             NVDISASM = nvdisasm - override default nvdisasm found in PATH
@@ -57,12 +57,12 @@ DYNAMIC_KERNEL_LIMIT_START = 0 - start to report kernel from this kernel id, 0 m
 TERMINATE_UPON_LIMIT = 0 - Stop the process once the current kernel > DYNAMIC_KERNEL_LIMIT_END
 USER_DEFINED_FOLDERS = 1 - Uses the user defined folder TRACES_FOLDER path environment
 ----------------------------------------------------------------------------------------------------
-Processing file /benchrun/accelsim-sass/babelstream/sm86_rtx3070/input-arraysize-10240-numtimes-1/results/traces/kernel-1.trace
-Processing file /benchrun/accelsim-sass/babelstream/sm86_rtx3070/input-arraysize-10240-numtimes-1/results/traces/kernel-2.trace
-Processing file /benchrun/accelsim-sass/babelstream/sm86_rtx3070/input-arraysize-10240-numtimes-1/results/traces/kernel-3.trace
-Processing file /benchrun/accelsim-sass/babelstream/sm86_rtx3070/input-arraysize-10240-numtimes-1/results/traces/kernel-4.trace
-Processing file /benchrun/accelsim-sass/babelstream/sm86_rtx3070/input-arraysize-10240-numtimes-1/results/traces/kernel-5.trace
-Processing file /benchrun/accelsim-sass/babelstream/sm86_rtx3070/input-arraysize-10240-numtimes-1/results/traces/kernel-6.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/babelstream/input-arraysize-10240-numtimes-1/results/traces/kernel-1.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/babelstream/input-arraysize-10240-numtimes-1/results/traces/kernel-2.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/babelstream/input-arraysize-10240-numtimes-1/results/traces/kernel-3.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/babelstream/input-arraysize-10240-numtimes-1/results/traces/kernel-4.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/babelstream/input-arraysize-10240-numtimes-1/results/traces/kernel-5.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/babelstream/input-arraysize-10240-numtimes-1/results/traces/kernel-6.trace
 ------------- NVBit (NVidia Binary Instrumentation Tool v1.5.5) Loaded --------------
 NVBit core environment variables (mostly for nvbit-devs):
             NVDISASM = nvdisasm - override default nvdisasm found in PATH

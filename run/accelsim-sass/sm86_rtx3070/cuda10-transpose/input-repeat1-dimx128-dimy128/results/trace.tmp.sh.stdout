@@ -17,45 +17,45 @@ USER_DEFINED_FOLDERS = 1 - Uses the user defined folder TRACES_FOLDER path envir
 ----------------------------------------------------------------------------------------------------
 Transpose Starting...
 
-GPU Device 0: "Pascal" with compute capability 6.1
+GPU Device 0: "Ampere" with compute capability 8.6
 
-> Device 0: "NVIDIA GeForce GTX 1080"
-> SM Capability 6.1 detected:
-> [NVIDIA GeForce GTX 1080] has 20 MP(s) x 128 (Cores/MP) = 2560 (Cores)
+> Device 0: "NVIDIA GeForce RTX 3070"
+> SM Capability 8.6 detected:
+> [NVIDIA GeForce RTX 3070] has 46 MP(s) x 128 (Cores/MP) = 5888 (Cores)
 > Compute performance scaling factor = 1.00
 > MatrixSize X = 128
 > MatrixSize Y = 128
 
- Traces location is /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces 
-Kernelslist location is /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernelslist 
-Stats location is /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/stats.csv 
+ Traces location is /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces 
+Kernelslist location is /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernelslist 
+Stats location is /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/stats.csv 
 
 Matrix size: 128x128 (8x8 tiles), tile size: 16x16, block size: 16x16
 
-Writing results to /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-1.trace
-Writing results to /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-2.trace
-transpose simple copy       , Throughput = 0.0105 GB/s, Time = 11.65958 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-Writing results to /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-3.trace
-Writing results to /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-4.trace
-transpose shared memory copy, Throughput = 0.0065 GB/s, Time = 18.80624 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-Writing results to /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-5.trace
-Writing results to /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-6.trace
-transpose naive             , Throughput = 0.0091 GB/s, Time = 13.40982 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-Writing results to /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-7.trace
-Writing results to /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-8.trace
-transpose coalesced         , Throughput = 0.0054 GB/s, Time = 22.53910 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-Writing results to /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-9.trace
-Writing results to /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-10.trace
-transpose optimized         , Throughput = 0.0056 GB/s, Time = 21.89328 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-Writing results to /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-11.trace
-Writing results to /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-12.trace
-transpose coarse-grained    , Throughput = 0.0061 GB/s, Time = 20.15898 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-Writing results to /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-13.trace
-Writing results to /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-14.trace
-transpose fine-grained      , Throughput = 0.0056 GB/s, Time = 21.68614 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-Writing results to /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-15.trace
-Writing results to /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-16.trace
-transpose diagonal          , Throughput = 0.0019 GB/s, Time = 64.67690 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-1.trace
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-2.trace
+transpose simple copy       , Throughput = 0.0139 GB/s, Time = 8.78368 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-3.trace
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-4.trace
+transpose shared memory copy, Throughput = 0.0155 GB/s, Time = 7.86246 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-5.trace
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-6.trace
+transpose naive             , Throughput = 0.0239 GB/s, Time = 5.11818 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-7.trace
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-8.trace
+transpose coalesced         , Throughput = 0.0158 GB/s, Time = 7.74838 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-9.trace
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-10.trace
+transpose optimized         , Throughput = 0.0152 GB/s, Time = 8.02816 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-11.trace
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-12.trace
+transpose coarse-grained    , Throughput = 0.0156 GB/s, Time = 7.80166 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-13.trace
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-14.trace
+transpose fine-grained      , Throughput = 0.0165 GB/s, Time = 7.41171 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-15.trace
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-16.trace
+transpose diagonal          , Throughput = 0.0096 GB/s, Time = 12.76909 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
 Test passed
 ------------- NVBit (NVidia Binary Instrumentation Tool v1.5.5) Loaded --------------
 NVBit core environment variables (mostly for nvbit-devs):
@@ -74,22 +74,22 @@ DYNAMIC_KERNEL_LIMIT_START = 0 - start to report kernel from this kernel id, 0 m
 TERMINATE_UPON_LIMIT = 0 - Stop the process once the current kernel > DYNAMIC_KERNEL_LIMIT_END
 USER_DEFINED_FOLDERS = 1 - Uses the user defined folder TRACES_FOLDER path environment
 ----------------------------------------------------------------------------------------------------
-Processing file /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-1.trace
-Processing file /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-2.trace
-Processing file /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-3.trace
-Processing file /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-4.trace
-Processing file /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-5.trace
-Processing file /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-6.trace
-Processing file /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-7.trace
-Processing file /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-8.trace
-Processing file /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-9.trace
-Processing file /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-10.trace
-Processing file /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-11.trace
-Processing file /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-12.trace
-Processing file /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-13.trace
-Processing file /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-14.trace
-Processing file /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-15.trace
-Processing file /benchrun/accelsim-sass/cuda10-transpose/sm86_rtx3070/input-repeat1-dimx128-dimy128/results/traces/kernel-16.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-1.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-2.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-3.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-4.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-5.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-6.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-7.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-8.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-9.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-10.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-11.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-12.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-13.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-14.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-15.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-transpose/input-repeat1-dimx128-dimy128/results/traces/kernel-16.trace
 ------------- NVBit (NVidia Binary Instrumentation Tool v1.5.5) Loaded --------------
 NVBit core environment variables (mostly for nvbit-devs):
             NVDISASM = nvdisasm - override default nvdisasm found in PATH

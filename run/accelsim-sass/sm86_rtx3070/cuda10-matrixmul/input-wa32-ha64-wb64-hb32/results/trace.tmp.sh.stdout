@@ -16,16 +16,16 @@ TERMINATE_UPON_LIMIT = 0 - Stop the process once the current kernel > DYNAMIC_KE
 USER_DEFINED_FOLDERS = 1 - Uses the user defined folder TRACES_FOLDER path environment
 ----------------------------------------------------------------------------------------------------
 [Matrix Multiply Using CUDA] - Starting...
-GPU Device 0: "Pascal" with compute capability 6.1
+GPU Device 0: "Ampere" with compute capability 8.6
 
 MatrixA(32,64), MatrixB(64,32)
 
- Traces location is /benchrun/accelsim-sass/cuda10-matrixmul/sm86_rtx3070/input-wa32-ha64-wb64-hb32/results/traces 
-Kernelslist location is /benchrun/accelsim-sass/cuda10-matrixmul/sm86_rtx3070/input-wa32-ha64-wb64-hb32/results/traces/kernelslist 
-Stats location is /benchrun/accelsim-sass/cuda10-matrixmul/sm86_rtx3070/input-wa32-ha64-wb64-hb32/results/traces/stats.csv 
+ Traces location is /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-matrixmul/input-wa32-ha64-wb64-hb32/results/traces 
+Kernelslist location is /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-matrixmul/input-wa32-ha64-wb64-hb32/results/traces/kernelslist 
+Stats location is /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-matrixmul/input-wa32-ha64-wb64-hb32/results/traces/stats.csv 
 Computing result using CUDA Kernel...
-Writing results to /benchrun/accelsim-sass/cuda10-matrixmul/sm86_rtx3070/input-wa32-ha64-wb64-hb32/results/traces/kernel-1.trace
-Performance= 0.00 GFlop/s, Time= 160.000 msec, Size= 262144 Ops, WorkgroupSize= 1024 threads/block
+Writing results to /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-matrixmul/input-wa32-ha64-wb64-hb32/results/traces/kernel-1.trace
+Performance= 0.00 GFlop/s, Time= 171.588 msec, Size= 262144 Ops, WorkgroupSize= 1024 threads/block
 Checking computed result for correctness: Result = PASS
 
 NOTE: The CUDA Samples are not meant for performance measurements. Results may vary when GPU Boost is enabled.
@@ -46,7 +46,7 @@ DYNAMIC_KERNEL_LIMIT_START = 0 - start to report kernel from this kernel id, 0 m
 TERMINATE_UPON_LIMIT = 0 - Stop the process once the current kernel > DYNAMIC_KERNEL_LIMIT_END
 USER_DEFINED_FOLDERS = 1 - Uses the user defined folder TRACES_FOLDER path environment
 ----------------------------------------------------------------------------------------------------
-Processing file /benchrun/accelsim-sass/cuda10-matrixmul/sm86_rtx3070/input-wa32-ha64-wb64-hb32/results/traces/kernel-1.trace
+Processing file /home/bram/src/gpgpusims/bench/accelsim-sass/sm86_rtx3070/cuda10-matrixmul/input-wa32-ha64-wb64-hb32/results/traces/kernel-1.trace
 ------------- NVBit (NVidia Binary Instrumentation Tool v1.5.5) Loaded --------------
 NVBit core environment variables (mostly for nvbit-devs):
             NVDISASM = nvdisasm - override default nvdisasm found in PATH
