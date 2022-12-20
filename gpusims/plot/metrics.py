@@ -8,6 +8,7 @@ USE_DURATION = False
 class Metric(abc.ABC):
     name = "Unknown"
     unit = None
+    log = False
 
     def __init__(self, data):
         self.data = data
@@ -15,10 +16,6 @@ class Metric(abc.ABC):
     @abc.abstractmethod
     def compute(self):
         pass
-
-    @property
-    def config(self):
-        return dict()
 
     @property
     def m2s_df(self):
@@ -90,14 +87,49 @@ class BaseMetric(Metric):
         df["Value"] = df["Value"].astype(float)
         return df
 
+    def hw_duration(self):
+        if "Duration" in self.hw_df:
+            # convert us to seconds
+            return self.hw_df["Duration"].sum() * 1e-6
+        elif "gpu__time_duration.sum_nsecond" in self.hw_df:
+            # convert ns to seconds
+            return self.hw_df["gpu__time_duration.sum_nsecond"].sum() * 1e-9
+        else:
+            raise ValueError("hw dataframe missing duration")
+
+    def hw_cycles(self):
+        if "elapsed_cycles_sm" in self.hw_df:
+            sm_count = self.data.config.spec["sm_count"]
+            cycles = self.hw_df["elapsed_cycles_sm"].sum()
+            return cycles / sm_count
+        elif "gpc__cycles_elapsed.avg_cycle" in self.hw_df:
+            return self.hw_df["gpc__cycles_elapsed.avg_cycle"].sum()
+        else:
+            raise ValueError("hw dataframe missing cycles")
+
+    def hw_ipc(self):
+        if "ipc" in self.hw_df:
+            # there is also issued_ipc
+            return self.hw_df["ipc"].sum()
+        instructions = self.hw_instructions()
+        cycles = self.hw_cycles()
+        return instructions / cycles
+
+    def hw_instructions(self):
+        if "inst_issued" in self.hw_df:
+            # there is also inst_executed
+            return self.hw_df["inst_issued"].sum()
+        elif "smsp__inst_executed.sum_inst" in self.hw_df:
+            # there is also sm__inst_executed.sum_inst
+            # sm__sass_thread_inst_executed.sum_inst
+            return self.hw_df["smsp__inst_executed.sum_inst"].sum()
+        else:
+            raise ValueError("hw dataframe missing instructions")
+
 
 class Cycles(BaseMetric):
     name = "Cycles"
     log = True
-
-    def __init__(self, data, use_duration=USE_DURATION):
-        self.use_duration = use_duration
-        super().__init__(data)
 
     def compute_m2s(self, df):
         per_core_cycles = df["Total.Cycles"].sum() / df["Config.Device.NumSM"].mean()
@@ -120,25 +152,24 @@ class Cycles(BaseMetric):
         return df["gpu_tot_sim_cycle"].sum()
 
     def compute_native(self, df):
-        if self.use_duration:
+        if USE_DURATION:
             # clock speed is mhz, so *1e6
             # duration is us, so *1e-6
             # unit conversions cancel each other out
-            hw_value = (
-                self.hw_df["Duration"].sum() * self.data.config.spec["clock_speed"]
-            )
+            hw_duration = self.hw_duration()
+            hw_value = hw_duration * self.data.config.spec["clock_speed"]
         else:
             # sm_efficiency: The percentage of time at least one warp
             # is active on a specific multiprocessor
             # mean_sm_efficiency = self.hw_df["sm_efficiency"].mean() / 100.0
-            sm_count = self.data.config.spec["sm_count"]
             # num_active_sm = self.data.config.spec["sm_count"] * mean_sm_efficiency
             # print("num active sms", num_active_sm)
-            hw_value = self.hw_df["elapsed_cycles_sm"].sum() / sm_count
+            hw_value = self.hw_cycles()
             # hw_value *= mean_sm_efficiency
         return hw_value
 
-    # def compute(self):
+        # def compute(self):
+
     #     data = []
     #     if self.m2s_df is not None:
     #         per_core_cycles = (
@@ -195,16 +226,11 @@ class Cycles(BaseMetric):
     #     return df
 
 
-class ExecutionTime(Metric):
+class ExecutionTime(BaseMetric):
     name = "Execution Time"
     unit = "s"
     log = True
 
-    # @property
-    # def config(self):
-    #     return dict(
-    #         log=True,
-    #     )
     # def compute_m2s(self, df):
     #     return df["sim_wall_time"].sum()
 
@@ -213,6 +239,7 @@ class ExecutionTime(Metric):
         m2s_sim = 0
         if self.m2s_df is not None:
             m2s_sim = self.m2s_df["sim_wall_time"].sum()
+            # data.append("Multi2Sim, "Sim"
 
         macsim_sim, macsim_trace = 0, 0
         if self.macsim_df is not None:
@@ -235,8 +262,14 @@ class ExecutionTime(Metric):
 
         hw_value = 0
         if self.hw_df is not None:
-            # convert us to seconds
-            hw_value = self.hw_df["Duration"].sum() * 1e-6
+            hw_value = self.hw_duration()
+
+        # df = pd.DataFrame.from_records(
+        #     data,
+        #     columns=["Simulator", "Value"],
+        # )
+        # df["Value"] = df["Value"].astype(float)
+        # return df
 
         df = pd.DataFrame.from_records(
             data=[
@@ -264,9 +297,10 @@ class L2ReadHit(BaseMetric):
 
     # m2s has no l2 read hits
     # tejas has no l2 read hits
+    # macsim has no l2 read hits (only total)
 
-    def compute_macsim(self, df):
-        return df["L2_HIT_GPU"][0]
+    # def compute_macsim(self, df):
+    #     return df["L2_HIT_GPU"][0]
 
     def compute_accelsim_ptx(self, df):
         return df["l2_cache_read_hit"].sum()
@@ -275,15 +309,37 @@ class L2ReadHit(BaseMetric):
         return df["l2_cache_read_hit"].sum()
 
     def compute_native(self, df):
-        return (
-            df["l2_tex_read_transactions"].sum()
-            * df["l2_tex_read_hit_rate"].sum()
-            / 100.0
-        )
+        if "l2_tex_read_transactions" in df:
+            return (
+                df["l2_tex_read_transactions"] * df["l2_tex_read_hit_rate"] / 100.0
+            ).sum()
+        else:
+            return df["lts__t_sectors_srcunit_tex_op_read_lookup_hit.sum_sector"].sum()
 
-    # @property
-    # def config(self):
-    #     return dict()
+
+class L2WriteHit(BaseMetric):
+    name = "Total L2 Write Hits"
+
+    # m2s has no l2 write hits
+    # tejas has no l2 write hits
+    # macsim has no l2 write hits (only total)
+
+    # def compute_macsim(self, df):
+    #     return df["L2_HIT_GPU"][0]
+
+    def compute_accelsim_ptx(self, df):
+        return df["l2_cache_write_hit"].sum()
+
+    def compute_accelsim_sass(self, df):
+        return df["l2_cache_write_hit"].sum()
+
+    def compute_native(self, df):
+        if "l2_tex_write_transactions" in df:
+            return (
+                df["l2_tex_write_transactions"] * df["l2_tex_write_hit_rate"] / 100.0
+            ).sum()
+        else:
+            return df["lts__t_sectors_srcunit_tex_op_write_lookup_hit.sum_sector"].sum()
 
     # def compute(self):
     #     data = []
@@ -327,6 +383,7 @@ class L2ReadHit(BaseMetric):
 
 class InstructionCount(BaseMetric):
     name = "Total Instruction Count"
+    log = True
 
     def compute_m2s(self, df):
         return df["Total.Instructions"].sum()
@@ -344,11 +401,7 @@ class InstructionCount(BaseMetric):
         return df["gpgpu_n_tot_w_icount"].sum()
 
     def compute_native(self, df):
-        return df["inst_issued"].sum()
-
-    # @property
-    # def config(self):
-    #     return dict()
+        return self.hw_instructions()
 
     # def compute(self):
     #     data = []
@@ -390,10 +443,6 @@ class InstructionCount(BaseMetric):
 class IPC(BaseMetric):
     name = "Total IPC"
 
-    def __init__(self, data, use_duration=USE_DURATION):
-        self.use_duration = use_duration
-        super().__init__(data)
-
     def compute_m2s(self, df):
         # those metrics seem to be always 0, so we compute manually
         # Device.instructionsPerCycle
@@ -415,32 +464,19 @@ class IPC(BaseMetric):
         return tejas_value
 
     def compute_accelsim_ptx(self, df):
-        return self.hw_df["inst_issued"].sum() / df["gpu_tot_sim_cycle"].sum()
+        instructions = self.hw_instructions()
+        return instructions / df["gpu_tot_sim_cycle"].sum()
 
     def compute_accelsim_sass(self, df):
-        return self.hw_df["inst_issued"].sum() / df["gpu_tot_sim_cycle"].sum()
+        instructions = self.hw_instructions()
+        return instructions / df["gpu_tot_sim_cycle"].sum()
 
     def compute_native(self, df):
-        # todo: factor hw cycles out
-        if self.use_duration:
-            hw_cycles = (
-                self.hw_df["Duration"].sum() * self.data.config.spec["clock_speed"]
-            )
-        else:
-            hw_cycles = (
-                self.hw_df["elapsed_cycles_sm"].sum()
-                / self.data.config.spec["sm_count"]
-            )
-        # there is also inst_executed
-        hw_value = self.hw_df["inst_issued"].sum() / hw_cycles
-
-        # edit: there is ipc and also issued_ipc
-        hw_value = self.hw_df["ipc"].sum()
+        hw_cycles = self.hw_cycles()
+        instructions = self.hw_instructions()
+        hw_value = instructions / hw_cycles
+        hw_value = self.hw_ipc()
         return hw_value
-
-    # @property
-    # def config(self):
-    #     return dict()
 
     # def compute(self):
     #     data = []
@@ -516,10 +552,6 @@ class IPC(BaseMetric):
 #     name = "Total DRAM Reads"
 #     log = True
 
-#     @property
-#     def config(self):
-#         return dict()
-
 #     def compute(self):
 #         data = []
 
@@ -557,10 +589,6 @@ class DRAMAccesses(BaseMetric):
     name = "Total DRAM Accesses (Read/Write)"
     log = True
 
-    # @property
-    # def config(self):
-    #     return dict()
-
     # def compute(self):
     #     data = []
 
@@ -585,10 +613,6 @@ class DRAMAccesses(BaseMetric):
 # class L2Reads(Metric):
 #     name = "Total L2 Reads"
 #     # log = True
-
-#     @property
-#     def config(self):
-#         return dict()
 
 #     def compute(self):
 #         data = []
@@ -668,7 +692,10 @@ class L2Writes(BaseMetric):
         return df["l2_cache_write_total"].sum()
 
     def compute_native(self, df):
-        return df["l2_tex_write_transactions"].sum()
+        if "l2_tex_write_transactions" in df:
+            return df["l2_tex_write_transactions"].sum()
+        else:
+            return df["lts__t_sectors_srcunit_tex_op_write.sum_sector"].sum()
 
 
 class L2Reads(BaseMetric):
@@ -685,7 +712,10 @@ class L2Reads(BaseMetric):
         return df["l2_cache_read_total"].sum()
 
     def compute_native(self, df):
-        return df["l2_tex_read_transactions"].sum()
+        if "l2_tex_read_transactions" in df:
+            return df["l2_tex_read_transactions"].sum()
+        else:
+            return df["lts__t_sectors_srcunit_tex_op_read.sum_sector"].sum()
 
 
 class DRAMReads(BaseMetric):
@@ -704,7 +734,10 @@ class DRAMReads(BaseMetric):
         return df["total_dram_reads"].sum()
 
     def compute_native(self, df):
-        return df["dram_read_transactions"].sum()
+        if "dram_read_transactions" in df:
+            return df["dram_read_transactions"].sum()
+        else:
+            return df["dram__sectors_read.sum_sector"].sum()
 
 
 class DRAMWrites(BaseMetric):
@@ -723,11 +756,10 @@ class DRAMWrites(BaseMetric):
         return df["total_dram_writes"].sum()
 
     def compute_native(self, df):
-        return df["dram_write_transactions"].sum()
-
-    # @property
-    # def config(self):
-    #     return dict()
+        if "dram_write_transactions" in df:
+            return df["dram_write_transactions"].sum()
+        else:
+            return df["dram__sectors_write.sum_sector"].sum()
 
     # def compute(self):
     #     data = []
@@ -760,10 +792,6 @@ class DRAMWrites(BaseMetric):
     #     )
     #     df["Value"] = df["Value"].astype(int)
     #     return df
-
-    # @property
-    # def config(self):
-    #     return dict()
 
     # def compute(self):
     #     data = []

@@ -1,6 +1,6 @@
 ## Native benchmarking
 
-Native profiling and SASS benchmarking SASS
+This guide describes how to run native profiling and generate SASS traces
 
 - Clone repo
 
@@ -12,6 +12,79 @@ Native profiling and SASS benchmarking SASS
   # activate the virtual environment in the current shell.
   pipenv shell
   ```
+
+  If run on a DAS cluster node, install python packages locally and activate the CUDA toolkit:
+
+  ```bash
+  module load cuda11.2/toolkit
+  pip3 install —user "pipenv==2022.4.8"
+  pipenv install --skip-lock —dev
+  ```
+
+There are two ways to collect profiling and tracing data using docker or locally. Both options are described in the following sections.
+To use the docker approach, docker must be installed on the GPU host and containers must be run with elevated privileges.
+
+**Note**: All following steps assume your current working directory is the root of the git repository and you have activated the `pipenv` environment with `pipenv shell` or otherwise installed the required packages.
+
+#### Option 1: Local
+
+###### Native profiling
+
+- Build `native` benchmarks
+
+  ```bash
+  make -C benchmarks clean
+  make -C benchmarks native
+  ```
+
+- Run `native` benchmarks
+
+  **Note**: Remember to set the correct config you are running with the `-c` flag.
+
+  ```bash
+  inv run -s native -c sm86_a4000 --run-dir ./your-run-dir
+  ```
+
+  When using the DAS cluster, you can submit slurm jobs using `--slurm` and specify the GPU to use with the `--slurm-node` flag:
+
+  ```bash
+  inv run -s native -c sm86_a4000 --slurm --slurm-node A4000 --run-dir ./your-run-dir
+  ```
+
+- Review results
+
+  The results can be found in `./your-run-dir` and packaged into a tar archive for example.
+
+###### SASS tracing
+
+- Build `accelsim-sass` benchmarks:
+
+  ```bash
+  make -C benchmarks clean
+  make -C benchmarks nvbit-tracer-tool
+  make -C benchmarks accelsim
+  ```
+
+- Run `accelsim-sass` benchmarks
+
+  **Note**: Remember to set the correct config you are running with the `-c` flag.
+
+  ```bash
+  inv run -s accelsim-sass -c sm86_a4000 --trace-only --run-dir ./your-run-dir
+  ```
+
+  When using the DAS cluster, you can submit slurm jobs using `--slurm` and specify the GPU to use with the `--slurm-node` flag:
+
+  ```bash
+  inv run -s accelsim-sass -c sm86_a4000 --slurm --slurm-node A4000 --trace-only --run-dir ./your-run-dir
+  ```
+
+- Review results
+
+  The results can be found in `./your-run-dir` and packaged into a tar archive for example.
+
+
+#### Option 2: Using docker
 
 - Install docker
 
