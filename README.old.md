@@ -8,23 +8,28 @@
 - why do tejas number of instructions change with the config?
 
 #### TODO
+- double check macsim config again
+- fix and double check memory metrics
+- rerun gtx1080 configs
+    - try with nsight
+- try to make sense of the results
+- go though all the comments and try to remember the difficulties and things that did not work
+- write compat table, write methodology, write results
+
+#### Done
+- rerun scatter with refactoring
+- reduce some of the inputs
+    - better sorting through manual ordering
+- try elapsed cycles
 - for native and accelsim sass:
     - output slurm files when using --slurm
     - cli options for slurm stuff
     - trace-only mode that only traces / profiles
     - write a new readme for all this
-
 - add config for A6000
 - profile and trace using slurm on DAS6
 - barplots for more metrics
 - try to extract more metrics
-- try to make sense of the results
-
-- go though all the comments and try to remember the difficulties and things that did not work
-
-
-
-#### Done
 - more inputs (longer running)
 - per default do not run native benchmarks or accelsim sass
 - make correlation plots between simulators for matrixMul-modified (and two inputs?)
@@ -59,6 +64,27 @@
 - add python script that reads benchmark.yml and creates the run dirs with all the config and code
 - use pylint and mypy and so on to at least somehow be sure the python code works
 - add native dockerfiles
+- inspect and run the `run_hw.py` script of accelsim.
+  - understand how it works and write our own version of it
+- inspect `run_simulations.py` script of accelsim
+  - understand how it gets its metrics and where they are saved
+- Save docker images to disk (note: this actually takes a long time)
+- do not allow warnings and fix them
+- gpgpu sim parser: use tuples as keys and write them to csv
+- find out what scheduling systems are used by DAS5 and DAS6
+  - since i cannot remember
+  - => they use slurm and there even is slurm-rs which we should use
+
+- update the proposal
+- try to get simulation metrics from GPUtejas
+  - need to trace an application first
+  - the java part should be "easy"
+  - but can it output structured statistics? lets hope so...
+
+
+- write script to parse GPGPUsim statistics
+  - ignore all the app data config stuff for now
+  - we could have nested hash maps or just set a prefix and pass a reference
 
 #### Building the rust tools
 
@@ -131,8 +157,6 @@ source /simulator/gpu-simulator/gpgpu-sim/setup_environment
 cargo run --bin gpgpusim-parse
 ```
 
-#### TODO (today)
-
 #### Kepler traces
 ```
 m2s --kpl-report ./test-report.txt --kpl-sim detailed ./vectorAdd_m2s
@@ -177,23 +201,6 @@ https://github.com/Multi2Sim/m2s-bench-cudasdk-6.5
 - make one simple correlation for ./vectoradd
   - between gpgpusim simulation and native execution
 
-#### Done
-- do not allow warnings and fix them
-- gpgpu sim parser: use tuples as keys and write them to csv
-- find out what scheduling systems are used by DAS5 and DAS6
-  - since i cannot remember
-  - => they use slurm and there even is slurm-rs which we should use
-
-- update the proposal
-- try to get simulation metrics from GPUtejas
-  - need to trace an application first
-  - the java part should be "easy"
-  - but can it output structured statistics? lets hope so...
-
-
-- write script to parse GPGPUsim statistics
-  - ignore all the app data config stuff for now
-  - we could have nested hash maps or just set a prefix and pass a reference
 
 #### Current state
 
@@ -221,15 +228,6 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 git diff --submodule=diff
 ```
 
-#### TODO
-
-- inspect and run the `run_hw.py` script of accelsim.
-  - understand how it works and write our own version of it
-
-- inspect `run_simulations.py` script of accelsim
-  - understand how it gets its metrics and where they are saved
-
-Save docker images to disk (note: this actually takes a long time)
 
 ```bash
 apt-get list -a <package>

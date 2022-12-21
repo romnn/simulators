@@ -64,21 +64,30 @@ class BaseMetric(Metric):
     def compute(self):
         data = []
         if self.m2s_df is not None:
-            data.append(("Multi2Sim", self.compute_m2s(self.m2s_df)))
+            # "Multi2Sim"
+            data.append((gpusims.MULTI2SIM, self.compute_m2s(self.m2s_df)))
         if self.macsim_df is not None:
-            data.append(("MacSim", self.compute_macsim(self.macsim_df)))
+            # "MacSim"
+            data.append((gpusims.MACSIM, self.compute_macsim(self.macsim_df)))
         if self.tejas_df is not None:
-            data.append(("GPUTejas", self.compute_tejas(self.tejas_df)))
+            # "GPUTejas"
+            data.append((gpusims.TEJAS, self.compute_tejas(self.tejas_df)))
         if self.accelsim_ptx_df is not None:
+            # "AccelSim PTX"
             data.append(
-                ("AccelSim PTX", self.compute_accelsim_ptx(self.accelsim_ptx_df))
+                (gpusims.ACCELSIM_PTX, self.compute_accelsim_ptx(self.accelsim_ptx_df))
             )
         if self.accelsim_sass_df is not None:
+            # "AccelSim SASS"
             data.append(
-                ("AccelSim SASS", self.compute_accelsim_sass(self.accelsim_sass_df))
+                (
+                    gpusims.ACCELSIM_SASS,
+                    self.compute_accelsim_sass(self.accelsim_sass_df),
+                )
             )
         if self.hw_df is not None:
-            data.append(("Hardware", self.compute_native(self.hw_df)))
+            # "Hardware"
+            data.append((gpusims.NATIVE, self.compute_native(self.hw_df)))
 
         df = pd.DataFrame.from_records(
             data,
@@ -87,23 +96,27 @@ class BaseMetric(Metric):
         df["Value"] = df["Value"].astype(float)
         return df
 
-    def hw_duration(self):
+    def hw_duration_us(self):
         if "Duration" in self.hw_df:
-            # convert us to seconds
-            return self.hw_df["Duration"].sum() * 1e-6
+            # convert us to us (1e-6)
+            # duration already us
+            return self.hw_df["Duration"].sum()
         elif "gpu__time_duration.sum_nsecond" in self.hw_df:
-            # convert ns to seconds
-            return self.hw_df["gpu__time_duration.sum_nsecond"].sum() * 1e-9
+            # convert ns to us
+            return self.hw_df["gpu__time_duration.sum_nsecond"].sum() * 1e-3
         else:
             raise ValueError("hw dataframe missing duration")
 
     def hw_cycles(self):
+        # nsight_col = "sm__cycles_elapsed.sum_cycle"
+        nsight_col = "gpc__cycles_elapsed.avg_cycle"
+        # nsight_col = "sm__cycles_active.avg_cycle"
         if "elapsed_cycles_sm" in self.hw_df:
             sm_count = self.data.config.spec["sm_count"]
             cycles = self.hw_df["elapsed_cycles_sm"].sum()
             return cycles / sm_count
-        elif "gpc__cycles_elapsed.avg_cycle" in self.hw_df:
-            return self.hw_df["gpc__cycles_elapsed.avg_cycle"].sum()
+        elif nsight_col in self.hw_df:
+            return self.hw_df[nsight_col].sum()
         else:
             raise ValueError("hw dataframe missing cycles")
 
@@ -150,8 +163,7 @@ class Cycles(BaseMetric):
         return df["CYC_COUNT_CORE_TOTAL"][0]
 
     def compute_tejas(self, df):
-        # todo: get num threads
-        return df["total_cycle_count"].sum() # * 16
+        return df["total_cycle_count"].sum()
 
     def compute_accelsim_ptx(self, df):
         return df["gpu_tot_sim_cycle"].sum()
@@ -164,7 +176,7 @@ class Cycles(BaseMetric):
             # clock speed is mhz, so *1e6
             # duration is us, so *1e-6
             # unit conversions cancel each other out
-            hw_duration = self.hw_duration()
+            hw_duration = self.hw_duration_us()
             hw_value = hw_duration * self.data.config.spec["clock_speed"]
         else:
             # sm_efficiency: The percentage of time at least one warp
@@ -269,7 +281,8 @@ class ExecutionTime(BaseMetric):
 
         hw_value = 0
         if self.hw_df is not None:
-            hw_value = self.hw_duration()
+            # convert to seconds
+            hw_value = self.hw_duration_us() * 1e-6
 
         # df = pd.DataFrame.from_records(
         #     data,
@@ -280,18 +293,30 @@ class ExecutionTime(BaseMetric):
 
         df = pd.DataFrame.from_records(
             data=[
-                ("Multi2Sim", "Sim", m2s_sim),
-                ("Multi2Sim", "Trace", 0),
-                ("MacSim", "Sim", macsim_sim),
-                ("MacSim", "Trace", macsim_trace),
-                ("GPUTejas", "Sim", tejas_sim),
-                ("GPUTejas", "Trace", tejas_trace),
-                ("AccelSim PTX", "Sim", accel_ptx_sim),
-                ("AccelSim PTX", "Trace", 0),
-                ("AccelSim SASS", "Sim", accel_sass_sim),
-                ("AccelSim SASS", "Trace", accel_sass_trace),
-                ("Hardware", "Sim", hw_value),
-                ("Hardware", "Trace", 0),
+                (gpusims.MULTI2SIM, "Sim", m2s_sim),
+                (gpusims.MULTI2SIM, "Trace", 0),
+                (gpusims.MACSIM, "Sim", macsim_sim),
+                (gpusims.MACSIM, "Trace", macsim_trace),
+                (gpusims.TEJAS, "Sim", tejas_sim),
+                (gpusims.TEJAS, "Trace", tejas_trace),
+                (gpusims.ACCELSIM_PTX, "Sim", accel_ptx_sim),
+                (gpusims.ACCELSIM_PTX, "Trace", 0),
+                (gpusims.ACCELSIM_SASS, "Sim", accel_sass_sim),
+                (gpusims.ACCELSIM_SASS, "Trace", accel_sass_trace),
+                (gpusims.NATIVE, "Sim", hw_value),
+                (gpusims.NATIVE, "Trace", 0),
+                # ("Multi2Sim", "Sim", m2s_sim),
+                # ("Multi2Sim", "Trace", 0),
+                # ("MacSim", "Sim", macsim_sim),
+                # ("MacSim", "Trace", macsim_trace),
+                # ("GPUTejas", "Sim", tejas_sim),
+                # ("GPUTejas", "Trace", tejas_trace),
+                # ("AccelSim PTX", "Sim", accel_ptx_sim),
+                # ("AccelSim PTX", "Trace", 0),
+                # ("AccelSim SASS", "Sim", accel_sass_sim),
+                # ("AccelSim SASS", "Trace", accel_sass_trace),
+                # ("Hardware", "Sim", hw_value),
+                # ("Hardware", "Trace", 0),
             ],
             columns=["Simulator", "Kind", "Value"],
         )

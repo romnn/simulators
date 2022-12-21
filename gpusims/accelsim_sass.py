@@ -177,7 +177,7 @@ def run_simulate(path, inp, traces_dir, results_dir, timeout_mins=5):
 
 
 def run_parse(path, inp, traces_dir, results_dir, timeout_mins=5):
-    """ parse the log file"""
+    """parse the log file"""
     log_file = results_dir / LOG_FILE_NAME
     stat_file = results_dir / "stats.csv"
     _, stdout, stderr, _ = utils.run_cmd(

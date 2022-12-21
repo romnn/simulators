@@ -5,6 +5,7 @@ from pprint import pprint  # noqa: F401
 from gpusims.bench import BenchmarkConfig
 from gpusims.cuda import get_devices
 import gpusims.utils as utils
+import numpy as np
 
 
 def convert_hw_csv(csv_file, output_csv_file):
@@ -332,6 +333,8 @@ def build_nsight_df(csv_files):
         units = nsight_df_run.iloc[0].copy()
         units[~units.isnull()] = "_" + units[~units.isnull()]
         units = units.fillna("")
+        # print("units")
+        # print(units)
         nsight_df_run.columns = nsight_df_run.columns + units
         nsight_df_run = nsight_df_run.drop(nsight_df_run.index[0])
         nsight_df_runs.append(nsight_df_run)
@@ -343,23 +346,67 @@ def build_nsight_df(csv_files):
     nsight_df = nsight_df.set_index(nsight_index_cols)
 
     non_numeric = [
-        "Process ID",
-        "Process Name",
-        "Host Name",
-        "Kernel Time",
-        "launch__func_cache_config",
-        "nvlink__uuidDev0",
-        "nvlink__uuidDev1",
+        c
+        for c in [
+            "Process ID",
+            "Process Name",
+            "Host Name",
+            "Kernel Time",
+            "launch__func_cache_config",
+            "nvlink__uuidDev0",
+            "nvlink__uuidDev1",
+        ]
+        if c in nsight_df.columns
     ]
     # drop non numeric columns
     nsight_df = nsight_df.drop(columns=non_numeric)
+    # return nsight_df
 
     # convert to numeric
-    def to_numeric(series):
-        # nsight uses , to separate thousands
-        return pd.to_numeric(series.astype(str).str.replace(",", ""))
+    def to_numeric_single(value, integer=False):
+        if value in ["no data", "nan"]:
+            return np.nan
+        # ".avg", ".sum"
+        # if nseconds unit then . is decimal point
+        # value = value.replace(",", "")
+        # 16.626,67
+        # 15,935.33
+        if value.count(",") > 0 and value.count(".") > 0:
+            # find returns lowest index (first occurence)
+            sep = "." if value.find(".") < value.find(",") else ","
+            value = value.replace(sep, "")
 
+            # we can leave dots that will be left
+            value = value.replace(",", ".")
+
+        if value.count(",") > 1:
+            # interpret as thousands instead of decimal point
+            value = value.replace(",", "")
+
+        if value.count(".") > 1:
+            # interpret as thousands instead of decimal point
+            value = value.replace(".", "")
+
+        if integer:
+            value = value.replace(".", "")
+            value = value.replace(",", "")
+
+        value = value.replace(",", ".")
+        return value
+
+    def to_numeric(series, integer=False):
+        return pd.to_numeric(
+            series.astype(str).apply(to_numeric_single, integer=integer)
+        )
+
+    integer_cols = nsight_df.columns[nsight_df.columns.str.contains(pat="_nsecond$")]
+    # print(integer_cols)
+    nsight_df[integer_cols] = nsight_df[integer_cols].apply(
+        to_numeric,
+        integer=True,
+    )
     nsight_df = nsight_df.apply(to_numeric)
+    # return nsight_df
 
     # compute min, max, mean, stddev
     grouped_repetitions = nsight_df.groupby(level=nsight_index_cols)
