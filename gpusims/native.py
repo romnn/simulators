@@ -47,6 +47,7 @@ def profile_nvsight(path, inp, results_dir, r, timeout_mins=5):
         "l1tex__t_sectors_pipe_lsu_mem_global_op_ld_lookup_hit.sum",
         "l1tex__t_sectors_pipe_lsu_mem_global_op_ld_lookup_miss.sum",
         "l1tex__t_sectors_pipe_lsu_mem_global_op_st_lookup_miss.sum",
+        # add this as well?: "lts__t_sector_op_read_hit_rate.pct",
         "lts__t_sector_op_write_hit_rate.pct",
         "lts__t_sectors_srcunit_tex_op_read.sum",
         "lts__t_sectors_srcunit_tex_op_write.sum",
@@ -344,6 +345,7 @@ def build_nsight_df(csv_files):
     assert nsight_df["ID"].isnull().sum() == 0
 
     nsight_df = nsight_df.set_index(nsight_index_cols)
+    # for debugging
     # return nsight_df
 
     non_numeric = [
@@ -372,13 +374,13 @@ def build_nsight_df(csv_files):
         # 16.626,67
         # 15,935.33
 
-        if value.count(",") > 0 and value.count(".") > 0:
-            # find returns lowest index (first occurence)
-            sep = "." if value.find(".") < value.find(",") else ","
-            value = value.replace(sep, "")
+        # if value.count(",") > 0 and value.count(".") > 0:
+        #     # find returns lowest index (first occurence)
+        #     sep = "." if value.find(".") < value.find(",") else ","
+        #     value = value.replace(sep, "")
 
-            # we can leave dots that will be left
-            value = value.replace(",", ".")
+        #     # we can leave dots that will be left
+        #     value = value.replace(",", ".")
 
         if value.count(",") > 1:
             # interpret as thousands instead of decimal point
@@ -396,9 +398,17 @@ def build_nsight_df(csv_files):
         return value
 
     def to_numeric(series, integer=False):
-        return pd.to_numeric(
-            series.astype(str).apply(to_numeric_single, integer=integer)
-        )
+        # find separator for the entire series
+        series = series.astype(str)
+        sep = "."
+        for value in series:
+            if value.count(",") > 0 and value.count(".") > 0:
+                # find returns lowest index (first occurence)
+                sep = "." if value.find(".") < value.find(",") else ","
+                break
+        series = series.apply(lambda v: v.replace(sep, ""))
+
+        return pd.to_numeric(series.apply(to_numeric_single, integer=integer))
 
     integer_cols = []
     integer_cols += nsight_df.columns[

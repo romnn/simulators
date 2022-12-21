@@ -8,8 +8,7 @@
 - why do tejas number of instructions change with the config?
 
 #### TODO
-- double check macsim config again
-- fix and double check memory metrics
+- median of all simulator slowdowns plo 
 - rerun gtx1080 configs
     - try with nsight
 - try to make sense of the results
@@ -17,6 +16,8 @@
 - write compat table, write methodology, write results
 
 #### Done
+- fix and double check memory metrics
+- double check macsim config again
 - rerun scatter with refactoring
 - reduce some of the inputs
     - better sorting through manual ordering
