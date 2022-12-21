@@ -1,6 +1,6 @@
 options: Options {
-    input: "/benchrun/accelsim-ptx/babelstream/sm6_gtx1080/input-arraysize-10240-numtimes-1/results/log.txt",
-    output: "/benchrun/accelsim-ptx/babelstream/sm6_gtx1080/input-arraysize-10240-numtimes-1/results/stats.csv",
+    input: "/benchrun/accelsim-ptx/sm6_gtx1080/babelstream/input-arraysize-10240-numtimes-1/results/log.txt",
+    output: "/benchrun/accelsim-ptx/sm6_gtx1080/babelstream/input-arraysize-10240-numtimes-1/results/stats.csv",
     per_kernel: false,
     kernel_instance: false,
     configs_as_rows: false,
@@ -14,83 +14,8 @@ stats: {
     (
         "final_kernel",
         0,
-        "l2_cache_write_hit",
-    ): 2761.0,
-    (
-        "final_kernel",
-        0,
-        "gpu_tot_ipc",
-    ): 810.2386,
-    (
-        "final_kernel",
-        0,
-        "l2_cache_read_miss",
-    ): 0.0,
-    (
-        "final_kernel",
-        0,
-        "gpgpu_simulation_rate",
-    ): 756.0,
-    (
-        "final_kernel",
-        0,
         "l2_cache_write_total",
     ): 4736.0,
-    (
-        "final_kernel",
-        0,
-        "total_core_cache_read_hit",
-    ): 0.0,
-    (
-        "final_kernel",
-        0,
-        "kernel_launch_uid",
-    ): 6.0,
-    (
-        "final_kernel",
-        0,
-        "gpgpu_simulation_time_sec",
-    ): 56.0,
-    (
-        "final_kernel",
-        0,
-        "gpgpu_silicon_slowdown",
-    ): 2125661.0,
-    (
-        "final_kernel",
-        0,
-        "total_core_cache_write_hit",
-    ): 0.0,
-    (
-        "final_kernel",
-        0,
-        "gpu_occupancy",
-    ): 92.1095,
-    (
-        "final_kernel",
-        0,
-        "total_dram_reads",
-    ): 7792.0,
-    (
-        "final_kernel",
-        0,
-        "const_cache_read_total",
-    ): 20.0,
-    (
-        "final_kernel",
-        0,
-        "total_dram_writes",
-    ): 7735.0,
-    (
-        "final_kernel",
-        0,
-        "l2_bandwidth_gbps",
-    ): 4.5663,
-    (
-        "final_kernel",
-        0,
-        "l2_cache_read_total",
-    ): 5120.0,
     (
         "final_kernel",
         0,
@@ -99,18 +24,18 @@ stats: {
     (
         "final_kernel",
         0,
-        "gpu_ipc",
-    ): 1002.659,
+        "gpgpu_simulation_rate",
+    ): 808.0,
     (
         "final_kernel",
         0,
-        "l2_cache_read_hit",
+        "l2_cache_read_total",
     ): 5120.0,
     (
         "final_kernel",
         0,
-        "gpu_total_instructions",
-    ): 34325760.0,
+        "l2_cache_read_miss",
+    ): 0.0,
     (
         "final_kernel",
         0,
@@ -119,12 +44,87 @@ stats: {
     (
         "final_kernel",
         0,
+        "total_dram_writes",
+    ): 7731.0,
+    (
+        "final_kernel",
+        0,
+        "gpu_total_instructions",
+    ): 34325760.0,
+    (
+        "final_kernel",
+        0,
+        "const_cache_read_total",
+    ): 20.0,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_read_hit",
+    ): 5120.0,
+    (
+        "final_kernel",
+        0,
         "gpu_tot_sim_cycle",
-    ): 42365.0,
+    ): 46917.0,
+    (
+        "final_kernel",
+        0,
+        "gpu_ipc",
+    ): 981.6052,
     (
         "final_kernel",
         0,
         "l2_cache_write_miss",
     ): 1936.0,
+    (
+        "final_kernel",
+        0,
+        "total_core_cache_write_hit",
+    ): 0.0,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_write_hit",
+    ): 2765.0,
+    (
+        "final_kernel",
+        0,
+        "total_dram_reads",
+    ): 7792.0,
+    (
+        "final_kernel",
+        0,
+        "l2_bandwidth_gbps",
+    ): 2.4254,
+    (
+        "final_kernel",
+        0,
+        "gpu_occupancy",
+    ): 92.5061,
+    (
+        "final_kernel",
+        0,
+        "gpgpu_silicon_slowdown",
+    ): 1988861.0,
+    (
+        "final_kernel",
+        0,
+        "gpgpu_simulation_time_sec",
+    ): 58.0,
+    (
+        "final_kernel",
+        0,
+        "total_core_cache_read_hit",
+    ): 0.0,
+    (
+        "final_kernel",
+        0,
+        "gpu_tot_ipc",
+    ): 731.6273,
+    (
+        "final_kernel",
+        0,
+        "kernel_launch_uid",
+    ): 6.0,
 }
-done in 28.875202ms: 315.43 KiB parsed (16.00 EiB/s)
+done in 28.181942ms: 313.61 KiB parsed (16.00 EiB/s)

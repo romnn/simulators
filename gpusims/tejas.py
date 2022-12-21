@@ -114,6 +114,8 @@ class TejasBenchmarkConfig(BenchmarkConfig):
         assert tejas_simulator.is_file()
 
         log_file = results_dir / "stats.txt"
+        # remove the old log file, otherwise tejas will rename and keep it
+        log_file.unlink(missing_ok=True)
         cmd = (
             ["java"]
             + java_opts

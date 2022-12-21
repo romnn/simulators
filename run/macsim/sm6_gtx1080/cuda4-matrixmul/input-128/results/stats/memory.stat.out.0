@@ -2,15 +2,15 @@
 Interval
 ####################################################################################################
 Cumulative:         Cycles:                  20000     Instructions:                  1200
-AVG_MEMORY_LATENCY_BASE                                      5823                          5823
+AVG_MEMORY_LATENCY_BASE                                      5803                          5803
 
-AVG_MEMORY_LATENCY                                        2205303                       378.723
+AVG_MEMORY_LATENCY                                        1890459                       325.773
 
 MSHR_FULL                                                       0                             0
 
-TOTAL_MEMORY                                                 5823                          5823
+TOTAL_MEMORY                                                 5803                          5803
 
-TOTAL_MEMORY_MERGE                                           4206                      0.722308
+TOTAL_MEMORY_MERGE                                           3942                      0.679304
 
 TOTAL_WB                                                        0                             0
 
@@ -38,7 +38,7 @@ L2_HIT_GPU                                                      0               
 
 L2_MISS_CPU                                                     0                             0
 
-L2_MISS_GPU                                                  1617                          1617
+L2_MISS_GPU                                                  1861                          1861
 
 L3_HIT_CPU                                                      0                             0
 
@@ -46,11 +46,11 @@ L3_HIT_GPU                                                      0               
 
 L3_MISS_CPU                                                     0                             0
 
-L3_MISS_GPU                                                  1617                          1617
+L3_MISS_GPU                                                  1861                          1861
 
 LLC_HIT_CPU                                                     0                             0
 
-LLC_HIT_GPU                                                    78                            78
+LLC_HIT_GPU                                                   322                           322
 
 LLC_MISS_CPU                                                    0                             0
 
@@ -90,9 +90,9 @@ SHARED_MEM_INST                                                 0               
 
 SHARED_MEM_ACCESS                                          139264                        139264
 
-CACHE_BANK_BUSY                                                 3                             3
+CACHE_BANK_BUSY                                                18                            18
 
-ICACHE_MISS_TOTAL                                            1215                          1215
+ICACHE_MISS_TOTAL                                            1195                          1195
 
 TOTAL_CAGE_PERIOD                                               0                             0
 
@@ -175,195 +175,195 @@ PAGETABLE_MISS                                                  0               
 
 MEM_STALL_CYCLE_CORE_0                                          0                             0
 
-ICACHE_FILL_CORE_0                                             96                            96
+ICACHE_FILL_CORE_0                                             60                            60
 
 NUM_WRITE_ACKS_CORE_0                                          32                            32
 
 NUM_WRITES_CORE_0                                              32                            32
 
-ICACHE_HIT_CORE_0                                           15842                       99.3977%
-ICACHE_MISS_CORE_0                                             96                      0.602334%
-                                                            15938                           100%
+ICACHE_HIT_CORE_0                                           15842                       99.6227%
+ICACHE_MISS_CORE_0                                             60                      0.377311%
+                                                            15902                           100%
 
 MEM_STALL_CYCLE_CORE_1                                          0                             0
 
-ICACHE_FILL_CORE_1                                             85                            85
+ICACHE_FILL_CORE_1                                             74                            74
 
 NUM_WRITE_ACKS_CORE_1                                          32                            32
 
 NUM_WRITES_CORE_1                                              32                            32
 
-ICACHE_HIT_CORE_1                                           15842                       99.4663%
-ICACHE_MISS_CORE_1                                             85                      0.533685%
-                                                            15927                           100%
+ICACHE_HIT_CORE_1                                           15842                       99.5351%
+ICACHE_MISS_CORE_1                                             74                      0.464941%
+                                                            15916                           100%
 
 MEM_STALL_CYCLE_CORE_2                                          0                             0
 
-ICACHE_FILL_CORE_2                                             70                            70
+ICACHE_FILL_CORE_2                                             87                            87
 
 NUM_WRITE_ACKS_CORE_2                                          32                            32
 
 NUM_WRITES_CORE_2                                              32                            32
 
-ICACHE_HIT_CORE_2                                           15842                       99.5601%
-ICACHE_MISS_CORE_2                                             70                       0.43992%
-                                                            15912                           100%
+ICACHE_HIT_CORE_2                                           15842                       99.4538%
+ICACHE_MISS_CORE_2                                             87                      0.546174%
+                                                            15929                           100%
 
 MEM_STALL_CYCLE_CORE_3                                          0                             0
 
-ICACHE_FILL_CORE_3                                             56                            56
+ICACHE_FILL_CORE_3                                             75                            75
 
 NUM_WRITE_ACKS_CORE_3                                          32                            32
 
 NUM_WRITES_CORE_3                                              32                            32
 
-ICACHE_HIT_CORE_3                                           15842                       99.6478%
-ICACHE_MISS_CORE_3                                             56                      0.352246%
-                                                            15898                           100%
+ICACHE_HIT_CORE_3                                           15842                       99.5288%
+ICACHE_MISS_CORE_3                                             75                      0.471194%
+                                                            15917                           100%
 
 MEM_STALL_CYCLE_CORE_4                                          0                             0
 
-ICACHE_FILL_CORE_4                                             96                            96
+ICACHE_FILL_CORE_4                                             62                            62
 
 NUM_WRITE_ACKS_CORE_4                                          32                            32
 
 NUM_WRITES_CORE_4                                              32                            32
 
-ICACHE_HIT_CORE_4                                           15842                       99.3977%
-ICACHE_MISS_CORE_4                                             96                      0.602334%
-                                                            15938                           100%
+ICACHE_HIT_CORE_4                                           15842                       99.6102%
+ICACHE_MISS_CORE_4                                             62                      0.389839%
+                                                            15904                           100%
 
 MEM_STALL_CYCLE_CORE_5                                          0                             0
 
-ICACHE_FILL_CORE_5                                             83                            83
+ICACHE_FILL_CORE_5                                             77                            77
 
 NUM_WRITE_ACKS_CORE_5                                          32                            32
 
 NUM_WRITES_CORE_5                                              32                            32
 
-ICACHE_HIT_CORE_5                                           15842                       99.4788%
-ICACHE_MISS_CORE_5                                             83                      0.521193%
-                                                            15925                           100%
+ICACHE_HIT_CORE_5                                           15842                       99.5163%
+ICACHE_MISS_CORE_5                                             77                      0.483699%
+                                                            15919                           100%
 
 MEM_STALL_CYCLE_CORE_6                                          0                             0
 
-ICACHE_FILL_CORE_6                                             71                            71
+ICACHE_FILL_CORE_6                                             88                            88
 
 NUM_WRITE_ACKS_CORE_6                                          32                            32
 
 NUM_WRITES_CORE_6                                              32                            32
 
-ICACHE_HIT_CORE_6                                           15842                       99.5538%
-ICACHE_MISS_CORE_6                                             71                      0.446176%
-                                                            15913                           100%
+ICACHE_HIT_CORE_6                                           15842                       99.4476%
+ICACHE_MISS_CORE_6                                             88                      0.552417%
+                                                            15930                           100%
 
 MEM_STALL_CYCLE_CORE_7                                          0                             0
 
-ICACHE_FILL_CORE_7                                             58                            58
+ICACHE_FILL_CORE_7                                             75                            75
 
 NUM_WRITE_ACKS_CORE_7                                          32                            32
 
 NUM_WRITES_CORE_7                                              32                            32
 
-ICACHE_HIT_CORE_7                                           15842                       99.6352%
-ICACHE_MISS_CORE_7                                             58                       0.36478%
-                                                            15900                           100%
+ICACHE_HIT_CORE_7                                           15842                       99.5288%
+ICACHE_MISS_CORE_7                                             75                      0.471194%
+                                                            15917                           100%
 
 MEM_STALL_CYCLE_CORE_8                                          0                             0
 
-ICACHE_FILL_CORE_8                                             96                            96
+ICACHE_FILL_CORE_8                                             62                            62
 
 NUM_WRITE_ACKS_CORE_8                                          32                            32
 
 NUM_WRITES_CORE_8                                              32                            32
 
-ICACHE_HIT_CORE_8                                           15842                       99.3977%
-ICACHE_MISS_CORE_8                                             96                      0.602334%
-                                                            15938                           100%
+ICACHE_HIT_CORE_8                                           15842                       99.6102%
+ICACHE_MISS_CORE_8                                             62                      0.389839%
+                                                            15904                           100%
 
 MEM_STALL_CYCLE_CORE_9                                          0                             0
 
-ICACHE_FILL_CORE_9                                             63                            63
+ICACHE_FILL_CORE_9                                             74                            74
 
 NUM_WRITE_ACKS_CORE_9                                          32                            32
 
 NUM_WRITES_CORE_9                                              32                            32
 
-ICACHE_HIT_CORE_9                                           15842                       99.6039%
-ICACHE_MISS_CORE_9                                             63                      0.396102%
-                                                            15905                           100%
+ICACHE_HIT_CORE_9                                           15842                       99.5351%
+ICACHE_MISS_CORE_9                                             74                      0.464941%
+                                                            15916                           100%
 
 MEM_STALL_CYCLE_CORE_10                                         0                             0
 
-ICACHE_FILL_CORE_10                                            72                            72
+ICACHE_FILL_CORE_10                                            88                            88
 
 NUM_WRITE_ACKS_CORE_10                                         32                            32
 
 NUM_WRITES_CORE_10                                             32                            32
 
-ICACHE_HIT_CORE_10                                          15842                       99.5476%
-ICACHE_MISS_CORE_10                                            72                      0.452432%
-                                                            15914                           100%
+ICACHE_HIT_CORE_10                                          15842                       99.4476%
+ICACHE_MISS_CORE_10                                            88                      0.552417%
+                                                            15930                           100%
 
 MEM_STALL_CYCLE_CORE_11                                         0                             0
 
-ICACHE_FILL_CORE_11                                            58                            58
+ICACHE_FILL_CORE_11                                            75                            75
 
 NUM_WRITE_ACKS_CORE_11                                         32                            32
 
 NUM_WRITES_CORE_11                                             32                            32
 
-ICACHE_HIT_CORE_11                                          15842                       99.6352%
-ICACHE_MISS_CORE_11                                            58                       0.36478%
-                                                            15900                           100%
+ICACHE_HIT_CORE_11                                          15842                       99.5288%
+ICACHE_MISS_CORE_11                                            75                      0.471194%
+                                                            15917                           100%
 
 MEM_STALL_CYCLE_CORE_12                                         0                             0
 
-ICACHE_FILL_CORE_12                                            96                            96
+ICACHE_FILL_CORE_12                                            62                            62
 
 NUM_WRITE_ACKS_CORE_12                                         32                            32
 
 NUM_WRITES_CORE_12                                             32                            32
 
-ICACHE_HIT_CORE_12                                          15842                       99.3977%
-ICACHE_MISS_CORE_12                                            96                      0.602334%
-                                                            15938                           100%
+ICACHE_HIT_CORE_12                                          15842                       99.6102%
+ICACHE_MISS_CORE_12                                            62                      0.389839%
+                                                            15904                           100%
 
 MEM_STALL_CYCLE_CORE_13                                         0                             0
 
-ICACHE_FILL_CORE_13                                            85                            85
+ICACHE_FILL_CORE_13                                            74                            74
 
 NUM_WRITE_ACKS_CORE_13                                         32                            32
 
 NUM_WRITES_CORE_13                                             32                            32
 
-ICACHE_HIT_CORE_13                                          15842                       99.4663%
-ICACHE_MISS_CORE_13                                            85                      0.533685%
-                                                            15927                           100%
+ICACHE_HIT_CORE_13                                          15842                       99.5351%
+ICACHE_MISS_CORE_13                                            74                      0.464941%
+                                                            15916                           100%
 
 MEM_STALL_CYCLE_CORE_14                                         0                             0
 
-ICACHE_FILL_CORE_14                                            72                            72
+ICACHE_FILL_CORE_14                                            87                            87
 
 NUM_WRITE_ACKS_CORE_14                                         32                            32
 
 NUM_WRITES_CORE_14                                             32                            32
 
-ICACHE_HIT_CORE_14                                          15842                       99.5476%
-ICACHE_MISS_CORE_14                                            72                      0.452432%
-                                                            15914                           100%
+ICACHE_HIT_CORE_14                                          15842                       99.4538%
+ICACHE_MISS_CORE_14                                            87                      0.546174%
+                                                            15929                           100%
 
 MEM_STALL_CYCLE_CORE_15                                         0                             0
 
-ICACHE_FILL_CORE_15                                            58                            58
+ICACHE_FILL_CORE_15                                            75                            75
 
 NUM_WRITE_ACKS_CORE_15                                         32                            32
 
 NUM_WRITES_CORE_15                                             32                            32
 
-ICACHE_HIT_CORE_15                                          15842                       99.6352%
-ICACHE_MISS_CORE_15                                            58                       0.36478%
-                                                            15900                           100%
+ICACHE_HIT_CORE_15                                          15842                       99.5288%
+ICACHE_MISS_CORE_15                                            75                      0.471194%
+                                                            15917                           100%
 
 MEM_STALL_CYCLE_CORE_16                                         0                             0
 

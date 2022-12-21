@@ -1,9 +1,9 @@
-==1067== NVPROF is profiling process 1067, command: /benchrun/native/cuda4-matrixmul/sm6_gtx1080/input-512/matrixMul 512
-==1067== Profiling application: /benchrun/native/cuda4-matrixmul/sm6_gtx1080/input-512/matrixMul 512
+==1067== NVPROF is profiling process 1067, command: /benchrun/native/sm6_gtx1080/cuda4-matrixmul/input-512/matrixMul 512
+==1067== Profiling application: /benchrun/native/sm6_gtx1080/cuda4-matrixmul/input-512/matrixMul 512
 ==1067== Profiling result:
 "Start","Duration","Grid X","Grid Y","Grid Z","Block X","Block Y","Block Z","Registers Per Thread","Static SMem","Dynamic SMem","Size","Throughput","SrcMemType","DstMemType","Device","Context","Stream","Name","Correlation_ID"
 us,us,,,,,,,,KB,B,MB,GB/s,,,,,,,
-321565.903000,188.737000,,,,,,,,,,1.000000,5.174197,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",109
-321878.833000,181.601000,,,,,,,,,,1.000000,5.377517,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",110
-322142.162000,248.002000,16,16,1,32,32,1,30,8.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z8mult_gpuPfS_S_ii",112
-322408.980000,159.841000,,,,,,,,,,1.000000,6.109587,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",114
+327687.819000,170.944000,,,,,,,,,,1.000000,5.712763,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",109
+327974.667000,170.689000,,,,,,,,,,1.000000,5.721297,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",110
+328231.884000,247.648000,16,16,1,32,32,1,30,8.000000,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z8mult_gpuPfS_S_ii",112
+328495.660000,165.249000,,,,,,,,,,1.000000,5.909642,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",114

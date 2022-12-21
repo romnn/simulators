@@ -24,15 +24,15 @@ POWER_MC_R                                                   4099               
 
 POWER_MC_W                                                     99                            99
 
-POWER_BLOCK_STATES_R_CORE_0                                 15133                         15133
+POWER_BLOCK_STATES_R_CORE_0                                 15137                         15137
 
-POWER_BLOCK_STATES_W_CORE_0                                 15133                         15133
+POWER_BLOCK_STATES_W_CORE_0                                 15137                         15137
 
 POWER_FETCH_QUEUE_R_CORE_0                                   8932                          8932
 
 POWER_FETCH_QUEUE_W_CORE_0                                   8932                          8932
 
-POWER_INST_QUEUE_R_CORE_0                                   15518                         15518
+POWER_INST_QUEUE_R_CORE_0                                   15516                         15516
 
 POWER_INST_QUEUE_W_CORE_0                                    8932                          8932
 
@@ -50,7 +50,7 @@ POWER_ICACHE_W_CORE_0                                           3               
 
 POWER_ICACHE_R_TAG_CORE_0                                    8956                          8956
 
-POWER_ICACHE_MISS_BUF_R_CORE_0                                  0                             0
+POWER_ICACHE_MISS_BUF_R_CORE_0                                  3                             3
 
 POWER_ICACHE_MISS_BUF_W_CORE_0                                 48                            48
 
@@ -74,7 +74,7 @@ POWER_OPERAND_DECODER_R_CORE_0                               8932               
 
 POWER_OPERAND_DECODER_W_CORE_0                                  0                             0
 
-POWER_UOP_QUEUE_R_CORE_0                                    15518                         15518
+POWER_UOP_QUEUE_R_CORE_0                                    15516                         15516
 
 POWER_UOP_QUEUE_W_CORE_0                                     8932                          8932
 
@@ -88,7 +88,7 @@ POWER_FREELIST_R_CORE_0                                         0               
 
 POWER_FREELIST_W_CORE_0                                         0                             0
 
-POWER_RESERVATION_STATION_R_CORE_0                          10646                         10646
+POWER_RESERVATION_STATION_R_CORE_0                          10633                         10633
 
 POWER_RESERVATION_STATION_W_CORE_0                           8932                          8932
 
@@ -178,11 +178,11 @@ POWER_FLAG_REGISTER_W_CORE_0                                    0               
 
 POWER_EXEC_BYPASS_CORE_0                                     8932                          8932
 
-POWER_LOAD_BYPASS_CORE_0                                     2922                          2922
+POWER_LOAD_BYPASS_CORE_0                                     2919                          2919
 
 POWER_PIPELINE_CORE_0                                        8932                          8932
 
-POWER_DCACHE_MISS_BUF_R_CORE_0                               2922                          2922
+POWER_DCACHE_MISS_BUF_R_CORE_0                               2916                          2916
 
 POWER_DCACHE_MISS_BUF_R_TAG_CORE_0                            976                           976
 
@@ -192,17 +192,17 @@ POWER_DCACHE_MISS_BUF_W_TAG_CORE_0                              0               
 
 POWER_DCACHE_LINEFILL_BUF_R_CORE_0                              0                             0
 
-POWER_L2CACHE_LINEFILL_BUF_R_CORE_0                           974                           974
+POWER_L2CACHE_LINEFILL_BUF_R_CORE_0                           973                           973
 
-POWER_DCACHE_LINEFILL_BUF_W_CORE_0                            974                           974
+POWER_DCACHE_LINEFILL_BUF_W_CORE_0                            973                           973
 
-POWER_L2CACHE_LINEFILL_BUF_W_CORE_0                           974                           974
+POWER_L2CACHE_LINEFILL_BUF_W_CORE_0                           973                           973
 
-POWER_DCACHE_LINEFILL_BUF_R_TAG_CORE_0                        974                           974
+POWER_DCACHE_LINEFILL_BUF_R_TAG_CORE_0                        973                           973
 
-POWER_L2CACHE_LINEFILL_BUF_R_TAG_CORE_0                       974                           974
+POWER_L2CACHE_LINEFILL_BUF_R_TAG_CORE_0                       973                           973
 
-POWER_DCACHE_LINEFILL_BUF_W_TAG_CORE_0                        974                           974
+POWER_DCACHE_LINEFILL_BUF_W_TAG_CORE_0                        973                           973
 
 POWER_DCACHE_WB_BUF_R_CORE_0                                    0                             0
 
@@ -254,9 +254,9 @@ POWER_SHARED_MEM_R_TAG_CORE_0                                1504               
 
 POWER_SHARED_MEM_W_TAG_CORE_0                                   0                             0
 
-POWER_BLOCK_STATES_R_CORE_1                                 15141                         15141
+POWER_BLOCK_STATES_R_CORE_1                                 15161                         15161
 
-POWER_BLOCK_STATES_W_CORE_1                                 15141                         15141
+POWER_BLOCK_STATES_W_CORE_1                                 15161                         15161
 
 POWER_FETCH_QUEUE_R_CORE_1                                   8932                          8932
 
@@ -318,7 +318,7 @@ POWER_FREELIST_R_CORE_1                                         0               
 
 POWER_FREELIST_W_CORE_1                                         0                             0
 
-POWER_RESERVATION_STATION_R_CORE_1                          10630                         10630
+POWER_RESERVATION_STATION_R_CORE_1                          10615                         10615
 
 POWER_RESERVATION_STATION_W_CORE_1                           8932                          8932
 
@@ -408,11 +408,11 @@ POWER_FLAG_REGISTER_W_CORE_1                                    0               
 
 POWER_EXEC_BYPASS_CORE_1                                     8932                          8932
 
-POWER_LOAD_BYPASS_CORE_1                                     2937                          2937
+POWER_LOAD_BYPASS_CORE_1                                     2943                          2943
 
 POWER_PIPELINE_CORE_1                                        8932                          8932
 
-POWER_DCACHE_MISS_BUF_R_CORE_1                               2934                          2934
+POWER_DCACHE_MISS_BUF_R_CORE_1                               2940                          2940
 
 POWER_DCACHE_MISS_BUF_R_TAG_CORE_1                            992                           992
 
@@ -422,17 +422,17 @@ POWER_DCACHE_MISS_BUF_W_TAG_CORE_1                              0               
 
 POWER_DCACHE_LINEFILL_BUF_R_CORE_1                              0                             0
 
-POWER_L2CACHE_LINEFILL_BUF_R_CORE_1                           979                           979
+POWER_L2CACHE_LINEFILL_BUF_R_CORE_1                           981                           981
 
-POWER_DCACHE_LINEFILL_BUF_W_CORE_1                            979                           979
+POWER_DCACHE_LINEFILL_BUF_W_CORE_1                            981                           981
 
-POWER_L2CACHE_LINEFILL_BUF_W_CORE_1                           979                           979
+POWER_L2CACHE_LINEFILL_BUF_W_CORE_1                           981                           981
 
-POWER_DCACHE_LINEFILL_BUF_R_TAG_CORE_1                        979                           979
+POWER_DCACHE_LINEFILL_BUF_R_TAG_CORE_1                        981                           981
 
-POWER_L2CACHE_LINEFILL_BUF_R_TAG_CORE_1                       979                           979
+POWER_L2CACHE_LINEFILL_BUF_R_TAG_CORE_1                       981                           981
 
-POWER_DCACHE_LINEFILL_BUF_W_TAG_CORE_1                        979                           979
+POWER_DCACHE_LINEFILL_BUF_W_TAG_CORE_1                        981                           981
 
 POWER_DCACHE_WB_BUF_R_CORE_1                                    0                             0
 
@@ -484,15 +484,15 @@ POWER_SHARED_MEM_R_TAG_CORE_1                                1504               
 
 POWER_SHARED_MEM_W_TAG_CORE_1                                   0                             0
 
-POWER_BLOCK_STATES_R_CORE_2                                 15155                         15155
+POWER_BLOCK_STATES_R_CORE_2                                 15149                         15149
 
-POWER_BLOCK_STATES_W_CORE_2                                 15155                         15155
+POWER_BLOCK_STATES_W_CORE_2                                 15149                         15149
 
 POWER_FETCH_QUEUE_R_CORE_2                                   8932                          8932
 
 POWER_FETCH_QUEUE_W_CORE_2                                   8932                          8932
 
-POWER_INST_QUEUE_R_CORE_2                                   15513                         15513
+POWER_INST_QUEUE_R_CORE_2                                   15523                         15523
 
 POWER_INST_QUEUE_W_CORE_2                                    8932                          8932
 
@@ -534,7 +534,7 @@ POWER_OPERAND_DECODER_R_CORE_2                               8932               
 
 POWER_OPERAND_DECODER_W_CORE_2                                  0                             0
 
-POWER_UOP_QUEUE_R_CORE_2                                    15513                         15513
+POWER_UOP_QUEUE_R_CORE_2                                    15523                         15523
 
 POWER_UOP_QUEUE_W_CORE_2                                     8932                          8932
 
@@ -548,7 +548,7 @@ POWER_FREELIST_R_CORE_2                                         0               
 
 POWER_FREELIST_W_CORE_2                                         0                             0
 
-POWER_RESERVATION_STATION_R_CORE_2                          10617                         10617
+POWER_RESERVATION_STATION_R_CORE_2                          10675                         10675
 
 POWER_RESERVATION_STATION_W_CORE_2                           8932                          8932
 
@@ -638,11 +638,11 @@ POWER_FLAG_REGISTER_W_CORE_2                                    0               
 
 POWER_EXEC_BYPASS_CORE_2                                     8932                          8932
 
-POWER_LOAD_BYPASS_CORE_2                                     2970                          2970
+POWER_LOAD_BYPASS_CORE_2                                     2976                          2976
 
 POWER_PIPELINE_CORE_2                                        8932                          8932
 
-POWER_DCACHE_MISS_BUF_R_CORE_2                               2970                          2970
+POWER_DCACHE_MISS_BUF_R_CORE_2                               2976                          2976
 
 POWER_DCACHE_MISS_BUF_R_TAG_CORE_2                            992                           992
 
@@ -652,17 +652,17 @@ POWER_DCACHE_MISS_BUF_W_TAG_CORE_2                              0               
 
 POWER_DCACHE_LINEFILL_BUF_R_CORE_2                              0                             0
 
-POWER_L2CACHE_LINEFILL_BUF_R_CORE_2                           990                           990
+POWER_L2CACHE_LINEFILL_BUF_R_CORE_2                           992                           992
 
-POWER_DCACHE_LINEFILL_BUF_W_CORE_2                            990                           990
+POWER_DCACHE_LINEFILL_BUF_W_CORE_2                            992                           992
 
-POWER_L2CACHE_LINEFILL_BUF_W_CORE_2                           990                           990
+POWER_L2CACHE_LINEFILL_BUF_W_CORE_2                           992                           992
 
-POWER_DCACHE_LINEFILL_BUF_R_TAG_CORE_2                        990                           990
+POWER_DCACHE_LINEFILL_BUF_R_TAG_CORE_2                        992                           992
 
-POWER_L2CACHE_LINEFILL_BUF_R_TAG_CORE_2                       990                           990
+POWER_L2CACHE_LINEFILL_BUF_R_TAG_CORE_2                       992                           992
 
-POWER_DCACHE_LINEFILL_BUF_W_TAG_CORE_2                        990                           990
+POWER_DCACHE_LINEFILL_BUF_W_TAG_CORE_2                        992                           992
 
 POWER_DCACHE_WB_BUF_R_CORE_2                                    0                             0
 
@@ -714,15 +714,15 @@ POWER_SHARED_MEM_R_TAG_CORE_2                                1504               
 
 POWER_SHARED_MEM_W_TAG_CORE_2                                   0                             0
 
-POWER_BLOCK_STATES_R_CORE_3                                 15127                         15127
+POWER_BLOCK_STATES_R_CORE_3                                 15121                         15121
 
-POWER_BLOCK_STATES_W_CORE_3                                 15127                         15127
+POWER_BLOCK_STATES_W_CORE_3                                 15121                         15121
 
 POWER_FETCH_QUEUE_R_CORE_3                                   8932                          8932
 
 POWER_FETCH_QUEUE_W_CORE_3                                   8932                          8932
 
-POWER_INST_QUEUE_R_CORE_3                                   15514                         15514
+POWER_INST_QUEUE_R_CORE_3                                   15513                         15513
 
 POWER_INST_QUEUE_W_CORE_3                                    8932                          8932
 
@@ -740,7 +740,7 @@ POWER_ICACHE_W_CORE_3                                           3               
 
 POWER_ICACHE_R_TAG_CORE_3                                    8956                          8956
 
-POWER_ICACHE_MISS_BUF_R_CORE_3                                  6                             6
+POWER_ICACHE_MISS_BUF_R_CORE_3                                  3                             3
 
 POWER_ICACHE_MISS_BUF_W_CORE_3                                 48                            48
 
@@ -764,7 +764,7 @@ POWER_OPERAND_DECODER_R_CORE_3                               8932               
 
 POWER_OPERAND_DECODER_W_CORE_3                                  0                             0
 
-POWER_UOP_QUEUE_R_CORE_3                                    15514                         15514
+POWER_UOP_QUEUE_R_CORE_3                                    15513                         15513
 
 POWER_UOP_QUEUE_W_CORE_3                                     8932                          8932
 
@@ -778,7 +778,7 @@ POWER_FREELIST_R_CORE_3                                         0               
 
 POWER_FREELIST_W_CORE_3                                         0                             0
 
-POWER_RESERVATION_STATION_R_CORE_3                          10634                         10634
+POWER_RESERVATION_STATION_R_CORE_3                          10590                         10590
 
 POWER_RESERVATION_STATION_W_CORE_3                           8932                          8932
 
@@ -868,11 +868,11 @@ POWER_FLAG_REGISTER_W_CORE_3                                    0               
 
 POWER_EXEC_BYPASS_CORE_3                                     8932                          8932
 
-POWER_LOAD_BYPASS_CORE_3                                     2892                          2892
+POWER_LOAD_BYPASS_CORE_3                                     2883                          2883
 
 POWER_PIPELINE_CORE_3                                        8932                          8932
 
-POWER_DCACHE_MISS_BUF_R_CORE_3                               2886                          2886
+POWER_DCACHE_MISS_BUF_R_CORE_3                               2880                          2880
 
 POWER_DCACHE_MISS_BUF_R_TAG_CORE_3                            976                           976
 
@@ -882,17 +882,17 @@ POWER_DCACHE_MISS_BUF_W_TAG_CORE_3                              0               
 
 POWER_DCACHE_LINEFILL_BUF_R_CORE_3                              0                             0
 
-POWER_L2CACHE_LINEFILL_BUF_R_CORE_3                           964                           964
+POWER_L2CACHE_LINEFILL_BUF_R_CORE_3                           961                           961
 
-POWER_DCACHE_LINEFILL_BUF_W_CORE_3                            964                           964
+POWER_DCACHE_LINEFILL_BUF_W_CORE_3                            961                           961
 
-POWER_L2CACHE_LINEFILL_BUF_W_CORE_3                           964                           964
+POWER_L2CACHE_LINEFILL_BUF_W_CORE_3                           961                           961
 
-POWER_DCACHE_LINEFILL_BUF_R_TAG_CORE_3                        964                           964
+POWER_DCACHE_LINEFILL_BUF_R_TAG_CORE_3                        961                           961
 
-POWER_L2CACHE_LINEFILL_BUF_R_TAG_CORE_3                       964                           964
+POWER_L2CACHE_LINEFILL_BUF_R_TAG_CORE_3                       961                           961
 
-POWER_DCACHE_LINEFILL_BUF_W_TAG_CORE_3                        964                           964
+POWER_DCACHE_LINEFILL_BUF_W_TAG_CORE_3                        961                           961
 
 POWER_DCACHE_WB_BUF_R_CORE_3                                    0                             0
 

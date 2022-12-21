@@ -11,12 +11,12 @@ GPU Device 0: "Pascal" with compute capability 6.1
 
 Matrix size: 128x128 (8x8 tiles), tile size: 16x16, block size: 16x16
 
-transpose simple copy       , Throughput = 14.3951 GB/s, Time = 0.00848 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-transpose shared memory copy, Throughput = 11.4555 GB/s, Time = 0.01066 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-transpose naive             , Throughput = 12.5898 GB/s, Time = 0.00970 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-transpose coalesced         , Throughput = 11.9959 GB/s, Time = 0.01018 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-transpose optimized         , Throughput = 11.5248 GB/s, Time = 0.01059 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-transpose coarse-grained    , Throughput = 18.8846 GB/s, Time = 0.00646 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-transpose fine-grained      , Throughput = 21.4309 GB/s, Time = 0.00570 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-transpose diagonal          , Throughput = 21.4309 GB/s, Time = 0.00570 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose simple copy       , Throughput = 14.6157 GB/s, Time = 0.00835 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose shared memory copy, Throughput = 18.5179 GB/s, Time = 0.00659 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose naive             , Throughput = 19.8682 GB/s, Time = 0.00614 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose coalesced         , Throughput = 21.7983 GB/s, Time = 0.00560 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose optimized         , Throughput = 21.3112 GB/s, Time = 0.00573 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose coarse-grained    , Throughput = 22.1785 GB/s, Time = 0.00550 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose fine-grained      , Throughput = 21.7983 GB/s, Time = 0.00560 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+transpose diagonal          , Throughput = 21.3112 GB/s, Time = 0.00573 ms, Size = 16384 fp32 elements, NumDevsUsed = 1, Workgroup = 256
 Test passed

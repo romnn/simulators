@@ -1,6 +1,6 @@
 options: Options {
-    input: "/benchrun/accelsim-sass/babelstream/sm6_gtx1080/input-arraysize-10240-numtimes-1/results/log.txt",
-    output: "/benchrun/accelsim-sass/babelstream/sm6_gtx1080/input-arraysize-10240-numtimes-1/results/stats.csv",
+    input: "/benchrun/accelsim-sass/sm6_gtx1080/babelstream/input-arraysize-10240-numtimes-1/results/log.txt",
+    output: "/benchrun/accelsim-sass/sm6_gtx1080/babelstream/input-arraysize-10240-numtimes-1/results/stats.csv",
     per_kernel: false,
     kernel_instance: false,
     configs_as_rows: false,
@@ -14,23 +14,98 @@ stats: {
     (
         "final_kernel",
         0,
+        "l2_cache_read_hit",
+    ): 5120.0,
+    (
+        "final_kernel",
+        0,
         "l2_cache_write_total",
     ): 4736.0,
     (
         "final_kernel",
         0,
-        "gpu_tot_ipc",
-    ): 693.6259,
+        "total_core_cache_write_hit",
+    ): 0.0,
     (
         "final_kernel",
         0,
-        "gpu_ipc",
-    ): 815.5336,
+        "gpu_tot_sim_cycle",
+    ): 49138.0,
+    (
+        "final_kernel",
+        0,
+        "total_dram_reads",
+    ): 7768.0,
+    (
+        "final_kernel",
+        0,
+        "gpgpu_silicon_slowdown",
+    ): 916191.0,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_write_hit",
+    ): 2763.0,
+    (
+        "final_kernel",
+        0,
+        "gpgpu_simulation_rate",
+    ): 1754.0,
+    (
+        "final_kernel",
+        0,
+        "total_dram_writes",
+    ): 7733.0,
     (
         "final_kernel",
         0,
         "gpgpu_simulation_time_sec",
-    ): 26.0,
+    ): 28.0,
+    (
+        "final_kernel",
+        0,
+        "total_core_cache_read_hit",
+    ): 0.0,
+    (
+        "final_kernel",
+        0,
+        "gpu_ipc",
+    ): 807.5627,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_write_miss",
+    ): 1936.0,
+    (
+        "final_kernel",
+        0,
+        "gpu_tot_ipc",
+    ): 626.392,
+    (
+        "final_kernel",
+        0,
+        "gpu_total_instructions",
+    ): 30779648.0,
+    (
+        "final_kernel",
+        0,
+        "total_core_cache_read_mshr_hit",
+    ): 0.0,
+    (
+        "final_kernel",
+        0,
+        "kernel_launch_uid",
+    ): 6.0,
+    (
+        "final_kernel",
+        0,
+        "l2_bandwidth_gbps",
+    ): 2.2499,
+    (
+        "final_kernel",
+        0,
+        "gpu_occupancy",
+    ): 94.1723,
     (
         "final_kernel",
         0,
@@ -44,82 +119,7 @@ stats: {
     (
         "final_kernel",
         0,
-        "total_core_cache_read_mshr_hit",
-    ): 0.0,
-    (
-        "final_kernel",
-        0,
-        "total_dram_reads",
-    ): 7768.0,
-    (
-        "final_kernel",
-        0,
-        "total_core_cache_write_hit",
-    ): 0.0,
-    (
-        "final_kernel",
-        0,
-        "total_core_cache_read_hit",
-    ): 0.0,
-    (
-        "final_kernel",
-        0,
-        "l2_bandwidth_gbps",
-    ): 4.188,
-    (
-        "final_kernel",
-        0,
-        "l2_cache_read_hit",
-    ): 5120.0,
-    (
-        "final_kernel",
-        0,
-        "kernel_launch_uid",
-    ): 6.0,
-    (
-        "final_kernel",
-        0,
-        "gpgpu_simulation_rate",
-    ): 1706.0,
-    (
-        "final_kernel",
-        0,
-        "total_dram_writes",
-    ): 7750.0,
-    (
-        "final_kernel",
-        0,
-        "gpu_tot_sim_cycle",
-    ): 44375.0,
-    (
-        "final_kernel",
-        0,
-        "l2_cache_write_miss",
-    ): 1936.0,
-    (
-        "final_kernel",
-        0,
-        "gpu_total_instructions",
-    ): 30779648.0,
-    (
-        "final_kernel",
-        0,
-        "l2_cache_write_hit",
-    ): 2746.0,
-    (
-        "final_kernel",
-        0,
         "l2_cache_read_miss",
     ): 0.0,
-    (
-        "final_kernel",
-        0,
-        "gpu_occupancy",
-    ): 94.1545,
-    (
-        "final_kernel",
-        0,
-        "gpgpu_silicon_slowdown",
-    ): 941969.0,
 }
-done in 35.462896ms: 306.21 KiB parsed (16.00 EiB/s)
+done in 32.954135ms: 307.80 KiB parsed (16.00 EiB/s)

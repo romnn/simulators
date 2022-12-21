@@ -1,4 +1,4 @@
-Arguments: macsim --out=/benchrun/macsim/vectoradd/sm6_gtx1080/input-1000/results/stats 
+Arguments: macsim --out=/benchrun/macsim/sm6_gtx1080/vectoradd/input-1000/results/stats 
 src/macsim.cc:122: (I=0  C=0):  initialize knobs
 number of cores : 20
 src/macsim.cc:537: (I=0  C=0):  initialize simulation
@@ -8,49 +8,49 @@ src/network_simple.cc:92: (I=0  C=0):  TOTAL_ROUTER:35 CPU:0 GPU:20 L3:1 LLC:6 M
 enabling bug detector
 src/macsim.cc:750: (I=0  C=0):  Initializing new noc
 
-src/macsim.cc:838: (I=0  C=0):  Clock LCM           : 12528
+src/macsim.cc:838: (I=0  C=0):  Clock LCM           : 400
 src/macsim.cc:839: (I=0  C=0):  CPU clock frequency : 1 GHz
 src/macsim.cc:840: (I=0  C=0):  GPU clock frequency : 1.607 GHz
 src/macsim.cc:841: (I=0  C=0):  LLC clock frequency : 1.607 GHz
-src/macsim.cc:842: (I=0  C=0):  NOC clock frequency : 2.962 GHz
-src/macsim.cc:843: (I=0  C=0):  MC  clock frequency : 2.75 GHz
-src/process_manager.cc:434: (I=0  C=0):  setup_process:0 /benchrun/macsim/vectoradd/sm6_gtx1080/input-1000/results/traces/_Z6vecAddPdS_S_i_0/Trace.txt current_index:0 (1)
-trace:/benchrun/macsim/vectoradd/sm6_gtx1080/input-1000/results/traces/_Z6vecAddPdS_S_i_0/Trace.txt is opened 
+src/macsim.cc:842: (I=0  C=0):  NOC clock frequency : 1.607 GHz
+src/macsim.cc:843: (I=0  C=0):  MC  clock frequency : 2.5 GHz
+src/process_manager.cc:434: (I=0  C=0):  setup_process:0 /benchrun/macsim/sm6_gtx1080/vectoradd/input-1000/results/traces/_Z6vecAddPdS_S_i_0/Trace.txt current_index:0 (1)
+trace:/benchrun/macsim/sm6_gtx1080/vectoradd/input-1000/results/traces/_Z6vecAddPdS_S_i_0/Trace.txt is opened 
 src/process_manager.cc:541: (I=0  C=0):  thread_count:32
-**Core 00 Thread 00 Finished:   insts:24          cycles:2074       (1623159)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 30 Finished:   insts:24          cycles:2092       (1637253)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 04 Finished:   insts:24          cycles:2102       (1645083)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 11 Finished:   insts:24          cycles:2121       (1659960)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 19 Finished:   insts:24          cycles:2130       (1667007)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 31 Finished:   insts:24          cycles:2149       (1681884)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 01 Finished:   insts:24          cycles:2187       (1711638)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 06 Finished:   insts:24          cycles:2206       (1726515)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 12 Finished:   insts:24          cycles:2215       (1733562)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 20 Finished:   insts:24          cycles:2225       (1741392)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 27 Finished:   insts:24          cycles:2244       (1756269)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 02 Finished:   insts:24          cycles:2282       (1786023)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 03 Finished:   insts:24          cycles:2301       (1800900)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 15 Finished:   insts:24          cycles:2310       (1807947)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 23 Finished:   insts:24          cycles:2320       (1815777)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 28 Finished:   insts:24          cycles:2330       (1823607)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 07 Finished:   insts:24          cycles:2377       (1860408)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 16 Finished:   insts:24          cycles:2386       (1867455)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 25 Finished:   insts:24          cycles:2396       (1875285)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 29 Finished:   insts:24          cycles:2405       (1882332)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 08 Finished:   insts:24          cycles:2443       (1912086)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 18 Finished:   insts:24          cycles:2453       (1919916)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 24 Finished:   insts:24          cycles:2462       (1926963)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 09 Finished:   insts:24          cycles:2500       (1956717)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 17 Finished:   insts:24          cycles:2509       (1963764)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 26 Finished:   insts:24          cycles:2519       (1971594)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 10 Finished:   insts:24          cycles:2557       (2001348)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 14 Finished:   insts:24          cycles:2566       (2008395)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 22 Finished:   insts:24          cycles:2576       (2016225)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 05 Finished:   insts:24          cycles:2614       (2045979)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 13 Finished:   insts:24          cycles:2623       (2053026)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-**Core 00 Thread 21 Finished:   insts:24          cycles:2633       (2060856)  seconds:1     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (0.02 KHz) 
-src/retire.cc:566: (I=24  C=2060856):  ----- application 0 terminated (/benchrun/macsim/vectoradd/sm6_gtx1080/input-1000/results/traces/_Z6vecAddPdS_S_i_0/Trace.txt,0) at 2060856
-**Core 00 Core_Total  Finished:   insts:768         cycles:2633       (2060856) seconds:1     -- 0.29 IPC (0.29 IPC) --  N/A  KHz (0.77 KHz)
-src/macsim.cc:620: (I=24  C=2060857):  finalize simulation
-src/macsim.cc:627: (I=24  C=2060857):  elapsed time:1.3 seconds
+**Core 00 Thread 02 Finished:   insts:24          cycles:1534       (38325)  seconds:0     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 04 Finished:   insts:24          cycles:1575       (39350)  seconds:0     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 11 Finished:   insts:24          cycles:1585       (39600)  seconds:0     -- 0.02 IPC (0.02 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 20 Finished:   insts:24          cycles:1605       (40100)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 27 Finished:   insts:24          cycles:1616       (40375)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 00 Finished:   insts:24          cycles:1646       (41125)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 03 Finished:   insts:24          cycles:1677       (41900)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 12 Finished:   insts:24          cycles:1687       (42150)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 19 Finished:   insts:24          cycles:1708       (42675)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 28 Finished:   insts:24          cycles:1718       (42925)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 01 Finished:   insts:24          cycles:1749       (43700)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 31 Finished:   insts:24          cycles:1769       (44200)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 05 Finished:   insts:24          cycles:1779       (44450)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 16 Finished:   insts:24          cycles:1790       (44725)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 23 Finished:   insts:24          cycles:1800       (44975)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 30 Finished:   insts:24          cycles:1851       (46250)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 06 Finished:   insts:24          cycles:1861       (46500)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 18 Finished:   insts:24          cycles:1872       (46775)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 25 Finished:   insts:24          cycles:1882       (47025)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 29 Finished:   insts:24          cycles:1933       (48300)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 07 Finished:   insts:24          cycles:1943       (48550)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 15 Finished:   insts:24          cycles:1953       (48800)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 24 Finished:   insts:24          cycles:1964       (49075)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 09 Finished:   insts:24          cycles:2005       (50100)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 17 Finished:   insts:24          cycles:2015       (50350)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 26 Finished:   insts:24          cycles:2025       (50600)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 08 Finished:   insts:24          cycles:2066       (51625)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 14 Finished:   insts:24          cycles:2076       (51875)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 22 Finished:   insts:24          cycles:2087       (52150)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 10 Finished:   insts:24          cycles:2128       (53175)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 13 Finished:   insts:24          cycles:2138       (53425)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+**Core 00 Thread 21 Finished:   insts:24          cycles:2148       (53675)  seconds:0     -- 0.01 IPC (0.01 IPC) --  N/A  KHz (inf KHz) 
+src/retire.cc:566: (I=24  C=53675):  ----- application 0 terminated (/benchrun/macsim/sm6_gtx1080/vectoradd/input-1000/results/traces/_Z6vecAddPdS_S_i_0/Trace.txt,0) at 53675
+**Core 00 Core_Total  Finished:   insts:768         cycles:2148       (53675) seconds:0     -- 0.36 IPC (0.36 IPC) --  N/A  KHz (inf KHz)
+src/macsim.cc:620: (I=24  C=53676):  finalize simulation
+src/macsim.cc:627: (I=24  C=53676):  elapsed time:0.6 seconds
 Done

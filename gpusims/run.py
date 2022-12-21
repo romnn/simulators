@@ -74,9 +74,12 @@ def run(
 
     if len(config) < 1:
         if simulator == gpusims.NATIVE:
-            # find current hardware
-            devices = cuda.get_devices()
-            config = [devices[0].name]
+            raise ValueError(
+                "when running native benchmarks, you must specfiy the config(s) manually"
+            )
+            # deprecated: find current hardware
+            # devices = cuda.get_devices()
+            # config = [devices[0].name]
         else:
             # run all configs
             config = list(configs.keys())

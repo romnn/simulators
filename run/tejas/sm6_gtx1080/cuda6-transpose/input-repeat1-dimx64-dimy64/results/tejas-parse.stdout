@@ -1,6 +1,6 @@
 options: Options {
-    input: "/benchrun/tejas/cuda6-transpose/sm6_gtx1080/input-repeat1-dimx64-dimy64/results/stats.txt",
-    output: "/benchrun/tejas/cuda6-transpose/sm6_gtx1080/input-repeat1-dimx64-dimy64/results/stats.csv",
+    input: "/benchrun/tejas/sm6_gtx1080/cuda6-transpose/input-repeat1-dimx64-dimy64/results/stats.txt",
+    output: "/benchrun/tejas/sm6_gtx1080/cuda6-transpose/input-repeat1-dimx64-dimy64/results/stats.csv",
 }
 stats: Stats {
     emulator_type: Some(
@@ -8,7 +8,7 @@ stats: Stats {
     ),
     created: None,
     sim_time: Some(
-        70.512s,
+        67.126s,
     ),
     total_inst_count: Some(
         9216,
@@ -40,10 +40,10 @@ stats: Stats {
         0,
     ),
     kips: Some(
-        0.1307011572498298,
+        0.1372940440365879,
     ),
     total_ipc: Some(
         0.976271186440678,
     ),
 }
-done after 31.817661ms
+done after 29.533722ms

@@ -2,62 +2,62 @@
 (0.000000) CudaRuntime.cpp:3813: Adding external function 'free'
 (0.000000) CudaRuntime.cpp:3813: Adding external function 'vprintf'
 (0.000000) CudaRuntime.cpp:3813: Adding external function 'cudaGetParameterBuffer'
-(0.000061) CudaRuntime.cpp:595:  Loading module (fatbin) - matrixMul.cu
-(0.000077) CudaRuntime.cpp:738:  Registered kernel - _Z8mult_gpuPfS_S_ii in module 'matrixMul.cu'
-(0.000111) CudaRuntime.cpp:276:  Creating devices.
-(0.000260) CudaRuntime.cpp:288:   - Added 1 emulator devices.
-(0.000416) CudaRuntime.cpp:446:  Creating new context for thread 0x1742140
-(0.000480) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x7ff4bf955100, size = 1048576)
-(0.000514) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x7ff4bf753100, size = 1048576)
-(0.000542) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x7ff4bf551100, size = 1048576)
-(0.019816) CudaRuntime.cpp:1131: cudaMemcpy(0x7ff4bf955100, 0x7ff4c53d3010, 1048576)
-(0.019829) CudaRuntime.cpp:251:    _memcpy(0x7ff4bf955100, 0x7ff4c53d3010, 1048576 bytes) h-to-d
-(0.020439) CudaRuntime.cpp:1131: cudaMemcpy(0x7ff4bf753100, 0x7ff4bf854010, 1048576)
-(0.020445) CudaRuntime.cpp:251:    _memcpy(0x7ff4bf753100, 0x7ff4bf854010, 1048576 bytes) h-to-d
+(0.000056) CudaRuntime.cpp:595:  Loading module (fatbin) - matrixMul.cu
+(0.000069) CudaRuntime.cpp:738:  Registered kernel - _Z8mult_gpuPfS_S_ii in module 'matrixMul.cu'
+(0.000104) CudaRuntime.cpp:276:  Creating devices.
+(0.000255) CudaRuntime.cpp:288:   - Added 1 emulator devices.
+(0.000409) CudaRuntime.cpp:446:  Creating new context for thread 0x1dd8140
+(0.000465) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x7f40e199c100, size = 1048576)
+(0.000526) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x7f40e179a100, size = 1048576)
+(0.000556) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x7f40e1598100, size = 1048576)
+(0.019033) CudaRuntime.cpp:1131: cudaMemcpy(0x7f40e199c100, 0x7f40e741a010, 1048576)
+(0.019045) CudaRuntime.cpp:251:    _memcpy(0x7f40e199c100, 0x7f40e741a010, 1048576 bytes) h-to-d
+(0.019646) CudaRuntime.cpp:1131: cudaMemcpy(0x7f40e179a100, 0x7f40e189b010, 1048576)
+(0.019650) CudaRuntime.cpp:251:    _memcpy(0x7f40e179a100, 0x7f40e189b010, 1048576 bytes) h-to-d
 grid: (16,16,1)
 threads: (32,32,1)
-(0.021095) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.021103) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.021108) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.021112) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 8
-(0.021116) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 24, size 4
-(0.021120) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 28, size 4
-(0.023519) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0x51 0x95 0xbf 0xf4 0x7f 0x00 0x00 
-(0.023525) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0x31 0x75 0xbf 0xf4 0x7f 0x00 0x00 
-(0.023528) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 8 to offset 16 of size 8
-   data = 0x00 0x11 0x55 0xbf 0xf4 0x7f 0x00 0x00 
-(0.023532) CudaRuntime.cpp:142:  Mapping parameter at offset 24 of size 4 to offset 24 of size 4
+(0.020274) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.020282) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.020287) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.020291) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 8
+(0.020295) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 24, size 4
+(0.020299) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 28, size 4
+(0.022989) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xc1 0x99 0xe1 0x40 0x7f 0x00 0x00 
+(0.022995) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xa1 0x79 0xe1 0x40 0x7f 0x00 0x00 
+(0.022999) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 8 to offset 16 of size 8
+   data = 0x00 0x81 0x59 0xe1 0x40 0x7f 0x00 0x00 
+(0.023002) CudaRuntime.cpp:142:  Mapping parameter at offset 24 of size 4 to offset 24 of size 4
    data = 0x00 0x02 0x00 0x00 
-(0.023535) CudaRuntime.cpp:142:  Mapping parameter at offset 28 of size 4 to offset 28 of size 4
+(0.023005) CudaRuntime.cpp:142:  Mapping parameter at offset 28 of size 4 to offset 28 of size 4
    data = 0x00 0x02 0x00 0x00 
-(0.023538) CudaRuntime.cpp:2685: kernel launch (_Z8mult_gpuPfS_S_ii) on thread 0x1742140
-(0.023553) CudaRuntime.cpp:2706:  launch completed successfully
+(0.023009) CudaRuntime.cpp:2685: kernel launch (_Z8mult_gpuPfS_S_ii) on thread 0x1dd8140
+(0.023023) CudaRuntime.cpp:2706:  launch completed successfully
 all enabled
-(0.026410) X86TraceGenerator.cpp:776:  New kernel launched
-(0.026433) X86TraceGenerator.cpp:777:  compute version:2.0
-(0.026441) X86TraceGenerator.cpp:778:  grid  16 x 16 x 1
-(0.026451) X86TraceGenerator.cpp:779:  block 32 x 32 x 1
-(0.026459) X86TraceGenerator.cpp:780:  number of warps per block:32
-(0.026466) X86TraceGenerator.cpp:781:  number of total warps:8192
-(0.026510) X86TraceGenerator.cpp:782:  # threads per block : 1024
-(0.026518) X86TraceGenerator.cpp:783:  number of register per thread:20
-(0.026525) X86TraceGenerator.cpp:784:  number of shared memory per thread:8192
-(0.026536) X86TraceGenerator.cpp:822:  max blocks per core : 1
-(0.030932) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/cuda4-matrixmul/sm6_gtx1080/input-512/results/traces/_Z8mult_gpuPfS_S_ii_0/ (status 0)
+(0.026124) X86TraceGenerator.cpp:776:  New kernel launched
+(0.026165) X86TraceGenerator.cpp:777:  compute version:2.0
+(0.026189) X86TraceGenerator.cpp:778:  grid  16 x 16 x 1
+(0.026222) X86TraceGenerator.cpp:779:  block 32 x 32 x 1
+(0.026254) X86TraceGenerator.cpp:780:  number of warps per block:32
+(0.026284) X86TraceGenerator.cpp:781:  number of total warps:8192
+(0.026314) X86TraceGenerator.cpp:782:  # threads per block : 1024
+(0.026345) X86TraceGenerator.cpp:783:  number of register per thread:20
+(0.026371) X86TraceGenerator.cpp:784:  number of shared memory per thread:8192
+(0.026396) X86TraceGenerator.cpp:822:  max blocks per core : 1
+(0.031398) X86TraceGenerator.cpp:1082: mkdir -p /benchrun/macsim/sm6_gtx1080/cuda4-matrixmul/input-512/results/traces/_Z8mult_gpuPfS_S_ii_0/ (status 0)
 
-(0.030998) X86TraceGenerator.cpp:1083: errno is 0 message is Success
+(0.031465) X86TraceGenerator.cpp:1083: errno is 0 message is Success
 
-The GPU Elapsed Time:101.672508 Sec.
-(101.693636) CudaRuntime.cpp:1131: cudaMemcpy(0x7ff4bf652010, 0x7ff4bf551100, 1048576)
-(101.693654) CudaRuntime.cpp:215:    _memcpy(0x7ff4bf652010, 0x7ff4bf551100, 1048576 bytes) d-to-h
-The CPU Elapsed Time:0.652114 Sec.
+The GPU Elapsed Time:100.097749 Sec.
+(100.118057) CudaRuntime.cpp:1131: cudaMemcpy(0x7f40e1699010, 0x7f40e1598100, 1048576)
+(100.118095) CudaRuntime.cpp:215:    _memcpy(0x7f40e1699010, 0x7f40e1598100, 1048576 bytes) d-to-h
+The CPU Elapsed Time:0.730039 Sec.
 Verifying
 PASS
-(102.347839) CudaRuntime.cpp:887:  cudaFree(0x7ff4bf955100)
-(102.347954) CudaRuntime.cpp:887:  cudaFree(0x7ff4bf753100)
-(102.348061) CudaRuntime.cpp:887:  cudaFree(0x7ff4bf551100)
-(102.348760) X86TraceGenerator.cpp:725:  destructor
-(102.348906) X86TraceGenerator.cpp:2259: finalize
-(102.348910) X86TraceGenerator.cpp:2263: total instruction count: 471552
+(100.850258) CudaRuntime.cpp:887:  cudaFree(0x7f40e199c100)
+(100.850378) CudaRuntime.cpp:887:  cudaFree(0x7f40e179a100)
+(100.850482) CudaRuntime.cpp:887:  cudaFree(0x7f40e1598100)
+(100.851225) X86TraceGenerator.cpp:725:  destructor
+(100.851362) X86TraceGenerator.cpp:2259: finalize
+(100.851366) X86TraceGenerator.cpp:2263: total instruction count: 471552

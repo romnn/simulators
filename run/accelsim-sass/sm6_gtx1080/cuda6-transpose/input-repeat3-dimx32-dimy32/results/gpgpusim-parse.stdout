@@ -1,6 +1,6 @@
 options: Options {
-    input: "/benchrun/accelsim-sass/cuda6-transpose/sm6_gtx1080/input-repeat3-dimx32-dimy32/results/log.txt",
-    output: "/benchrun/accelsim-sass/cuda6-transpose/sm6_gtx1080/input-repeat3-dimx32-dimy32/results/stats.csv",
+    input: "/benchrun/accelsim-sass/sm6_gtx1080/cuda6-transpose/input-repeat3-dimx32-dimy32/results/log.txt",
+    output: "/benchrun/accelsim-sass/sm6_gtx1080/cuda6-transpose/input-repeat3-dimx32-dimy32/results/stats.csv",
     per_kernel: false,
     kernel_instance: false,
     configs_as_rows: false,
@@ -14,83 +14,8 @@ stats: {
     (
         "final_kernel",
         0,
-        "gpu_occupancy",
-    ): 12.3356,
-    (
-        "final_kernel",
-        0,
-        "l2_cache_write_hit",
-    ): 3776.0,
-    (
-        "final_kernel",
-        0,
-        "l2_cache_write_miss",
-    ): 32.0,
-    (
-        "final_kernel",
-        0,
-        "gpu_tot_sim_cycle",
-    ): 22039.0,
-    (
-        "final_kernel",
-        0,
-        "gpgpu_simulation_rate",
-    ): 5509.0,
-    (
-        "final_kernel",
-        0,
-        "gpu_tot_ipc",
-    ): 51.3417,
-    (
-        "final_kernel",
-        0,
-        "total_dram_reads",
-    ): 292.0,
-    (
-        "final_kernel",
-        0,
-        "gpgpu_simulation_time_sec",
-    ): 4.0,
-    (
-        "final_kernel",
-        0,
-        "gpu_ipc",
-    ): 51.0075,
-    (
-        "final_kernel",
-        0,
-        "gpgpu_silicon_slowdown",
-    ): 291704.0,
-    (
-        "final_kernel",
-        0,
-        "l2_cache_read_hit",
-    ): 1984.0,
-    (
-        "final_kernel",
-        0,
-        "l2_bandwidth_gbps",
-    ): 10.8325,
-    (
-        "final_kernel",
-        0,
-        "kernel_launch_uid",
-    ): 32.0,
-    (
-        "final_kernel",
-        0,
-        "total_core_cache_read_hit",
-    ): 0.0,
-    (
-        "final_kernel",
-        0,
-        "gpu_total_instructions",
-    ): 1131520.0,
-    (
-        "final_kernel",
-        0,
-        "l2_cache_write_total",
-    ): 3840.0,
+        "l2_cache_read_total",
+    ): 2048.0,
     (
         "final_kernel",
         0,
@@ -99,13 +24,23 @@ stats: {
     (
         "final_kernel",
         0,
-        "total_core_cache_write_hit",
-    ): 0.0,
+        "gpu_tot_ipc",
+    ): 44.9069,
     (
         "final_kernel",
         0,
-        "total_dram_writes",
-    ): 128.0,
+        "l2_cache_write_total",
+    ): 3840.0,
+    (
+        "final_kernel",
+        0,
+        "gpu_ipc",
+    ): 46.3388,
+    (
+        "final_kernel",
+        0,
+        "total_core_cache_read_hit",
+    ): 0.0,
     (
         "final_kernel",
         0,
@@ -114,12 +49,77 @@ stats: {
     (
         "final_kernel",
         0,
-        "l2_cache_read_total",
-    ): 2048.0,
+        "total_core_cache_write_hit",
+    ): 0.0,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_read_hit",
+    ): 1984.0,
+    (
+        "final_kernel",
+        0,
+        "gpgpu_simulation_rate",
+    ): 6299.0,
+    (
+        "final_kernel",
+        0,
+        "gpgpu_silicon_slowdown",
+    ): 255119.0,
+    (
+        "final_kernel",
+        0,
+        "gpu_total_instructions",
+    ): 1131520.0,
+    (
+        "final_kernel",
+        0,
+        "total_dram_writes",
+    ): 128.0,
+    (
+        "final_kernel",
+        0,
+        "gpu_tot_sim_cycle",
+    ): 25197.0,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_write_miss",
+    ): 32.0,
+    (
+        "final_kernel",
+        0,
+        "l2_bandwidth_gbps",
+    ): 5.3391,
+    (
+        "final_kernel",
+        0,
+        "total_dram_reads",
+    ): 292.0,
+    (
+        "final_kernel",
+        0,
+        "kernel_launch_uid",
+    ): 32.0,
     (
         "final_kernel",
         0,
         "total_core_cache_read_mshr_hit",
     ): 0.0,
+    (
+        "final_kernel",
+        0,
+        "gpgpu_simulation_time_sec",
+    ): 4.0,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_write_hit",
+    ): 3776.0,
+    (
+        "final_kernel",
+        0,
+        "gpu_occupancy",
+    ): 12.2519,
 }
-done in 102.381066ms: 1.40 MiB parsed (16.00 EiB/s)
+done in 70.668961ms: 1.40 MiB parsed (16.00 EiB/s)

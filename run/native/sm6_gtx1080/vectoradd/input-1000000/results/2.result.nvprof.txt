@@ -1,10 +1,10 @@
-==121== NVPROF is profiling process 121, command: /benchrun/native/vectoradd/sm6_gtx1080/input-1000000/vectorAdd 1000000
-==121== Profiling application: /benchrun/native/vectoradd/sm6_gtx1080/input-1000000/vectorAdd 1000000
+==121== NVPROF is profiling process 121, command: /benchrun/native/sm6_gtx1080/vectoradd/input-1000000/vectorAdd 1000000
+==121== Profiling application: /benchrun/native/sm6_gtx1080/vectoradd/input-1000000/vectorAdd 1000000
 ==121== Profiling result:
 "Start","Duration","Grid X","Grid Y","Grid Z","Block X","Block Y","Block Z","Registers Per Thread","Static SMem","Dynamic SMem","Size","Throughput","SrcMemType","DstMemType","Device","Context","Stream","Name","Correlation_ID"
 us,us,,,,,,,,B,B,MB,GB/s,,,,,,,
-378266.319000,1309.956000,,,,,,,,,,7.629395,5.687657,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",109
-379700.244000,1329.443000,,,,,,,,,,7.629395,5.604287,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",110
-381161.496000,1307.300000,,,,,,,,,,7.629395,5.699213,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",111
-382521.788000,101.760000,977,1,1,1024,1,1,10,0,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z6vecAddPdS_S_i",112
-382630.236000,1225.124000,,,,,,,,,,7.629395,6.081491,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",114
+392449.816000,1305.090000,,,,,,,,,,7.629395,5.708863,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",109
+393889.627000,1305.378000,,,,,,,,,,7.629395,5.707604,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",110
+395323.774000,1304.642000,,,,,,,,,,7.629395,5.710824,"Pageable","Device","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy HtoD]",111
+396680.000000,102.369000,977,1,1,1024,1,1,10,0,0,,,,,"NVIDIA GeForce GTX 1080 (0)","1","7","_Z6vecAddPdS_S_i",112
+396785.953000,1240.034000,,,,,,,,,,7.629395,6.008368,"Device","Pageable","NVIDIA GeForce GTX 1080 (0)","1","7","[CUDA memcpy DtoH]",114

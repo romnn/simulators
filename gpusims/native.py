@@ -32,7 +32,7 @@ def convert_hw_csv(csv_file, output_csv_file):
         print("parsed stats:", output_csv_file.absolute())
 
 
-def profile_nvsight(path, inp, results_dir, r, timeout_mins=5):
+def profile_nsight(path, inp, results_dir, r, timeout_mins=5):
 
     executable = path / inp.executable
     assert executable.is_file()
@@ -255,7 +255,7 @@ class NativeBenchmarkConfig(BenchmarkConfig):
                 )
             )
 
-            use_nvsight = int(device.major) >= 8
+            use_nsight = int(device.major) >= 8
 
             results_dir = path / "results"
             os.makedirs(str(results_dir.absolute()), exist_ok=True)
@@ -269,8 +269,8 @@ class NativeBenchmarkConfig(BenchmarkConfig):
                     timeout_mins=timeout_mins,
                 )
 
-                if use_nvsight:
-                    profile_nvsight(**args)
+                if use_nsight:
+                    profile_nsight(**args)
                 else:
                     profile_nvprof(**args)
 

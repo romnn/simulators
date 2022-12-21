@@ -1,333 +1,333 @@
-(0.000585) CudaRuntime.cpp:3813: Adding external function 'malloc'
-(0.000647) CudaRuntime.cpp:3813: Adding external function 'free'
-(0.000657) CudaRuntime.cpp:3813: Adding external function 'vprintf'
-(0.000665) CudaRuntime.cpp:3813: Adding external function 'cudaGetParameterBuffer'
-(0.000714) CudaRuntime.cpp:595:  Loading module (fatbin) - transposeTejas.cu
-(0.000725) CudaRuntime.cpp:738:  Registered kernel - _Z22transposeCoarseGrainedPfS_ii in module 'transposeTejas.cu'
-(0.000739) CudaRuntime.cpp:738:  Registered kernel - _Z20transposeFineGrainedPfS_ii in module 'transposeTejas.cu'
-(0.000748) CudaRuntime.cpp:738:  Registered kernel - _Z17transposeDiagonalPfS_ii in module 'transposeTejas.cu'
-(0.000756) CudaRuntime.cpp:738:  Registered kernel - _Z24transposeNoBankConflictsPfS_ii in module 'transposeTejas.cu'
-(0.000764) CudaRuntime.cpp:738:  Registered kernel - _Z18transposeCoalescedPfS_ii in module 'transposeTejas.cu'
-(0.000772) CudaRuntime.cpp:738:  Registered kernel - _Z14transposeNaivePfS_ii in module 'transposeTejas.cu'
-(0.000779) CudaRuntime.cpp:738:  Registered kernel - _Z13copySharedMemPfS_ii in module 'transposeTejas.cu'
-(0.000787) CudaRuntime.cpp:738:  Registered kernel - _Z4copyPfS_ii in module 'transposeTejas.cu'
+(0.000681) CudaRuntime.cpp:3813: Adding external function 'malloc'
+(0.000738) CudaRuntime.cpp:3813: Adding external function 'free'
+(0.000747) CudaRuntime.cpp:3813: Adding external function 'vprintf'
+(0.000755) CudaRuntime.cpp:3813: Adding external function 'cudaGetParameterBuffer'
+(0.000802) CudaRuntime.cpp:595:  Loading module (fatbin) - transposeTejas.cu
+(0.000817) CudaRuntime.cpp:738:  Registered kernel - _Z22transposeCoarseGrainedPfS_ii in module 'transposeTejas.cu'
+(0.000831) CudaRuntime.cpp:738:  Registered kernel - _Z20transposeFineGrainedPfS_ii in module 'transposeTejas.cu'
+(0.000839) CudaRuntime.cpp:738:  Registered kernel - _Z17transposeDiagonalPfS_ii in module 'transposeTejas.cu'
+(0.000847) CudaRuntime.cpp:738:  Registered kernel - _Z24transposeNoBankConflictsPfS_ii in module 'transposeTejas.cu'
+(0.000854) CudaRuntime.cpp:738:  Registered kernel - _Z18transposeCoalescedPfS_ii in module 'transposeTejas.cu'
+(0.000861) CudaRuntime.cpp:738:  Registered kernel - _Z14transposeNaivePfS_ii in module 'transposeTejas.cu'
+(0.000869) CudaRuntime.cpp:738:  Registered kernel - _Z13copySharedMemPfS_ii in module 'transposeTejas.cu'
+(0.000876) CudaRuntime.cpp:738:  Registered kernel - _Z4copyPfS_ii in module 'transposeTejas.cu'
 Transpose Starting...
 
-(0.000845) CudaRuntime.cpp:446:  Creating new context for thread 0x22aaec0
-(0.000872) CudaRuntime.cpp:276:  Creating devices.
-(0.001015) CudaRuntime.cpp:288:   - Added 1 emulator devices.
-(0.001121) CudaRuntime.cpp:2203: cuda::CudaRuntime::cudaGetDeviceProperties(dev = 0) - major: 2, minor: 1
-(0.001136) CudaRuntime.cpp:2241:   returning: prop->major = 2, prop->minor = 1
-(0.001266) CudaRuntime.cpp:276:  Creating devices.
-(0.001351) CudaRuntime.cpp:288:   - Added 1 emulator devices.
-(0.001402) CudaRuntime.cpp:2203: cuda::CudaRuntime::cudaGetDeviceProperties(dev = 0) - major: 2, minor: 1
-(0.001411) CudaRuntime.cpp:2241:   returning: prop->major = 2, prop->minor = 1
-(0.001504) CudaRuntime.cpp:2289: Setting device for thread 0x22aaec0 to 0
-(0.001518) CudaRuntime.cpp:276:  Creating devices.
-(0.001599) CudaRuntime.cpp:288:   - Added 1 emulator devices.
-(0.001658) CudaRuntime.cpp:2203: cuda::CudaRuntime::cudaGetDeviceProperties(dev = 0) - major: 2, minor: 1
-(0.001668) CudaRuntime.cpp:2241:   returning: prop->major = 2, prop->minor = 1
+(0.000949) CudaRuntime.cpp:446:  Creating new context for thread 0x242dec0
+(0.000974) CudaRuntime.cpp:276:  Creating devices.
+(0.001099) CudaRuntime.cpp:288:   - Added 1 emulator devices.
+(0.001194) CudaRuntime.cpp:2203: cuda::CudaRuntime::cudaGetDeviceProperties(dev = 0) - major: 2, minor: 1
+(0.001208) CudaRuntime.cpp:2241:   returning: prop->major = 2, prop->minor = 1
+(0.001382) CudaRuntime.cpp:276:  Creating devices.
+(0.001467) CudaRuntime.cpp:288:   - Added 1 emulator devices.
+(0.001515) CudaRuntime.cpp:2203: cuda::CudaRuntime::cudaGetDeviceProperties(dev = 0) - major: 2, minor: 1
+(0.001524) CudaRuntime.cpp:2241:   returning: prop->major = 2, prop->minor = 1
+(0.001584) CudaRuntime.cpp:2289: Setting device for thread 0x242dec0 to 0
+(0.001594) CudaRuntime.cpp:276:  Creating devices.
+(0.001662) CudaRuntime.cpp:288:   - Added 1 emulator devices.
+(0.001717) CudaRuntime.cpp:2203: cuda::CudaRuntime::cudaGetDeviceProperties(dev = 0) - major: 2, minor: 1
+(0.001725) CudaRuntime.cpp:2241:   returning: prop->major = 2, prop->minor = 1
 GPU Device 0: "Ocelot PTX Emulator" with compute capability 2.1
 
-(0.001726) CudaRuntime.cpp:276:  Creating devices.
-(0.001797) CudaRuntime.cpp:288:   - Added 1 emulator devices.
-(0.001842) CudaRuntime.cpp:2203: cuda::CudaRuntime::cudaGetDeviceProperties(dev = 0) - major: 2, minor: 1
-(0.001851) CudaRuntime.cpp:2241:   returning: prop->major = 2, prop->minor = 1
+(0.001770) CudaRuntime.cpp:276:  Creating devices.
+(0.001835) CudaRuntime.cpp:288:   - Added 1 emulator devices.
+(0.001878) CudaRuntime.cpp:2203: cuda::CudaRuntime::cudaGetDeviceProperties(dev = 0) - major: 2, minor: 1
+(0.001886) CudaRuntime.cpp:2241:   returning: prop->major = 2, prop->minor = 1
 > Device 0: "Ocelot PTX Emulator"
 > SM Capability 2.1 detected:
 > [Ocelot PTX Emulator] has 1 MP(s) x 48 (Cores/MP) = 48 (Cores)
 > Compute performance scaling factor = 4.00
 > MatrixSize X = 64
 > MatrixSize Y = 64
-(0.001934) CudaRuntime.cpp:276:  Creating devices.
-(0.002004) CudaRuntime.cpp:288:   - Added 1 emulator devices.
-(0.002065) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x22baa00, size = 16384)
-(0.002090) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x22beb00, size = 16384)
-(0.002167) CudaRuntime.cpp:1131: cudaMemcpy(0x22baa00, 0x22ae7e0, 16384)
-(0.002176) CudaRuntime.cpp:251:    _memcpy(0x22baa00, 0x22ae7e0, 16384 bytes) h-to-d
+(0.001951) CudaRuntime.cpp:276:  Creating devices.
+(0.002041) CudaRuntime.cpp:288:   - Added 1 emulator devices.
+(0.002103) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x243da00, size = 16384)
+(0.002126) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x2441b00, size = 16384)
+(0.002197) CudaRuntime.cpp:1131: cudaMemcpy(0x243da00, 0x24317e0, 16384)
+(0.002206) CudaRuntime.cpp:251:    _memcpy(0x243da00, 0x24317e0, 16384 bytes) h-to-d
 
 Matrix size: 64x64 (4x4 tiles), tile size: 16x16, block size: 16x16
 
-(0.002295) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.002304) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.002314) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.002323) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
-(0.002331) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
-(0.010536) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0xeb 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.010552) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0xaa 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.010560) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+(0.002327) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.002336) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.002345) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.002364) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.002385) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.011681) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x1b 0x44 0x02 0x00 0x00 0x00 0x00 
+(0.011695) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xda 0x43 0x02 0x00 0x00 0x00 0x00 
+(0.011702) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.010575) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+(0.011717) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.010582) CudaRuntime.cpp:2685: kernel launch (_Z4copyPfS_ii) on thread 0x22aaec0
-(0.010600) CudaRuntime.cpp:2706:  launch completed successfully
-(0.021581) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.021594) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.021600) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.021605) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
-(0.021610) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
-(0.021626) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0xeb 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.021634) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0xaa 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.021641) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+(0.011724) CudaRuntime.cpp:2685: kernel launch (_Z4copyPfS_ii) on thread 0x242dec0
+(0.011740) CudaRuntime.cpp:2706:  launch completed successfully
+(0.033318) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.033333) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.033339) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.033344) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.033349) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.033367) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x1b 0x44 0x02 0x00 0x00 0x00 0x00 
+(0.033376) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xda 0x43 0x02 0x00 0x00 0x00 0x00 
+(0.033383) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.021647) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+(0.033390) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.021653) CudaRuntime.cpp:2685: kernel launch (_Z4copyPfS_ii) on thread 0x22aaec0
-(0.021666) CudaRuntime.cpp:2706:  launch completed successfully
-(0.031155) CudaRuntime.cpp:1131: cudaMemcpy(0x22b27f0, 0x22beb00, 16384)
-(0.031170) CudaRuntime.cpp:215:    _memcpy(0x22b27f0, 0x22beb00, 16384 bytes) d-to-h
-(0.031239) CudaRuntime.cpp:1131: cudaMemcpy(0x22b27f0, 0x22beb00, 16384)
-(0.031245) CudaRuntime.cpp:215:    _memcpy(0x22b27f0, 0x22beb00, 16384 bytes) d-to-h
-transpose simple copy       , Throughput = 0.0032 GB/s, Time = 9.56655 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-(0.031298) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.031305) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.031311) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.031317) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
-(0.031323) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
-(0.031340) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0xeb 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.031350) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0xaa 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.031358) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+(0.033396) CudaRuntime.cpp:2685: kernel launch (_Z4copyPfS_ii) on thread 0x242dec0
+(0.033410) CudaRuntime.cpp:2706:  launch completed successfully
+(0.044152) CudaRuntime.cpp:1131: cudaMemcpy(0x24357f0, 0x2441b00, 16384)
+(0.044170) CudaRuntime.cpp:215:    _memcpy(0x24357f0, 0x2441b00, 16384 bytes) d-to-h
+(0.044255) CudaRuntime.cpp:1131: cudaMemcpy(0x24357f0, 0x2441b00, 16384)
+(0.044263) CudaRuntime.cpp:215:    _memcpy(0x24357f0, 0x2441b00, 16384 bytes) d-to-h
+transpose simple copy       , Throughput = 0.0028 GB/s, Time = 10.82468 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+(0.044329) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.044338) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.044346) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.044365) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.044372) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.044393) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x1b 0x44 0x02 0x00 0x00 0x00 0x00 
+(0.044406) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xda 0x43 0x02 0x00 0x00 0x00 0x00 
+(0.044416) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.031366) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+(0.044427) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.031373) CudaRuntime.cpp:2685: kernel launch (_Z13copySharedMemPfS_ii) on thread 0x22aaec0
-(0.031388) CudaRuntime.cpp:2706:  launch completed successfully
-(0.044283) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.044301) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.044311) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.044319) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
-(0.044327) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
-(0.044350) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0xeb 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.044363) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0xaa 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.044374) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+(0.044435) CudaRuntime.cpp:2685: kernel launch (_Z13copySharedMemPfS_ii) on thread 0x242dec0
+(0.044453) CudaRuntime.cpp:2706:  launch completed successfully
+(0.058914) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.058929) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.058938) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.058946) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.058954) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.058974) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x1b 0x44 0x02 0x00 0x00 0x00 0x00 
+(0.058986) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xda 0x43 0x02 0x00 0x00 0x00 0x00 
+(0.058997) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.044385) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+(0.059008) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.044394) CudaRuntime.cpp:2685: kernel launch (_Z13copySharedMemPfS_ii) on thread 0x22aaec0
-(0.044414) CudaRuntime.cpp:2706:  launch completed successfully
-(0.056601) CudaRuntime.cpp:1131: cudaMemcpy(0x22b27f0, 0x22beb00, 16384)
-(0.056617) CudaRuntime.cpp:215:    _memcpy(0x22b27f0, 0x22beb00, 16384 bytes) d-to-h
-(0.056683) CudaRuntime.cpp:1131: cudaMemcpy(0x22b27f0, 0x22beb00, 16384)
-(0.056704) CudaRuntime.cpp:215:    _memcpy(0x22b27f0, 0x22beb00, 16384 bytes) d-to-h
-transpose shared memory copy, Throughput = 0.0025 GB/s, Time = 12.31718 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-(0.056773) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.056782) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.056790) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.056798) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
-(0.056805) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
-(0.056825) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0xeb 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.056838) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0xaa 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.056848) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+(0.059018) CudaRuntime.cpp:2685: kernel launch (_Z13copySharedMemPfS_ii) on thread 0x242dec0
+(0.059036) CudaRuntime.cpp:2706:  launch completed successfully
+(0.102036) CudaRuntime.cpp:1131: cudaMemcpy(0x24357f0, 0x2441b00, 16384)
+(0.102054) CudaRuntime.cpp:215:    _memcpy(0x24357f0, 0x2441b00, 16384 bytes) d-to-h
+(0.102118) CudaRuntime.cpp:1131: cudaMemcpy(0x24357f0, 0x2441b00, 16384)
+(0.102139) CudaRuntime.cpp:215:    _memcpy(0x24357f0, 0x2441b00, 16384 bytes) d-to-h
+transpose shared memory copy, Throughput = 0.0007 GB/s, Time = 43.11466 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+(0.102208) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.102217) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.102226) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.102234) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.102242) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.102266) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x1b 0x44 0x02 0x00 0x00 0x00 0x00 
+(0.102278) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xda 0x43 0x02 0x00 0x00 0x00 0x00 
+(0.102290) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.056858) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+(0.102301) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.056866) CudaRuntime.cpp:2685: kernel launch (_Z14transposeNaivePfS_ii) on thread 0x22aaec0
-(0.056885) CudaRuntime.cpp:2706:  launch completed successfully
-(0.065057) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.065081) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.065097) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.065111) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
-(0.065125) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
-(0.065157) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0xeb 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.065178) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0xaa 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.065197) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+(0.102310) CudaRuntime.cpp:2685: kernel launch (_Z14transposeNaivePfS_ii) on thread 0x242dec0
+(0.102330) CudaRuntime.cpp:2706:  launch completed successfully
+(0.123522) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.123538) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.123548) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.123556) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.123564) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.123585) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x1b 0x44 0x02 0x00 0x00 0x00 0x00 
+(0.123598) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xda 0x43 0x02 0x00 0x00 0x00 0x00 
+(0.123610) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.065214) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+(0.123621) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.065229) CudaRuntime.cpp:2685: kernel launch (_Z14transposeNaivePfS_ii) on thread 0x22aaec0
-(0.065257) CudaRuntime.cpp:2706:  launch completed successfully
-(0.074768) CudaRuntime.cpp:1131: cudaMemcpy(0x22b27f0, 0x22beb00, 16384)
-(0.074800) CudaRuntime.cpp:215:    _memcpy(0x22b27f0, 0x22beb00, 16384 bytes) d-to-h
-(0.074883) CudaRuntime.cpp:1131: cudaMemcpy(0x22b27f0, 0x22beb00, 16384)
-(0.074908) CudaRuntime.cpp:215:    _memcpy(0x22b27f0, 0x22beb00, 16384 bytes) d-to-h
-transpose naive             , Throughput = 0.0031 GB/s, Time = 9.69696 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-(0.074993) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.075021) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.075049) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.075068) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
-(0.075076) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
-(0.075100) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0xeb 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.075112) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0xaa 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.075123) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+(0.123630) CudaRuntime.cpp:2685: kernel launch (_Z14transposeNaivePfS_ii) on thread 0x242dec0
+(0.123649) CudaRuntime.cpp:2706:  launch completed successfully
+(0.134670) CudaRuntime.cpp:1131: cudaMemcpy(0x24357f0, 0x2441b00, 16384)
+(0.134686) CudaRuntime.cpp:215:    _memcpy(0x24357f0, 0x2441b00, 16384 bytes) d-to-h
+(0.134749) CudaRuntime.cpp:1131: cudaMemcpy(0x24357f0, 0x2441b00, 16384)
+(0.134758) CudaRuntime.cpp:215:    _memcpy(0x24357f0, 0x2441b00, 16384 bytes) d-to-h
+transpose naive             , Throughput = 0.0027 GB/s, Time = 11.13963 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+(0.134823) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.134832) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.134840) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.134848) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.134855) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.134876) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x1b 0x44 0x02 0x00 0x00 0x00 0x00 
+(0.134888) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xda 0x43 0x02 0x00 0x00 0x00 0x00 
+(0.134899) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.075133) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+(0.134909) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.075141) CudaRuntime.cpp:2685: kernel launch (_Z18transposeCoalescedPfS_ii) on thread 0x22aaec0
-(0.075160) CudaRuntime.cpp:2706:  launch completed successfully
-(0.086783) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.086816) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.086848) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.086879) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
-(0.086921) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
-(0.086980) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0xeb 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.087005) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0xaa 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.087022) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+(0.134917) CudaRuntime.cpp:2685: kernel launch (_Z18transposeCoalescedPfS_ii) on thread 0x242dec0
+(0.134936) CudaRuntime.cpp:2706:  launch completed successfully
+(0.145529) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.145545) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.145554) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.145561) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.145580) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.145600) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x1b 0x44 0x02 0x00 0x00 0x00 0x00 
+(0.145612) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xda 0x43 0x02 0x00 0x00 0x00 0x00 
+(0.145622) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.087037) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+(0.145633) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.087061) CudaRuntime.cpp:2685: kernel launch (_Z18transposeCoalescedPfS_ii) on thread 0x22aaec0
-(0.087088) CudaRuntime.cpp:2706:  launch completed successfully
-(0.136917) CudaRuntime.cpp:1131: cudaMemcpy(0x22b27f0, 0x22beb00, 16384)
-(0.136949) CudaRuntime.cpp:215:    _memcpy(0x22b27f0, 0x22beb00, 16384 bytes) d-to-h
-(0.137089) CudaRuntime.cpp:1131: cudaMemcpy(0x22b27f0, 0x22beb00, 16384)
-(0.137119) CudaRuntime.cpp:215:    _memcpy(0x22b27f0, 0x22beb00, 16384 bytes) d-to-h
-transpose coalesced         , Throughput = 0.0006 GB/s, Time = 50.13490 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-(0.137208) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.137233) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.137258) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.137282) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
-(0.137306) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
-(0.137357) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0xeb 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.137396) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0xaa 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.137475) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+(0.145641) CudaRuntime.cpp:2685: kernel launch (_Z18transposeCoalescedPfS_ii) on thread 0x242dec0
+(0.145658) CudaRuntime.cpp:2706:  launch completed successfully
+(0.156046) CudaRuntime.cpp:1131: cudaMemcpy(0x24357f0, 0x2441b00, 16384)
+(0.156077) CudaRuntime.cpp:215:    _memcpy(0x24357f0, 0x2441b00, 16384 bytes) d-to-h
+(0.156158) CudaRuntime.cpp:1131: cudaMemcpy(0x24357f0, 0x2441b00, 16384)
+(0.156183) CudaRuntime.cpp:215:    _memcpy(0x24357f0, 0x2441b00, 16384 bytes) d-to-h
+transpose coalesced         , Throughput = 0.0029 GB/s, Time = 10.49852 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+(0.156293) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.156318) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.156343) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.156398) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.156423) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.156468) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x1b 0x44 0x02 0x00 0x00 0x00 0x00 
+(0.156506) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xda 0x43 0x02 0x00 0x00 0x00 0x00 
+(0.156540) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.137488) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+(0.156574) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.137497) CudaRuntime.cpp:2685: kernel launch (_Z24transposeNoBankConflictsPfS_ii) on thread 0x22aaec0
-(0.137519) CudaRuntime.cpp:2706:  launch completed successfully
-(0.151986) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.152004) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.152013) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.152021) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
-(0.152030) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
-(0.152054) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0xeb 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.152067) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0xaa 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.152079) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+(0.156600) CudaRuntime.cpp:2685: kernel launch (_Z24transposeNoBankConflictsPfS_ii) on thread 0x242dec0
+(0.156634) CudaRuntime.cpp:2706:  launch completed successfully
+(0.167291) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.167307) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.167316) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.167324) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.167332) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.167353) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x1b 0x44 0x02 0x00 0x00 0x00 0x00 
+(0.167366) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xda 0x43 0x02 0x00 0x00 0x00 0x00 
+(0.167377) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.152090) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+(0.167387) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.152099) CudaRuntime.cpp:2685: kernel launch (_Z24transposeNoBankConflictsPfS_ii) on thread 0x22aaec0
-(0.152118) CudaRuntime.cpp:2706:  launch completed successfully
-(0.163085) CudaRuntime.cpp:1131: cudaMemcpy(0x22b27f0, 0x22beb00, 16384)
-(0.163103) CudaRuntime.cpp:215:    _memcpy(0x22b27f0, 0x22beb00, 16384 bytes) d-to-h
-(0.163167) CudaRuntime.cpp:1131: cudaMemcpy(0x22b27f0, 0x22beb00, 16384)
-(0.163175) CudaRuntime.cpp:215:    _memcpy(0x22b27f0, 0x22beb00, 16384 bytes) d-to-h
-transpose optimized         , Throughput = 0.0028 GB/s, Time = 11.09552 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-(0.163242) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.163252) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.163260) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.163268) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
-(0.163288) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
-(0.163312) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0xeb 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.163326) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0xaa 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.163337) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+(0.167397) CudaRuntime.cpp:2685: kernel launch (_Z24transposeNoBankConflictsPfS_ii) on thread 0x242dec0
+(0.167417) CudaRuntime.cpp:2706:  launch completed successfully
+(0.178261) CudaRuntime.cpp:1131: cudaMemcpy(0x24357f0, 0x2441b00, 16384)
+(0.178277) CudaRuntime.cpp:215:    _memcpy(0x24357f0, 0x2441b00, 16384 bytes) d-to-h
+(0.178339) CudaRuntime.cpp:1131: cudaMemcpy(0x24357f0, 0x2441b00, 16384)
+(0.178347) CudaRuntime.cpp:215:    _memcpy(0x24357f0, 0x2441b00, 16384 bytes) d-to-h
+transpose optimized         , Throughput = 0.0028 GB/s, Time = 10.96654 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+(0.178413) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.178423) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.178431) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.178439) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.178458) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.178493) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x1b 0x44 0x02 0x00 0x00 0x00 0x00 
+(0.178506) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xda 0x43 0x02 0x00 0x00 0x00 0x00 
+(0.178517) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.163347) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+(0.178528) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.163356) CudaRuntime.cpp:2685: kernel launch (_Z22transposeCoarseGrainedPfS_ii) on thread 0x22aaec0
-(0.163376) CudaRuntime.cpp:2706:  launch completed successfully
-(0.194564) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.194580) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.194588) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.194594) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
-(0.194600) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
-(0.194621) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0xeb 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.194632) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0xaa 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.194641) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+(0.178537) CudaRuntime.cpp:2685: kernel launch (_Z22transposeCoarseGrainedPfS_ii) on thread 0x242dec0
+(0.178555) CudaRuntime.cpp:2706:  launch completed successfully
+(0.188317) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.188333) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.188342) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.188394) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.188409) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.188430) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x1b 0x44 0x02 0x00 0x00 0x00 0x00 
+(0.188442) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xda 0x43 0x02 0x00 0x00 0x00 0x00 
+(0.188452) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.194649) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+(0.188462) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.194656) CudaRuntime.cpp:2685: kernel launch (_Z22transposeCoarseGrainedPfS_ii) on thread 0x22aaec0
-(0.194674) CudaRuntime.cpp:2706:  launch completed successfully
-(0.209299) CudaRuntime.cpp:1131: cudaMemcpy(0x22b27f0, 0x22beb00, 16384)
-(0.209336) CudaRuntime.cpp:215:    _memcpy(0x22b27f0, 0x22beb00, 16384 bytes) d-to-h
-(0.209493) CudaRuntime.cpp:1131: cudaMemcpy(0x22b27f0, 0x22beb00, 16384)
-(0.209509) CudaRuntime.cpp:215:    _memcpy(0x22b27f0, 0x22beb00, 16384 bytes) d-to-h
-transpose coarse-grained    , Throughput = 0.0021 GB/s, Time = 14.73069 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-(0.209645) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.209660) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.209675) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.209688) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
-(0.209702) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
-(0.209737) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0xeb 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.209758) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0xaa 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.209777) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+(0.188471) CudaRuntime.cpp:2685: kernel launch (_Z22transposeCoarseGrainedPfS_ii) on thread 0x242dec0
+(0.188489) CudaRuntime.cpp:2706:  launch completed successfully
+(0.198095) CudaRuntime.cpp:1131: cudaMemcpy(0x24357f0, 0x2441b00, 16384)
+(0.198111) CudaRuntime.cpp:215:    _memcpy(0x24357f0, 0x2441b00, 16384 bytes) d-to-h
+(0.198173) CudaRuntime.cpp:1131: cudaMemcpy(0x24357f0, 0x2441b00, 16384)
+(0.198181) CudaRuntime.cpp:215:    _memcpy(0x24357f0, 0x2441b00, 16384 bytes) d-to-h
+transpose coarse-grained    , Throughput = 0.0031 GB/s, Time = 9.77445 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+(0.198246) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.198255) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.198263) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.198271) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.198278) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.198299) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x1b 0x44 0x02 0x00 0x00 0x00 0x00 
+(0.198312) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xda 0x43 0x02 0x00 0x00 0x00 0x00 
+(0.198322) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.209796) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+(0.198334) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.209811) CudaRuntime.cpp:2685: kernel launch (_Z20transposeFineGrainedPfS_ii) on thread 0x22aaec0
-(0.209839) CudaRuntime.cpp:2706:  launch completed successfully
-(0.224432) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.224452) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.224461) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.224469) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
-(0.224477) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
-(0.224500) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0xeb 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.224514) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0xaa 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.224525) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+(0.198343) CudaRuntime.cpp:2685: kernel launch (_Z20transposeFineGrainedPfS_ii) on thread 0x242dec0
+(0.198362) CudaRuntime.cpp:2706:  launch completed successfully
+(0.208723) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.208752) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.208769) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.208781) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.208794) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.208827) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x1b 0x44 0x02 0x00 0x00 0x00 0x00 
+(0.208839) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xda 0x43 0x02 0x00 0x00 0x00 0x00 
+(0.208849) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.224548) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+(0.208869) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.224557) CudaRuntime.cpp:2685: kernel launch (_Z20transposeFineGrainedPfS_ii) on thread 0x22aaec0
-(0.224578) CudaRuntime.cpp:2706:  launch completed successfully
-(0.250635) CudaRuntime.cpp:1131: cudaMemcpy(0x22b27f0, 0x22beb00, 16384)
-(0.250655) CudaRuntime.cpp:215:    _memcpy(0x22b27f0, 0x22beb00, 16384 bytes) d-to-h
-(0.250718) CudaRuntime.cpp:1131: cudaMemcpy(0x22b27f0, 0x22beb00, 16384)
-(0.250726) CudaRuntime.cpp:215:    _memcpy(0x22b27f0, 0x22beb00, 16384 bytes) d-to-h
-transpose fine-grained      , Throughput = 0.0012 GB/s, Time = 26.19886 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-(0.250823) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.250834) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.250842) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.250849) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
-(0.250857) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
-(0.250881) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0xeb 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.250893) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0xaa 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.250904) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+(0.208878) CudaRuntime.cpp:2685: kernel launch (_Z20transposeFineGrainedPfS_ii) on thread 0x242dec0
+(0.208895) CudaRuntime.cpp:2706:  launch completed successfully
+(0.218995) CudaRuntime.cpp:1131: cudaMemcpy(0x24357f0, 0x2441b00, 16384)
+(0.219011) CudaRuntime.cpp:215:    _memcpy(0x24357f0, 0x2441b00, 16384 bytes) d-to-h
+(0.219073) CudaRuntime.cpp:1131: cudaMemcpy(0x24357f0, 0x2441b00, 16384)
+(0.219081) CudaRuntime.cpp:215:    _memcpy(0x24357f0, 0x2441b00, 16384 bytes) d-to-h
+transpose fine-grained      , Throughput = 0.0030 GB/s, Time = 10.28085 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+(0.219147) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.219157) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.219165) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.219173) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.219181) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.219201) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x1b 0x44 0x02 0x00 0x00 0x00 0x00 
+(0.219214) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xda 0x43 0x02 0x00 0x00 0x00 0x00 
+(0.219226) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.250914) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+(0.219236) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.250922) CudaRuntime.cpp:2685: kernel launch (_Z17transposeDiagonalPfS_ii) on thread 0x22aaec0
-(0.250943) CudaRuntime.cpp:2706:  launch completed successfully
-(0.267201) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.267220) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.267229) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.267238) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
-(0.267246) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
-(0.267271) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0xeb 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.267284) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0xaa 0x2b 0x02 0x00 0x00 0x00 0x00 
-(0.267295) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
+(0.219245) CudaRuntime.cpp:2685: kernel launch (_Z17transposeDiagonalPfS_ii) on thread 0x242dec0
+(0.219264) CudaRuntime.cpp:2706:  launch completed successfully
+(0.231663) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.231679) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.231688) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.231697) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 4
+(0.231705) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 20, size 4
+(0.231726) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x1b 0x44 0x02 0x00 0x00 0x00 0x00 
+(0.231739) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xda 0x43 0x02 0x00 0x00 0x00 0x00 
+(0.231750) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 4 to offset 16 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.267307) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
+(0.231761) CudaRuntime.cpp:142:  Mapping parameter at offset 20 of size 4 to offset 20 of size 4
    data = 0x40 0x00 0x00 0x00 
-(0.267316) CudaRuntime.cpp:2685: kernel launch (_Z17transposeDiagonalPfS_ii) on thread 0x22aaec0
-(0.267337) CudaRuntime.cpp:2706:  launch completed successfully
-(0.283644) CudaRuntime.cpp:1131: cudaMemcpy(0x22b27f0, 0x22beb00, 16384)
-(0.283662) CudaRuntime.cpp:215:    _memcpy(0x22b27f0, 0x22beb00, 16384 bytes) d-to-h
-(0.283726) CudaRuntime.cpp:1131: cudaMemcpy(0x22b27f0, 0x22beb00, 16384)
-(0.283735) CudaRuntime.cpp:215:    _memcpy(0x22b27f0, 0x22beb00, 16384 bytes) d-to-h
-transpose diagonal          , Throughput = 0.0019 GB/s, Time = 16.43968 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
-(0.283809) CudaRuntime.cpp:887:  cudaFree(0x22baa00)
-(0.283823) CudaRuntime.cpp:887:  cudaFree(0x22beb00)
+(0.231771) CudaRuntime.cpp:2685: kernel launch (_Z17transposeDiagonalPfS_ii) on thread 0x242dec0
+(0.231790) CudaRuntime.cpp:2706:  launch completed successfully
+(0.243657) CudaRuntime.cpp:1131: cudaMemcpy(0x24357f0, 0x2441b00, 16384)
+(0.243673) CudaRuntime.cpp:215:    _memcpy(0x24357f0, 0x2441b00, 16384 bytes) d-to-h
+(0.243755) CudaRuntime.cpp:1131: cudaMemcpy(0x24357f0, 0x2441b00, 16384)
+(0.243764) CudaRuntime.cpp:215:    _memcpy(0x24357f0, 0x2441b00, 16384 bytes) d-to-h
+transpose diagonal          , Throughput = 0.0025 GB/s, Time = 11.99031 ms, Size = 4096 fp32 elements, NumDevsUsed = 1, Workgroup = 256
+(0.243836) CudaRuntime.cpp:887:  cudaFree(0x243da00)
+(0.243849) CudaRuntime.cpp:887:  cudaFree(0x2441b00)
 Test passed

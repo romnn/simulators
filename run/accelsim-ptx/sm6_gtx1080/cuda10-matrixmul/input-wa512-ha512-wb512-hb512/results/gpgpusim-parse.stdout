@@ -1,6 +1,6 @@
 options: Options {
-    input: "/benchrun/accelsim-ptx/cuda10-matrixmul/sm6_gtx1080/input-wa512-ha512-wb512-hb512/results/log.txt",
-    output: "/benchrun/accelsim-ptx/cuda10-matrixmul/sm6_gtx1080/input-wa512-ha512-wb512-hb512/results/stats.csv",
+    input: "/benchrun/accelsim-ptx/sm6_gtx1080/cuda10-matrixmul/input-wa512-ha512-wb512-hb512/results/log.txt",
+    output: "/benchrun/accelsim-ptx/sm6_gtx1080/cuda10-matrixmul/input-wa512-ha512-wb512-hb512/results/stats.csv",
     per_kernel: false,
     kernel_instance: false,
     configs_as_rows: false,
@@ -14,13 +14,23 @@ stats: {
     (
         "final_kernel",
         0,
-        "total_core_cache_read_mshr_hit",
+        "l2_cache_write_hit",
     ): 0.0,
     (
         "final_kernel",
         0,
-        "total_core_cache_write_hit",
-    ): 0.0,
+        "l2_cache_read_miss",
+    ): 6953.0,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_read_hit",
+    ): 254517.0,
+    (
+        "final_kernel",
+        0,
+        "total_dram_reads",
+    ): 60628.0,
     (
         "final_kernel",
         0,
@@ -29,18 +39,18 @@ stats: {
     (
         "final_kernel",
         0,
-        "const_cache_read_total",
-    ): 20.0,
+        "gpgpu_n_tot_w_icount",
+    ): 15040512.0,
     (
         "final_kernel",
         0,
-        "l2_cache_write_hit",
+        "total_core_cache_write_hit",
     ): 0.0,
     (
         "final_kernel",
         0,
-        "l2_cache_read_miss",
-    ): 6987.0,
+        "total_core_cache_read_mshr_hit",
+    ): 0.0,
     (
         "final_kernel",
         0,
@@ -49,53 +59,18 @@ stats: {
     (
         "final_kernel",
         0,
-        "l2_bandwidth_gbps",
-    ): 48.5788,
-    (
-        "final_kernel",
-        0,
-        "gpu_occupancy",
-    ): 96.1508,
-    (
-        "final_kernel",
-        0,
-        "l2_cache_read_hit",
-    ): 252440.0,
-    (
-        "final_kernel",
-        0,
         "gpu_tot_ipc",
-    ): 910.6722,
+    ): 880.7302,
     (
         "final_kernel",
         0,
-        "gpu_tot_sim_cycle",
-    ): 527931.0,
-    (
-        "final_kernel",
-        0,
-        "gpgpu_silicon_slowdown",
-    ): 3157170.0,
-    (
-        "final_kernel",
-        0,
-        "kernel_launch_uid",
-    ): 1.0,
+        "l2_bandwidth_gbps",
+    ): 25.4893,
     (
         "final_kernel",
         0,
         "gpgpu_simulation_rate",
-    ): 509.0,
-    (
-        "final_kernel",
-        0,
-        "gpgpu_simulation_time_sec",
-    ): 1036.0,
-    (
-        "final_kernel",
-        0,
-        "total_dram_reads",
-    ): 60764.0,
+    ): 586.0,
     (
         "final_kernel",
         0,
@@ -104,13 +79,18 @@ stats: {
     (
         "final_kernel",
         0,
-        "total_dram_writes",
-    ): 32768.0,
+        "gpu_tot_sim_cycle",
+    ): 545879.0,
     (
         "final_kernel",
         0,
-        "l2_cache_read_total",
-    ): 262144.0,
+        "kernel_launch_uid",
+    ): 1.0,
+    (
+        "final_kernel",
+        0,
+        "gpgpu_simulation_time_sec",
+    ): 930.0,
     (
         "final_kernel",
         0,
@@ -119,12 +99,32 @@ stats: {
     (
         "final_kernel",
         0,
-        "gpu_ipc",
-    ): 910.6722,
+        "gpgpu_silicon_slowdown",
+    ): 2742320.0,
     (
         "final_kernel",
         0,
-        "gpgpu_n_tot_w_icount",
-    ): 15040512.0,
+        "gpu_occupancy",
+    ): 96.2383,
+    (
+        "final_kernel",
+        0,
+        "total_dram_writes",
+    ): 32768.0,
+    (
+        "final_kernel",
+        0,
+        "gpu_ipc",
+    ): 880.7302,
+    (
+        "final_kernel",
+        0,
+        "l2_cache_read_total",
+    ): 262144.0,
+    (
+        "final_kernel",
+        0,
+        "const_cache_read_total",
+    ): 20.0,
 }
-done in 22.278533ms: 80.33 KiB parsed (16.00 EiB/s)
+done in 22.023319ms: 80.31 KiB parsed (16.00 EiB/s)

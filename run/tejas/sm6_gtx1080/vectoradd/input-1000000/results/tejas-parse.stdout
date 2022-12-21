@@ -1,6 +1,6 @@
 options: Options {
-    input: "/benchrun/tejas/vectoradd/sm6_gtx1080/input-1000000/results/stats.txt",
-    output: "/benchrun/tejas/vectoradd/sm6_gtx1080/input-1000000/results/stats.csv",
+    input: "/benchrun/tejas/sm6_gtx1080/vectoradd/input-1000000/results/stats.txt",
+    output: "/benchrun/tejas/sm6_gtx1080/vectoradd/input-1000000/results/stats.csv",
 }
 stats: Stats {
     emulator_type: Some(
@@ -8,7 +8,7 @@ stats: Stats {
     ),
     created: None,
     sim_time: Some(
-        7.33s,
+        6.4s,
     ),
     total_inst_count: Some(
         22473,
@@ -40,10 +40,10 @@ stats: Stats {
         0,
     ),
     kips: Some(
-        3.065893587994543,
+        3.51140625,
     ),
     total_ipc: Some(
         0.5800232288037166,
     ),
 }
-done after 38.655279ms
+done after 20.260853ms

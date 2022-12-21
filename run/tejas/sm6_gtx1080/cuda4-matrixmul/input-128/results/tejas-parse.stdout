@@ -1,6 +1,6 @@
 options: Options {
-    input: "/benchrun/tejas/cuda4-matrixmul/sm6_gtx1080/input-128/results/stats.txt",
-    output: "/benchrun/tejas/cuda4-matrixmul/sm6_gtx1080/input-128/results/stats.csv",
+    input: "/benchrun/tejas/sm6_gtx1080/cuda4-matrixmul/input-128/results/stats.txt",
+    output: "/benchrun/tejas/sm6_gtx1080/cuda4-matrixmul/input-128/results/stats.csv",
 }
 stats: Stats {
     emulator_type: Some(
@@ -8,7 +8,7 @@ stats: Stats {
     ),
     created: None,
     sim_time: Some(
-        11.265s,
+        10.958s,
     ),
     total_inst_count: Some(
         7968,
@@ -40,10 +40,10 @@ stats: Stats {
         0,
     ),
     kips: Some(
-        0.707323568575233,
+        0.7271399890490966,
     ),
     total_ipc: Some(
         2.515151515151515,
     ),
 }
-done after 22.567706ms
+done after 35.766104ms
