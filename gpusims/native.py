@@ -5,7 +5,6 @@ from pprint import pprint  # noqa: F401
 from gpusims.bench import BenchmarkConfig
 from gpusims.cuda import get_devices
 import gpusims.utils as utils
-import numpy as np
 
 
 def convert_hw_csv(csv_file, output_csv_file):
@@ -324,6 +323,7 @@ def normalize_device_name(name):
 
 def build_nsight_df(csv_files):
     import pandas as pd
+    import numpy as np
 
     # pprint(csv_files)
     nsight_df_runs = []
@@ -344,6 +344,7 @@ def build_nsight_df(csv_files):
     assert nsight_df["ID"].isnull().sum() == 0
 
     nsight_df = nsight_df.set_index(nsight_index_cols)
+    # return nsight_df
 
     non_numeric = [
         c
@@ -360,7 +361,6 @@ def build_nsight_df(csv_files):
     ]
     # drop non numeric columns
     nsight_df = nsight_df.drop(columns=non_numeric)
-    # return nsight_df
 
     # convert to numeric
     def to_numeric_single(value, integer=False):
@@ -371,6 +371,7 @@ def build_nsight_df(csv_files):
         # value = value.replace(",", "")
         # 16.626,67
         # 15,935.33
+
         if value.count(",") > 0 and value.count(".") > 0:
             # find returns lowest index (first occurence)
             sep = "." if value.find(".") < value.find(",") else ","
@@ -399,7 +400,18 @@ def build_nsight_df(csv_files):
             series.astype(str).apply(to_numeric_single, integer=integer)
         )
 
-    integer_cols = nsight_df.columns[nsight_df.columns.str.contains(pat="_nsecond$")]
+    integer_cols = []
+    integer_cols += nsight_df.columns[
+        nsight_df.columns.str.contains(pat="_nsecond$")
+    ].tolist()
+    integer_cols += nsight_df.columns[
+        nsight_df.columns.str.contains(pat=r"\.sum_inst$")
+    ].tolist()
+    integer_cols += nsight_df.columns[
+        nsight_df.columns.str.contains(pat=r"\.sum_sector$")
+    ].tolist()
+    # integer_cols += ["dram__sectors_read.sum_sector", "dram__sectors_write.sum_sector"]
+    integer_cols = [c for c in integer_cols if c in nsight_df.columns]
     # print(integer_cols)
     nsight_df[integer_cols] = nsight_df[integer_cols].apply(
         to_numeric,
@@ -527,8 +539,10 @@ def build_nvprof_df(kernel_csv_files, cycle_csv_files):
     # pprint(kernel_csv_files)
     # pprint(cycle_csv_files)
     kernel_df = build_nvprof_kernel_df(kernel_csv_files)
+    # return kernel_df
     # print("kernels shape", kernel_df.shape)
     cycle_df = build_nvprof_cycles_df(cycle_csv_files)
+    # return cycle_df
     # print("cycles shape", cycle_df.shape)
 
     # same number of repetitions

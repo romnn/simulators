@@ -121,9 +121,14 @@ class BaseMetric(Metric):
             raise ValueError("hw dataframe missing cycles")
 
     def hw_ipc(self):
-        if "ipc" in self.hw_df:
-            # there is also issued_ipc
-            return self.hw_df["ipc"].sum()
+        # would need to use active_sm_count so just compute ourselves
+        # if "ipc" in self.hw_df:
+        #     # ipc is per SM metric
+        #     # https://stackoverflow.com/questions/51316553/understanding-the-ipc-metric-from-nvprof-and-gpgpusim
+        #     # there is also issued_ipc
+        #     sm_count = self.data.config.spec["sm_count"]
+        #     return self.hw_df["ipc"].mean() * sm_count
+
         instructions = self.hw_instructions()
         cycles = self.hw_cycles()
         return instructions / cycles
@@ -152,7 +157,8 @@ class Cycles(BaseMetric):
     name = "Cycles"
 
     def compute_m2s(self, df):
-        per_core_cycles = df["Total.Cycles"].sum() / df["Config.Device.NumSM"].mean()
+        total_cycles = df["Total.Cycles"].sum()
+        per_core_cycles = total_cycles / df["Config.Device.NumSM"].mean()
         device_cycles = df["Device.Cycles"].sum()
         assert per_core_cycles == device_cycles
         return device_cycles
@@ -480,7 +486,10 @@ class IPC(BaseMetric):
         # those metrics seem to be always 0, so we compute manually
         # Device.instructionsPerCycle
         # Total.InstructionsPerCycle
-        return df["Total.Instructions"].sum() / df["Device.Cycles"].sum()
+        instructions = df["Total.Instructions"].sum()
+        # cycles = df["Total.Cycles"].sum()
+        cycles = df["Device.Cycles"].sum()
+        return instructions / cycles
 
     def compute_macsim(self, df):
         return df["INST_COUNT_TOT"][0] / df["CYC_COUNT_CORE_TOTAL"][0]
@@ -755,19 +764,19 @@ class DRAMReads(BaseMetric):
     # m2s has no dram writes
     # macsim has no dram writes
     def compute_tejas(self, df):
-        return df["dram_total_reads"].sum()
+        return int(df["dram_total_reads"].sum())
 
     def compute_accelsim_ptx(self, df):
-        return df["total_dram_reads"].sum()
+        return int(df["total_dram_reads"].sum())
 
     def compute_accelsim_sass(self, df):
-        return df["total_dram_reads"].sum()
+        return int(df["total_dram_reads"].sum())
 
     def compute_native(self, df):
         if "dram_read_transactions" in df:
-            return df["dram_read_transactions"].sum()
+            return int(df["dram_read_transactions"].sum())
         else:
-            return df["dram__sectors_read.sum_sector"].sum()
+            return int(df["dram__sectors_read.sum_sector"].sum())
 
 
 class DRAMWrites(BaseMetric):
@@ -776,19 +785,19 @@ class DRAMWrites(BaseMetric):
     # m2s has no dram writes
     # macsim has no dram writes
     def compute_tejas(self, df):
-        return df["dram_total_writes"].sum()
+        return int(df["dram_total_writes"].sum())
 
     def compute_accelsim_ptx(self, df):
-        return df["total_dram_writes"].sum()
+        return int(df["total_dram_writes"].sum())
 
     def compute_accelsim_sass(self, df):
-        return df["total_dram_writes"].sum()
+        return int(df["total_dram_writes"].sum())
 
     def compute_native(self, df):
         if "dram_write_transactions" in df:
-            return df["dram_write_transactions"].sum()
+            return int(df["dram_write_transactions"].sum())
         else:
-            return df["dram__sectors_write.sum_sector"].sum()
+            return int(df["dram__sectors_write.sum_sector"].sum())
 
     # def compute(self):
     #     data = []
