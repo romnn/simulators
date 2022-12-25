@@ -9,7 +9,7 @@ SIM_COLOR = {
     gpusims.ACCELSIM_SASS: COLORS[2],
     gpusims.NATIVE: "#FF3C1E", # colors[3],
     gpusims.MULTI2SIM: COLORS[4],
-    gpusims.MACSIM: COLORS[5],
+    gpusims.MACSIM: "#FA7AF4", # COLORS[5],
     #"GPUTejas": "#7E61FA", # colors[0],
     #"AccelSim PTX": COLORS[1],
     #"AccelSim SASS": COLORS[2],

@@ -25,7 +25,7 @@
 	<!--Simulation Parameters-->
 	<Simulation>
 	    <MaxNumJavaThreads>8</MaxNumJavaThreads>		<!--Maximum number of Runnable Threads on simulator side-->
-	    <MaxNumBlocksPerJavaThread>5000</MaxNumBlocksPerJavaThread>
+	    <MaxNumBlocksPerJavaThread>1000</MaxNumBlocksPerJavaThread>
 	    <GPUType>Kepler</GPUType> 						<!--Type of Nvidia GPU: Tesla, Fermi,Kepler,Maxwell-->
 		<ThreadsPerCTA>512</ThreadsPerCTA>
 	</Simulation>
@@ -127,7 +127,7 @@
 		<Interconnect>BUS</Interconnect>
 		
 		<NOC>
-			<NocConfigFile>/home/janib/Desktop/gpu_with_l2/Tejas-cuda/final_gpu_tejas/gputejas/src/simulator/config/NocConfig8.txt</NocConfigFile>
+			<NocConfigFile>to be replaced</NocConfigFile>
 			<NocSelScheme>STATIC</NocSelScheme>
 			<NocNumberOfBuffers>4</NocNumberOfBuffers>
 			<NocPortType>FCFS</NocPortType>

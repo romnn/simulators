@@ -11,10 +11,11 @@ import xml.etree.ElementTree as ET
 import gpusims.utils as utils
 
 
-def build_config(config_file, threads):
+def build_config(config_file, threads, noc_config_file):
     tree = ET.parse(str(config_file.absolute()))
     root = tree.getroot()
     root.find("./Simulation/MaxNumJavaThreads").text = str(threads)
+    root.find("./System/NOC/NocConfigFile").text = str(noc_config_file.absolute())
     return tree
 
 
@@ -27,7 +28,11 @@ class TejasBenchmarkConfig(BenchmarkConfig):
         tejas_root = Path(os.environ["TEJAS_ROOT"])
 
         default_config_file = path / "tejas_config.xml"
-        new_config = build_config(default_config_file, threads)
+        new_config = build_config(
+            config_file=default_config_file,
+            threads=threads,
+            noc_config_file=path / "tejas_noc_config.txt",
+        )
 
         new_config_file = path / "config.xml"
         print("building config {} for {} threads".format(str(new_config_file), threads))
