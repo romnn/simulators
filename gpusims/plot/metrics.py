@@ -194,70 +194,10 @@ class Cycles(BaseMetric):
             # hw_value *= mean_sm_efficiency
         return hw_value
 
-        # def compute(self):
-
-    #     data = []
-    #     if self.m2s_df is not None:
-    #         per_core_cycles = (
-    #             self.m2s_df["Total.Cycles"].sum()
-    #             / self.m2s_df["Config.Device.NumSM"].mean()
-    #         )
-    #         m2s_value = self.m2s_df["Device.Cycles"].sum()
-    #         assert per_core_cycles == m2s_value
-    #         data.append(("Multi2Sim", m2s_value))
-
-    #     if self.macsim_df is not None:
-    #         # CYC_COUNT_TOT seems to be way too large
-    #         # CYCLE_GPU is always zero
-    #         macsim_value = self.macsim_df["CYC_COUNT_CORE_TOTAL"][0]
-    #         data.append(("MacSim", macsim_value))
-
-    #     if self.tejas_df is not None:
-    #         tejas_value = self.tejas_df["total_cycle_count"].sum()
-    #         data.append(("GPUTejas", tejas_value))
-
-    #     for name, accel_df in [
-    #         ("AccelSim PTX", self.accelsim_ptx_df),
-    #         ("AccelSim SASS", self.accelsim_sass_df),
-    #     ]:
-    #         if accel_df is not None:
-    #             accel_value = accel_df["gpu_tot_sim_cycle"].sum()
-    #             data.append((name, accel_value))
-
-    #     if self.hw_df is not None:
-    #         if self.use_duration:
-    #             # clock speed is mhz, so *1e6
-    #             # duration is us, so *1e-6
-    #             # unit conversions cancel each other out
-    #             hw_value = (
-    #                 self.hw_df["Duration"].sum() * self.data.config.spec["clock_speed"]
-    #             )
-    #         else:
-    #             # sm_efficiency: The percentage of time at least one warp
-    #             # is active on a specific multiprocessor
-    #             mean_sm_efficiency = self.hw_df["sm_efficiency"].mean() / 100.0
-    #             sm_count = self.data.config.spec["sm_count"]
-    #             # num_active_sm = self.data.config.spec["sm_count"] * mean_sm_efficiency
-    #             # print("num active sms", num_active_sm)
-    #             hw_value = self.hw_df["elapsed_cycles_sm"].sum() / sm_count
-    #             # hw_value *= mean_sm_efficiency
-
-    #         data.append(("Hardware", hw_value))
-
-    #     df = pd.DataFrame.from_records(
-    #         data,
-    #         columns=["Simulator", "Value"],
-    #     )
-    #     df["Value"] = df["Value"].astype(int)
-    #     return df
-
 
 class ExecutionTime(BaseMetric):
     name = "Execution Time"
     unit = "s"
-
-    # def compute_m2s(self, df):
-    #     return df["sim_wall_time"].sum()
 
     def compute(self):
         # data = []
@@ -290,13 +230,6 @@ class ExecutionTime(BaseMetric):
             # convert to seconds
             hw_value = self.hw_duration_us() * 1e-6
 
-        # df = pd.DataFrame.from_records(
-        #     data,
-        #     columns=["Simulator", "Value"],
-        # )
-        # df["Value"] = df["Value"].astype(float)
-        # return df
-
         df = pd.DataFrame.from_records(
             data=[
                 (gpusims.MULTI2SIM, "Sim", m2s_sim),
@@ -311,18 +244,6 @@ class ExecutionTime(BaseMetric):
                 (gpusims.ACCELSIM_SASS, "Trace", accel_sass_trace),
                 (gpusims.NATIVE, "Sim", hw_value),
                 (gpusims.NATIVE, "Trace", 0),
-                # ("Multi2Sim", "Sim", m2s_sim),
-                # ("Multi2Sim", "Trace", 0),
-                # ("MacSim", "Sim", macsim_sim),
-                # ("MacSim", "Trace", macsim_trace),
-                # ("GPUTejas", "Sim", tejas_sim),
-                # ("GPUTejas", "Trace", tejas_trace),
-                # ("AccelSim PTX", "Sim", accel_ptx_sim),
-                # ("AccelSim PTX", "Trace", 0),
-                # ("AccelSim SASS", "Sim", accel_sass_sim),
-                # ("AccelSim SASS", "Trace", accel_sass_trace),
-                # ("Hardware", "Sim", hw_value),
-                # ("Hardware", "Trace", 0),
             ],
             columns=["Simulator", "Kind", "Value"],
         )
@@ -335,10 +256,7 @@ class L2ReadHit(BaseMetric):
 
     # m2s has no l2 read hits
     # tejas has no l2 read hits
-    # macsim has no l2 read hits (only total)
-
-    # def compute_macsim(self, df):
-    #     return df["L2_HIT_GPU"][0]
+    # macsim has no l2 read hits (only total hits)
 
     def compute_accelsim_ptx(self, df):
         return df["l2_cache_read_hit"].sum()
@@ -360,10 +278,7 @@ class L2WriteHit(BaseMetric):
 
     # m2s has no l2 write hits
     # tejas has no l2 write hits
-    # macsim has no l2 write hits (only total)
-
-    # def compute_macsim(self, df):
-    #     return df["L2_HIT_GPU"][0]
+    # macsim has no l2 write hits (only total hits)
 
     def compute_accelsim_ptx(self, df):
         return df["l2_cache_write_hit"].sum()
@@ -378,45 +293,6 @@ class L2WriteHit(BaseMetric):
             ).sum()
         else:
             return df["lts__t_sectors_srcunit_tex_op_write_lookup_hit.sum_sector"].sum()
-
-    # def compute(self):
-    #     data = []
-
-    #     # m2s has no l2 read hits
-    #     # tejas has no l2 read hits
-    #     if self.macsim_df is not None:
-    #         macsim_value = self.macsim_df["L2_HIT_GPU"].sum()
-    #         data.append(("MacSim", macsim_value))
-
-    #     for name, accel_df in [
-    #         ("AccelSim PTX", self.accelsim_ptx_df),
-    #         ("AccelSim SASS", self.accelsim_sass_df),
-    #     ]:
-    #         # "float(sim[
-    #         #   \"\s+L2_cache_stats_breakdown\[GLOBAL_ACC_R\]\[HIT\]
-    #         #   \s*=\s*(.*)\"])"
-    #         if accel_df is not None:
-    #             accel_value = accel_df["l2_cache_read_hit"].sum()
-    #             data.append((name, accel_value))
-
-    #     if self.hw_df is not None:
-    #         # "np.average(hw[\"l2_tex_read_transactions\"])
-    #         #   *np.average(hw[\"l2_tex_read_hit_rate\"])/100",
-    #         # print(self.hw_df["l2_tex_read_transactions"])
-    #         # print(self.hw_df["l2_tex_read_hit_rate"].sum())
-    #         hw_value = (
-    #             self.hw_df["l2_tex_read_transactions"].sum()
-    #             * self.hw_df["l2_tex_read_hit_rate"].sum()
-    #             / 100.0
-    #         )
-    #         data.append(("Hardware", hw_value))
-
-    #     df = pd.DataFrame.from_records(
-    #         data,
-    #         columns=["Simulator", "Value"],
-    #     )
-    #     df["Value"] = df["Value"].astype(int)
-    #     return df
 
 
 class InstructionCount(BaseMetric):
@@ -441,42 +317,6 @@ class InstructionCount(BaseMetric):
 
     def compute_native(self, df):
         return self.hw_instructions()
-
-    # def compute(self):
-    #     data = []
-    #     if self.m2s_df is not None:
-    #         m2s_value = self.m2s_df["Total.Instructions"].sum()
-    #         data.append(("Multi2Sim", m2s_value))
-
-    #     if self.macsim_df is not None:
-    #         macsim_value = self.macsim_df["INST_COUNT_TOT"][0]
-    #         data.append(("MacSim", macsim_value))
-
-    #     if self.tejas_df is not None:
-    #         # without the multiplication, this does not make sense
-    #         tejas_value = (
-    #             self.tejas_df["total_inst_count"].sum()
-    #             * self.data.config.spec["sm_count"]
-    #         )
-    #         data.append(("GPUTejas", tejas_value))
-
-    #     for name, accel_df in [
-    #         ("AccelSim PTX", self.accelsim_ptx_df),
-    #         ("AccelSim SASS", self.accelsim_sass_df),
-    #     ]:
-    #         if accel_df is not None:
-    #             accel_value = accel_df["gpgpu_n_tot_w_icount"].sum()
-    #             data.append((name, accel_value))
-
-    #     if self.hw_df is not None:
-    #         hw_value = self.hw_df["inst_issued"].sum()
-    #         data.append(("Hardware", hw_value))
-    #     df = pd.DataFrame.from_records(
-    #         data,
-    #         columns=["Simulator", "Value"],
-    #     )
-    #     df["Value"] = df["Value"].astype(int)
-    #     return df
 
 
 class IPC(BaseMetric):
@@ -520,204 +360,9 @@ class IPC(BaseMetric):
         hw_value = self.hw_ipc()
         return hw_value
 
-    # def compute(self):
-    #     data = []
-    #     if self.m2s_df is not None:
-    #         # those metrics seem to be always 0, so we compute manually
-    #         # Device.instructionsPerCycle
-    #         # Total.InstructionsPerCycle
-    #         m2s_value = (
-    #             self.m2s_df["Total.Instructions"].sum()
-    #             / self.m2s_df["Device.Cycles"].sum()
-    #         )
-    #         data.append(("Multi2Sim", m2s_value))
-
-    #     if self.macsim_df is not None:
-    #         macsim_value = (
-    #             self.macsim_df["INST_COUNT_TOT"][0]
-    #             / self.macsim_df["CYC_COUNT_CORE_TOTAL"][0]
-    #         )
-    #         data.append(("MacSim", macsim_value))
-
-    #     if self.tejas_df is not None:
-    #         # their total_ipc does not make sense?
-    #         tejas_value = self.tejas_df["total_ipc"].sum()
-    #         # * self.data.config.spec["sm_count"]
-    #         # tejas_instr = (
-    #         #     self.tejas_df["total_inst_count"].sum()
-    #         #     * self.data.config.spec["sm_count"]
-    #         # )
-    #         # tejas_value = tejas_instr / self.tejas_df["total_cycle_count"].sum()
-    #         data.append(("GPUTejas", tejas_value))
-
-    #     for name, accel_df in [
-    #         ("AccelSim PTX", self.accelsim_ptx_df),
-    #         ("AccelSim SASS", self.accelsim_sass_df),
-    #     ]:
-    #         # "np.average(hw[\"inst_issued\"]) /
-    #         #   float(sim[\"gpu_tot_sim_cycle\s*=\s*(.*)\"])"
-    #         if accel_df is not None and self.hw_df is not None:
-    #             accel_value = (
-    #                 self.hw_df["inst_issued"].sum()
-    #                 / accel_df["gpu_tot_sim_cycle"].sum()
-    #             )
-    #             data.append((name, accel_value))
-
-    #     if self.hw_df is not None:
-    #         # "np.average(hw[\"inst_issued\"]) /
-    #         #   (np.average(hw[\"elapsed_cycles_sm\"])/80)"
-    #         if self.use_duration:
-    #             hw_cycles = (
-    #                 self.hw_df["Duration"].sum() * self.data.config.spec["clock_speed"]
-    #             )
-    #         else:
-    #             hw_cycles = (
-    #                 self.hw_df["elapsed_cycles_sm"].sum()
-    #                 / self.data.config.spec["sm_count"]
-    #             )
-    #         # there is also inst_executed
-    #         hw_value = self.hw_df["inst_issued"].sum() / hw_cycles
-
-    #         # edit: there is ipc and also issued_ipc
-    #         hw_value = self.hw_df["ipc"].sum()
-    #         data.append(("Hardware", hw_value))
-    #     df = pd.DataFrame.from_records(
-    #         data,
-    #         columns=["Simulator", "Value"],
-    #         # index=["Simulator"]
-    #     )
-    #     df["Value"] = df["Value"].round(3)
-    #     return df
-
-
-# class DRAMReads(Metric):
-#     name = "Total DRAM Reads"
-
-#     def compute(self):
-#         data = []
-
-#         # m2s has no dram reads
-#         # macsim has no dram reads
-
-#         if self.tejas_df is not None:
-#             # seems to always be 0 but we still report it
-#             tejas_value = self.tejas_df["dram_total_reads"].sum()
-#             data.append(("GPUTejas", tejas_value))
-
-#         for name, accel_df in [
-#             ("AccelSim PTX", self.accelsim_ptx_df),
-#             ("AccelSim SASS", self.accelsim_sass_df),
-#         ]:
-#             # "float(sim[\"total dram reads\s*=\s*(.*)\"])"
-#             if accel_df is not None:
-#                 accel_value = accel_df["total_dram_reads"].sum()
-#                 data.append((name, accel_value))
-
-#         if self.hw_df is not None:
-#             # np.average(hw[\"dram_read_transactions\"])
-#             hw_value = self.hw_df["dram_read_transactions"].sum()
-#             data.append(("Hardware", hw_value))
-
-#         df = pd.DataFrame.from_records(
-#             data,
-#             columns=["Simulator", "Value"],
-#         )
-#         df["Value"] = df["Value"].astype(int)
-#         return df
-
 
 class DRAMAccesses(BaseMetric):
     name = "Total DRAM Accesses (Read/Write)"
-
-    # def compute(self):
-    #     data = []
-
-    #     if self.m2s_df is not None:
-    #         # RegistersWrites
-    #         # RegistersReads
-    #         m2s_value = self.m2s_df["Total.LDS Instructions"].sum()
-    #         data.append(("Multi2Sim", m2s_value))
-
-    #     if self.macsim_df is not None:
-    #         macsim_value = self.macsim_df["TOTAL_DRAM"][0]
-    #         data.append(("MacSim", macsim_value))
-
-    #     df = pd.DataFrame.from_records(
-    #         data,
-    #         columns=["Simulator", "Value"],
-    #     )
-    #     df["Value"] = df["Value"].astype(int)
-    #     return df
-
-
-# class L2Reads(Metric):
-#     name = "Total L2 Reads"
-
-#     def compute(self):
-#         data = []
-
-#         # m2s has no l2 reads
-#         # macsim has no l2 reads
-#         # tejas has no l2 reads
-
-#         for name, accel_df in [
-#             ("AccelSim PTX", self.accelsim_ptx_df),
-#             ("AccelSim SASS", self.accelsim_sass_df),
-#         ]:
-#             # float(sim[\"\s+L2_cache_stats_breakdown\[
-#             #   GLOBAL_ACC_R\]\[TOTAL_ACCESS\]\s*=\s*(.*)\"])
-#             if accel_df is not None:
-#                 accel_value = accel_df["l2_cache_read_total"].sum()
-#                 data.append((name, accel_value))
-
-#         if self.hw_df is not None:
-#             # np.average(hw[\"l2_tex_read_transactions\"])
-#             hw_value = self.hw_df["l2_tex_read_transactions"].sum()
-#             data.append(("Hardware", hw_value))
-
-#         df = pd.DataFrame.from_records(
-#             data,
-#             columns=["Simulator", "Value"],
-#         )
-#         df["Value"] = df["Value"].astype(int)
-#         return df
-
-
-# class SimpleMetric(Metric):
-#     ACCELSIM_KEY = None
-#     HW_KEY = None
-#     TEJAS_KEY = None
-#     MACSIM_KEY = None
-#     MULTI2SIM_KEY = None
-
-#     def compute(self):
-#         data = []
-
-#         if self.MULTI2SIM_KEY is not None and self.m2s_df is not None:
-#             data.append(("Multi2Sim", self.m2s_df[self.MULTI2SIM_KEY].sum()))
-
-#         if self.MACSIM_KEY is not None and self.macsim_df is not None:
-#             data.append(("MacSim", self.macsim_df[self.MACSIM_KEY][0]))
-
-#         if self.TEJAS_KEY is not None and self.tejas_df is not None:
-#             data.append(("GPUTejas", self.tejas_df[self.TEJAS_KEY].sum()))
-
-#         for name, accel_df in [
-#             ("AccelSim PTX", self.accelsim_ptx_df),
-#             ("AccelSim SASS", self.accelsim_sass_df),
-#         ]:
-#             if self.ACCELSIM_KEY is not None and accel_df is not None:
-#                 data.append((name, accel_df[self.ACCELSIM_KEY].sum()))
-
-#         if self.HW_KEY is not None and self.hw_df is not None:
-#             data.append(("Hardware", self.hw_df[self.HW_KEY].sum()))
-
-#         df = pd.DataFrame.from_records(
-#             data,
-#             columns=["Simulator", "Value"],
-#         )
-#         df["Value"] = df["Value"].astype(float)
-#         return df
 
 
 class L2Writes(BaseMetric):
@@ -798,63 +443,6 @@ class DRAMWrites(BaseMetric):
             return int(df["dram_write_transactions"].sum())
         else:
             return int(df["dram__sectors_write.sum_sector"].sum())
-
-    # def compute(self):
-    #     data = []
-
-    #     # m2s has no dram writes
-    #     # macsim has no dram writes
-
-    #     if self.tejas_df is not None:
-    #         # seems to always be 0 but we still report it
-    #         tejas_value = self.tejas_df["dram_total_writes"].sum()
-    #         data.append(("GPUTejas", tejas_value))
-
-    #     for name, accel_df in [
-    #         ("AccelSim PTX", self.accelsim_ptx_df),
-    #         ("AccelSim SASS", self.accelsim_sass_df),
-    #     ]:
-    #         # "float(sim[\"total dram writes\s*=\s*(.*)\"])"
-    #         if accel_df is not None:
-    #             accel_value = accel_df["total_dram_writes"].sum()
-    #             data.append((name, accel_value))
-
-    #     if self.hw_df is not None:
-    #         # np.average(hw[\"dram_write_transactions\"])
-    #         hw_value = self.hw_df["dram_write_transactions"].sum()
-    #         data.append(("Hardware", hw_value))
-
-    #     df = pd.DataFrame.from_records(
-    #         data,
-    #         columns=["Simulator", "Value"],
-    #     )
-    #     df["Value"] = df["Value"].astype(int)
-    #     return df
-
-    # def compute(self):
-    #     data = []
-
-    #     for name, accel_df in [
-    #         ("AccelSim PTX", self.accelsim_ptx_df),
-    #         ("AccelSim SASS", self.accelsim_sass_df),
-    #     ]:
-    #         # float(sim[\"\s+L2_cache_stats_breakdown\[
-    #         #   GLOBAL_ACC_R\]\[TOTAL_ACCESS\]\s*=\s*(.*)\"])
-    #         if accel_df is not None:
-    #             accel_value = accel_df["l2_cache_write_total"].sum()
-    #             data.append((name, accel_value))
-
-    #     if self.hw_df is not None:
-    #         # np.average(hw[\"l2_tex_write_transactions\"])
-    #         hw_value = self.hw_df["l2_tex_write_transactions"].sum()
-    #         data.append(("Hardware", hw_value))
-
-    #     df = pd.DataFrame.from_records(
-    #         data,
-    #         columns=["Simulator", "Value"],
-    #     )
-    #     df["Value"] = df["Value"].astype(int)
-    #     return df
 
 
 class ConstantCacheAccesses(BaseMetric):

@@ -120,7 +120,10 @@ class TejasBenchmarkConfig(BenchmarkConfig):
 
         log_file = results_dir / "stats.txt"
         # remove the old log file, otherwise tejas will rename and keep it
-        log_file.unlink(missing_ok=True)
+        try:
+            log_file.unlink()
+        except FileNotFoundError:
+            pass
         cmd = (
             ["java"]
             + java_opts
