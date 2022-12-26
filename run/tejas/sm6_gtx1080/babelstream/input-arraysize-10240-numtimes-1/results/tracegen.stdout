@@ -1,22 +1,22 @@
-(0.000623) CudaRuntime.cpp:3813: Adding external function 'malloc'
-(0.000686) CudaRuntime.cpp:3813: Adding external function 'free'
-(0.000696) CudaRuntime.cpp:3813: Adding external function 'vprintf'
-(0.000704) CudaRuntime.cpp:3813: Adding external function 'cudaGetParameterBuffer'
-(0.000766) CudaRuntime.cpp:595:  Loading module (fatbin) - CUDAStream.cu
-(0.000782) CudaRuntime.cpp:738:  Registered kernel - _Z11init_kernelIdEvPT_S1_S1_S0_S0_S0_ in module 'CUDAStream.cu'
-(0.000797) CudaRuntime.cpp:738:  Registered kernel - _Z10dot_kernelIdEvPKT_S2_PS0_i in module 'CUDAStream.cu'
-(0.000806) CudaRuntime.cpp:738:  Registered kernel - _Z14nstream_kernelIdEvPT_PKS0_S3_ in module 'CUDAStream.cu'
-(0.000815) CudaRuntime.cpp:738:  Registered kernel - _Z12triad_kernelIdEvPT_PKS0_S3_ in module 'CUDAStream.cu'
-(0.000823) CudaRuntime.cpp:738:  Registered kernel - _Z10mul_kernelIdEvPT_PKS0_ in module 'CUDAStream.cu'
-(0.000831) CudaRuntime.cpp:738:  Registered kernel - _Z10add_kernelIdEvPKT_S2_PS0_ in module 'CUDAStream.cu'
-(0.000839) CudaRuntime.cpp:738:  Registered kernel - _Z11copy_kernelIdEvPKT_PS0_ in module 'CUDAStream.cu'
-(0.000847) CudaRuntime.cpp:738:  Registered kernel - _Z11init_kernelIfEvPT_S1_S1_S0_S0_S0_ in module 'CUDAStream.cu'
-(0.000856) CudaRuntime.cpp:738:  Registered kernel - _Z10dot_kernelIfEvPKT_S2_PS0_i in module 'CUDAStream.cu'
-(0.000864) CudaRuntime.cpp:738:  Registered kernel - _Z14nstream_kernelIfEvPT_PKS0_S3_ in module 'CUDAStream.cu'
-(0.000871) CudaRuntime.cpp:738:  Registered kernel - _Z12triad_kernelIfEvPT_PKS0_S3_ in module 'CUDAStream.cu'
-(0.000879) CudaRuntime.cpp:738:  Registered kernel - _Z10mul_kernelIfEvPT_PKS0_ in module 'CUDAStream.cu'
-(0.000888) CudaRuntime.cpp:738:  Registered kernel - _Z10add_kernelIfEvPKT_S2_PS0_ in module 'CUDAStream.cu'
-(0.000896) CudaRuntime.cpp:738:  Registered kernel - _Z11copy_kernelIfEvPKT_PS0_ in module 'CUDAStream.cu'
+(0.000622) CudaRuntime.cpp:3813: Adding external function 'malloc'
+(0.000679) CudaRuntime.cpp:3813: Adding external function 'free'
+(0.000689) CudaRuntime.cpp:3813: Adding external function 'vprintf'
+(0.000698) CudaRuntime.cpp:3813: Adding external function 'cudaGetParameterBuffer'
+(0.000748) CudaRuntime.cpp:595:  Loading module (fatbin) - CUDAStream.cu
+(0.000759) CudaRuntime.cpp:738:  Registered kernel - _Z11init_kernelIdEvPT_S1_S1_S0_S0_S0_ in module 'CUDAStream.cu'
+(0.000773) CudaRuntime.cpp:738:  Registered kernel - _Z10dot_kernelIdEvPKT_S2_PS0_i in module 'CUDAStream.cu'
+(0.000782) CudaRuntime.cpp:738:  Registered kernel - _Z14nstream_kernelIdEvPT_PKS0_S3_ in module 'CUDAStream.cu'
+(0.000791) CudaRuntime.cpp:738:  Registered kernel - _Z12triad_kernelIdEvPT_PKS0_S3_ in module 'CUDAStream.cu'
+(0.000799) CudaRuntime.cpp:738:  Registered kernel - _Z10mul_kernelIdEvPT_PKS0_ in module 'CUDAStream.cu'
+(0.000807) CudaRuntime.cpp:738:  Registered kernel - _Z10add_kernelIdEvPKT_S2_PS0_ in module 'CUDAStream.cu'
+(0.000815) CudaRuntime.cpp:738:  Registered kernel - _Z11copy_kernelIdEvPKT_PS0_ in module 'CUDAStream.cu'
+(0.000823) CudaRuntime.cpp:738:  Registered kernel - _Z11init_kernelIfEvPT_S1_S1_S0_S0_S0_ in module 'CUDAStream.cu'
+(0.000831) CudaRuntime.cpp:738:  Registered kernel - _Z10dot_kernelIfEvPKT_S2_PS0_i in module 'CUDAStream.cu'
+(0.000839) CudaRuntime.cpp:738:  Registered kernel - _Z14nstream_kernelIfEvPT_PKS0_S3_ in module 'CUDAStream.cu'
+(0.000847) CudaRuntime.cpp:738:  Registered kernel - _Z12triad_kernelIfEvPT_PKS0_S3_ in module 'CUDAStream.cu'
+(0.000854) CudaRuntime.cpp:738:  Registered kernel - _Z10mul_kernelIfEvPT_PKS0_ in module 'CUDAStream.cu'
+(0.000862) CudaRuntime.cpp:738:  Registered kernel - _Z10add_kernelIfEvPKT_S2_PS0_ in module 'CUDAStream.cu'
+(0.000871) CudaRuntime.cpp:738:  Registered kernel - _Z11copy_kernelIfEvPKT_PS0_ in module 'CUDAStream.cu'
 BabelStream
 Version: 4.0
 Implementation: CUDA
@@ -24,120 +24,120 @@ Running kernels 1 times
 Precision: double
 Array size: 0.1 MB (=0.0 GB)
 Total size: 0.2 MB (=0.0 GB)
-(0.001016) CudaRuntime.cpp:446:  Creating new context for thread 0x112c070
-(0.001046) CudaRuntime.cpp:2289: Setting device for thread 0x112c070 to 0
-(0.001060) CudaRuntime.cpp:276:  Creating devices.
-(0.001197) CudaRuntime.cpp:288:   - Added 1 emulator devices.
-(0.001317) CudaRuntime.cpp:2203: cuda::CudaRuntime::cudaGetDeviceProperties(dev = 0) - major: 2, minor: 1
-(0.001329) CudaRuntime.cpp:2241:   returning: prop->major = 2, prop->minor = 1
+(0.000985) CudaRuntime.cpp:446:  Creating new context for thread 0x1562070
+(0.001013) CudaRuntime.cpp:2289: Setting device for thread 0x1562070 to 0
+(0.001027) CudaRuntime.cpp:276:  Creating devices.
+(0.001173) CudaRuntime.cpp:288:   - Added 1 emulator devices.
+(0.001276) CudaRuntime.cpp:2203: cuda::CudaRuntime::cudaGetDeviceProperties(dev = 0) - major: 2, minor: 1
+(0.001289) CudaRuntime.cpp:2241:   returning: prop->major = 2, prop->minor = 1
 Using CUDA device Ocelot PTX Emulator
-(0.001531) CudaRuntime.cpp:2289: Setting device for thread 0x112c070 to 0
-(0.001545) CudaRuntime.cpp:276:  Creating devices.
-(0.001632) CudaRuntime.cpp:288:   - Added 1 emulator devices.
+(0.001467) CudaRuntime.cpp:2289: Setting device for thread 0x1562070 to 0
+(0.001482) CudaRuntime.cpp:276:  Creating devices.
+(0.001570) CudaRuntime.cpp:288:   - Added 1 emulator devices.
 Driver: 4000
-(0.001821) CudaRuntime.cpp:276:  Creating devices.
-(0.001896) CudaRuntime.cpp:288:   - Added 1 emulator devices.
-(0.001956) CudaRuntime.cpp:2203: cuda::CudaRuntime::cudaGetDeviceProperties(dev = 0) - major: 2, minor: 1
-(0.001966) CudaRuntime.cpp:2241:   returning: prop->major = 2, prop->minor = 1
-(0.002058) CudaRuntime.cpp:276:  Creating devices.
-(0.002128) CudaRuntime.cpp:288:   - Added 1 emulator devices.
-(0.002192) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x1130800, size = 81920)
-(0.002217) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x1144900, size = 81920)
-(0.002233) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x1158a00, size = 81920)
-(0.002248) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x116cb00, size = 2048)
-(0.002258) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.002267) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.002277) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.002285) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 8
-(0.002293) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 24, size 8
-(0.002301) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 32, size 8
-(0.002309) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 40, size 8
-(0.012667) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0x08 0x13 0x01 0x00 0x00 0x00 0x00 
-(0.012682) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0x49 0x14 0x01 0x00 0x00 0x00 0x00 
-(0.012691) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 8 to offset 16 of size 8
-   data = 0x00 0x8a 0x15 0x01 0x00 0x00 0x00 0x00 
-(0.012698) CudaRuntime.cpp:142:  Mapping parameter at offset 24 of size 8 to offset 24 of size 8
+(0.001713) CudaRuntime.cpp:276:  Creating devices.
+(0.001791) CudaRuntime.cpp:288:   - Added 1 emulator devices.
+(0.001842) CudaRuntime.cpp:2203: cuda::CudaRuntime::cudaGetDeviceProperties(dev = 0) - major: 2, minor: 1
+(0.001852) CudaRuntime.cpp:2241:   returning: prop->major = 2, prop->minor = 1
+(0.001968) CudaRuntime.cpp:276:  Creating devices.
+(0.002038) CudaRuntime.cpp:288:   - Added 1 emulator devices.
+(0.002103) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x1566800, size = 81920)
+(0.002128) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x157a900, size = 81920)
+(0.002143) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x158ea00, size = 81920)
+(0.002159) CudaRuntime.cpp:787:  cudaMalloc( *devPtr = 0x15a2b00, size = 2048)
+(0.002169) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.002178) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.002188) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.002196) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 8
+(0.002204) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 24, size 8
+(0.002211) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 32, size 8
+(0.002219) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 40, size 8
+(0.013245) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x68 0x56 0x01 0x00 0x00 0x00 0x00 
+(0.013259) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xa9 0x57 0x01 0x00 0x00 0x00 0x00 
+(0.013267) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 8 to offset 16 of size 8
+   data = 0x00 0xea 0x58 0x01 0x00 0x00 0x00 0x00 
+(0.013274) CudaRuntime.cpp:142:  Mapping parameter at offset 24 of size 8 to offset 24 of size 8
    data = 0x9a 0x99 0x99 0x99 0x99 0x99 0xb9 0x3f 
-(0.012705) CudaRuntime.cpp:142:  Mapping parameter at offset 32 of size 8 to offset 32 of size 8
+(0.013281) CudaRuntime.cpp:142:  Mapping parameter at offset 32 of size 8 to offset 32 of size 8
    data = 0x9a 0x99 0x99 0x99 0x99 0x99 0xc9 0x3f 
-(0.012712) CudaRuntime.cpp:142:  Mapping parameter at offset 40 of size 8 to offset 40 of size 8
+(0.013288) CudaRuntime.cpp:142:  Mapping parameter at offset 40 of size 8 to offset 40 of size 8
    data = 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 
-(0.012719) CudaRuntime.cpp:2685: kernel launch (_Z11init_kernelIdEvPT_S1_S1_S0_S0_S0_) on thread 0x112c070
-(0.012738) CudaRuntime.cpp:2706:  launch completed successfully
-(0.045488) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.045509) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.045518) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.045542) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0x08 0x13 0x01 0x00 0x00 0x00 0x00 
-(0.045556) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0x8a 0x15 0x01 0x00 0x00 0x00 0x00 
-(0.045565) CudaRuntime.cpp:2685: kernel launch (_Z11copy_kernelIdEvPKT_PS0_) on thread 0x112c070
-(0.045588) CudaRuntime.cpp:2706:  launch completed successfully
-(0.066927) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.066948) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.066957) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.066983) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0x49 0x14 0x01 0x00 0x00 0x00 0x00 
-(0.066996) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0x8a 0x15 0x01 0x00 0x00 0x00 0x00 
-(0.067005) CudaRuntime.cpp:2685: kernel launch (_Z10mul_kernelIdEvPT_PKS0_) on thread 0x112c070
-(0.067026) CudaRuntime.cpp:2706:  launch completed successfully
-(0.079970) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.079990) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.079999) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.080008) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 8
-(0.080034) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0x08 0x13 0x01 0x00 0x00 0x00 0x00 
-(0.080047) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0x49 0x14 0x01 0x00 0x00 0x00 0x00 
-(0.080071) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 8 to offset 16 of size 8
-   data = 0x00 0x8a 0x15 0x01 0x00 0x00 0x00 0x00 
-(0.080081) CudaRuntime.cpp:2685: kernel launch (_Z10add_kernelIdEvPKT_S2_PS0_) on thread 0x112c070
-(0.080100) CudaRuntime.cpp:2706:  launch completed successfully
-(0.115206) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.115226) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.115236) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.115244) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 8
-(0.115269) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0x08 0x13 0x01 0x00 0x00 0x00 0x00 
-(0.115283) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0x49 0x14 0x01 0x00 0x00 0x00 0x00 
-(0.115294) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 8 to offset 16 of size 8
-   data = 0x00 0x8a 0x15 0x01 0x00 0x00 0x00 0x00 
-(0.115304) CudaRuntime.cpp:2685: kernel launch (_Z12triad_kernelIdEvPT_PKS0_S3_) on thread 0x112c070
-(0.115326) CudaRuntime.cpp:2706:  launch completed successfully
-(0.134981) CudaRuntime.cpp:2609: cudaConfigureCall()
-(0.135016) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
-(0.135041) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
-(0.135066) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 8
-(0.135092) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 24, size 4
-(0.135143) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
-   data = 0x00 0x08 0x13 0x01 0x00 0x00 0x00 0x00 
-(0.135182) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
-   data = 0x00 0x49 0x14 0x01 0x00 0x00 0x00 0x00 
-(0.135219) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 8 to offset 16 of size 8
-   data = 0x00 0xcb 0x16 0x01 0x00 0x00 0x00 0x00 
-(0.135253) CudaRuntime.cpp:142:  Mapping parameter at offset 24 of size 4 to offset 24 of size 4
+(0.013294) CudaRuntime.cpp:2685: kernel launch (_Z11init_kernelIdEvPT_S1_S1_S0_S0_S0_) on thread 0x1562070
+(0.013310) CudaRuntime.cpp:2706:  launch completed successfully
+(0.044881) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.044899) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.044908) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.044930) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x68 0x56 0x01 0x00 0x00 0x00 0x00 
+(0.044943) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xea 0x58 0x01 0x00 0x00 0x00 0x00 
+(0.044953) CudaRuntime.cpp:2685: kernel launch (_Z11copy_kernelIdEvPKT_PS0_) on thread 0x1562070
+(0.044972) CudaRuntime.cpp:2706:  launch completed successfully
+(0.053823) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.053838) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.053848) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.053868) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0xa9 0x57 0x01 0x00 0x00 0x00 0x00 
+(0.053882) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xea 0x58 0x01 0x00 0x00 0x00 0x00 
+(0.053891) CudaRuntime.cpp:2685: kernel launch (_Z10mul_kernelIdEvPT_PKS0_) on thread 0x1562070
+(0.053910) CudaRuntime.cpp:2706:  launch completed successfully
+(0.061791) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.061807) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.061816) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.061825) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 8
+(0.061844) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x68 0x56 0x01 0x00 0x00 0x00 0x00 
+(0.061857) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xa9 0x57 0x01 0x00 0x00 0x00 0x00 
+(0.061881) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 8 to offset 16 of size 8
+   data = 0x00 0xea 0x58 0x01 0x00 0x00 0x00 0x00 
+(0.061890) CudaRuntime.cpp:2685: kernel launch (_Z10add_kernelIdEvPKT_S2_PS0_) on thread 0x1562070
+(0.061907) CudaRuntime.cpp:2706:  launch completed successfully
+(0.072637) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.072653) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.072663) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.072670) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 8
+(0.072690) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x68 0x56 0x01 0x00 0x00 0x00 0x00 
+(0.072702) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xa9 0x57 0x01 0x00 0x00 0x00 0x00 
+(0.072714) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 8 to offset 16 of size 8
+   data = 0x00 0xea 0x58 0x01 0x00 0x00 0x00 0x00 
+(0.072722) CudaRuntime.cpp:2685: kernel launch (_Z12triad_kernelIdEvPT_PKS0_S3_) on thread 0x1562070
+(0.072740) CudaRuntime.cpp:2706:  launch completed successfully
+(0.086516) CudaRuntime.cpp:2609: cudaConfigureCall()
+(0.086532) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 0, size 8
+(0.086541) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 8, size 8
+(0.086550) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 16, size 8
+(0.086558) CudaRuntime.cpp:2631: cudaSetupArgument() - offset 24, size 4
+(0.086579) CudaRuntime.cpp:142:  Mapping parameter at offset 0 of size 8 to offset 0 of size 8
+   data = 0x00 0x68 0x56 0x01 0x00 0x00 0x00 0x00 
+(0.086592) CudaRuntime.cpp:142:  Mapping parameter at offset 8 of size 8 to offset 8 of size 8
+   data = 0x00 0xa9 0x57 0x01 0x00 0x00 0x00 0x00 
+(0.086604) CudaRuntime.cpp:142:  Mapping parameter at offset 16 of size 8 to offset 16 of size 8
+   data = 0x00 0x2b 0x5a 0x01 0x00 0x00 0x00 0x00 
+(0.086615) CudaRuntime.cpp:142:  Mapping parameter at offset 24 of size 4 to offset 24 of size 4
    data = 0x00 0x28 0x00 0x00 
-(0.135279) CudaRuntime.cpp:2685: kernel launch (_Z10dot_kernelIdEvPKT_S2_PS0_i) on thread 0x112c070
-(0.135315) CudaRuntime.cpp:2706:  launch completed successfully
-(2.438004) CudaRuntime.cpp:1131: cudaMemcpy(0x112fbd0, 0x116cb00, 2048)
-(2.438025) CudaRuntime.cpp:215:    _memcpy(0x112fbd0, 0x116cb00, 2048 bytes) d-to-h
-(2.438698) CudaRuntime.cpp:1131: cudaMemcpy(0x11b9980, 0x1130800, 81920)
-(2.438709) CudaRuntime.cpp:215:    _memcpy(0x11b9980, 0x1130800, 81920 bytes) d-to-h
-(2.438735) CudaRuntime.cpp:1131: cudaMemcpy(0x11cd990, 0x1144900, 81920)
-(2.438742) CudaRuntime.cpp:215:    _memcpy(0x11cd990, 0x1144900, 81920 bytes) d-to-h
-(2.438766) CudaRuntime.cpp:1131: cudaMemcpy(0x11e19a0, 0x1158a00, 81920)
-(2.438773) CudaRuntime.cpp:215:    _memcpy(0x11e19a0, 0x1158a00, 81920 bytes) d-to-h
+(0.086624) CudaRuntime.cpp:2685: kernel launch (_Z10dot_kernelIdEvPKT_S2_PS0_i) on thread 0x1562070
+(0.086644) CudaRuntime.cpp:2706:  launch completed successfully
+(2.283034) CudaRuntime.cpp:1131: cudaMemcpy(0x1565bd0, 0x15a2b00, 2048)
+(2.283070) CudaRuntime.cpp:215:    _memcpy(0x1565bd0, 0x15a2b00, 2048 bytes) d-to-h
+(2.283788) CudaRuntime.cpp:1131: cudaMemcpy(0x15ef980, 0x1566800, 81920)
+(2.283815) CudaRuntime.cpp:215:    _memcpy(0x15ef980, 0x1566800, 81920 bytes) d-to-h
+(2.283859) CudaRuntime.cpp:1131: cudaMemcpy(0x1603990, 0x157a900, 81920)
+(2.283884) CudaRuntime.cpp:215:    _memcpy(0x1603990, 0x157a900, 81920 bytes) d-to-h
+(2.283925) CudaRuntime.cpp:1131: cudaMemcpy(0x16179a0, 0x158ea00, 81920)
+(2.283949) CudaRuntime.cpp:215:    _memcpy(0x16179a0, 0x158ea00, 81920 bytes) d-to-h
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        7.645       0.02143     0.02143     0.02143     
-Mul         12.567      0.01304     0.01304     0.01304     
-Add         6.976       0.03523     0.03523     0.03523     
-Triad       12.435      0.01976     0.01976     0.01976     
-Dot         0.071       2.30308     2.30308     2.30308     
-(2.440572) CudaRuntime.cpp:887:  cudaFree(0x1130800)
-(2.440588) CudaRuntime.cpp:887:  cudaFree(0x1144900)
-(2.440598) CudaRuntime.cpp:887:  cudaFree(0x1158a00)
-(2.440608) CudaRuntime.cpp:887:  cudaFree(0x116cb00)
+Copy        18.330      0.00894     0.00894     0.00894     
+Mul         20.568      0.00797     0.00797     0.00797     
+Add         22.692      0.01083     0.01083     0.01083     
+Triad       17.695      0.01389     0.01389     0.01389     
+Dot         0.075       2.19658     2.19658     2.19658     
+(2.285928) CudaRuntime.cpp:887:  cudaFree(0x1566800)
+(2.285943) CudaRuntime.cpp:887:  cudaFree(0x157a900)
+(2.285953) CudaRuntime.cpp:887:  cudaFree(0x158ea00)
+(2.285963) CudaRuntime.cpp:887:  cudaFree(0x15a2b00)

@@ -1,6 +1,6 @@
 options: Options {
-    input: "/benchrun/tejas/cuda6-transpose/sm86_a4000/input-repeat1-dimx64-dimy64/results/stats.txt",
-    output: "/benchrun/tejas/cuda6-transpose/sm86_a4000/input-repeat1-dimx64-dimy64/results/stats.csv",
+    input: "/benchrun/tejas/sm86_a4000/cuda6-transpose/input-repeat1-dimx64-dimy64/results/stats.txt",
+    output: "/benchrun/tejas/sm86_a4000/cuda6-transpose/input-repeat1-dimx64-dimy64/results/stats.csv",
 }
 stats: Stats {
     emulator_type: Some(
@@ -8,7 +8,7 @@ stats: Stats {
     ),
     created: None,
     sim_time: Some(
-        114.738s,
+        117.373s,
     ),
     total_inst_count: Some(
         9216,
@@ -40,10 +40,10 @@ stats: Stats {
         0,
     ),
     kips: Some(
-        0.0803221251895623,
+        0.07851890980037998,
     ),
     total_ipc: Some(
         0.9712298450837812,
     ),
 }
-done after 34.460794ms
+done after 36.130461ms

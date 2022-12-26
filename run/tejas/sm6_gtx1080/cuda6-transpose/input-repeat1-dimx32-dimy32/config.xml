@@ -3,7 +3,7 @@
 	
 	<Simulation>
 	    <MaxNumJavaThreads>16</MaxNumJavaThreads>		
-	    <MaxNumBlocksPerJavaThread>5000</MaxNumBlocksPerJavaThread>
+	    <MaxNumBlocksPerJavaThread>1000</MaxNumBlocksPerJavaThread>
 	    <GPUType>Kepler</GPUType> 						
 		<ThreadsPerCTA>2048</ThreadsPerCTA>
 	</Simulation>
@@ -105,7 +105,7 @@
 		<Interconnect>BUS</Interconnect>
 		
 		<NOC>
-			<NocConfigFile>/home/janib/Desktop/gpu_with_l2/Tejas-cuda/final_gpu_tejas/gputejas/src/simulator/config/NocConfig8.txt</NocConfigFile>
+			<NocConfigFile>/benchrun/tejas/sm6_gtx1080/cuda6-transpose/input-repeat1-dimx32-dimy32/tejas_noc_config.txt</NocConfigFile>
 			<NocSelScheme>STATIC</NocSelScheme>
 			<NocNumberOfBuffers>4</NocNumberOfBuffers>
 			<NocPortType>FCFS</NocPortType>

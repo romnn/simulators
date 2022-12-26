@@ -1,6 +1,6 @@
 options: Options {
-    input: "/benchrun/tejas/vectoradd/sm86_a4000/input-1000/results/stats.txt",
-    output: "/benchrun/tejas/vectoradd/sm86_a4000/input-1000/results/stats.csv",
+    input: "/benchrun/tejas/sm86_a4000/vectoradd/input-1000/results/stats.txt",
+    output: "/benchrun/tejas/sm86_a4000/vectoradd/input-1000/results/stats.csv",
 }
 stats: Stats {
     emulator_type: Some(
@@ -8,7 +8,7 @@ stats: Stats {
     ),
     created: None,
     sim_time: Some(
-        3.191s,
+        1.863s,
     ),
     total_inst_count: Some(
         25,
@@ -40,10 +40,10 @@ stats: Stats {
         0,
     ),
     kips: Some(
-        0.007834534628643058,
+        0.013419216317767043,
     ),
     total_ipc: Some(
         0.05938242280285035,
     ),
 }
-done after 40.143453ms
+done after 37.788009ms

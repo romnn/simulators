@@ -1,6 +1,6 @@
 options: Options {
-    input: "/benchrun/tejas/vectoradd/sm86_rtx3070/input-1000000/results/stats.txt",
-    output: "/benchrun/tejas/vectoradd/sm86_rtx3070/input-1000000/results/stats.csv",
+    input: "/benchrun/tejas/sm86_rtx3070/vectoradd/input-1000000/results/stats.txt",
+    output: "/benchrun/tejas/sm86_rtx3070/vectoradd/input-1000000/results/stats.csv",
 }
 stats: Stats {
     emulator_type: Some(
@@ -8,7 +8,7 @@ stats: Stats {
     ),
     created: None,
     sim_time: Some(
-        17.925s,
+        19.696s,
     ),
     total_inst_count: Some(
         22473,
@@ -40,10 +40,10 @@ stats: Stats {
         0,
     ),
     kips: Some(
-        1.253723849372385,
+        1.1409930950446792,
     ),
     total_ipc: Some(
         0.5782025883139938,
     ),
 }
-done after 37.617845ms
+done after 33.852136ms

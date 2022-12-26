@@ -1,6 +1,6 @@
 options: Options {
-    input: "/benchrun/tejas/cuda4-matrixmul/sm86_a4000/input-128/results/stats.txt",
-    output: "/benchrun/tejas/cuda4-matrixmul/sm86_a4000/input-128/results/stats.csv",
+    input: "/benchrun/tejas/sm86_a4000/cuda4-matrixmul/input-128/results/stats.txt",
+    output: "/benchrun/tejas/sm86_a4000/cuda4-matrixmul/input-128/results/stats.csv",
 }
 stats: Stats {
     emulator_type: Some(
@@ -8,7 +8,7 @@ stats: Stats {
     ),
     created: None,
     sim_time: Some(
-        17.685s,
+        13.812s,
     ),
     total_inst_count: Some(
         7968,
@@ -40,10 +40,10 @@ stats: Stats {
         0,
     ),
     kips: Some(
-        0.45055131467345205,
+        0.576889661164205,
     ),
     total_ipc: Some(
         2.4791537025513377,
     ),
 }
-done after 23.539306ms
+done after 38.295598ms
