@@ -75,15 +75,16 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
         results_dir = self.input_path(inp) / "results"
         assert results_dir.is_dir(), "{} is not a dir".format(results_dir)
         return build_multi2sim_df(
-            results_dir / "stats.csv",
+            # results_dir / "kpl-stats.csv",
+            results_dir / "mem-stats.csv",
             sim_dur_csv=results_dir / "sim_wall_time.csv",
         )
 
 
-def build_multi2sim_df(csv_file, sim_dur_csv=None):
+def build_multi2sim_df(*csv_files, sim_dur_csv=None):
     import pandas as pd
 
-    df = pd.read_csv(csv_file)
+    df = pd.concat([pd.read_csv(csv_file) for csv_file in csv_files])
     per_sm_metrics = df[df["Section"].str.match(r"SM \d+")]
     per_sm_total = per_sm_metrics.groupby("Stat")
     per_sm_total = per_sm_total.sum(numeric_only=True).reset_index()
