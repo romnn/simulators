@@ -30,14 +30,14 @@ fn main() -> Result<()> {
     let input_file = fs::OpenOptions::new().read(true).open(&options.input)?;
     let mut reader = io::BufReader::new(input_file);
     let raw_stats = Ini::read_from(&mut reader)?;
-    let mut stats: HashMap<(String, String), f64> = HashMap::new();
+    let mut stats: HashMap<(String, String), String> = HashMap::new();
     for (sec, prop) in &raw_stats {
         println!("Section: {:?}", sec);
         for (key, value) in prop.iter() {
             println!("{:?}:{:?}", key, value);
             stats.insert(
                 (sec.unwrap_or_default().trim().to_string(), key.to_string()),
-                value.parse()?,
+                value.to_string(),
             );
         }
     }

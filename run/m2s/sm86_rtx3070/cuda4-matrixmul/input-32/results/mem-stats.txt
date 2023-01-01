@@ -1,0 +1,6119 @@
+; Report for caches, TLBs, and main memory
+;    Accesses - Total number of accesses - Reads, Writes, and NCWrites (non-coherent) 
+;    Hits, Misses - Accesses resulting in hits/misses
+;    HitRatio - Hits divided by accesses
+;    Evictions - Invalidated or replaced cache blocks
+;    Retries - For L1 caches, accesses that were retried
+;    ReadRetries, WriteRetries, NCWriteRetries - Read/Write retried accesses
+;    Reads, Writes, NCWrites - Total read/write accesses
+;    BlockingReads, BlockingWrites, BlockingNCWrites - Reads/writes coming from lower-level cache
+;    NonBlockingReads, NonBlockingWrites, NonBlockingNCWrites - Coming from upper-level cache
+
+
+[ kpl-l1-0 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-1 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-2 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-3 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-4 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-5 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-6 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-7 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-8 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-9 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-10 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-11 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-12 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-13 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-14 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-15 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-16 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-17 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-18 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-19 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-20 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-21 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-22 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-23 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-24 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-25 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-26 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-27 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-28 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-29 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-30 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-31 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-32 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-33 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-34 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-35 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-36 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-37 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-38 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-39 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-40 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-41 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-42 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-43 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-44 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l1-45 ]
+
+Sets = 32
+Ways = 4
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 6
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l2-0 ]
+
+Sets = 32
+Ways = 16
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 20
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l2-1 ]
+
+Sets = 32
+Ways = 16
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 20
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l2-2 ]
+
+Sets = 32
+Ways = 16
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 20
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l2-3 ]
+
+Sets = 32
+Ways = 16
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 20
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l2-4 ]
+
+Sets = 32
+Ways = 16
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 20
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-l2-5 ]
+
+Sets = 32
+Ways = 16
+ReplacementPolicy = LRU
+WritePolicy = WriteBack
+BlockSize = 128
+DataLatency = 20
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+ConflictInvalidation = 0
+
+
+[ kpl-gm-0 ]
+
+BlockSize = 128
+DataLatency = 300
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+
+
+[ kpl-gm-1 ]
+
+BlockSize = 128
+DataLatency = 300
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+
+
+[ kpl-gm-2 ]
+
+BlockSize = 128
+DataLatency = 300
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+
+
+[ kpl-gm-3 ]
+
+BlockSize = 128
+DataLatency = 300
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+
+
+[ kpl-gm-4 ]
+
+BlockSize = 128
+DataLatency = 300
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+
+
+[ kpl-gm-5 ]
+
+BlockSize = 128
+DataLatency = 300
+Ports = 2
+
+Accesses = 0
+CoalescedAccesses = 0
+RetriedAccesses = 0
+Evictions = 0
+Hits = 0
+Misses = 0
+HitRatio = 0
+
+Reads = 0
+CoalescedReads = 0
+ReadHits = 0
+ReadMisses = 0
+ReadRetries = 0
+ReadRetryHits = 0
+ReadRetryMisses = 0
+BlockingReads = 0
+NonBlockingReads = 0
+
+Writes = 0
+CoalescedWrites = 0
+WriteHits = 0
+WriteMisses = 0
+WriteRetries = 0
+WriteRetryHits = 0
+WriteRetryMisses = 0
+BlockingWrites = 0
+NonBlockingWrites = 0
+
+NCWrites = 0
+CoalescedNCWrites = 0
+NCWriteHits = 0
+NCWriteMisses = 0
+NCWriteRetries = 0
+NCWriteRetryHits = 0
+NCWriteRetryMisses = 0
+BlockingNCWrites = 0
+NonBlockingNCWrites = 0
+
+DirectoryEntryConflicts = 0
+RetryDirectoryEntryConflicts = 0
+
+
+[ Network.kpl-net-l1-l2 ]
+Transfers = 0
+AverageMessageSize = 0.00
+TransferredBytes = 0
+AverageLatency = 0.0000
+Cycles = 37957
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-0_Switch ]
+Name = Switch<->kpl-l1-0
+SourceBuffers = kpl-l1-0:out_buf_0 
+DestinationBuffers = Switch:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-0 ]
+Name = Switch<->kpl-l1-0
+SourceBuffers = Switch:out_buf_0 
+DestinationBuffers = kpl-l1-0:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-1_Switch ]
+Name = Switch<->kpl-l1-1
+SourceBuffers = kpl-l1-1:out_buf_0 
+DestinationBuffers = Switch:in_buf_1 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-1 ]
+Name = Switch<->kpl-l1-1
+SourceBuffers = Switch:out_buf_1 
+DestinationBuffers = kpl-l1-1:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-2_Switch ]
+Name = Switch<->kpl-l1-2
+SourceBuffers = kpl-l1-2:out_buf_0 
+DestinationBuffers = Switch:in_buf_2 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-2 ]
+Name = Switch<->kpl-l1-2
+SourceBuffers = Switch:out_buf_2 
+DestinationBuffers = kpl-l1-2:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-3_Switch ]
+Name = Switch<->kpl-l1-3
+SourceBuffers = kpl-l1-3:out_buf_0 
+DestinationBuffers = Switch:in_buf_3 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-3 ]
+Name = Switch<->kpl-l1-3
+SourceBuffers = Switch:out_buf_3 
+DestinationBuffers = kpl-l1-3:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-4_Switch ]
+Name = Switch<->kpl-l1-4
+SourceBuffers = kpl-l1-4:out_buf_0 
+DestinationBuffers = Switch:in_buf_4 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-4 ]
+Name = Switch<->kpl-l1-4
+SourceBuffers = Switch:out_buf_4 
+DestinationBuffers = kpl-l1-4:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-5_Switch ]
+Name = Switch<->kpl-l1-5
+SourceBuffers = kpl-l1-5:out_buf_0 
+DestinationBuffers = Switch:in_buf_5 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-5 ]
+Name = Switch<->kpl-l1-5
+SourceBuffers = Switch:out_buf_5 
+DestinationBuffers = kpl-l1-5:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-6_Switch ]
+Name = Switch<->kpl-l1-6
+SourceBuffers = kpl-l1-6:out_buf_0 
+DestinationBuffers = Switch:in_buf_6 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-6 ]
+Name = Switch<->kpl-l1-6
+SourceBuffers = Switch:out_buf_6 
+DestinationBuffers = kpl-l1-6:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-7_Switch ]
+Name = Switch<->kpl-l1-7
+SourceBuffers = kpl-l1-7:out_buf_0 
+DestinationBuffers = Switch:in_buf_7 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-7 ]
+Name = Switch<->kpl-l1-7
+SourceBuffers = Switch:out_buf_7 
+DestinationBuffers = kpl-l1-7:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-8_Switch ]
+Name = Switch<->kpl-l1-8
+SourceBuffers = kpl-l1-8:out_buf_0 
+DestinationBuffers = Switch:in_buf_8 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-8 ]
+Name = Switch<->kpl-l1-8
+SourceBuffers = Switch:out_buf_8 
+DestinationBuffers = kpl-l1-8:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-9_Switch ]
+Name = Switch<->kpl-l1-9
+SourceBuffers = kpl-l1-9:out_buf_0 
+DestinationBuffers = Switch:in_buf_9 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-9 ]
+Name = Switch<->kpl-l1-9
+SourceBuffers = Switch:out_buf_9 
+DestinationBuffers = kpl-l1-9:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-10_Switch ]
+Name = Switch<->kpl-l1-10
+SourceBuffers = kpl-l1-10:out_buf_0 
+DestinationBuffers = Switch:in_buf_10 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-10 ]
+Name = Switch<->kpl-l1-10
+SourceBuffers = Switch:out_buf_10 
+DestinationBuffers = kpl-l1-10:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-11_Switch ]
+Name = Switch<->kpl-l1-11
+SourceBuffers = kpl-l1-11:out_buf_0 
+DestinationBuffers = Switch:in_buf_11 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-11 ]
+Name = Switch<->kpl-l1-11
+SourceBuffers = Switch:out_buf_11 
+DestinationBuffers = kpl-l1-11:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-12_Switch ]
+Name = Switch<->kpl-l1-12
+SourceBuffers = kpl-l1-12:out_buf_0 
+DestinationBuffers = Switch:in_buf_12 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-12 ]
+Name = Switch<->kpl-l1-12
+SourceBuffers = Switch:out_buf_12 
+DestinationBuffers = kpl-l1-12:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-13_Switch ]
+Name = Switch<->kpl-l1-13
+SourceBuffers = kpl-l1-13:out_buf_0 
+DestinationBuffers = Switch:in_buf_13 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-13 ]
+Name = Switch<->kpl-l1-13
+SourceBuffers = Switch:out_buf_13 
+DestinationBuffers = kpl-l1-13:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-14_Switch ]
+Name = Switch<->kpl-l1-14
+SourceBuffers = kpl-l1-14:out_buf_0 
+DestinationBuffers = Switch:in_buf_14 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-14 ]
+Name = Switch<->kpl-l1-14
+SourceBuffers = Switch:out_buf_14 
+DestinationBuffers = kpl-l1-14:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-15_Switch ]
+Name = Switch<->kpl-l1-15
+SourceBuffers = kpl-l1-15:out_buf_0 
+DestinationBuffers = Switch:in_buf_15 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-15 ]
+Name = Switch<->kpl-l1-15
+SourceBuffers = Switch:out_buf_15 
+DestinationBuffers = kpl-l1-15:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-16_Switch ]
+Name = Switch<->kpl-l1-16
+SourceBuffers = kpl-l1-16:out_buf_0 
+DestinationBuffers = Switch:in_buf_16 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-16 ]
+Name = Switch<->kpl-l1-16
+SourceBuffers = Switch:out_buf_16 
+DestinationBuffers = kpl-l1-16:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-17_Switch ]
+Name = Switch<->kpl-l1-17
+SourceBuffers = kpl-l1-17:out_buf_0 
+DestinationBuffers = Switch:in_buf_17 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-17 ]
+Name = Switch<->kpl-l1-17
+SourceBuffers = Switch:out_buf_17 
+DestinationBuffers = kpl-l1-17:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-18_Switch ]
+Name = Switch<->kpl-l1-18
+SourceBuffers = kpl-l1-18:out_buf_0 
+DestinationBuffers = Switch:in_buf_18 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-18 ]
+Name = Switch<->kpl-l1-18
+SourceBuffers = Switch:out_buf_18 
+DestinationBuffers = kpl-l1-18:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-19_Switch ]
+Name = Switch<->kpl-l1-19
+SourceBuffers = kpl-l1-19:out_buf_0 
+DestinationBuffers = Switch:in_buf_19 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-19 ]
+Name = Switch<->kpl-l1-19
+SourceBuffers = Switch:out_buf_19 
+DestinationBuffers = kpl-l1-19:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-20_Switch ]
+Name = Switch<->kpl-l1-20
+SourceBuffers = kpl-l1-20:out_buf_0 
+DestinationBuffers = Switch:in_buf_20 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-20 ]
+Name = Switch<->kpl-l1-20
+SourceBuffers = Switch:out_buf_20 
+DestinationBuffers = kpl-l1-20:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-21_Switch ]
+Name = Switch<->kpl-l1-21
+SourceBuffers = kpl-l1-21:out_buf_0 
+DestinationBuffers = Switch:in_buf_21 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-21 ]
+Name = Switch<->kpl-l1-21
+SourceBuffers = Switch:out_buf_21 
+DestinationBuffers = kpl-l1-21:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-22_Switch ]
+Name = Switch<->kpl-l1-22
+SourceBuffers = kpl-l1-22:out_buf_0 
+DestinationBuffers = Switch:in_buf_22 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-22 ]
+Name = Switch<->kpl-l1-22
+SourceBuffers = Switch:out_buf_22 
+DestinationBuffers = kpl-l1-22:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-23_Switch ]
+Name = Switch<->kpl-l1-23
+SourceBuffers = kpl-l1-23:out_buf_0 
+DestinationBuffers = Switch:in_buf_23 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-23 ]
+Name = Switch<->kpl-l1-23
+SourceBuffers = Switch:out_buf_23 
+DestinationBuffers = kpl-l1-23:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-24_Switch ]
+Name = Switch<->kpl-l1-24
+SourceBuffers = kpl-l1-24:out_buf_0 
+DestinationBuffers = Switch:in_buf_24 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-24 ]
+Name = Switch<->kpl-l1-24
+SourceBuffers = Switch:out_buf_24 
+DestinationBuffers = kpl-l1-24:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-25_Switch ]
+Name = Switch<->kpl-l1-25
+SourceBuffers = kpl-l1-25:out_buf_0 
+DestinationBuffers = Switch:in_buf_25 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-25 ]
+Name = Switch<->kpl-l1-25
+SourceBuffers = Switch:out_buf_25 
+DestinationBuffers = kpl-l1-25:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-26_Switch ]
+Name = Switch<->kpl-l1-26
+SourceBuffers = kpl-l1-26:out_buf_0 
+DestinationBuffers = Switch:in_buf_26 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-26 ]
+Name = Switch<->kpl-l1-26
+SourceBuffers = Switch:out_buf_26 
+DestinationBuffers = kpl-l1-26:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-27_Switch ]
+Name = Switch<->kpl-l1-27
+SourceBuffers = kpl-l1-27:out_buf_0 
+DestinationBuffers = Switch:in_buf_27 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-27 ]
+Name = Switch<->kpl-l1-27
+SourceBuffers = Switch:out_buf_27 
+DestinationBuffers = kpl-l1-27:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-28_Switch ]
+Name = Switch<->kpl-l1-28
+SourceBuffers = kpl-l1-28:out_buf_0 
+DestinationBuffers = Switch:in_buf_28 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-28 ]
+Name = Switch<->kpl-l1-28
+SourceBuffers = Switch:out_buf_28 
+DestinationBuffers = kpl-l1-28:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-29_Switch ]
+Name = Switch<->kpl-l1-29
+SourceBuffers = kpl-l1-29:out_buf_0 
+DestinationBuffers = Switch:in_buf_29 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-29 ]
+Name = Switch<->kpl-l1-29
+SourceBuffers = Switch:out_buf_29 
+DestinationBuffers = kpl-l1-29:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-30_Switch ]
+Name = Switch<->kpl-l1-30
+SourceBuffers = kpl-l1-30:out_buf_0 
+DestinationBuffers = Switch:in_buf_30 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-30 ]
+Name = Switch<->kpl-l1-30
+SourceBuffers = Switch:out_buf_30 
+DestinationBuffers = kpl-l1-30:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-31_Switch ]
+Name = Switch<->kpl-l1-31
+SourceBuffers = kpl-l1-31:out_buf_0 
+DestinationBuffers = Switch:in_buf_31 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-31 ]
+Name = Switch<->kpl-l1-31
+SourceBuffers = Switch:out_buf_31 
+DestinationBuffers = kpl-l1-31:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-32_Switch ]
+Name = Switch<->kpl-l1-32
+SourceBuffers = kpl-l1-32:out_buf_0 
+DestinationBuffers = Switch:in_buf_32 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-32 ]
+Name = Switch<->kpl-l1-32
+SourceBuffers = Switch:out_buf_32 
+DestinationBuffers = kpl-l1-32:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-33_Switch ]
+Name = Switch<->kpl-l1-33
+SourceBuffers = kpl-l1-33:out_buf_0 
+DestinationBuffers = Switch:in_buf_33 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-33 ]
+Name = Switch<->kpl-l1-33
+SourceBuffers = Switch:out_buf_33 
+DestinationBuffers = kpl-l1-33:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-34_Switch ]
+Name = Switch<->kpl-l1-34
+SourceBuffers = kpl-l1-34:out_buf_0 
+DestinationBuffers = Switch:in_buf_34 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-34 ]
+Name = Switch<->kpl-l1-34
+SourceBuffers = Switch:out_buf_34 
+DestinationBuffers = kpl-l1-34:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-35_Switch ]
+Name = Switch<->kpl-l1-35
+SourceBuffers = kpl-l1-35:out_buf_0 
+DestinationBuffers = Switch:in_buf_35 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-35 ]
+Name = Switch<->kpl-l1-35
+SourceBuffers = Switch:out_buf_35 
+DestinationBuffers = kpl-l1-35:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-36_Switch ]
+Name = Switch<->kpl-l1-36
+SourceBuffers = kpl-l1-36:out_buf_0 
+DestinationBuffers = Switch:in_buf_36 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-36 ]
+Name = Switch<->kpl-l1-36
+SourceBuffers = Switch:out_buf_36 
+DestinationBuffers = kpl-l1-36:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-37_Switch ]
+Name = Switch<->kpl-l1-37
+SourceBuffers = kpl-l1-37:out_buf_0 
+DestinationBuffers = Switch:in_buf_37 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-37 ]
+Name = Switch<->kpl-l1-37
+SourceBuffers = Switch:out_buf_37 
+DestinationBuffers = kpl-l1-37:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-38_Switch ]
+Name = Switch<->kpl-l1-38
+SourceBuffers = kpl-l1-38:out_buf_0 
+DestinationBuffers = Switch:in_buf_38 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-38 ]
+Name = Switch<->kpl-l1-38
+SourceBuffers = Switch:out_buf_38 
+DestinationBuffers = kpl-l1-38:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-39_Switch ]
+Name = Switch<->kpl-l1-39
+SourceBuffers = kpl-l1-39:out_buf_0 
+DestinationBuffers = Switch:in_buf_39 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-39 ]
+Name = Switch<->kpl-l1-39
+SourceBuffers = Switch:out_buf_39 
+DestinationBuffers = kpl-l1-39:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-40_Switch ]
+Name = Switch<->kpl-l1-40
+SourceBuffers = kpl-l1-40:out_buf_0 
+DestinationBuffers = Switch:in_buf_40 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-40 ]
+Name = Switch<->kpl-l1-40
+SourceBuffers = Switch:out_buf_40 
+DestinationBuffers = kpl-l1-40:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-41_Switch ]
+Name = Switch<->kpl-l1-41
+SourceBuffers = kpl-l1-41:out_buf_0 
+DestinationBuffers = Switch:in_buf_41 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-41 ]
+Name = Switch<->kpl-l1-41
+SourceBuffers = Switch:out_buf_41 
+DestinationBuffers = kpl-l1-41:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-42_Switch ]
+Name = Switch<->kpl-l1-42
+SourceBuffers = kpl-l1-42:out_buf_0 
+DestinationBuffers = Switch:in_buf_42 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-42 ]
+Name = Switch<->kpl-l1-42
+SourceBuffers = Switch:out_buf_42 
+DestinationBuffers = kpl-l1-42:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-43_Switch ]
+Name = Switch<->kpl-l1-43
+SourceBuffers = kpl-l1-43:out_buf_0 
+DestinationBuffers = Switch:in_buf_43 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-43 ]
+Name = Switch<->kpl-l1-43
+SourceBuffers = Switch:out_buf_43 
+DestinationBuffers = kpl-l1-43:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-44_Switch ]
+Name = Switch<->kpl-l1-44
+SourceBuffers = kpl-l1-44:out_buf_0 
+DestinationBuffers = Switch:in_buf_44 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-44 ]
+Name = Switch<->kpl-l1-44
+SourceBuffers = Switch:out_buf_44 
+DestinationBuffers = kpl-l1-44:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l1-45_Switch ]
+Name = Switch<->kpl-l1-45
+SourceBuffers = kpl-l1-45:out_buf_0 
+DestinationBuffers = Switch:in_buf_45 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l1-45 ]
+Name = Switch<->kpl-l1-45
+SourceBuffers = Switch:out_buf_45 
+DestinationBuffers = kpl-l1-45:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l2-0_Switch ]
+Name = Switch<->kpl-l2-0
+SourceBuffers = kpl-l2-0:out_buf_0 
+DestinationBuffers = Switch:in_buf_46 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l2-0 ]
+Name = Switch<->kpl-l2-0
+SourceBuffers = Switch:out_buf_46 
+DestinationBuffers = kpl-l2-0:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l2-1_Switch ]
+Name = Switch<->kpl-l2-1
+SourceBuffers = kpl-l2-1:out_buf_0 
+DestinationBuffers = Switch:in_buf_47 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l2-1 ]
+Name = Switch<->kpl-l2-1
+SourceBuffers = Switch:out_buf_47 
+DestinationBuffers = kpl-l2-1:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l2-2_Switch ]
+Name = Switch<->kpl-l2-2
+SourceBuffers = kpl-l2-2:out_buf_0 
+DestinationBuffers = Switch:in_buf_48 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l2-2 ]
+Name = Switch<->kpl-l2-2
+SourceBuffers = Switch:out_buf_48 
+DestinationBuffers = kpl-l2-2:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l2-3_Switch ]
+Name = Switch<->kpl-l2-3
+SourceBuffers = kpl-l2-3:out_buf_0 
+DestinationBuffers = Switch:in_buf_49 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l2-3 ]
+Name = Switch<->kpl-l2-3
+SourceBuffers = Switch:out_buf_49 
+DestinationBuffers = kpl-l2-3:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l2-4_Switch ]
+Name = Switch<->kpl-l2-4
+SourceBuffers = kpl-l2-4:out_buf_0 
+DestinationBuffers = Switch:in_buf_50 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l2-4 ]
+Name = Switch<->kpl-l2-4
+SourceBuffers = Switch:out_buf_50 
+DestinationBuffers = kpl-l2-4:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_kpl-l2-5_Switch ]
+Name = Switch<->kpl-l2-5
+SourceBuffers = kpl-l2-5:out_buf_0 
+DestinationBuffers = Switch:in_buf_51 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Link.link_Switch_kpl-l2-5 ]
+Name = Switch<->kpl-l2-5
+SourceBuffers = Switch:out_buf_51 
+DestinationBuffers = kpl-l2-5:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-0 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-1 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-2 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-3 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-4 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-5 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-6 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-7 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-8 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-9 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-10 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-11 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-12 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-13 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-14 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-15 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-16 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-17 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-18 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-19 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-20 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-21 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-22 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-23 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-24 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-25 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-26 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-27 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-28 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-29 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-30 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-31 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-32 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-33 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-34 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-35 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-36 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-37 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-38 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-39 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-40 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-41 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-42 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-43 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-44 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l1-45 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l2-0 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l2-1 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l2-2 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l2-3 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l2-4 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.kpl-l2-5 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l1-l2.Node.Switch ]
+Bandwidth = 264
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+in_buf_1.size = 528
+in_buf_1.PacketOccupancy = 0.00
+in_buf_1.ByteOccupancy = 0.00
+in_buf_1.Utilization = 0.00
+in_buf_2.size = 528
+in_buf_2.PacketOccupancy = 0.00
+in_buf_2.ByteOccupancy = 0.00
+in_buf_2.Utilization = 0.00
+in_buf_3.size = 528
+in_buf_3.PacketOccupancy = 0.00
+in_buf_3.ByteOccupancy = 0.00
+in_buf_3.Utilization = 0.00
+in_buf_4.size = 528
+in_buf_4.PacketOccupancy = 0.00
+in_buf_4.ByteOccupancy = 0.00
+in_buf_4.Utilization = 0.00
+in_buf_5.size = 528
+in_buf_5.PacketOccupancy = 0.00
+in_buf_5.ByteOccupancy = 0.00
+in_buf_5.Utilization = 0.00
+in_buf_6.size = 528
+in_buf_6.PacketOccupancy = 0.00
+in_buf_6.ByteOccupancy = 0.00
+in_buf_6.Utilization = 0.00
+in_buf_7.size = 528
+in_buf_7.PacketOccupancy = 0.00
+in_buf_7.ByteOccupancy = 0.00
+in_buf_7.Utilization = 0.00
+in_buf_8.size = 528
+in_buf_8.PacketOccupancy = 0.00
+in_buf_8.ByteOccupancy = 0.00
+in_buf_8.Utilization = 0.00
+in_buf_9.size = 528
+in_buf_9.PacketOccupancy = 0.00
+in_buf_9.ByteOccupancy = 0.00
+in_buf_9.Utilization = 0.00
+in_buf_10.size = 528
+in_buf_10.PacketOccupancy = 0.00
+in_buf_10.ByteOccupancy = 0.00
+in_buf_10.Utilization = 0.00
+in_buf_11.size = 528
+in_buf_11.PacketOccupancy = 0.00
+in_buf_11.ByteOccupancy = 0.00
+in_buf_11.Utilization = 0.00
+in_buf_12.size = 528
+in_buf_12.PacketOccupancy = 0.00
+in_buf_12.ByteOccupancy = 0.00
+in_buf_12.Utilization = 0.00
+in_buf_13.size = 528
+in_buf_13.PacketOccupancy = 0.00
+in_buf_13.ByteOccupancy = 0.00
+in_buf_13.Utilization = 0.00
+in_buf_14.size = 528
+in_buf_14.PacketOccupancy = 0.00
+in_buf_14.ByteOccupancy = 0.00
+in_buf_14.Utilization = 0.00
+in_buf_15.size = 528
+in_buf_15.PacketOccupancy = 0.00
+in_buf_15.ByteOccupancy = 0.00
+in_buf_15.Utilization = 0.00
+in_buf_16.size = 528
+in_buf_16.PacketOccupancy = 0.00
+in_buf_16.ByteOccupancy = 0.00
+in_buf_16.Utilization = 0.00
+in_buf_17.size = 528
+in_buf_17.PacketOccupancy = 0.00
+in_buf_17.ByteOccupancy = 0.00
+in_buf_17.Utilization = 0.00
+in_buf_18.size = 528
+in_buf_18.PacketOccupancy = 0.00
+in_buf_18.ByteOccupancy = 0.00
+in_buf_18.Utilization = 0.00
+in_buf_19.size = 528
+in_buf_19.PacketOccupancy = 0.00
+in_buf_19.ByteOccupancy = 0.00
+in_buf_19.Utilization = 0.00
+in_buf_20.size = 528
+in_buf_20.PacketOccupancy = 0.00
+in_buf_20.ByteOccupancy = 0.00
+in_buf_20.Utilization = 0.00
+in_buf_21.size = 528
+in_buf_21.PacketOccupancy = 0.00
+in_buf_21.ByteOccupancy = 0.00
+in_buf_21.Utilization = 0.00
+in_buf_22.size = 528
+in_buf_22.PacketOccupancy = 0.00
+in_buf_22.ByteOccupancy = 0.00
+in_buf_22.Utilization = 0.00
+in_buf_23.size = 528
+in_buf_23.PacketOccupancy = 0.00
+in_buf_23.ByteOccupancy = 0.00
+in_buf_23.Utilization = 0.00
+in_buf_24.size = 528
+in_buf_24.PacketOccupancy = 0.00
+in_buf_24.ByteOccupancy = 0.00
+in_buf_24.Utilization = 0.00
+in_buf_25.size = 528
+in_buf_25.PacketOccupancy = 0.00
+in_buf_25.ByteOccupancy = 0.00
+in_buf_25.Utilization = 0.00
+in_buf_26.size = 528
+in_buf_26.PacketOccupancy = 0.00
+in_buf_26.ByteOccupancy = 0.00
+in_buf_26.Utilization = 0.00
+in_buf_27.size = 528
+in_buf_27.PacketOccupancy = 0.00
+in_buf_27.ByteOccupancy = 0.00
+in_buf_27.Utilization = 0.00
+in_buf_28.size = 528
+in_buf_28.PacketOccupancy = 0.00
+in_buf_28.ByteOccupancy = 0.00
+in_buf_28.Utilization = 0.00
+in_buf_29.size = 528
+in_buf_29.PacketOccupancy = 0.00
+in_buf_29.ByteOccupancy = 0.00
+in_buf_29.Utilization = 0.00
+in_buf_30.size = 528
+in_buf_30.PacketOccupancy = 0.00
+in_buf_30.ByteOccupancy = 0.00
+in_buf_30.Utilization = 0.00
+in_buf_31.size = 528
+in_buf_31.PacketOccupancy = 0.00
+in_buf_31.ByteOccupancy = 0.00
+in_buf_31.Utilization = 0.00
+in_buf_32.size = 528
+in_buf_32.PacketOccupancy = 0.00
+in_buf_32.ByteOccupancy = 0.00
+in_buf_32.Utilization = 0.00
+in_buf_33.size = 528
+in_buf_33.PacketOccupancy = 0.00
+in_buf_33.ByteOccupancy = 0.00
+in_buf_33.Utilization = 0.00
+in_buf_34.size = 528
+in_buf_34.PacketOccupancy = 0.00
+in_buf_34.ByteOccupancy = 0.00
+in_buf_34.Utilization = 0.00
+in_buf_35.size = 528
+in_buf_35.PacketOccupancy = 0.00
+in_buf_35.ByteOccupancy = 0.00
+in_buf_35.Utilization = 0.00
+in_buf_36.size = 528
+in_buf_36.PacketOccupancy = 0.00
+in_buf_36.ByteOccupancy = 0.00
+in_buf_36.Utilization = 0.00
+in_buf_37.size = 528
+in_buf_37.PacketOccupancy = 0.00
+in_buf_37.ByteOccupancy = 0.00
+in_buf_37.Utilization = 0.00
+in_buf_38.size = 528
+in_buf_38.PacketOccupancy = 0.00
+in_buf_38.ByteOccupancy = 0.00
+in_buf_38.Utilization = 0.00
+in_buf_39.size = 528
+in_buf_39.PacketOccupancy = 0.00
+in_buf_39.ByteOccupancy = 0.00
+in_buf_39.Utilization = 0.00
+in_buf_40.size = 528
+in_buf_40.PacketOccupancy = 0.00
+in_buf_40.ByteOccupancy = 0.00
+in_buf_40.Utilization = 0.00
+in_buf_41.size = 528
+in_buf_41.PacketOccupancy = 0.00
+in_buf_41.ByteOccupancy = 0.00
+in_buf_41.Utilization = 0.00
+in_buf_42.size = 528
+in_buf_42.PacketOccupancy = 0.00
+in_buf_42.ByteOccupancy = 0.00
+in_buf_42.Utilization = 0.00
+in_buf_43.size = 528
+in_buf_43.PacketOccupancy = 0.00
+in_buf_43.ByteOccupancy = 0.00
+in_buf_43.Utilization = 0.00
+in_buf_44.size = 528
+in_buf_44.PacketOccupancy = 0.00
+in_buf_44.ByteOccupancy = 0.00
+in_buf_44.Utilization = 0.00
+in_buf_45.size = 528
+in_buf_45.PacketOccupancy = 0.00
+in_buf_45.ByteOccupancy = 0.00
+in_buf_45.Utilization = 0.00
+in_buf_46.size = 528
+in_buf_46.PacketOccupancy = 0.00
+in_buf_46.ByteOccupancy = 0.00
+in_buf_46.Utilization = 0.00
+in_buf_47.size = 528
+in_buf_47.PacketOccupancy = 0.00
+in_buf_47.ByteOccupancy = 0.00
+in_buf_47.Utilization = 0.00
+in_buf_48.size = 528
+in_buf_48.PacketOccupancy = 0.00
+in_buf_48.ByteOccupancy = 0.00
+in_buf_48.Utilization = 0.00
+in_buf_49.size = 528
+in_buf_49.PacketOccupancy = 0.00
+in_buf_49.ByteOccupancy = 0.00
+in_buf_49.Utilization = 0.00
+in_buf_50.size = 528
+in_buf_50.PacketOccupancy = 0.00
+in_buf_50.ByteOccupancy = 0.00
+in_buf_50.Utilization = 0.00
+in_buf_51.size = 528
+in_buf_51.PacketOccupancy = 0.00
+in_buf_51.ByteOccupancy = 0.00
+in_buf_51.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+out_buf_1.size = 528
+out_buf_1.PacketOccupancy = 0.00
+out_buf_1.ByteOccupancy = 0.00
+out_buf_1.Utilization = 0.00
+out_buf_2.size = 528
+out_buf_2.PacketOccupancy = 0.00
+out_buf_2.ByteOccupancy = 0.00
+out_buf_2.Utilization = 0.00
+out_buf_3.size = 528
+out_buf_3.PacketOccupancy = 0.00
+out_buf_3.ByteOccupancy = 0.00
+out_buf_3.Utilization = 0.00
+out_buf_4.size = 528
+out_buf_4.PacketOccupancy = 0.00
+out_buf_4.ByteOccupancy = 0.00
+out_buf_4.Utilization = 0.00
+out_buf_5.size = 528
+out_buf_5.PacketOccupancy = 0.00
+out_buf_5.ByteOccupancy = 0.00
+out_buf_5.Utilization = 0.00
+out_buf_6.size = 528
+out_buf_6.PacketOccupancy = 0.00
+out_buf_6.ByteOccupancy = 0.00
+out_buf_6.Utilization = 0.00
+out_buf_7.size = 528
+out_buf_7.PacketOccupancy = 0.00
+out_buf_7.ByteOccupancy = 0.00
+out_buf_7.Utilization = 0.00
+out_buf_8.size = 528
+out_buf_8.PacketOccupancy = 0.00
+out_buf_8.ByteOccupancy = 0.00
+out_buf_8.Utilization = 0.00
+out_buf_9.size = 528
+out_buf_9.PacketOccupancy = 0.00
+out_buf_9.ByteOccupancy = 0.00
+out_buf_9.Utilization = 0.00
+out_buf_10.size = 528
+out_buf_10.PacketOccupancy = 0.00
+out_buf_10.ByteOccupancy = 0.00
+out_buf_10.Utilization = 0.00
+out_buf_11.size = 528
+out_buf_11.PacketOccupancy = 0.00
+out_buf_11.ByteOccupancy = 0.00
+out_buf_11.Utilization = 0.00
+out_buf_12.size = 528
+out_buf_12.PacketOccupancy = 0.00
+out_buf_12.ByteOccupancy = 0.00
+out_buf_12.Utilization = 0.00
+out_buf_13.size = 528
+out_buf_13.PacketOccupancy = 0.00
+out_buf_13.ByteOccupancy = 0.00
+out_buf_13.Utilization = 0.00
+out_buf_14.size = 528
+out_buf_14.PacketOccupancy = 0.00
+out_buf_14.ByteOccupancy = 0.00
+out_buf_14.Utilization = 0.00
+out_buf_15.size = 528
+out_buf_15.PacketOccupancy = 0.00
+out_buf_15.ByteOccupancy = 0.00
+out_buf_15.Utilization = 0.00
+out_buf_16.size = 528
+out_buf_16.PacketOccupancy = 0.00
+out_buf_16.ByteOccupancy = 0.00
+out_buf_16.Utilization = 0.00
+out_buf_17.size = 528
+out_buf_17.PacketOccupancy = 0.00
+out_buf_17.ByteOccupancy = 0.00
+out_buf_17.Utilization = 0.00
+out_buf_18.size = 528
+out_buf_18.PacketOccupancy = 0.00
+out_buf_18.ByteOccupancy = 0.00
+out_buf_18.Utilization = 0.00
+out_buf_19.size = 528
+out_buf_19.PacketOccupancy = 0.00
+out_buf_19.ByteOccupancy = 0.00
+out_buf_19.Utilization = 0.00
+out_buf_20.size = 528
+out_buf_20.PacketOccupancy = 0.00
+out_buf_20.ByteOccupancy = 0.00
+out_buf_20.Utilization = 0.00
+out_buf_21.size = 528
+out_buf_21.PacketOccupancy = 0.00
+out_buf_21.ByteOccupancy = 0.00
+out_buf_21.Utilization = 0.00
+out_buf_22.size = 528
+out_buf_22.PacketOccupancy = 0.00
+out_buf_22.ByteOccupancy = 0.00
+out_buf_22.Utilization = 0.00
+out_buf_23.size = 528
+out_buf_23.PacketOccupancy = 0.00
+out_buf_23.ByteOccupancy = 0.00
+out_buf_23.Utilization = 0.00
+out_buf_24.size = 528
+out_buf_24.PacketOccupancy = 0.00
+out_buf_24.ByteOccupancy = 0.00
+out_buf_24.Utilization = 0.00
+out_buf_25.size = 528
+out_buf_25.PacketOccupancy = 0.00
+out_buf_25.ByteOccupancy = 0.00
+out_buf_25.Utilization = 0.00
+out_buf_26.size = 528
+out_buf_26.PacketOccupancy = 0.00
+out_buf_26.ByteOccupancy = 0.00
+out_buf_26.Utilization = 0.00
+out_buf_27.size = 528
+out_buf_27.PacketOccupancy = 0.00
+out_buf_27.ByteOccupancy = 0.00
+out_buf_27.Utilization = 0.00
+out_buf_28.size = 528
+out_buf_28.PacketOccupancy = 0.00
+out_buf_28.ByteOccupancy = 0.00
+out_buf_28.Utilization = 0.00
+out_buf_29.size = 528
+out_buf_29.PacketOccupancy = 0.00
+out_buf_29.ByteOccupancy = 0.00
+out_buf_29.Utilization = 0.00
+out_buf_30.size = 528
+out_buf_30.PacketOccupancy = 0.00
+out_buf_30.ByteOccupancy = 0.00
+out_buf_30.Utilization = 0.00
+out_buf_31.size = 528
+out_buf_31.PacketOccupancy = 0.00
+out_buf_31.ByteOccupancy = 0.00
+out_buf_31.Utilization = 0.00
+out_buf_32.size = 528
+out_buf_32.PacketOccupancy = 0.00
+out_buf_32.ByteOccupancy = 0.00
+out_buf_32.Utilization = 0.00
+out_buf_33.size = 528
+out_buf_33.PacketOccupancy = 0.00
+out_buf_33.ByteOccupancy = 0.00
+out_buf_33.Utilization = 0.00
+out_buf_34.size = 528
+out_buf_34.PacketOccupancy = 0.00
+out_buf_34.ByteOccupancy = 0.00
+out_buf_34.Utilization = 0.00
+out_buf_35.size = 528
+out_buf_35.PacketOccupancy = 0.00
+out_buf_35.ByteOccupancy = 0.00
+out_buf_35.Utilization = 0.00
+out_buf_36.size = 528
+out_buf_36.PacketOccupancy = 0.00
+out_buf_36.ByteOccupancy = 0.00
+out_buf_36.Utilization = 0.00
+out_buf_37.size = 528
+out_buf_37.PacketOccupancy = 0.00
+out_buf_37.ByteOccupancy = 0.00
+out_buf_37.Utilization = 0.00
+out_buf_38.size = 528
+out_buf_38.PacketOccupancy = 0.00
+out_buf_38.ByteOccupancy = 0.00
+out_buf_38.Utilization = 0.00
+out_buf_39.size = 528
+out_buf_39.PacketOccupancy = 0.00
+out_buf_39.ByteOccupancy = 0.00
+out_buf_39.Utilization = 0.00
+out_buf_40.size = 528
+out_buf_40.PacketOccupancy = 0.00
+out_buf_40.ByteOccupancy = 0.00
+out_buf_40.Utilization = 0.00
+out_buf_41.size = 528
+out_buf_41.PacketOccupancy = 0.00
+out_buf_41.ByteOccupancy = 0.00
+out_buf_41.Utilization = 0.00
+out_buf_42.size = 528
+out_buf_42.PacketOccupancy = 0.00
+out_buf_42.ByteOccupancy = 0.00
+out_buf_42.Utilization = 0.00
+out_buf_43.size = 528
+out_buf_43.PacketOccupancy = 0.00
+out_buf_43.ByteOccupancy = 0.00
+out_buf_43.Utilization = 0.00
+out_buf_44.size = 528
+out_buf_44.PacketOccupancy = 0.00
+out_buf_44.ByteOccupancy = 0.00
+out_buf_44.Utilization = 0.00
+out_buf_45.size = 528
+out_buf_45.PacketOccupancy = 0.00
+out_buf_45.ByteOccupancy = 0.00
+out_buf_45.Utilization = 0.00
+out_buf_46.size = 528
+out_buf_46.PacketOccupancy = 0.00
+out_buf_46.ByteOccupancy = 0.00
+out_buf_46.Utilization = 0.00
+out_buf_47.size = 528
+out_buf_47.PacketOccupancy = 0.00
+out_buf_47.ByteOccupancy = 0.00
+out_buf_47.Utilization = 0.00
+out_buf_48.size = 528
+out_buf_48.PacketOccupancy = 0.00
+out_buf_48.ByteOccupancy = 0.00
+out_buf_48.Utilization = 0.00
+out_buf_49.size = 528
+out_buf_49.PacketOccupancy = 0.00
+out_buf_49.ByteOccupancy = 0.00
+out_buf_49.Utilization = 0.00
+out_buf_50.size = 528
+out_buf_50.PacketOccupancy = 0.00
+out_buf_50.ByteOccupancy = 0.00
+out_buf_50.Utilization = 0.00
+out_buf_51.size = 528
+out_buf_51.PacketOccupancy = 0.00
+out_buf_51.ByteOccupancy = 0.00
+out_buf_51.Utilization = 0.00
+
+
+[ Network.kpl-net-l2-0-gm-0 ]
+Transfers = 0
+AverageMessageSize = 0.00
+TransferredBytes = 0
+AverageLatency = 0.0000
+Cycles = 37957
+
+[ Network.kpl-net-l2-0-gm-0.Link.link_kpl-l2-0_Switch ]
+Name = Switch<->kpl-l2-0
+SourceBuffers = kpl-l2-0:out_buf_0 
+DestinationBuffers = Switch:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-0-gm-0.Link.link_Switch_kpl-l2-0 ]
+Name = Switch<->kpl-l2-0
+SourceBuffers = Switch:out_buf_0 
+DestinationBuffers = kpl-l2-0:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-0-gm-0.Link.link_kpl-gm-0_Switch ]
+Name = Switch<->kpl-gm-0
+SourceBuffers = kpl-gm-0:out_buf_0 
+DestinationBuffers = Switch:in_buf_1 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-0-gm-0.Link.link_Switch_kpl-gm-0 ]
+Name = Switch<->kpl-gm-0
+SourceBuffers = Switch:out_buf_1 
+DestinationBuffers = kpl-gm-0:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-0-gm-0.Node.kpl-l2-0 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l2-0-gm-0.Node.kpl-gm-0 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l2-0-gm-0.Node.Switch ]
+Bandwidth = 264
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+in_buf_1.size = 528
+in_buf_1.PacketOccupancy = 0.00
+in_buf_1.ByteOccupancy = 0.00
+in_buf_1.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+out_buf_1.size = 528
+out_buf_1.PacketOccupancy = 0.00
+out_buf_1.ByteOccupancy = 0.00
+out_buf_1.Utilization = 0.00
+
+
+[ Network.kpl-net-l2-1-gm-1 ]
+Transfers = 0
+AverageMessageSize = 0.00
+TransferredBytes = 0
+AverageLatency = 0.0000
+Cycles = 37957
+
+[ Network.kpl-net-l2-1-gm-1.Link.link_kpl-l2-1_Switch ]
+Name = Switch<->kpl-l2-1
+SourceBuffers = kpl-l2-1:out_buf_0 
+DestinationBuffers = Switch:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-1-gm-1.Link.link_Switch_kpl-l2-1 ]
+Name = Switch<->kpl-l2-1
+SourceBuffers = Switch:out_buf_0 
+DestinationBuffers = kpl-l2-1:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-1-gm-1.Link.link_kpl-gm-1_Switch ]
+Name = Switch<->kpl-gm-1
+SourceBuffers = kpl-gm-1:out_buf_0 
+DestinationBuffers = Switch:in_buf_1 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-1-gm-1.Link.link_Switch_kpl-gm-1 ]
+Name = Switch<->kpl-gm-1
+SourceBuffers = Switch:out_buf_1 
+DestinationBuffers = kpl-gm-1:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-1-gm-1.Node.kpl-l2-1 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l2-1-gm-1.Node.kpl-gm-1 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l2-1-gm-1.Node.Switch ]
+Bandwidth = 264
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+in_buf_1.size = 528
+in_buf_1.PacketOccupancy = 0.00
+in_buf_1.ByteOccupancy = 0.00
+in_buf_1.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+out_buf_1.size = 528
+out_buf_1.PacketOccupancy = 0.00
+out_buf_1.ByteOccupancy = 0.00
+out_buf_1.Utilization = 0.00
+
+
+[ Network.kpl-net-l2-2-gm-2 ]
+Transfers = 0
+AverageMessageSize = 0.00
+TransferredBytes = 0
+AverageLatency = 0.0000
+Cycles = 37957
+
+[ Network.kpl-net-l2-2-gm-2.Link.link_kpl-l2-2_Switch ]
+Name = Switch<->kpl-l2-2
+SourceBuffers = kpl-l2-2:out_buf_0 
+DestinationBuffers = Switch:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-2-gm-2.Link.link_Switch_kpl-l2-2 ]
+Name = Switch<->kpl-l2-2
+SourceBuffers = Switch:out_buf_0 
+DestinationBuffers = kpl-l2-2:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-2-gm-2.Link.link_kpl-gm-2_Switch ]
+Name = Switch<->kpl-gm-2
+SourceBuffers = kpl-gm-2:out_buf_0 
+DestinationBuffers = Switch:in_buf_1 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-2-gm-2.Link.link_Switch_kpl-gm-2 ]
+Name = Switch<->kpl-gm-2
+SourceBuffers = Switch:out_buf_1 
+DestinationBuffers = kpl-gm-2:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-2-gm-2.Node.kpl-l2-2 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l2-2-gm-2.Node.kpl-gm-2 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l2-2-gm-2.Node.Switch ]
+Bandwidth = 264
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+in_buf_1.size = 528
+in_buf_1.PacketOccupancy = 0.00
+in_buf_1.ByteOccupancy = 0.00
+in_buf_1.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+out_buf_1.size = 528
+out_buf_1.PacketOccupancy = 0.00
+out_buf_1.ByteOccupancy = 0.00
+out_buf_1.Utilization = 0.00
+
+
+[ Network.kpl-net-l2-3-gm-3 ]
+Transfers = 0
+AverageMessageSize = 0.00
+TransferredBytes = 0
+AverageLatency = 0.0000
+Cycles = 37957
+
+[ Network.kpl-net-l2-3-gm-3.Link.link_kpl-l2-3_Switch ]
+Name = Switch<->kpl-l2-3
+SourceBuffers = kpl-l2-3:out_buf_0 
+DestinationBuffers = Switch:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-3-gm-3.Link.link_Switch_kpl-l2-3 ]
+Name = Switch<->kpl-l2-3
+SourceBuffers = Switch:out_buf_0 
+DestinationBuffers = kpl-l2-3:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-3-gm-3.Link.link_kpl-gm-3_Switch ]
+Name = Switch<->kpl-gm-3
+SourceBuffers = kpl-gm-3:out_buf_0 
+DestinationBuffers = Switch:in_buf_1 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-3-gm-3.Link.link_Switch_kpl-gm-3 ]
+Name = Switch<->kpl-gm-3
+SourceBuffers = Switch:out_buf_1 
+DestinationBuffers = kpl-gm-3:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-3-gm-3.Node.kpl-l2-3 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l2-3-gm-3.Node.kpl-gm-3 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l2-3-gm-3.Node.Switch ]
+Bandwidth = 264
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+in_buf_1.size = 528
+in_buf_1.PacketOccupancy = 0.00
+in_buf_1.ByteOccupancy = 0.00
+in_buf_1.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+out_buf_1.size = 528
+out_buf_1.PacketOccupancy = 0.00
+out_buf_1.ByteOccupancy = 0.00
+out_buf_1.Utilization = 0.00
+
+
+[ Network.kpl-net-l2-4-gm-4 ]
+Transfers = 0
+AverageMessageSize = 0.00
+TransferredBytes = 0
+AverageLatency = 0.0000
+Cycles = 37957
+
+[ Network.kpl-net-l2-4-gm-4.Link.link_kpl-l2-4_Switch ]
+Name = Switch<->kpl-l2-4
+SourceBuffers = kpl-l2-4:out_buf_0 
+DestinationBuffers = Switch:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-4-gm-4.Link.link_Switch_kpl-l2-4 ]
+Name = Switch<->kpl-l2-4
+SourceBuffers = Switch:out_buf_0 
+DestinationBuffers = kpl-l2-4:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-4-gm-4.Link.link_kpl-gm-4_Switch ]
+Name = Switch<->kpl-gm-4
+SourceBuffers = kpl-gm-4:out_buf_0 
+DestinationBuffers = Switch:in_buf_1 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-4-gm-4.Link.link_Switch_kpl-gm-4 ]
+Name = Switch<->kpl-gm-4
+SourceBuffers = Switch:out_buf_1 
+DestinationBuffers = kpl-gm-4:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-4-gm-4.Node.kpl-l2-4 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l2-4-gm-4.Node.kpl-gm-4 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l2-4-gm-4.Node.Switch ]
+Bandwidth = 264
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+in_buf_1.size = 528
+in_buf_1.PacketOccupancy = 0.00
+in_buf_1.ByteOccupancy = 0.00
+in_buf_1.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+out_buf_1.size = 528
+out_buf_1.PacketOccupancy = 0.00
+out_buf_1.ByteOccupancy = 0.00
+out_buf_1.Utilization = 0.00
+
+
+[ Network.kpl-net-l2-5-gm-5 ]
+Transfers = 0
+AverageMessageSize = 0.00
+TransferredBytes = 0
+AverageLatency = 0.0000
+Cycles = 37957
+
+[ Network.kpl-net-l2-5-gm-5.Link.link_kpl-l2-5_Switch ]
+Name = Switch<->kpl-l2-5
+SourceBuffers = kpl-l2-5:out_buf_0 
+DestinationBuffers = Switch:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-5-gm-5.Link.link_Switch_kpl-l2-5 ]
+Name = Switch<->kpl-l2-5
+SourceBuffers = Switch:out_buf_0 
+DestinationBuffers = kpl-l2-5:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-5-gm-5.Link.link_kpl-gm-5_Switch ]
+Name = Switch<->kpl-gm-5
+SourceBuffers = kpl-gm-5:out_buf_0 
+DestinationBuffers = Switch:in_buf_1 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-5-gm-5.Link.link_Switch_kpl-gm-5 ]
+Name = Switch<->kpl-gm-5
+SourceBuffers = Switch:out_buf_1 
+DestinationBuffers = kpl-gm-5:in_buf_0 
+Bandwidth = 264
+TransferredPackets = 0
+TransferredBytes = 0
+BusyCycles = 0
+BytesPerCycle = 0.0000
+Utilization = 0.0000
+
+[ Network.kpl-net-l2-5-gm-5.Node.kpl-l2-5 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l2-5-gm-5.Node.kpl-gm-5 ]
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+
+[ Network.kpl-net-l2-5-gm-5.Node.Switch ]
+Bandwidth = 264
+SentBytes = 0
+SentPackets = 0
+SendRate = 0.0000
+ReceivedBytes = 0
+ReceivedPackets = 0
+ReceiveRate = 0.0000
+in_buf_0.size = 528
+in_buf_0.PacketOccupancy = 0.00
+in_buf_0.ByteOccupancy = 0.00
+in_buf_0.Utilization = 0.00
+in_buf_1.size = 528
+in_buf_1.PacketOccupancy = 0.00
+in_buf_1.ByteOccupancy = 0.00
+in_buf_1.Utilization = 0.00
+out_buf_0.size = 528
+out_buf_0.PacketOccupancy = 0.00
+out_buf_0.ByteOccupancy = 0.00
+out_buf_0.Utilization = 0.00
+out_buf_1.size = 528
+out_buf_1.PacketOccupancy = 0.00
+out_buf_1.ByteOccupancy = 0.00
+out_buf_1.Utilization = 0.00
+
+
