@@ -400,7 +400,8 @@ def build_nsight_df(csv_files):
     def to_numeric(series, integer=False):
         # find separator for the entire series
         series = series.astype(str)
-        sep = "."
+        # sep = "."
+        sep = ","
         for value in series:
             if value.count(",") > 0 and value.count(".") > 0:
                 # find returns lowest index (first occurence)

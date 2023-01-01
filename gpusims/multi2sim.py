@@ -16,12 +16,15 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
         results_dir = path / "results"
         os.makedirs(str(results_dir.absolute()), exist_ok=True)
         log_file = results_dir / "log.txt"
-        stats_file = results_dir / "stats.txt"
+        kpl_stats_file = results_dir / "kpl-stats.txt"
+        mem_stats_file = results_dir / "mem-stats.txt"
 
         cmd = [
             "m2s",
+            "--mem-report",
+            str(kpl_stats_file.absolute()),
             "--kpl-report",
-            str(stats_file.absolute()),
+            str(mem_stats_file.absolute()),
             "--kpl-config",
             str((path / "m2s.config.ini").absolute()),
             "--kpl-sim",
@@ -50,12 +53,12 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
             f.write(stderr)
 
         # parse the stats file
-        csv_file = stats_file.with_suffix(".csv")
+        csv_file = kpl_stats_file.with_suffix(".csv")
         _, stdout, stderr, _ = utils.run_cmd(
             [
                 "m2s-parse",
                 "--input",
-                str(stats_file.absolute()),
+                str(kpl_stats_file.absolute()),
                 "--output",
                 str(csv_file.absolute()),
             ],
