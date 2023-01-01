@@ -22,9 +22,9 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
         cmd = [
             "m2s",
             "--mem-report",
-            str(kpl_stats_file.absolute()),
-            "--kpl-report",
             str(mem_stats_file.absolute()),
+            "--kpl-report",
+            str(kpl_stats_file.absolute()),
             "--kpl-config",
             str((path / "m2s.config.ini").absolute()),
             "--kpl-sim",
@@ -53,23 +53,24 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
             f.write(stderr)
 
         # parse the stats file
-        csv_file = kpl_stats_file.with_suffix(".csv")
-        _, stdout, stderr, _ = utils.run_cmd(
-            [
-                "m2s-parse",
-                "--input",
-                str(kpl_stats_file.absolute()),
-                "--output",
-                str(csv_file.absolute()),
-            ],
-            cwd=path,
-            timeout_sec=timeout_mins * 60,
-            save_to=results_dir / "m2s-parse",
-        )
-        print("stdout:")
-        print(stdout)
-        print("stderr:")
-        print(stderr)
+        for stat_file in [kpl_stats_file, mem_stats_file]:
+            csv_file = stat_file.with_suffix(".csv")
+            _, stdout, stderr, _ = utils.run_cmd(
+                [
+                    "m2s-parse",
+                    "--input",
+                    str(stat_file.absolute()),
+                    "--output",
+                    str(csv_file.absolute()),
+                ],
+                cwd=path,
+                timeout_sec=timeout_mins * 60,
+                save_to=results_dir / "m2s-parse",
+            )
+            print("stdout:")
+            print(stdout)
+            print("stderr:")
+            print(stderr)
 
     def load_dataframe(self, inp):
         results_dir = self.input_path(inp) / "results"
