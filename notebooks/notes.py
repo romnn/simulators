@@ -144,3 +144,79 @@ hw_df = build_hw_df(
     kernel_csv_files=list((native_results / "results").rglob(r"result.csv.*")),
 )
 hw_df.T
+
+
+# print the latex table
+sim_line = [""]
+conf_line = [""]
+
+plot_sims = [s for s in selected_simulators if s != gpusims.NATIVE]
+table_benchmarks = [
+    ("babelstream", "BabelStream"),
+    ("vectoradd", "VectorAdd"),
+    ("cuda4-matrixmul", "MatrixMul"),
+    ("cuda6-transpose", "Transpose"),
+]
+
+for bench_key, bench_name in table_benchmarks:
+    # bench = benchmarks[bench_name]
+    # bench
+    # for si, sim in enumerate(plot_sims):
+    # sim_line.append("\multicolumn{2}{c|}{%s}" % SIM_NAME_TEX[sim])
+    sim_line.append("\multicolumn{2}{c|}{%s}" % bench_name)
+    conf_line += [r"{\centering %s \par}" % configs[c].name.replace(" ", r"\newline ") for c in plot_configs]
+
+print(" & ".join(sim_line) + r" \\")
+print("%")
+print(" & ".join(conf_line) + r" \\ \hline")
+print("%")
+# for metric_key, metric_name in [("corr", "Corr."), ("err", "Rel. Err"), ("nrmse", "NRMSE")]:
+for si, sim in enumerate(plot_sims):
+    line = [SIM_NAME_TEX[sim]]
+    for bench_key, bench_name in table_benchmarks:
+        bench = benchmarks[bench_key]
+        for ci, conf in enumerate(plot_configs):
+            # print(conf, sim, bench_key)
+            matches = [
+                e for e in metric_table_data
+                if e["config"] == conf and e["sim"] == sim and e["bench"] == bench.name
+            ]
+            value = ""
+            # assert len(matches) == 1
+            if len(matches) == 1 and bench.enabled(sim):
+                match = matches[0]
+                # \\%
+                value = "%.1f" % (match["min_rel_err"]*100)
+                value += r"-\newline "
+                value += "%.1f" % (match["max_rel_err"]*100)
+                value += r"\%"
+            line.append(value)
+    # pprint(line)
+    print(" & ".join(line) + r" \\")
+    print("%")
+# pprint(metric_table_data)
+
+
+# metric_table_data
+sim_line = [""]
+conf_line = [""]
+for si, sim in enumerate([s for s in selected_simulators_copy if s != gpusims.NATIVE]):
+    sim_line.append("\multicolumn{2}{c|}{%s}" % SIM_NAME_TEX[sim])
+    conf_line += [r"{\centering %s \par}" % configs[c].name for c in plot_configs]
+print(" & ".join(sim_line) + r" \\")
+print("%")
+print(" & ".join(conf_line) + r" \\ \hline")
+print("%")
+for metric_key, metric_name in [("corr", "Corr."), ("err", "Rel. Err"), ("nrmse", "NRMSE")]:
+    line = [metric_name]
+    for si, sim in enumerate([s for s in selected_simulators_copy if s != gpusims.NATIVE]):
+        # if sim == gpusims.NATIVE:
+        #     continue
+        for ci, conf in enumerate(plot_configs):
+            matches = [e for e in table_data if e["config"] == conf and e["sim"] == sim]
+            value = ""
+            if len(matches) == 1:
+                value = matches[0][metric_key]
+            line.append(value)
+    print(" & ".join(line) + r" \\")
+    print("%")

@@ -76,17 +76,26 @@ class Multi2SimBenchmarkConfig(BenchmarkConfig):
         results_dir = self.input_path(inp) / "results"
         assert results_dir.is_dir(), "{} is not a dir".format(results_dir)
         return build_multi2sim_df(
-            # results_dir / "kpl-stats.csv",
-            results_dir / "mem-stats.csv",
+            kpl_stats_csv=results_dir / "kpl-stats.csv",
+            mem_stats_csv=results_dir / "mem-stats.csv",
             sim_dur_csv=results_dir / "sim_wall_time.csv",
         )
 
 
-def build_multi2sim_df(*csv_files, sim_dur_csv=None):
+def build_multi2sim_df(kpl_stats_csv, mem_stats_csv, sim_dur_csv=None):
     import pandas as pd
 
-    df = pd.concat([pd.read_csv(csv_file) for csv_file in csv_files])
-    per_sm_metrics = df[df["Section"].str.match(r"SM \d+")]
+    mem_df = pd.read_csv(mem_stats_csv)
+    mem_df["Stat"] = mem_df["Section"] + "." + mem_df["Stat"]
+    del mem_df["Section"]
+
+    mem_df = mem_df.set_index("Stat")
+    mem_df = mem_df.T
+    # return mem_df
+
+    # df = pd.concat([pd.read_csv(csv_file) for csv_file in csv_files])
+    kpl_df = pd.read_csv(kpl_stats_csv)
+    per_sm_metrics = kpl_df[kpl_df["Section"].str.match(r"SM \d+")]
     per_sm_total = per_sm_metrics.groupby("Stat")
     per_sm_total = per_sm_total.sum(numeric_only=True).reset_index()
     per_sm_total["Section"] = "Total"
@@ -95,13 +104,13 @@ def build_multi2sim_df(*csv_files, sim_dur_csv=None):
 
     assert len(per_sm_total) == len(per_sm_metrics["Stat"].unique())
 
-    df = pd.concat([df, per_sm_total])
+    kpl_df = pd.concat([kpl_df, per_sm_total])
 
-    df["Stat"] = df["Section"] + "." + df["Stat"]
-    del df["Section"]
+    kpl_df["Stat"] = kpl_df["Section"] + "." + kpl_df["Stat"]
+    del kpl_df["Section"]
 
-    df = df.set_index("Stat")
-    df = df.T
+    kpl_df = kpl_df.set_index("Stat")
+    kpl_df = kpl_df.T
 
     # Total instruction count
     # SPU Instructions
@@ -111,10 +120,11 @@ def build_multi2sim_df(*csv_files, sim_dur_csv=None):
     # DPU Instructions
     # BRU Instructions
     units = ["SPU", "SFU", "LDS", "IMU", "DPU", "BRU"]
-    df["Total.Instructions"] = df[
+    kpl_df["Total.Instructions"] = kpl_df[
         ["Total.{} Instructions".format(unit) for unit in units]
     ].sum(axis=1)
 
+    df = pd.concat([kpl_df, mem_df], axis=1)
     if sim_dur_csv is not None:
         df["sim_wall_time"] = pd.read_csv(sim_dur_csv)["exec_time_sec"][0]
 

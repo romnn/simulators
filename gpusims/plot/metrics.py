@@ -364,6 +364,33 @@ class IPC(BaseMetric):
 class DRAMAccesses(BaseMetric):
     name = "Total DRAM Accesses (Read/Write)"
 
+    # m2s has no dram writes
+    # macsim has no dram writes
+    def compute_tejas(self, df):
+        total = int(df["dram_total_reads"].sum())
+        total += int(df["dram_total_writes"].sum())
+        return total
+
+    def compute_accelsim_ptx(self, df):
+        total = int(df["total_dram_reads"].sum())
+        total += int(df["total_dram_writes"].sum())
+        return total
+
+    def compute_accelsim_sass(self, df):
+        total = int(df["total_dram_reads"].sum())
+        total += int(df["total_dram_writes"].sum())
+        return total
+
+    def compute_native(self, df):
+        if "dram_read_transactions" in df:
+            total = int(df["dram_read_transactions"].sum())
+            total += int(df["dram_write_transactions"].sum())
+        else:
+            total = int(df["dram__sectors_read.sum_sector"].sum())
+            total += int(df["dram__sectors_write.sum_sector"].sum())
+
+        return total
+
 
 class L2Writes(BaseMetric):
     name = "Total L2 Writes"
