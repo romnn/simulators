@@ -16,7 +16,7 @@ RUN cd /simulator && python3 ./build.py -j 16
 # FROM ubuntu:18.04
 # FROM ubuntu:18.04
 # FROM nvidia/cuda:10.1-devel-ubuntu18.04
-FROM romnn/ocelot
+FROM gpgpusims/ocelot
 
 # install basic packages
 RUN apt-get update && apt-get -y upgrade

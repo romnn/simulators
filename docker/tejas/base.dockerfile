@@ -1,4 +1,4 @@
-FROM romnn/ocelot
+FROM gpgpusims/ocelot
 
 SHELL ["/bin/bash", "-c"]
 

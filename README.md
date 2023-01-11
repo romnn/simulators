@@ -6,7 +6,7 @@ Building and benchmarking architectural simulators for NVIDIA GPU's.
 
 In the following, we describe the procedure of running benchmarks. Due to different requirements for each simulator, we use docker containers to isolate the build and runtime environment of the simulators.
 
-We recommend using the docker setup as it is more easily reproducible and [tested in CI](https://github.com/romnn/gpgpusims/actions/workflows/containers.yml).
+We recommend using the docker setup as it is more easily reproducible and tested in CI.
 We also recommend using the provided `inv` tasks to build and benchmark containers as described in the following sections.
 
 #### Option 1: Using docker containers (recommended)

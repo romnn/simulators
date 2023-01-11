@@ -30,6 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pipenv
+          pipenv lock --dev
           pipenv install --dev --system
 
       - name: Lint
