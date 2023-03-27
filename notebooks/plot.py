@@ -162,3 +162,12 @@ def sim_marker(sim):
             width=0,
         ),
     )
+
+def powers_of(base, including):
+    values = []
+    i = 0
+    while base**i <= including:
+        # values.append(i)
+        values.append(base**i)
+        i += 1
+    return values

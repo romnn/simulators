@@ -220,3 +220,6 @@ for metric_key, metric_name in [("corr", "Corr."), ("err", "Rel. Err"), ("nrmse"
             line.append(value)
     print(" & ".join(line) + r" \\")
     print("%")
+    
+# amd: #ee1f23
+# nvidia: #76b900
