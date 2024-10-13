@@ -61,6 +61,7 @@ SIM_ABBR = {
     #"MacSim": "MS",
 }
 
+PPI = 96
 MARGIN = 50
 
 DEFAULT_LAYOUT_OPTIONS = dict(
