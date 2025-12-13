@@ -6,6 +6,8 @@ from gpusims.bench import BenchmarkConfig
 from gpusims.cuda import get_devices
 import gpusims.utils as utils
 
+from gpusims.simulators import NATIVE
+
 
 def convert_hw_csv(csv_file, output_csv_file):
     with open(str(csv_file.absolute()), "rU") as f:
@@ -225,6 +227,10 @@ def profile_nvprof(path, inp, results_dir, r, timeout_mins=5):
 
 
 class NativeBenchmarkConfig(BenchmarkConfig):
+    ID = NATIVE
+    NAME = "Hardware"
+    TEX_NAME = "Hardware"
+
     @staticmethod
     def _run(path, inp, repetitions=1, timeout_mins=5, parse_only=False, **kwargs):
         print("native run")
@@ -249,11 +255,7 @@ class NativeBenchmarkConfig(BenchmarkConfig):
                     device.name,
                 )
 
-            print(
-                "{} has compute capability {}.{}".format(
-                    device.name, device.major, device.minor
-                )
-            )
+            print("{} has compute capability {}.{}".format(device.name, device.major, device.minor))
 
             use_nsight = int(device.major) >= 8
 
@@ -276,9 +278,7 @@ class NativeBenchmarkConfig(BenchmarkConfig):
 
         # parse the results
         nsight_results = sorted(list(results_dir.rglob("*result.nsight.txt")))
-        nvprof_cycles_results = sorted(
-            list(results_dir.rglob("*result.nvprof.cycles.txt"))
-        )
+        nvprof_cycles_results = sorted(list(results_dir.rglob("*result.nvprof.cycles.txt")))
         nvprof_results = sorted(list(results_dir.rglob("*result.nvprof.txt")))
 
         for result in nvprof_results + nvprof_cycles_results + nsight_results:
@@ -289,9 +289,7 @@ class NativeBenchmarkConfig(BenchmarkConfig):
         assert results_dir.is_dir(), "{} is not a dir".format(results_dir)
 
         nsight_results = sorted(list(results_dir.rglob("*result.nsight.csv")))
-        nvprof_cycles_results = sorted(
-            list(results_dir.rglob("*result.nvprof.cycles.csv"))
-        )
+        nvprof_cycles_results = sorted(list(results_dir.rglob("*result.nvprof.cycles.csv")))
         nvprof_results = sorted(list(results_dir.rglob("*result.nvprof.csv")))
         # pprint(nvprof_results)
         # pprint(nvprof_cycles_results)
@@ -412,15 +410,9 @@ def build_nsight_df(csv_files):
         return pd.to_numeric(series.apply(to_numeric_single, integer=integer))
 
     integer_cols = []
-    integer_cols += nsight_df.columns[
-        nsight_df.columns.str.contains(pat="_nsecond$")
-    ].tolist()
-    integer_cols += nsight_df.columns[
-        nsight_df.columns.str.contains(pat=r"\.sum_inst$")
-    ].tolist()
-    integer_cols += nsight_df.columns[
-        nsight_df.columns.str.contains(pat=r"\.sum_sector$")
-    ].tolist()
+    integer_cols += nsight_df.columns[nsight_df.columns.str.contains(pat="_nsecond$")].tolist()
+    integer_cols += nsight_df.columns[nsight_df.columns.str.contains(pat=r"\.sum_inst$")].tolist()
+    integer_cols += nsight_df.columns[nsight_df.columns.str.contains(pat=r"\.sum_sector$")].tolist()
     # integer_cols += ["dram__sectors_read.sum_sector", "dram__sectors_write.sum_sector"]
     integer_cols = [c for c in integer_cols if c in nsight_df.columns]
     # print(integer_cols)
@@ -435,21 +427,13 @@ def build_nsight_df(csv_files):
     grouped_repetitions = nsight_df.groupby(level=nsight_index_cols)
     nsight_df = grouped_repetitions.mean()
     nsight_df_max = grouped_repetitions.max()
-    nsight_df_max = nsight_df_max.rename(
-        columns={c: c + "_max" for c in nsight_df_max.columns}
-    )
+    nsight_df_max = nsight_df_max.rename(columns={c: c + "_max" for c in nsight_df_max.columns})
     nsight_df_min = grouped_repetitions.min()
-    nsight_df_min = nsight_df_min.rename(
-        columns={c: c + "_min" for c in nsight_df_min.columns}
-    )
+    nsight_df_min = nsight_df_min.rename(columns={c: c + "_min" for c in nsight_df_min.columns})
     nsight_df_std = grouped_repetitions.std(ddof=0)
-    nsight_df_std = nsight_df_std.rename(
-        columns={c: c + "_std" for c in nsight_df_std.columns}
-    )
+    nsight_df_std = nsight_df_std.rename(columns={c: c + "_std" for c in nsight_df_std.columns})
 
-    nsight_df = pd.concat(
-        [nsight_df, nsight_df_max, nsight_df_min, nsight_df_std], axis=1
-    )
+    nsight_df = pd.concat([nsight_df, nsight_df_max, nsight_df_min, nsight_df_std], axis=1)
     nsight_df = nsight_df.sort_index(axis=1)
     return nsight_df
 
@@ -457,22 +441,16 @@ def build_nsight_df(csv_files):
 def build_nvprof_kernel_df(csv_files):
     import pandas as pd
 
-    hw_kernel_df = pd.concat(
-        [pd.read_csv(csv) for csv in csv_files], ignore_index=False
-    )
+    hw_kernel_df = pd.concat([pd.read_csv(csv) for csv in csv_files], ignore_index=False)
     # remove the units
     hw_kernel_df = hw_kernel_df[~hw_kernel_df["Correlation_ID"].isnull()]
     # remove memcopies
-    hw_kernel_df = hw_kernel_df[
-        ~hw_kernel_df["Name"].str.contains(r"\[CUDA memcpy .*\]")
-    ]
+    hw_kernel_df = hw_kernel_df[~hw_kernel_df["Name"].str.contains(r"\[CUDA memcpy .*\]")]
     # name refers to kernels now
     hw_kernel_df = hw_kernel_df.rename(columns={"Name": "Kernel"})
     # remove columns that are only relevant for memcopies
     # df = df.loc[:,df.notna().any(axis=0)]
-    hw_kernel_df = hw_kernel_df.drop(
-        columns=["Size", "Throughput", "SrcMemType", "DstMemType"]
-    )
+    hw_kernel_df = hw_kernel_df.drop(columns=["Size", "Throughput", "SrcMemType", "DstMemType"])
     # set the correct dtypes
     hw_kernel_df = hw_kernel_df.astype(
         {
@@ -493,17 +471,11 @@ def build_nvprof_kernel_df(csv_files):
     grouped_repetitions = hw_kernel_df.groupby(level=nvprof_index_cols)
     hw_kernel_df = grouped_repetitions.mean()
     hw_kernel_df_max = grouped_repetitions.max()
-    hw_kernel_df_max = hw_kernel_df_max.rename(
-        columns={c: c + "_max" for c in hw_kernel_df_max.columns}
-    )
+    hw_kernel_df_max = hw_kernel_df_max.rename(columns={c: c + "_max" for c in hw_kernel_df_max.columns})
     hw_kernel_df_min = grouped_repetitions.min()
-    hw_kernel_df_min = hw_kernel_df_min.rename(
-        columns={c: c + "_min" for c in hw_kernel_df_min.columns}
-    )
+    hw_kernel_df_min = hw_kernel_df_min.rename(columns={c: c + "_min" for c in hw_kernel_df_min.columns})
     hw_kernel_df_std = grouped_repetitions.std(ddof=0)
-    hw_kernel_df_std = hw_kernel_df_std.rename(
-        columns={c: c + "_std" for c in hw_kernel_df_std.columns}
-    )
+    hw_kernel_df_std = hw_kernel_df_std.rename(columns={c: c + "_std" for c in hw_kernel_df_std.columns})
     return hw_kernel_df
 
 
@@ -515,9 +487,7 @@ def build_nvprof_cycles_df(csv_files):
     # remove the units
     hw_cycle_df = hw_cycle_df[~hw_cycle_df["Correlation_ID"].isnull()]
     # remove textual utilization metrics (high, low, ...)
-    hw_cycle_df = hw_cycle_df[
-        hw_cycle_df.columns[~hw_cycle_df.columns.str.contains(r".*_utilization")]
-    ]
+    hw_cycle_df = hw_cycle_df[hw_cycle_df.columns[~hw_cycle_df.columns.str.contains(r".*_utilization")]]
     hw_cycle_df["Device"] = hw_cycle_df["Device"].apply(normalize_device_name)
     hw_cycle_df = hw_cycle_df.set_index(nvprof_index_cols)
     # convert to numeric values
@@ -528,21 +498,13 @@ def build_nvprof_cycles_df(csv_files):
     grouped_repetitions = hw_cycle_df.groupby(level=nvprof_index_cols)
     hw_cycle_df = grouped_repetitions.mean()
     hw_cycle_df_max = grouped_repetitions.max()
-    hw_cycle_df_max = hw_cycle_df_max.rename(
-        columns={c: c + "_max" for c in hw_cycle_df_max.columns}
-    )
+    hw_cycle_df_max = hw_cycle_df_max.rename(columns={c: c + "_max" for c in hw_cycle_df_max.columns})
     hw_cycle_df_min = grouped_repetitions.min()
-    hw_cycle_df_min = hw_cycle_df_min.rename(
-        columns={c: c + "_min" for c in hw_cycle_df_min.columns}
-    )
+    hw_cycle_df_min = hw_cycle_df_min.rename(columns={c: c + "_min" for c in hw_cycle_df_min.columns})
     hw_cycle_df_std = grouped_repetitions.std(ddof=0)
-    hw_cycle_df_std = hw_cycle_df_std.rename(
-        columns={c: c + "_std" for c in hw_cycle_df_std.columns}
-    )
+    hw_cycle_df_std = hw_cycle_df_std.rename(columns={c: c + "_std" for c in hw_cycle_df_std.columns})
 
-    hw_cycle_df = pd.concat(
-        [hw_cycle_df, hw_cycle_df_max, hw_cycle_df_min, hw_cycle_df_std], axis=1
-    )
+    hw_cycle_df = pd.concat([hw_cycle_df, hw_cycle_df_max, hw_cycle_df_min, hw_cycle_df_std], axis=1)
     return hw_cycle_df
 
 

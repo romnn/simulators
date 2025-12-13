@@ -2,11 +2,16 @@ import os
 import csv
 from gpusims.bench import BenchmarkConfig
 from pathlib import Path
-import gpusims.utils as utils
+import gpusims
+from gpusims.simulators import ACCELSIM_PTX
 from pprint import pprint  # noqa: F401
 
 
 class AccelSimPTXBenchmarkConfig(BenchmarkConfig):
+    ID = ACCELSIM_PTX
+    NAME = "AccelSim (PTX)"
+    TEX_NAME = r"\textsc{AccelSim} (PTX)"
+
     @staticmethod
     def _run(path, inp, force=False, timeout_mins=5, **kwargs):
         print("accelsim PTX run:", inp)

@@ -8,7 +8,9 @@ from gpusims.bench import BenchmarkConfig
 import multiprocessing
 from pprint import pprint  # noqa: F401
 import xml.etree.ElementTree as ET
+import gpusims
 import gpusims.utils as utils
+from gpusims.simulators import TEJAS
 
 
 def build_config(config_file, threads, noc_config_file):
@@ -20,6 +22,10 @@ def build_config(config_file, threads, noc_config_file):
 
 
 class TejasBenchmarkConfig(BenchmarkConfig):
+    ID = TEJAS
+    NAME = "GPUTejas"
+    TEX_NAME = r"\textsc{GpuTejas}"
+
     @staticmethod
     def _run(path, inp, force=False, timeout_mins=5, retries=2, **kwargs):
         print("tejas run:", inp, inp.args)

@@ -74,9 +74,7 @@ class BaseMetric(Metric):
             data.append((gpusims.TEJAS, self.compute_tejas(self.tejas_df)))
         if self.accelsim_ptx_df is not None:
             # "AccelSim PTX"
-            data.append(
-                (gpusims.ACCELSIM_PTX, self.compute_accelsim_ptx(self.accelsim_ptx_df))
-            )
+            data.append((gpusims.ACCELSIM_PTX, self.compute_accelsim_ptx(self.accelsim_ptx_df)))
         if self.accelsim_sass_df is not None:
             # "AccelSim SASS"
             data.append(
@@ -146,9 +144,7 @@ class BaseMetric(Metric):
 
     def num_blocks(self):
         if "Grid X" in self.hw_df:
-            return (
-                self.hw_df["Grid X"] * self.hw_df["Grid Y"] * self.hw_df["Grid Z"]
-            ).sum()
+            return (self.hw_df["Grid X"] * self.hw_df["Grid Y"] * self.hw_df["Grid Z"]).sum()
         else:
             return self.hw_df["launch__grid_size"].sum()
 
@@ -164,9 +160,14 @@ class Cycles(BaseMetric):
         return device_cycles
 
     def compute_macsim(self, df):
-        # CYC_COUNT_TOT seems to be way too large
+        # CYC_COUNT_TOT seems to be slightly larger than CYC_COUNT_CORE_TOTAL
         # CYCLE_GPU is always zero
-        return df["CYC_COUNT_CORE_TOTAL"][0]
+        # could be that CYC_COUNT_CORE_TOTAL is the GPU and CYC_COUNT_TOT is some
+        # other heterogenous stuff
+        # print(df[["CYC_COUNT_CORE_TOTAL", "CYC_COUNT_TOT", "CYCLE_GPU"]])
+        cycles = float(df.loc["agg_value", "CYC_COUNT_CORE_TOTAL"])
+        # cannot verify if this is correct but otherwise the values are too large
+        return cycles / self.data.config.spec["sm_count"]
 
     def compute_tejas(self, df):
         return df["total_cycle_count"].sum()
@@ -208,8 +209,11 @@ class ExecutionTime(BaseMetric):
 
         macsim_sim, macsim_trace = 0, 0
         if self.macsim_df is not None:
-            macsim_sim = self.macsim_df["EXE_TIME"][0]
-            macsim_trace = self.macsim_df["trace_wall_time"].sum()
+            # print(self.macsim_df[["EXE_TIME", "sim_wall_time", "trace_wall_time"]])
+
+            macsim_sim = float(self.macsim_df.loc["agg_value", "EXE_TIME"])
+            macsim_sim = float(self.macsim_df.loc["agg_value", "sim_wall_time"])
+            macsim_trace = float(self.macsim_df.loc["agg_value", "trace_wall_time"])
 
         tejas_sim, tejas_trace = 0, 0
         if self.tejas_df is not None:
@@ -218,11 +222,13 @@ class ExecutionTime(BaseMetric):
 
         accel_ptx_sim = 0
         if self.accelsim_ptx_df is not None:
-            accel_ptx_sim = self.accelsim_ptx_df["gpgpu_simulation_time_sec"].sum()
+            # accel_ptx_sim = self.accelsim_ptx_df["gpgpu_simulation_time_sec"].sum()
+            accel_ptx_sim = self.accelsim_ptx_df["sim_wall_time"].sum()
 
         accel_sass_sim, accel_sass_trace = 0, 0
         if self.accelsim_sass_df is not None:
-            accel_sass_sim = self.accelsim_sass_df["gpgpu_simulation_time_sec"].sum()
+            # accel_sass_sim = self.accelsim_sass_df["gpgpu_simulation_time_sec"].sum()
+            accel_sass_sim = self.accelsim_sass_df["sim_wall_time"].sum()
             accel_sass_trace = self.accelsim_sass_df["trace_wall_time"].sum()
 
         hw_value = 0
@@ -247,7 +253,8 @@ class ExecutionTime(BaseMetric):
             ],
             columns=["Simulator", "Kind", "Value"],
         )
-        df["Value"] = df["Value"].round(6)
+        # DONT ROUND FOR SMALL VALUES LIKE NATIVE
+        # df["Value"] = df["Value"].round(6)
         return df
 
 
@@ -266,9 +273,7 @@ class L2ReadHit(BaseMetric):
 
     def compute_native(self, df):
         if "l2_tex_read_transactions" in df:
-            return (
-                df["l2_tex_read_transactions"] * df["l2_tex_read_hit_rate"] / 100.0
-            ).sum()
+            return (df["l2_tex_read_transactions"] * df["l2_tex_read_hit_rate"] / 100.0).sum()
         else:
             return df["lts__t_sectors_srcunit_tex_op_read_lookup_hit.sum_sector"].sum()
 
@@ -288,9 +293,7 @@ class L2WriteHit(BaseMetric):
 
     def compute_native(self, df):
         if "l2_tex_write_transactions" in df:
-            return (
-                df["l2_tex_write_transactions"] * df["l2_tex_write_hit_rate"] / 100.0
-            ).sum()
+            return (df["l2_tex_write_transactions"] * df["l2_tex_write_hit_rate"] / 100.0).sum()
         else:
             return df["lts__t_sectors_srcunit_tex_op_write_lookup_hit.sum_sector"].sum()
 
@@ -629,10 +632,7 @@ class L2Accesses(BaseMetric):
 
     def compute_native(self, df):
         if "l2_tex_read_transactions" in df:
-            return (
-                df["l2_tex_write_transactions"].sum()
-                + df["l2_tex_read_transactions"].sum()
-            )
+            return df["l2_tex_write_transactions"].sum() + df["l2_tex_read_transactions"].sum()
         else:
             return (
                 df["lts__t_sectors_srcunit_tex_op_write.sum_sector"].sum()
@@ -655,12 +655,8 @@ class L2Hits(BaseMetric):
         return df["L2_HIT_GPU"][0]
 
     def compute_native(self, df):
-        read_hits = df["l2_tex_read_transactions"].sum() * (
-            df["l2_tex_read_hit_rate"].mean() / 100.0
-        )
-        write_hits = df["l2_tex_write_transactions"].sum() * (
-            df["l2_tex_write_hit_rate"].mean() / 100.0
-        )
+        read_hits = df["l2_tex_read_transactions"].sum() * (df["l2_tex_read_hit_rate"].mean() / 100.0)
+        write_hits = df["l2_tex_write_transactions"].sum() * (df["l2_tex_write_hit_rate"].mean() / 100.0)
         return read_hits + write_hits
 
 

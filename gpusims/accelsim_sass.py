@@ -5,6 +5,8 @@ from pathlib import Path
 import gpusims.utils as utils
 from pprint import pprint  # noqa: F401
 
+from gpusims.simulators import ACCELSIM_SASS
+
 ROOT_DIR = Path(__file__).parent.parent
 LOG_FILE_NAME = "log.txt"
 
@@ -14,9 +16,7 @@ def trace_commands(path, inp, traces_dir):
     if os.environ.get("NVBIT_TRACER_ROOT") is not None:
         nvbit_tracer_root = Path(os.environ["NVBIT_TRACER_ROOT"])
     else:
-        nvbit_tracer_root = (
-            ROOT_DIR / "benchmarks/accel-sim-framework/util/tracer_nvbit/"
-        )
+        nvbit_tracer_root = ROOT_DIR / "benchmarks/accel-sim-framework/util/tracer_nvbit/"
         print(
             "NVBIT_TRACER_ROOT environment variable is not set, trying",
             str(nvbit_tracer_root.absolute()),
@@ -59,9 +59,7 @@ def trace_commands(path, inp, traces_dir):
     except (KeyError, ValueError):
         pass
 
-    post_traces_processing = (
-        nvbit_tracer_tool / "traces-processing/post-traces-processing"
-    )
+    post_traces_processing = nvbit_tracer_tool / "traces-processing/post-traces-processing"
 
     # create the tracing commands
     # 1. generate the .trace and kernelslist trace files
@@ -79,9 +77,7 @@ def trace_commands(path, inp, traces_dir):
     ]
     if True:
         trace_cmds += ["rm -f {}\n".format(str((traces_dir / "*.trace").absolute()))]
-        trace_cmds += [
-            "rm -f {}\n".format(str((traces_dir / "kernelslist").absolute()))
-        ]
+        trace_cmds += ["rm -f {}\n".format(str((traces_dir / "kernelslist").absolute()))]
     return trace_cmds
 
 
@@ -199,16 +195,12 @@ def run_parse(path, inp, traces_dir, results_dir, timeout_mins=5):
 
 
 class AccelSimSASSBenchmarkConfig(BenchmarkConfig):
+    ID = ACCELSIM_SASS
+    NAME = "AccelSim (SASS)"
+    TEX_NAME = r"\textsc{AccelSim} (SASS)"
+
     @staticmethod
-    def _run(
-        path,
-        inp,
-        timeout_mins=5,
-        trace=False,
-        simulate=True,
-        parse_only=False,
-        **kwargs
-    ):
+    def _run(path, inp, timeout_mins=5, trace=False, simulate=True, parse_only=False, **kwargs):
         print("accelsim SASS run")
         pprint(
             dict(

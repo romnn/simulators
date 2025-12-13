@@ -3,8 +3,14 @@ import csv
 from gpusims.bench import BenchmarkConfig
 import gpusims.utils as utils
 
+from gpusims.simulators import MULTI2SIM
+
 
 class Multi2SimBenchmarkConfig(BenchmarkConfig):
+    ID = MULTI2SIM
+    NAME = "Multi2Sim"
+    TEX_NAME = r"\textsc{Multi2Sim}"
+
     @staticmethod
     def _run(path, inp, force=False, timeout_mins=5, **kwargs):
         print("multi2sim run:", inp)
@@ -120,9 +126,7 @@ def build_multi2sim_df(kpl_stats_csv, mem_stats_csv, sim_dur_csv=None):
     # DPU Instructions
     # BRU Instructions
     units = ["SPU", "SFU", "LDS", "IMU", "DPU", "BRU"]
-    kpl_df["Total.Instructions"] = kpl_df[
-        ["Total.{} Instructions".format(unit) for unit in units]
-    ].sum(axis=1)
+    kpl_df["Total.Instructions"] = kpl_df[["Total.{} Instructions".format(unit) for unit in units]].sum(axis=1)
 
     df = pd.concat([kpl_df, mem_df], axis=1)
     if sim_dur_csv is not None:

@@ -8,6 +8,11 @@ from collections import namedtuple
 Config = namedtuple("Config", ["key", "name", "path", "spec"])
 
 
+class frozendict(dict):
+    def __hash__(self):
+        return hash(frozenset(self))
+
+
 def parse_configs(path):
     configs = {}
     with open(str(path.absolute()), "r") as f:
@@ -22,6 +27,6 @@ def parse_configs(path):
                 key=key.lower(),
                 name=config["name"],
                 path=path.parent / config["path"],
-                spec=config["spec"],
+                spec=frozendict(config["spec"]),
             )
     return configs
